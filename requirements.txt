@@ -1,34 +1,34 @@
 # === Core dependencies ===
-flask>=3.0.0
-flask-cors>=4.0.0
-requests>=2.32.0
+flask
+flask-cors
+requests
 
 # === NLP / AI assistant (Rasa optional) ===
-rasa>=3.6.0
-spacy>=3.7.0
-transformers>=4.45.0
-torch>=2.3.0
+rasa
+spacy
+transformers
+torch
 
 # === Data processing ===
-pandas>=2.2.0
-numpy>=1.26.0
+pandas
+numpy
 
 # === Utilities ===
-python-dotenv>=1.0.1
-rich>=13.7.0
-tqdm>=4.66.0
+python-dotenv
+rich
+tqdm
 
 # === Development tools ===
-black>=24.3.0
-isort>=5.13.0
-ruff>=0.5.0
-jupyter>=1.0.0
-ipykernel>=6.29.0
+black
+isort
+ruff
+jupyter
+ipykernel
 
-# === Optional: nếu có GUI / visualization ===
-matplotlib>=3.9.0
-seaborn>=0.13.0
-plotly>=5.22.0
+# === Optional: GUI / visualization ===
+matplotlib
+seaborn
+plotly
 
-# === Optional: nếu bạn chạy Flask app cho webhook hoặc frontend integration ===
-gunicorn>=22.0.0
+# === Optional: Flask app for webhook or frontend integration ===
+gunicorn

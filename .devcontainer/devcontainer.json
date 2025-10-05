@@ -1,11 +1,9 @@
 {
   "name": "Ciesta Assistant Dev",
-  "image": "python:latest",
-
+  "image": "python:3.10",
   // === Workspace structure ===
   "workspaceMount": "source=/home/hoangphuc/Documents/ciesta-asisstant,target=/ciesta-asisstant,type=bind",
   "workspaceFolder": "/ciesta-asisstant",
-
   // === Run configuration ===
   "runArgs": [
     "--env=DISPLAY",
@@ -14,12 +12,10 @@
     "--volume=/run/user/1000:/run/user/1000",
     "--device=/dev/dri",
     "--mount=type=tmpfs,target=/tmp",
-    "--network=host" // ✅ Cho phép Rasa/Flask hoạt động local mà không lỗi connection
+    "--network=host"
   ],
-
-  // === Add non-root user ===
-  "remoteUser": "vscode",
-
+  // === Chạy với user root ===
+  "remoteUser": "root",
   // === VSCode customizations ===
   "customizations": {
     "vscode": {
@@ -34,7 +30,7 @@
         "eamodio.gitlens"
       ],
       "settings": {
-        "python.defaultInterpreterPath": "/usr/local/bin/python",
+        "python.defaultInterpreterPath": "/usr/local/bin/python3.11",
         "python.formatting.provider": "black",
         "editor.formatOnSave": true,
         "terminal.integrated.shell.linux": "/bin/bash",
@@ -42,14 +38,15 @@
       }
     }
   },
-
   // === After container build ===
-  "postCreateCommand": "pip install -r requirements.txt",
-
-  // === Optional: forward port cho Rasa hoặc Flask ===
-  "forwardPorts": [5000, 5055, 8000],
-
-  // === Features (gợi ý thêm cho dev tiện) ===
+  "postCreateCommand": "apt-get update && apt-get install -y build-essential libffi-dev libssl-dev && pip install --upgrade pip && pip install -r requirements.txt",
+  // === Forward ports cho Rasa hoặc Flask ===
+  "forwardPorts": [
+    5000,
+    5055,
+    8000
+  ],
+  // === Features ===
   "features": {
     "ghcr.io/devcontainers/features/git:1": {},
     "ghcr.io/devcontainers/features/common-utils:2": {
