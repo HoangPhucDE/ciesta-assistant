@@ -3,8 +3,8 @@
   "image": "python:latest",
 
   // === Workspace structure ===
-  "workspaceFolder": "/ciesta-assistant",
-  "workspaceMount": "source=/home/hoangphuc/Documents/ciesta-assistant,target=/ciesta-assistant,type=bind",
+  "workspaceMount": "source=/home/hoangphuc/Documents/ciesta-asisstant,target=/ciesta-asisstant,type=bind",
+  "workspaceFolder": "/ciesta-asisstant",
 
   // === Run configuration ===
   "runArgs": [

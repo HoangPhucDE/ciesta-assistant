@@ -32,5 +32,3 @@ plotly>=5.22.0
 
 # === Optional: nếu bạn chạy Flask app cho webhook hoặc frontend integration ===
 gunicorn>=22.0.0
-
-"postCreateCommand": "pip install --upgrade pip && pip install -r requirements.txt"
