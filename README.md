@@ -1,6 +1,6 @@
 # 🌙 **Ciesta Assistant**
 
-![Python](https://img.shields.io/badge/python-3.11-blue)
+![Python](https://img.shields.io/badge/python-3.13-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Platform](https://img.shields.io/badge/platform-Linux%20|%20Windows%20|%20macOS-lightgrey)
 ![Status](https://img.shields.io/badge/status-active-brightgreen)
@@ -101,7 +101,7 @@ ciesta-assistant/
 
 ### 1️⃣ Clone dự án
 ```bash
-git clone https://github.com/<your-username>/ciesta-assistant.git
+git clone https://github.com/HoangPhucDE/ciesta-assistant.git
 cd ciesta-assistant
 
 2️⃣ Tạo môi trường và cài đặt dependencies
@@ -170,6 +170,6 @@ miễn là ghi nguồn gốc dự án Ciesta Assistant.
 
 🪶 Tác giả
 
-Nguyễn Hoàng Phúc
+|%20Nguyễn Hoàng Phúc%20|%20Trần Châu Thanh Phong%20|
 📧 Liên hệ qua GitHub Issues
 
