@@ -40,12 +40,6 @@
   },
   // === After container build ===
   "postCreateCommand": "apt-get update && apt-get install -y build-essential libffi-dev libssl-dev && pip install --upgrade pip && pip install -r requirements.txt",
-  // === Forward ports cho Rasa hoặc Flask ===
-  "forwardPorts": [
-    5000,
-    5055,
-    8000
-  ],
   // === Features ===
   "features": {
     "ghcr.io/devcontainers/features/git:1": {},
