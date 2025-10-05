@@ -1,0 +1,103 @@
+# ===================================
+# 🧠 Ciesta Assistant .gitignore
+# ===================================
+
+# === Python ===
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+.eggs/
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+
+# === Virtual environment ===
+venv/
+.env/
+env/
+.venv/
+pip-wheel-metadata/
+*.lock
+
+# === Rasa artifacts ===
+models/
+results/
+.rasa/
+rasa/cache/
+rasa/projects/
+rasa/nlu.lock
+rasa/core.lock
+rasa/__pycache__/
+rasa/events.db
+
+# === Datasets / temporary data ===
+data/
+tmp/
+logs/
+*.db
+*.sqlite3
+
+# === NLP / AI assets ===
+*.vec
+*.pt
+*.bin
+*.h5
+*.pkl
+*.model
+*.ckpt
+
+# === Jupyter / notebooks ===
+.ipynb_checkpoints/
+notebooks/.ipynb_checkpoints/
+*.nbconvert.ipynb
+
+# === PyQt build or cache ===
+__pycache__/
+*.qmlc
+*.qrc
+*.pyc
+build/
+dist/
+*.spec
+
+# === Flask cache ===
+instance/
+*.db-journal
+*.sqlite
+flask_session/
+flask_cache/
+
+# === Editor / IDE ===
+.vscode/
+.idea/
+*.code-workspace
+*.DS_Store
+Thumbs.db
+
+# === Docker / Devcontainer ===
+.devcontainer/.env
+.devcontainer/*.log
+.devcontainer/Dockerfile.local
+.docker/
+*.pid
+*.sock
+
+# === Flatpak / packaging ===
+*.flatpak
+*.AppImage
+*.snap
+*.tar.gz
+*.zip
+
+# === OS / Misc ===
+*.swp
+*.swo
+*~
+.cache/
+__MACOSX/
