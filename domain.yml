@@ -1,34 +1,83 @@
 version: "3.1"
 
-intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
+nlu:
+- intent: greet
+  examples: |
+    - xin chào
+    - chào bot
+    - hello
+    - hi
+    - chào bạn
+    - hey
 
-responses:
-  utter_greet:
-  - text: "Hey! How are you?"
+- intent: goodbye
+  examples: |
+    - tạm biệt
+    - bye bye
+    - hẹn gặp lại
+    - cảm ơn nhé
+    - thôi vậy
+    - goodbye
 
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+- intent: ask_about_culture
+  examples: |
+    - cho tôi biết về [Hà Nội](location)
+    - giới thiệu [Đà Nẵng](location)
+    - [Cà Mau](location) có gì đặc biệt
+    - [Bạc Liêu](location) nổi tiếng gì
+    - tôi muốn biết về [Hồ Chí Minh](location)
+    - [Huế](location) có gì hay
+    - kể cho tôi nghe về [Sapa](location)
+    - thông tin về [Phú Quốc](location)
+    - [Đà Lạt](location) có gì đặc sắc
+    - tìm hiểu về văn hóa [Nghệ An](location)
 
-  utter_did_that_help:
-  - text: "Did that help you?"
+- intent: ask_place_to_visit
+  examples: |
+    - [Hà Nội](location) có địa điểm nào đẹp
+    - địa điểm tham quan ở [Đà Nẵng](location)
+    - đi [Cà Mau](location) nên đi đâu
+    - [Bạc Liêu](location) có nơi nào đáng tham quan
+    - nơi check in đẹp ở [Hội An](location)
+    - điểm du lịch hot ở [Nha Trang](location)
+    - [Sapa](location) có những điểm đến nào
+    - gợi ý địa điểm ở [Phú Quốc](location)
+    - nên đi đâu khi đến [Đà Lạt](location)
+    - danh lam thắng cảnh [Hạ Long](location)
+    - những nơi không thể bỏ lỡ ở [Huế](location)
 
-  utter_happy:
-  - text: "Great, carry on!"
+- intent: ask_what_to_eat
+  examples: |
+    - đặc sản [Hà Nội](location) là gì
+    - ăn gì ở [Đà Nẵng](location)
+    - món ngon [Cà Mau](location)
+    - [Bạc Liêu](location) có món gì đặc trưng
+    - đi [Hội An](location) ăn gì
+    - ẩm thực [Huế](location)
+    - món ăn nổi tiếng ở [Nha Trang](location)
+    - [Phú Quốc](location) có hải sản gì ngon
+    - đặc sản nên mua ở [Đà Lạt](location)
+    - quà vặt [Sapa](location)
+    - thử món gì ở [Nghệ An](location)
 
-  utter_goodbye:
-  - text: "Bye"
+- intent: ask_festivals
+  examples: |
+    - lễ hội ở [Hà Nội](location)
+    - [Huế](location) có lễ hội gì
+    - sự kiện văn hóa [Cà Mau](location)
+    - lễ hội truyền thống [Bạc Liêu](location)
+    - [Đà Nẵng](location) tổ chức lễ hội nào
+    - các dịp lễ ở [Nghệ An](location)
+    - [Hội An](location) có lễ hội đèn lồng không
+    - sự kiện nào ở [Nha Trang](location)
+    - festival tại [Đà Lạt](location)
 
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+- intent: inform_location
+  examples: |
+    - tôi muốn đi [Hà Nội](location)
+    - [Đà Nẵng](location)
+    - [Cà Mau](location) nè
+    - ở [Bạc Liêu](location)
+    - về [Hồ Chí Minh](location)
+    - [Phú Quốc](location) đây
+    - tỉnh [Nghệ An](location)
