@@ -1,42 +1,20 @@
-# This file contains the different endpoints your bot can use.
+# FILE: endpoints.yml
 
-# Server where the models are pulled from.
-# https://rasa.com/docs/rasa/model-storage#fetching-models-from-a-server
+# Server which runs your custom actions (actions.py).
+# Chạy action server local trên port 5055 (chạy lệnh: rasa run actions).
+action_endpoint:
+  url: "http://localhost:5055/webhook"  # Linh hoạt: Có thể thay bằng biến môi trường $ACTION_SERVER_URL khi deploy
 
-#models:
-#  url: http://my-server.com/models/default_core@latest
-#  wait_time_between_pulls:  10   # [optional](default: 100)
+# Tracker store để lưu lịch sử hội thoại.
+# Sử dụng InMemoryTrackerStore (mặc định) cho local, sau này thay bằng Redis/MongoDB để persistent.
+tracker_store:
+  type: InMemoryTrackerStore  # Linh hoạt: Thay bằng redis hoặc mongod khi cần scale
 
-# Server which runs your custom actions.
-# https://rasa.com/docs/rasa/custom-actions
-
-#action_endpoint:
-#  url: "http://localhost:5055/webhook"
-
-# Tracker store which is used to store the conversations.
-# By default the conversations are stored in memory.
-# https://rasa.com/docs/rasa/tracker-stores
-
-#tracker_store:
-#    type: redis
-#    url: <host of the redis instance, e.g. localhost>
-#    port: <port of your redis instance, usually 6379>
-#    db: <number of your database within redis, e.g. 0>
-#    password: <password used for authentication>
-#    use_ssl: <whether or not the communication is encrypted, default false>
-
-#tracker_store:
-#    type: mongod
-#    url: <url to your mongo instance, e.g. mongodb://localhost:27017>
-#    db: <name of the db within your mongo instance, e.g. rasa>
-#    username: <username used for authentication>
-#    password: <password used for authentication>
-
-# Event broker which all conversation events should be streamed to.
-# https://rasa.com/docs/rasa/event-brokers
-
+# Event broker nếu cần stream sự kiện (tùy chọn, bỏ nếu chưa cần).
 #event_broker:
-#  url: localhost
-#  username: username
-#  password: password
-#  queue: queue
+#  type: pika
+#  url: amqp://guest:guest@localhost:5672/  # Linh hoạt: Sử dụng RabbitMQ cho production
+
+# Model server nếu kéo model từ server remote (tùy chọn, bỏ nếu train local).
+#models:
+#  url: http://localhost:5000/models  # Linh hoạt: Dùng cho CI/CD sau này
