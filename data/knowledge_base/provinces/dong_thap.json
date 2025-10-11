@@ -1,0 +1,94 @@
+{
+    "Đồng Tháp": {
+        "culture_details": "Đồng Tháp mới là vùng đất trù phú, hiền hòa, nơi hội tụ tinh hoa của văn hóa Đồng Tháp Mười. Đây là sự kết hợp giữa 'Đất Sen Hồng' Đồng Tháp, quê hương của cụ Phó bảng Nguyễn Sinh Sắc, với 'vựa trái cây' Tiền Giang, nơi có chợ nổi Cái Bè sầm uất và các cù lao miệt vườn nổi tiếng. Vùng đất này mang đến trải nghiệm sinh thái đặc sắc với những cánh đồng sen bạt ngàn, vườn quốc gia Tràm Chim và văn hóa sông nước đậm nét.",
+        "sub_regions": [
+            {
+                "name": "Khu vực Đồng Tháp (cũ)",
+                "highlights": "'Đất Sen Hồng', Vườn quốc gia Tràm Chim, Khu di tích cụ Phó bảng Nguyễn Sinh Sắc."
+            },
+            {
+                "name": "Khu vực Tiền Giang",
+                "highlights": "Vựa trái cây lớn nhất miền Tây, chợ nổi Cái Bè, các cù lao Thới Sơn, Long, Lân, Phụng."
+            }
+        ],
+        "places_to_visit": [
+            {
+                "name": "Vườn Quốc gia Tràm Chim (Đồng Tháp)",
+                "category": "sinh thái",
+                "details": "Di sản Ramsar của thế giới, là nơi cư trú của Sếu đầu đỏ - loài chim quý hiếm đang có nguy cơ tuyệt chủng, đặc biệt đẹp vào mùa nước nổi."
+            },
+            {
+                "name": "Chợ nổi Cái Bè (Tiền Giang)",
+                "category": "văn hóa",
+                "details": "Một trong những chợ nổi lớn và sầm uất nhất miền Tây, là nơi giao thương hàng hóa, nông sản trên sông, thể hiện nét văn hóa đặc trưng."
+            },
+            {
+                "name": "Khu du lịch sinh thái Gáo Giồng (Đồng Tháp)",
+                "category": "sinh thái",
+                "details": "Được mệnh danh là 'Đồng Tháp Mười thu nhỏ', nơi du khách đi xuồng ba lá xuyên qua rừng tràm và sân chim rộng lớn."
+            },
+            {
+                "name": "Cù lao Thới Sơn (Tiền Giang)",
+                "category": "sinh thái",
+                "details": "Điểm du lịch miệt vườn tiêu biểu, trải nghiệm đi xuồng trong rạch dừa nước, nghe đờn ca tài tử và thưởng thức trái cây."
+            },
+            {
+                "name": "Khu di tích Cụ Phó bảng Nguyễn Sinh Sắc (Đồng Tháp)",
+                "category": "lịch sử",
+                "details": "Nơi an nghỉ của thân sinh Chủ tịch Hồ Chí Minh, là quần thể kiến trúc đẹp với nhà sàn Bác Hồ và ao sen."
+            },
+            {
+                "name": "Trại rắn Đồng Tâm (Tiền Giang)",
+                "category": "khám phá",
+                "details": "Được mệnh danh là 'vương quốc rắn', là trung tâm nghiên cứu, nuôi trồng và bảo tồn rắn lớn nhất Việt Nam."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Các món từ Sen (Đồng Tháp)",
+                "category": "đặc sản",
+                "details": "Tinh hoa ẩm thực 'Đất Sen Hồng' với các món như cá lóc nướng cuốn lá sen non, gỏi ngó sen, cơm hấp lá sen."
+            },
+            {
+                "name": "Hủ tiếu Mỹ Tho (Tiền Giang)",
+                "category": "đặc sản",
+                "details": "Thương hiệu hủ tiếu trứ danh với sợi hủ tiếu dai đặc trưng, nước dùng ngọt thanh, ăn kèm thịt, lòng heo và các loại hải sản."
+            },
+            {
+                "name": "Chuột đồng quay lu Cao Lãnh (Đồng Tháp)",
+                "category": "đặc sản",
+                "details": "Đặc sản 'thử thách' của Đồng Tháp Mười, chuột đồng được làm sạch, ướp gia vị rồi quay trong lu đất cho da vàng giòn."
+            },
+            {
+                "name": "Bún gỏi già (Tiền Giang)",
+                "category": "đặc sản",
+                "details": "Món bún độc đáo có nước dùng mang hương vị của gỏi cuốn, với vị me chua thanh và tương xay béo ngậy."
+            },
+            {
+                "name": "Lẩu cá linh bông điên điển (mùa nước nổi)",
+                "category": "đặc sản",
+                "details": "Đặc sản chỉ có vào mùa nước nổi (tháng 9-11), kết hợp vị ngọt của cá linh non và vị chua nhẹ, giòn giòn của bông điên điển."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ hội Gò Găng (Đồng Tháp)",
+                "time": "Rằm tháng Giêng âm lịch",
+                "details": "Lễ hội dân gian tưởng nhớ hai vị thiên tướng đã giúp dân khai hoang, lập ấp, cầu cho mưa thuận gió hòa."
+            },
+            {
+                "name": "Lễ hội Tứ Kiệt (Cai Lậy, Tiền Giang)",
+                "time": "Ngày 15 tháng Chạp âm lịch",
+                "details": "Lễ hội tưởng nhớ bốn vị anh hùng dân tộc đã hy sinh trong cuộc kháng chiến chống Pháp tại Cai Lậy."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Nem Lai Vung (Đồng Tháp)",
+            "Mắm tôm chà Gò Công (Tiền Giang)",
+            "Sen sấy, hạt sen (Đồng Tháp)",
+            "Trái cây (xoài cát Hòa Lộc, vú sữa Lò Rèn...)",
+            "Bánh phồng tôm Sa Giang (Đồng Tháp)"
+        ],
+        "best_time_to_visit": "Mùa nước nổi (tháng 9-11) là thời điểm đặc sắc nhất để tham quan Tràm Chim, Gáo Giồng và thưởng thức đặc sản mùa lũ. Mùa hè (tháng 5-8) là mùa của các loại trái cây đặc sản ở Tiền Giang."
+    }
+}

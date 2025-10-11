@@ -1,0 +1,94 @@
+{
+    "Lào Cai": {
+        "culture_details": "Lào Cai mới là một 'siêu tỉnh' về du lịch cảnh quan và văn hóa vùng cao Tây Bắc. Nơi đây là sự kết hợp giữa 'Thành phố trong sương' Sa Pa với đỉnh Fansipan - 'Nóc nhà Đông Dương' hùng vĩ của Lào Cai, và Di tích quốc gia đặc biệt Ruộng bậc thang Mù Cang Chải của Yên Bái. Vùng đất này là không gian văn hóa đặc sắc của các dân tộc H'Mông, Dao, Tày, Thái..., nơi du khách có thể đắm mình trong vẻ đẹp của những 'dải lụa vàng' mùa lúa chín và chinh phục những đỉnh núi cao nhất Việt Nam.",
+        "sub_regions": [
+            {
+                "name": "Khu vực Lào Cai (cũ)",
+                "highlights": "Thị xã nghỉ dưỡng Sa Pa, đỉnh Fansipan, chợ phiên Bắc Hà, cửa khẩu quốc tế."
+            },
+            {
+                "name": "Khu vực Yên Bái",
+                "highlights": "Di tích quốc gia đặc biệt Ruộng bậc thang Mù Cang Chải, hồ Thác Bà - 'Vịnh Hạ Long trên núi'."
+            }
+        ],
+        "places_to_visit": [
+            {
+                "name": "Đỉnh Fansipan - 'Nóc nhà Đông Dương' (Lào Cai)",
+                "category": "leo núi",
+                "details": "Đỉnh núi cao nhất Việt Nam (3.143m), du khách có thể chinh phục bằng tàu hỏa leo núi và cáp treo hiện đại để ngắm biển mây."
+            },
+            {
+                "name": "Ruộng bậc thang Mù Cang Chải (Yên Bái)",
+                "category": "di sản",
+                "details": "Di tích quốc gia đặc biệt, những 'nấc thang lên trời' được tạo tác bởi bàn tay của người H'Mông, đẹp nhất vào mùa nước đổ và mùa lúa chín."
+            },
+            {
+                "name": "Thị xã Sa Pa (Lào Cai)",
+                "category": "văn hóa",
+                "details": "Thị xã nghỉ dưỡng nổi tiếng với khí hậu mát mẻ, nhà thờ Đá cổ kính và các bản làng văn hóa như Cát Cát, Tả Phìn, Tả Van."
+            },
+            {
+                "name": "Hồ Thác Bà (Yên Bái)",
+                "category": "sinh thái",
+                "details": "Một trong ba hồ nhân tạo lớn nhất Việt Nam, được ví như 'Vịnh Hạ Long trên núi' với hơn 1.300 hòn đảo xanh."
+            },
+            {
+                "name": "Chợ phiên Bắc Hà (Lào Cai)",
+                "category": "văn hóa",
+                "details": "Phiên chợ vùng cao lớn và đặc sắc nhất, diễn ra vào sáng Chủ Nhật hằng tuần, nơi giao lưu văn hóa và mua bán của người H'Mông Hoa."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Lẩu cá hồi / cá tầm Sa Pa (Lào Cai)",
+                "category": "đặc sản",
+                "details": "Đặc sản trứ danh của xứ lạnh Sa Pa, cá được nuôi trong môi trường nước lạnh nên thịt săn chắc, thơm ngon, rất hợp ăn lẩu."
+            },
+            {
+                "name": "Xôi ngũ sắc (Yên Bái)",
+                "category": "đặc sản",
+                "details": "Món xôi dẻo thơm nấu từ gạo nếp nương, được nhuộm 5 màu tự nhiên từ các loại lá cây rừng, mang ý nghĩa tâm linh."
+            },
+            {
+                "name": "Thắng cố",
+                "category": "đặc sản",
+                "details": "Món ăn truyền thống của người H'Mông, là một loại súp nấu từ thịt và nội tạng ngựa (hoặc bò), thảo quả, hạt dổi."
+            },
+            {
+                "name": "Cá nướng Pa Pỉnh Tộp (Yên Bái)",
+                "category": "đặc sản",
+                "details": "Đặc sản của người Thái, cá được mổ dọc sống lưng, nhồi các loại rau thơm và gia vị mắc khén rồi kẹp nướng trên than hồng."
+            },
+            {
+                "name": "Muồm muỗm rang Mường Lò (Yên Bái)",
+                "category": "đặc sản",
+                "details": "Đặc sản độc đáo theo mùa (mùa gặt), muồm muỗm được bắt ngoài đồng, rang giòn với lá chanh, có vị béo ngậy, thơm bùi."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ hội Ruộng bậc thang Mù Cang Chải (Yên Bái)",
+                "time": "Thường niên vào tháng 9 (mùa lúa chín)",
+                "details": "Sự kiện văn hóa - du lịch tôn vinh danh thắng quốc gia, với các hoạt động dù lượn 'Bay trên mùa vàng' và các trải nghiệm văn hóa."
+            },
+            {
+                "name": "Lễ hội 'Sa Pa - Mùa tuyết'",
+                "time": "Thường diễn ra vào dịp Giáng sinh, cuối tháng 12",
+                "details": "Lễ hội mùa đông độc đáo của Sa Pa, tái hiện không gian tuyết rơi với nhiều hoạt động văn hóa, nghệ thuật hấp dẫn."
+            },
+            {
+                "name": "Lễ hội Đền Thượng (Lào Cai)",
+                "time": "Từ ngày 12 đến 15 tháng Giêng âm lịch",
+                "details": "Lễ hội lớn nhất của tỉnh Lào Cai để tưởng nhớ Quốc công tiết chế Hưng Đạo Vương Trần Quốc Tuấn."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Chè Shan tuyết Suối Giàng (Yên Bái)",
+            "Thịt trâu gác bếp",
+            "Mật ong Mù Cang Chải (Yên Bái)",
+            "Nấm hương Sa Pa",
+            "Đồ thổ cẩm Sa Pa"
+        ],
+        "best_time_to_visit": "Tháng 9 - 10 là 'mùa vàng' của lúa chín ở Mù Cang Chải. Tháng 5 - 6 là mùa nước đổ. Mùa đông (tháng 12 - 2) là thời điểm săn mây, có thể có tuyết ở Sa Pa. Mùa xuân (tháng 3-5) là mùa hoa đỗ quyên trên Fansipan."
+    }
+}

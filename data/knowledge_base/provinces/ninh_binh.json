@@ -1,0 +1,103 @@
+{
+    "Ninh Bình": {
+        "culture_details": "Ninh Bình mới là vùng đất 'địa linh nhân kiệt', nơi hội tụ những giá trị lịch sử và văn hóa lớn của dân tộc. Đây là sự kết hợp giữa Cố đô Hoa Lư - kinh đô đầu tiên của nhà nước phong kiến trung ương tập quyền Việt Nam (Ninh Bình); vùng đất phát tích của nhà Trần oanh liệt (Nam Định); và trung tâm du lịch tâm linh mới của quốc gia với chùa Tam Chúc lớn nhất thế giới (Hà Nam). Vùng đất này còn nổi bật với Di sản Văn hóa và Thiên nhiên Thế giới Tràng An.",
+        "sub_regions": [
+            {
+                "name": "Khu vực Ninh Bình (cũ)",
+                "highlights": "Di sản hỗn hợp UNESCO Tràng An, Cố đô Hoa Lư, Tam Cốc - Bích Động."
+            },
+            {
+                "name": "Khu vực Nam Định (cũ)",
+                "highlights": "Quê hương nhà Trần với di tích Đền Trần, trung tâm tín ngưỡng Công giáo với nhiều nhà thờ lớn."
+            },
+            {
+                "name": "Khu vực Hà Nam (cũ)",
+                "highlights": "Khu du lịch tâm linh Tam Chúc, làng nghề truyền thống và ẩm thực dân dã."
+            }
+        ],
+        "places_to_visit": [
+            {
+                "name": "Quần thể danh thắng Tràng An (Ninh Bình)",
+                "category": "di sản",
+                "details": "Di sản Văn hóa và Thiên nhiên Thế giới hỗn hợp đầu tiên của Đông Nam Á, nổi tiếng với trải nghiệm ngồi thuyền xuyên qua các hang động."
+            },
+            {
+                "name": "Khu du lịch Tam Chúc (Hà Nam)",
+                "category": "tâm linh",
+                "details": "Quần thể chùa được mệnh danh lớn nhất thế giới, với các công trình kiến trúc Phật giáo kỳ vĩ và cảnh quan hồ núi hữu tình."
+            },
+            {
+                "name": "Khu di tích Lịch sử - Văn hóa Đền Trần (Nam Định)",
+                "category": "lịch sử",
+                "details": "Nơi thờ các vị vua nhà Trần và các quan có công phù tá, nổi tiếng với Lễ Khai ấn Đền Trần đầu xuân thu hút hàng vạn người."
+            },
+            {
+                "name": "Cố đô Hoa Lư (Ninh Bình)",
+                "category": "lịch sử",
+                "details": "Kinh đô đầu tiên của nhà nước phong kiến trung ương tập quyền Việt Nam, gắn liền với sự nghiệp của các vua Đinh, Tiền Lê."
+            },
+            {
+                "name": "Chùa Bái Đính (Ninh Bình)",
+                "category": "tâm linh",
+                "details": "Quần thể chùa lớn nắm giữ nhiều kỷ lục châu Á và Việt Nam, với tượng Phật bằng đồng lớn nhất, hành lang La Hán dài nhất."
+            },
+            {
+                "name": "Vương cung thánh đường Phú Nhai (Nam Định)",
+                "category": "kiến trúc",
+                "details": "Một trong những nhà thờ Công giáo lớn và lộng lẫy nhất Việt Nam, mang đậm phong cách kiến trúc Gothic."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Thịt dê núi Ninh Bình",
+                "category": "đặc sản",
+                "details": "Dê được chăn thả tự nhiên trên núi đá vôi, thịt săn chắc, ít mỡ và có hương vị đặc trưng, chế biến thành nhiều món ngon."
+            },
+            {
+                "name": "Cá kho làng Vũ Đại (Hà Nam)",
+                "category": "đặc sản",
+                "details": "Món cá trắm đen được kho trong niêu đất suốt 12-16 tiếng với các gia vị cổ truyền, thịt cá chắc, xương mềm tan."
+            },
+            {
+                "name": "Phở bò Nam Định",
+                "category": "đặc sản",
+                "details": "Thương hiệu phở trứ danh với nước dùng trong, ngọt vị xương, thịt bò thái mỏng chần tái và hương vị không thể nhầm lẫn."
+            },
+            {
+                "name": "Cơm cháy Ninh Bình",
+                "category": "đặc sản",
+                "details": "Món ăn dân dã được nâng tầm thành đặc sản, miếng cháy vàng ruộm, giòn tan, ăn kèm sốt thịt dê hoặc ruốc."
+            },
+            {
+                "name": "Nem nắm Giao Thủy (Nam Định)",
+                "category": "đặc sản",
+                "details": "Nem làm từ bì lợn thái sợi, thịt nạc và thính gạo rang thơm, khi ăn được nắm chặt lại, chấm cùng nước mắm tỏi ớt."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ hội Khai ấn Đền Trần (Nam Định)",
+                "time": "Đêm 14, rạng sáng 15 tháng Giêng âm lịch",
+                "details": "Lễ hội lớn bậc nhất miền Bắc, tái hiện nghi lễ khai ấn của nhà Trần, thu hút hàng vạn người dân và du khách về xin ấn cầu may."
+            },
+            {
+                "name": "Lễ hội Hoa Lư (Ninh Bình)",
+                "time": "Từ mùng 9 đến 11 tháng 3 âm lịch",
+                "details": "Lễ hội truyền thống tưởng nhớ công lao của Vua Đinh Tiên Hoàng và Vua Lê Đại Hành, diễn ra tại Khu di tích Cố đô Hoa Lư."
+            },
+            {
+                "name": "Lễ hội Chùa Tam Chúc (Hà Nam)",
+                "time": "Từ mùng 1 Tết đến hết tháng Giêng, chính hội ngày 12 tháng Giêng",
+                "details": "Lễ hội khai xuân lớn tại chùa Tam Chúc, với các nghi lễ Phật giáo trang trọng và các hoạt động văn hóa dân gian."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Cơm cháy ruốc Ninh Bình",
+            "Cá kho làng Vũ Đại (đóng niêu)",
+            "Kẹo Sìu Châu Nam Định",
+            "Rượu Kim Sơn Ninh Bình",
+            "Bánh đa nem làng Chều (Hà Nam)"
+        ],
+        "best_time_to_visit": "Mùa xuân (tháng 1-3 Âm lịch) là mùa của các lễ hội lớn như Lễ Khai ấn, lễ hội Hoa Lư. Cuối tháng 5, đầu tháng 6 là mùa lúa chín vàng ở Tam Cốc, Tràng An. Mùa thu (tháng 8-10) thời tiết mát mẻ, dễ chịu."
+    }
+}

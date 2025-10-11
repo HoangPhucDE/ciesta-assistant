@@ -1,0 +1,85 @@
+{
+    "Lạng Sơn": {
+        "culture_details": "Lạng Sơn là tỉnh vùng cao biên giới Đông Bắc, được mệnh danh là cửa ngõ giao thương quan trọng hàng đầu của Việt Nam với Trung Quốc. Văn hóa Xứ Lạng là sự giao thoa đặc sắc của các dân tộc Tày, Nùng, Kinh, Dao, Hoa... Vùng đất này đi vào tiềm thức người Việt với câu ca dao 'Đồng Đăng có phố Kỳ Lừa, có nàng Tô Thị, có chùa Tam Thanh', đồng thời ghi dấu ấn lịch sử với những chiến thắng hào hùng tại Ải Chi Lăng.",
+        "sub_regions": [],
+        "places_to_visit": [
+            {
+                "name": "Quần thể di tích Nhị - Tam Thanh, núi Tô Thị",
+                "category": "lịch sử",
+                "details": "Cụm danh thắng biểu tượng của Xứ Lạng, bao gồm động Tam Thanh (với Chùa Tam Thanh bên trong), động Nhị Thanh và hòn đá Vọng Phu nổi tiếng."
+            },
+            {
+                "name": "Khu du lịch Mẫu Sơn",
+                "category": "nghỉ dưỡng",
+                "details": "Vùng núi cao hơn 1.500m với khí hậu mát mẻ, từng là khu nghỉ dưỡng của người Pháp. Đặc biệt hấp dẫn vào mùa đông với cơ hội săn băng tuyết."
+            },
+            {
+                "name": "Cửa khẩu Quốc tế Hữu Nghị",
+                "category": "địa danh",
+                "details": "Cửa khẩu quan trọng và là biểu tượng của tình hữu nghị Việt - Trung, nơi có cột mốc 1116 và điểm đầu của Quốc lộ 1A."
+            },
+            {
+                "name": "Ải Chi Lăng",
+                "category": "lịch sử",
+                "details": "Di tích lịch sử Quốc gia đặc biệt, một thung lũng hiểm trở được mệnh danh là 'cửa tử' chôn vùi nhiều đạo quân xâm lược phương Bắc."
+            },
+            {
+                "name": "Chợ Đông Kinh",
+                "category": "mua sắm",
+                "details": "Trung tâm thương mại lớn nhất Lạng Sơn, là nơi mua sắm, giao thương hàng hóa sầm uất ở khu vực biên giới."
+            },
+            {
+                "name": "Đền Bắc Lệ",
+                "category": "tâm linh",
+                "details": "Một trong những ngôi đền thờ Mẫu nổi tiếng và linh thiêng nhất Việt Nam, thực hành tín ngưỡng thờ Mẫu Tam phủ của người Việt."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Vịt quay lá mác mật (mắc mật)",
+                "category": "đặc sản",
+                "details": "Vịt được tẩm ướp kỹ lưỡng với lá và quả mác mật, mật ong rồi quay trong lu, cho lớp da căng bóng, vàng ruộm và thịt thơm lừng."
+            },
+            {
+                "name": "Khâu nhục",
+                "category": "đặc sản",
+                "details": "Món thịt ba chỉ hầm nhừ với các loại gia vị, khoai môn... có nguồn gốc từ người Tày - Nùng, ăn rất mềm và đậm đà."
+            },
+            {
+                "name": "Phở chua Lạng Sơn",
+                "category": "đặc sản",
+                "details": "Món phở trộn nguội với nước sốt chua ngọt đặc biệt làm từ giấm đường và các loại gia vị, ăn kèm thịt xá xíu, khoai lang chiên."
+            },
+            {
+                "name": "Bánh áp chao",
+                "category": "ẩm thực đường phố",
+                "details": "Món bánh rán đặc trưng của mùa đông Xứ Lạng, vỏ ngoài giòn rụm, bên trong là nhân thịt vịt, chấm cùng nước mắm dấm ớt."
+            },
+            {
+                "name": "Bánh cuốn trứng",
+                "category": "món chính",
+                "details": "Bánh cuốn được tráng mỏng, đập thêm một quả trứng gà vào giữa rồi hấp chín, ăn cùng nước canh ninh xương và thịt băm."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ hội Chùa Tam Thanh",
+                "time": "Ngày 15 tháng Giêng âm lịch",
+                "details": "Lễ hội xuân lớn thu hút đông đảo du khách thập phương đến vãn cảnh chùa, cầu bình an và tham gia các trò chơi dân gian."
+            },
+            {
+                "name": "Lễ hội đầu pháo Kỳ Lừa",
+                "time": "Từ ngày 22 đến 27 tháng Giêng âm lịch",
+                "details": "Lễ hội độc đáo để cướp 'đầu pháo' cầu may mắn, là Di sản văn hóa phi vật thể Quốc gia, tái hiện lại tục luyện quân xưa."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Rượu Mẫu Sơn",
+            "Măng ớt Lạng Sơn",
+            "Hoa Hồi Lạng Sơn (gia vị)",
+            "Quýt Bắc Sơn (theo mùa)",
+            "Na Chi Lăng (theo mùa)"
+        ],
+        "best_time_to_visit": "Mùa thu (tháng 9-11) thời tiết mát mẻ, dễ chịu. Mùa đông (tháng 12-2) để trải nghiệm cái lạnh và có cơ hội 'săn tuyết' trên đỉnh Mẫu Sơn. Mùa xuân (tháng 1-2 âm lịch) là mùa của các lễ hội lớn."
+    }
+}

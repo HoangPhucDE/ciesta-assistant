@@ -1,0 +1,94 @@
+{
+    "Đồng Nai": {
+        "culture_details": "Đồng Nai mới là cửa ngõ kinh tế chiến lược phía Đông Sài Gòn, một vùng đất trù phú với lịch sử lâu đời. Nơi đây là sự kết hợp giữa Đồng Nai - một trung tâm công nghiệp lớn với Di sản thế giới Vườn quốc gia Cát Tiên; và Bình Phước - 'thủ phủ điều' của Việt Nam, vùng đất đỏ bazan với những cánh rừng cao su bạt ngàn và các di tích lịch sử cách mạng quan trọng như Căn cứ Tà Thiết. Vùng đất này mang trong mình vẻ đẹp đa dạng từ thiên nhiên hoang dã đến các làng nghề truyền thống.",
+        "sub_regions": [
+            {
+                "name": "Khu vực Đồng Nai (cũ)",
+                "highlights": "Cửa ngõ phía Đông Sài Gòn, trung tâm công nghiệp, Di sản thế giới Vườn quốc gia Cát Tiên."
+            },
+            {
+                "name": "Khu vực Bình Phước",
+                "highlights": "'Thủ phủ điều' của Việt Nam, vùng đất đỏ bazan, Di tích Căn cứ Bộ chỉ huy Miền Tà Thiết."
+            }
+        ],
+        "places_to_visit": [
+            {
+                "name": "Vườn quốc gia Cát Tiên (Đồng Nai)",
+                "category": "di sản",
+                "details": "Khu dự trữ sinh quyển thế giới được UNESCO công nhận, là 'lá phổi xanh' với hệ động thực vật đa dạng, Bàu Sấu và cây Tung cổ thụ."
+            },
+            {
+                "name": "Khu di tích Căn cứ Bộ chỉ huy Miền Tà Thiết (Bình Phước)",
+                "category": "lịch sử",
+                "details": "Di tích Quốc gia đặc biệt, được mệnh danh là 'Rừng Chính phủ', nơi ra đời nhiều chỉ thị, kế hoạch quan trọng trong kháng chiến chống Mỹ."
+            },
+            {
+                "name": "Khu du lịch Bửu Long (Đồng Nai)",
+                "category": "cảnh quan",
+                "details": "Được mệnh danh là 'Vịnh Hạ Long thu nhỏ' của phương Nam với cụm hồ, núi đá và các công trình tâm linh, giải trí."
+            },
+            {
+                "name": "Sóc Bom Bo (Bình Phước)",
+                "category": "lịch sử",
+                "details": "Địa danh lịch sử nổi tiếng qua bài hát 'Tiếng chày trên sóc Bom Bo', nơi đồng bào S'tiêng giã gạo nuôi quân trong kháng chiến."
+            },
+            {
+                "name": "Thác Giang Điền (Đồng Nai)",
+                "category": "sinh thái",
+                "details": "Quần thể thác nước và cảnh quan thiên nhiên, là điểm dã ngoại, vui chơi cuối tuần quen thuộc của khu vực Đông Nam Bộ."
+            },
+            {
+                "name": "Vườn quốc gia Bù Gia Mập (Bình Phước)",
+                "category": "sinh thái",
+                "details": "Vùng rừng chuyển tiếp giữa Tây Nguyên và Đông Nam Bộ, có hệ động thực vật phong phú, thích hợp cho trekking, khám phá."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Gà hấp bưởi Tân Triều (Đồng Nai)",
+                "category": "đặc sản",
+                "details": "Gà ta được hấp trong trái bưởi, thịt gà quyện với hương thơm tinh dầu bưởi tạo nên một món ăn độc đáo và thanh tao."
+            },
+            {
+                "name": "Ve sầu sữa chiên giòn (Bình Phước)",
+                "category": "đặc sản",
+                "details": "Đặc sản theo mùa (tháng 5), ve sầu non được chiên giòn, có vị béo ngậy, bùi bùi, là món ăn độc đáo của vùng đất đỏ."
+            },
+            {
+                "name": "Gỏi cá Biên Hòa (Đồng Nai)",
+                "category": "đặc sản",
+                "details": "Món gỏi làm từ cá điêu hồng hoặc cá chép tươi sống, trộn với các loại gia vị và ăn kèm hơn 30 loại lá thuốc nam."
+            },
+            {
+                "name": "Đọt mây nướng (Bình Phước)",
+                "category": "đặc sản",
+                "details": "Đọt non của cây mây rừng được nướng trên than hồng, có vị đắng nhẹ sau đó ngọt hậu, là món ăn dân dã của người S'tiêng."
+            },
+            {
+                "name": "Lẩu lá khổ qua rừng (Đồng Nai)",
+                "category": "đặc sản",
+                "details": "Lẩu cá hoặc sườn non nấu với lá khổ qua rừng có vị đắng nhẹ, thanh mát, được cho là rất tốt cho sức khỏe."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ hội Chùa Ông (Thất Phủ Cổ Miếu, Đồng Nai)",
+                "time": "Luân phiên tổ chức 2-3 năm một lần, vào tháng Giêng",
+                "details": "Lễ hội lớn của cộng đồng người Hoa, với nghi lễ rước kiệu Quan Thánh Đế Quân tuần du cầu quốc thái dân an."
+            },
+            {
+                "name": "Lễ hội Cầu Bông của người S'tiêng (Bình Phước)",
+                "time": "Tháng 3 âm lịch",
+                "details": "Lễ hội truyền thống cầu cho mùa màng bội thu, vạn vật sinh sôi, với các nghi lễ cúng thần linh và các trò chơi dân gian."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Hạt điều Bình Phước",
+            "Bưởi Tân Triều (Đồng Nai)",
+            "Tiêu Lộc Ninh (Bình Phước)",
+            "Mít tố nữ Long Khánh (Đồng Nai)",
+            "Nấm mối (theo mùa)"
+        ],
+        "best_time_to_visit": "Mùa khô từ tháng 11 đến tháng 4 là thời điểm lý tưởng nhất để khám phá các vườn quốc gia và di tích. Mùa hè (tháng 5-8) là mùa của các loại trái cây đặc sản ở Đồng Nai như chôm chôm, sầu riêng."
+    }
+}

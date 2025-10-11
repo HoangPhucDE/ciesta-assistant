@@ -1,0 +1,100 @@
+{
+    "Hà Nội": {
+        "culture_details": "Hà Nội, thủ đô có lịch sử hơn 1000 năm tuổi, là trung tâm chính trị, văn hóa, giáo dục hàng đầu của Việt Nam. Nơi đây là sự kết hợp hài hòa giữa nét cổ kính của 'Thăng Long - Hà Nội ngàn năm văn hiến' với những khu phố cổ, di tích lịch sử dày đặc, và vẻ đẹp lãng mạn của kiến trúc Pháp thuộc, cùng sự phát triển năng động của một thủ đô hiện đại. Văn hóa ẩm thực đường phố của Hà Nội được xem là một trong những nền ẩm thực hấp dẫn nhất thế giới.",
+        "sub_regions": [],
+        "places_to_visit": [
+            {
+                "name": "Quần thể Lăng Chủ tịch Hồ Chí Minh - Quảng trường Ba Đình",
+                "category": "lịch sử",
+                "details": "Nơi trang nghiêm nhất của cả nước, nơi đặt thi hài của Chủ tịch Hồ Chí Minh và là nơi diễn ra các sự kiện trọng đại của quốc gia."
+            },
+            {
+                "name": "Khu di tích Văn Miếu - Quốc Tử Giám",
+                "category": "lịch sử",
+                "details": "Trường đại học đầu tiên của Việt Nam, nơi thờ Khổng Tử và các bậc hiền tài, biểu tượng cho truyền thống hiếu học của dân tộc."
+            },
+            {
+                "name": "Khu phố cổ Hà Nội",
+                "category": "văn hóa",
+                "details": "Khu vực 36 phố phường đặc trưng với những ngôi nhà cổ, các con phố nghề thủ công và một thế giới ẩm thực đường phố sôi động."
+            },
+            {
+                "name": "Hồ Hoàn Kiếm (Hồ Gươm) - Đền Ngọc Sơn",
+                "category": "cảnh quan",
+                "details": "Trái tim của Thủ đô, gắn liền với truyền thuyết vua Lê Lợi trả gươm báu, với Tháp Rùa, cầu Thê Húc và đền Ngọc Sơn cổ kính."
+            },
+            {
+                "name": "Hoàng thành Thăng Long",
+                "category": "di sản",
+                "details": "Di sản Văn hóa Thế giới được UNESCO công nhận, là quần thể di tích gắn liền với lịch sử kinh thành Thăng Long - Đông Kinh và Hà Nội."
+            },
+            {
+                "name": "Nhà hát Lớn Hà Nội",
+                "category": "kiến trúc",
+                "details": "Công trình kiến trúc mang phong cách tân cổ điển Pháp, là một trong những trung tâm biểu diễn nghệ thuật quan trọng nhất Việt Nam."
+            },
+            {
+                "name": "Bảo tàng Dân tộc học Việt Nam",
+                "category": "văn hóa",
+                "details": "Nơi trưng bày và lưu giữ những giá trị văn hóa đa dạng của 54 dân tộc anh em trên khắp Việt Nam một cách sinh động, hấp dẫn."
+            },
+            {
+                "name": "Nhà tù Hỏa Lò",
+                "category": "lịch sử",
+                "details": "Di tích lịch sử minh chứng cho thời kỳ đấu tranh gian khổ, được mệnh danh là 'địa ngục trần gian' dưới thời thực dân Pháp."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Phở Hà Nội",
+                "category": "đặc sản",
+                "details": "Tinh hoa ẩm thực Việt với nước dùng thanh ngọt, bánh phở mềm mại. Nổi tiếng với Phở Bát Đàn (xếp hàng) và Phở Thìn (thịt bò xào tái)."
+            },
+            {
+                "name": "Bún chả",
+                "category": "đặc sản",
+                "details": "Chả nướng than hoa thơm lừng ăn kèm bún, rau sống và nước chấm chua ngọt. Món ăn từng được cựu tổng thống Obama thưởng thức."
+            },
+            {
+                "name": "Cà phê trứng",
+                "category": "đặc sản",
+                "details": "Thức uống độc đáo ra đời từ những năm 1940, kết hợp lòng đỏ trứng gà đánh bông với cà phê, tạo nên hương vị béo ngậy, thơm ngon."
+            },
+            {
+                "name": "Bún đậu mắm tôm",
+                "category": "ẩm thực đường phố",
+                "details": "Món ăn dân dã gồm bún lá, đậu phụ rán giòn, chả cốm, thịt chân giò luộc... chấm cùng mắm tôm pha chanh, đường, ớt."
+            },
+            {
+                "name": "Chả cá Lã Vọng",
+                "category": "đặc sản",
+                "details": "Đặc sản trứ danh của Hà Nội, thịt cá lăng được tẩm ướp nghệ, riềng rồi nướng và rán lại trong chảo mỡ, ăn kèm bún, thì là, lạc rang."
+            },
+            {
+                "name": "Bánh tôm Hồ Tây",
+                "category": "đặc sản",
+                "details": "Món ăn vặt nổi tiếng gắn liền với Hồ Tây, bánh được chiên giòn từ bột mì và tôm nước ngọt, ăn kèm nước chấm chua ngọt."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ hội Gióng ở đền Sóc và đền Phù Đổng",
+                "time": "Tháng 1 và tháng 4 âm lịch",
+                "details": "Di sản văn hóa phi vật thể của nhân loại được UNESCO công nhận, tái hiện lại chiến công của Thánh Gióng, một trong 'Tứ bất tử'."
+            },
+            {
+                "name": "Lễ hội Chùa Hương (Mỹ Đức)",
+                "time": "Kéo dài từ tháng 1 đến tháng 3 âm lịch",
+                "details": "Hành trình hành hương về cõi Phật dài nhất Việt Nam, du khách ngồi thuyền trên Suối Yến để vào vãn cảnh chùa và dâng hương."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Ô mai Hàng Đường",
+            "Bánh cốm Làng Vòng",
+            "Trà sen Phủ Tây Hồ",
+            "Lụa Vạn Phúc",
+            "Gốm sứ Bát Tràng"
+        ],
+        "best_time_to_visit": "Mùa thu (tháng 9-11) là mùa đẹp nhất, thời tiết mát mẻ, khô ráo, lãng mạn với hương hoa sữa và lá vàng. Mùa xuân (tháng 2-4) có không khí lễ hội và trăm hoa đua nở. Mùa đông (tháng 12-1) có cái lạnh đặc trưng, thích hợp để thưởng thức các món ăn nóng."
+    }
+}

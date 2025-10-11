@@ -1,0 +1,85 @@
+{
+    "Lai Châu": {
+        "culture_details": "Lai Châu là tỉnh có độ cao lớn nhất Việt Nam, một vùng đất biên giới xa xôi nổi tiếng với vẻ đẹp thiên nhiên hoang sơ, hùng vĩ và đầy thử thách. Đây là quê hương của 20 dân tộc anh em, trong đó đông đảo nhất là dân tộc Thái, tạo nên một không gian văn hóa đa dạng. Lai Châu là điểm đến hàng đầu cho những người yêu thích du lịch khám phá, chinh phục các cung đường đèo hiểm trở và những đỉnh núi cao chót vót.",
+        "sub_regions": [],
+        "places_to_visit": [
+            {
+                "name": "Đèo Ô Quy Hồ",
+                "category": "thiên nhiên",
+                "details": "Được mệnh danh là 'Vua đèo Tây Bắc', một trong 'Tứ đại đỉnh đèo' của Việt Nam, nổi tiếng với cung đường uốn lượn hiểm trở và khung cảnh săn mây ngoạn mục."
+            },
+            {
+                "name": "Cao nguyên Sìn Hồ",
+                "category": "cảnh quan",
+                "details": "Được ví như 'Sa Pa thứ hai' của Tây Bắc với khí hậu mát mẻ quanh năm, những biển mây và các phiên chợ đậm bản sắc dân tộc."
+            },
+            {
+                "name": "Cầu kính Rồng Mây",
+                "category": "giải trí",
+                "details": "Tổ hợp du lịch mạo hiểm với cây cầu kính cao nhất Việt Nam, mang đến trải nghiệm đi bộ trên không và ngắm nhìn toàn cảnh núi rừng."
+            },
+            {
+                "name": "Đỉnh Putaleng",
+                "category": "leo núi",
+                "details": "'Nóc nhà thứ hai của Đông Dương' (3.049m), là một trong những cung đường trekking khó và đẹp nhất Việt Nam với rừng hoa đỗ quyên cổ thụ."
+            },
+            {
+                "name": "Bản Sin Suối Hồ",
+                "category": "văn hóa",
+                "details": "Bản du lịch cộng đồng của người H'Mông, nổi tiếng với mô hình du lịch sạch, không rượu bia, cảnh quan đẹp và thác Trái Tim."
+            },
+            {
+                "name": "Đồi chè Tam Đường",
+                "category": "cảnh quan",
+                "details": "Những đồi chè ô long xanh mướt trải dài, tạo nên khung cảnh thơ mộng và là nơi sản xuất chè chất lượng cao."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Cá bống vùi tro",
+                "category": "đặc sản",
+                "details": "Món ăn độc đáo của người Lự, cá bống tươi được làm sạch, ướp gia vị, gói lá dong rồi vùi trong tro nóng cho đến khi chín thơm."
+            },
+            {
+                "name": "Lợn cắp nách",
+                "category": "đặc sản",
+                "details": "Giống lợn bản địa được thả rông, chỉ nặng khoảng 10-15kg, thịt săn chắc, ít mỡ, có thể chế biến nhiều món ngon như nướng, hấp."
+            },
+            {
+                "name": "Rêu đá nướng",
+                "category": "đặc sản",
+                "details": "Đặc sản của người Thái, rêu non được lấy từ suối, làm sạch, tẩm ướp gia vị như mắc khén, sả, ớt rồi nướng trên than."
+            },
+            {
+                "name": "Lam nhọ",
+                "category": "đặc sản",
+                "details": "Món ăn kỳ công của người Thái, làm từ thịt trâu/bò nướng tái, thái mỏng, trộn với bì và tẩm ướp gia vị rồi nấu nhừ trong ống tre."
+            },
+            {
+                "name": "Thịt trâu gác bếp",
+                "category": "đặc sản",
+                "details": "Thịt trâu tươi được tẩm ướp gia vị (đặc biệt là mắc khén) rồi hun khói bằng khói bếp củi trong nhiều ngày, tạo ra hương vị độc đáo."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ hội Tú Tỉ của người Thái",
+                "time": "Ngày 14-15 tháng Giêng âm lịch",
+                "details": "Lễ hội ném còn và vui chơi xuân lớn nhất của người Thái trắng ở Lai Châu, cầu cho bản làng ấm no, hạnh phúc."
+            },
+            {
+                "name": "Lễ hội Gầu Tào của người H'Mông",
+                "time": "Đầu mùa xuân (thường từ mùng 2 đến mùng 5 Tết)",
+                "details": "Lễ hội quan trọng nhất của người H'Mông, là dịp tạ ơn trời đất, cầu phúc lộc và là nơi nam nữ thanh niên vui chơi, tìm bạn."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Thịt trâu gác bếp",
+            "Mật ong rừng Lai Châu",
+            "Hạt mắc khén, hạt dổi",
+            "Chè Shan tuyết",
+            "Rượu ngô Sùng Phài"
+        ],
+        "best_time_to_visit": "Mùa khô từ tháng 9 đến tháng 4 năm sau là thời điểm lý tưởng, thuận lợi cho trekking và chinh phục đèo. Đặc biệt, từ tháng 11 đến tháng 3 là mùa săn mây đẹp nhất. Tháng 9-10 có lúa chín vàng ở một số thung lũng."
+    }
+}

@@ -1,0 +1,99 @@
+{
+    "Hải Phòng": {
+        "culture_details": "Thành phố Hải Phòng mới là một trung tâm kinh tế, văn hóa lớn của vùng duyên hải Bắc Bộ. Đây là sự kết hợp giữa bản sắc năng động, mạnh mẽ của 'thành phố cảng' Hải Phòng - nơi có quần đảo Cát Bà là Di sản Thiên nhiên Thế giới, và chiều sâu văn hóa của 'Xứ Đông' Hải Dương - vùng đất địa linh nhân kiệt gắn liền với tên tuổi các danh nhân như Nguyễn Trãi, Chu Văn An và di tích Côn Sơn - Kiếp Bạc.",
+        "sub_regions": [
+            {
+                "name": "Khu vực TP. Hải Phòng (cũ)",
+                "highlights": "Thành phố cảng lớn nhất miền Bắc, Di sản Thiên nhiên Thế giới Quần đảo Cát Bà, Lễ hội chọi trâu Đồ Sơn."
+            },
+            {
+                "name": "Khu vực Hải Dương",
+                "highlights": "Vùng đất 'Xứ Đông' văn hiến, quê hương bánh đậu xanh, khu di tích lịch sử Côn Sơn - Kiếp Bạc."
+            }
+        ],
+        "places_to_visit": [
+            {
+                "name": "Quần thể Quần đảo Cát Bà (Hải Phòng)",
+                "category": "di sản",
+                "details": "Di sản Thiên nhiên Thế giới được UNESCO công nhận, bao gồm Vườn quốc gia Cát Bà và Vịnh Lan Hạ, nổi tiếng với các bãi tắm và làng chài."
+            },
+            {
+                "name": "Khu di tích Quốc gia đặc biệt Côn Sơn - Kiếp Bạc (Hải Dương)",
+                "category": "lịch sử",
+                "details": "Quần thể di tích lịch sử, văn hóa gắn liền với cuộc đời và sự nghiệp của anh hùng dân tộc Hưng Đạo Vương Trần Quốc Tuấn và danh nhân Nguyễn Trãi."
+            },
+            {
+                "name": "Khu du lịch Đồ Sơn (Hải Phòng)",
+                "category": "biển",
+                "details": "Bãi biển nghỉ dưỡng lâu đời ở miền Bắc, nổi tiếng với Lễ hội chọi trâu truyền thống và Biệt thự Bảo Đại."
+            },
+            {
+                "name": "Làng gốm Chu Đậu (Hải Dương)",
+                "category": "làng nghề",
+                "details": "Nơi phát tích của dòng gốm mỹ nghệ cổ cao cấp của Việt Nam từ thế kỷ 14, du khách có thể tự tay làm gốm."
+            },
+            {
+                "name": "Nhà hát Lớn Hải Phòng",
+                "category": "kiến trúc",
+                "details": "Một trong ba nhà hát lớn do Pháp xây dựng ở Việt Nam, mang đậm phong cách kiến trúc Gô-tích và Tân cổ điển."
+            },
+            {
+                "name": "Đảo Cò Chi Lăng Nam (Hải Dương)",
+                "category": "sinh thái",
+                "details": "Khu du lịch sinh thái độc đáo với hàng vạn con cò, vạc và các loài chim quý hiếm về trú ngụ trên một hòn đảo giữa lòng hồ."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Bánh đa cua Hải Phòng",
+                "category": "đặc sản",
+                "details": "Linh hồn ẩm thực đất Cảng với sợi bánh đa nâu đặc trưng, nước dùng ngọt vị cua đồng, ăn kèm chả lá lốt, chả cá."
+            },
+            {
+                "name": "Bánh đậu xanh Hải Dương",
+                "category": "đặc sản",
+                "details": "Đặc sản trứ danh, miếng bánh vuông vắn, mịn tan trong miệng, mang hương vị ngọt thanh của đậu xanh và mỡ lợn."
+            },
+            {
+                "name": "Nem cua bể Hải Phòng",
+                "category": "đặc sản",
+                "details": "Nem rán được gói theo hình vuông độc đáo, đầy ắp nhân thịt cua bể tươi ngon, ăn kèm bún và nước chấm chua ngọt."
+            },
+            {
+                "name": "Rươi Tứ Kỳ (Hải Dương)",
+                "category": "đặc sản",
+                "details": "Đặc sản theo mùa (khoảng tháng 9-10 âm lịch), rươi được chế biến thành nhiều món ngon như chả rươi, nem rươi, rươi kho niêu đất."
+            },
+            {
+                "name": "Bánh mì que cay (Hải Phòng)",
+                "category": "ăn vặt",
+                "details": "Món ăn đường phố đặc trưng chỉ gồm pate, tương ớt trong một chiếc bánh mì nhỏ dài như chiếc que, giòn tan và cay nồng."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ hội chọi trâu Đồ Sơn (Hải Phòng)",
+                "time": "Chính hội vào ngày 9 tháng 8 âm lịch",
+                "details": "Di sản văn hóa phi vật thể Quốc gia, lễ hội dân gian mang tinh thần thượng võ của người dân miền biển."
+            },
+            {
+                "name": "Lễ hội mùa thu Côn Sơn - Kiếp Bạc (Hải Dương)",
+                "time": "Từ ngày 10 đến 20 tháng 8 âm lịch",
+                "details": "Lễ hội lớn để tưởng niệm ngày mất của Trần Hưng Đạo và Nguyễn Trãi, với nhiều nghi lễ truyền thống và diễn xướng dân gian."
+            },
+            {
+                "name": "Lễ hội Hoa Phượng Đỏ (Hải Phòng)",
+                "time": "Thường niên vào tháng 5",
+                "details": "Lễ hội hiện đại, là thương hiệu du lịch của thành phố, với nhiều hoạt động văn hóa, nghệ thuật, thể thao sôi động."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Bánh đậu xanh Hải Dương",
+            "Nước mắm Cát Hải (Hải Phòng)",
+            "Bánh gai Ninh Giang (Hải Dương)",
+            "Táo Bàng La (Hải Phòng)",
+            "Vải thiều Thanh Hà (Hải Dương)"
+        ],
+        "best_time_to_visit": "Mùa hè (tháng 4-7) là thời điểm lý tưởng để du lịch biển Cát Bà, Đồ Sơn và tham dự Lễ hội Hoa Phượng Đỏ. Mùa thu (tháng 8-10) thời tiết mát mẻ, thích hợp tham quan các di tích và tham dự Lễ hội Côn Sơn - Kiếp Bạc."
+    }
+}

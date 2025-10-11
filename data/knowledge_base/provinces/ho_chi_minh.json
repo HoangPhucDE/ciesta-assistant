@@ -1,0 +1,103 @@
+{
+    "Hồ Chí Minh": {
+        "culture_details": "Thành phố Hồ Chí Minh mới là 'siêu đô thị' và là đầu tàu kinh tế, tài chính, văn hóa lớn nhất Việt Nam. Nơi đây là sự kết hợp giữa một Sài Gòn - 'Hòn ngọc Viễn Đông' năng động, không ngủ với các di tích lịch sử và văn hóa giao thoa, một Vũng Tàu - thủ phủ du lịch biển và dầu khí sầm uất, và một Bình Dương - 'thủ phủ công nghiệp' với các khu đô thị kiểu mẫu. Đây là trung tâm của sự đa dạng văn hóa, ẩm thực và các hoạt động giải trí hiện đại.",
+        "sub_regions": [
+            {
+                "name": "Khu vực TP.HCM (cũ)",
+                "highlights": "Trung tâm kinh tế - văn hóa hàng đầu, 'thành phố không ngủ', nơi có các di tích lịch sử quan trọng."
+            },
+            {
+                "name": "Khu vực Bà Rịa - Vũng Tàu",
+                "highlights": "Thành phố biển nổi tiếng, trung tâm dầu khí quốc gia, điểm đến nghỉ dưỡng cuối tuần lý tưởng."
+            },
+            {
+                "name": "Khu vực Bình Dương",
+                "highlights": "Thủ phủ công nghiệp, các đô thị vệ tinh hiện đại, các làng nghề gốm sứ truyền thống."
+            }
+        ],
+        "places_to_visit": [
+            {
+                "name": "Dinh Độc Lập (Hội trường Thống Nhất)",
+                "category": "lịch sử",
+                "details": "Di tích Quốc gia Đặc biệt, nơi ghi dấu khoảnh khắc lịch sử trọng đại ngày 30/4/1975, biểu tượng của Sài Gòn xưa."
+            },
+            {
+                "name": "Quần thể di tích Côn Đảo (Bà Rịa - Vũng Tàu)",
+                "category": "lịch sử",
+                "details": "'Địa ngục trần gian' thời chiến tranh và nay là một thiên đường du lịch tâm linh, sinh thái với những bãi biển đẹp nhất châu Á."
+            },
+            {
+                "name": "Địa đạo Củ Chi",
+                "category": "lịch sử",
+                "details": "Hệ thống phòng thủ trong lòng đất dài hơn 200km, một kỳ quan quân sự độc đáo thể hiện ý chí kiên cường của dân tộc."
+            },
+            {
+                "name": "Tượng Chúa Kitô Vua (Vũng Tàu)",
+                "category": "kiến trúc",
+                "details": "Tượng Chúa Giêsu lớn nhất châu Á, đứng trên đỉnh núi Nhỏ với tầm nhìn bao quát toàn cảnh thành phố biển Vũng Tàu."
+            },
+            {
+                "name": "Nhà thờ Đức Bà & Bưu điện Trung tâm Sài Gòn",
+                "category": "kiến trúc",
+                "details": "Cụm kiến trúc Gothic và Phục hưng cổ kính do người Pháp xây dựng, là biểu tượng kiến trúc không thể tách rời của Sài Gòn."
+            },
+            {
+                "name": "Chùa Bà Thiên Hậu (Bình Dương)",
+                "category": "tâm linh",
+                "details": "Ngôi chùa do cộng đồng người Hoa xây dựng, là trung tâm tín ngưỡng lớn bậc nhất Đông Nam Bộ, nổi tiếng linh thiêng."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Cơm tấm Sài Gòn",
+                "category": "đặc sản",
+                "details": "Món ăn 'quốc hồn quốc túy' của Sài Gòn với sườn - bì - chả, ăn kèm nước mắm chua ngọt đặc trưng."
+            },
+            {
+                "name": "Lẩu cá đuối Vũng Tàu",
+                "category": "đặc sản",
+                "details": "Nồi lẩu chua cay nấu từ cá đuối tươi, măng chua và các loại rau thơm, là món ăn trứ danh của thành phố biển."
+            },
+            {
+                "name": "Bánh mì Sài Gòn",
+                "category": "ẩm thực đường phố",
+                "details": "Được công nhận là một trong những món ăn đường phố ngon nhất thế giới, với vỏ giòn, nhân đa dạng và hương vị hòa quyện."
+            },
+            {
+                "name": "Bánh khọt Vũng Tàu",
+                "category": "đặc sản",
+                "details": "Những chiếc bánh nhỏ giòn rụm làm từ bột gạo, có nhân tôm ở giữa, ăn kèm rau sống và nước mắm pha."
+            },
+            {
+                "name": "Gỏi măng cụt Lái Thiêu (Bình Dương)",
+                "category": "đặc sản",
+                "details": "Món gỏi độc đáo theo mùa (tháng 5-6), kết hợp vị chua thanh của măng cụt xanh với vị ngọt của tôm, thịt."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ hội Chùa Bà Thiên Hậu (Bình Dương)",
+                "time": "Rằm tháng Giêng âm lịch",
+                "details": "Một trong những lễ hội lớn nhất Đông Nam Bộ, thu hút hàng trăm nghìn người tham gia với lễ rước kiệu Bà tuần du."
+            },
+            {
+                "name": "Lễ hội Nghinh Ông (Vũng Tàu)",
+                "time": "Từ ngày 16 đến 18 tháng 8 âm lịch",
+                "details": "Lễ hội cầu ngư lớn của ngư dân Vũng Tàu, thể hiện lòng biết ơn đối với cá Ông và cầu mong một mùa biển thuận lợi."
+            },
+            {
+                "name": "Lễ hội Nguyên Tiêu (Quận 5, TP.HCM)",
+                "time": "Rằm tháng Giêng âm lịch",
+                "details": "Di sản Văn hóa Phi vật thể Quốc gia, lễ hội lớn nhất của cộng đồng người Hoa với các hoạt động diễu hành đường phố đặc sắc."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Bánh bông lan trứng muối (Vũng Tàu)",
+            "Mực một nắng, cá thu một nắng (Vũng Tàu)",
+            "Cơm cháy chà bông Sài Gòn",
+            "Măng cụt Lái Thiêu (theo mùa)",
+            "Đồ gốm sứ Minh Long (Bình Dương)"
+        ],
+        "best_time_to_visit": "Mùa khô từ tháng 12 đến tháng 4 là thời điểm lý tưởng nhất, thời tiết nắng đẹp, ít mưa, thuận tiện cho mọi hoạt động tham quan và du lịch biển. Các dịp lễ lớn như Giáng Sinh, Tết Nguyên Đán, thành phố được trang hoàng lộng lẫy."
+    }
+}

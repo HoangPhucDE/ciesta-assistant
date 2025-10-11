@@ -1,0 +1,99 @@
+{
+    "Gia Lai": {
+        "culture_details": "Gia Lai mới là một vùng đất đa dạng, trải dài từ cao nguyên Pleiku xuống vùng duyên hải Quy Nhơn. Nơi đây là sự hòa quyện giữa không gian văn hóa Cồng chiêng Tây Nguyên - di sản của nhân loại, với 'miền đất võ' Bình Định, quê hương của người anh hùng áo vải Quang Trung. Sự kết hợp này tạo nên một bản sắc độc đáo, từ những bản trường ca, lễ hội của người Jrai, Bahnar đến những điệu múa võ cổ truyền và di sản văn hóa Chăm Pa.",
+        "sub_regions": [
+            {
+                "name": "Khu vực Gia Lai (cũ)",
+                "highlights": "'Phố núi' Pleiku, Biển Hồ T'Nưng huyền thoại, không gian văn hóa Cồng chiêng Tây Nguyên."
+            },
+            {
+                "name": "Khu vực Bình Định",
+                "highlights": "'Miền đất võ', quê hương Hoàng đế Quang Trung, thành phố biển Quy Nhơn, Eo Gió - Kỳ Co."
+            }
+        ],
+        "places_to_visit": [
+            {
+                "name": "Biển Hồ T'Nưng (Pleiku, Gia Lai)",
+                "category": "cảnh quan",
+                "details": "Được mệnh danh là 'Đôi mắt Pleiku', đây là một trong những hồ tự nhiên đẹp nhất Tây Nguyên, vốn là một miệng núi lửa đã ngừng hoạt động."
+            },
+            {
+                "name": "Eo Gió - Kỳ Co (Quy Nhơn, Bình Định)",
+                "category": "biển",
+                "details": "Cụm danh thắng được mệnh danh là 'Maldives của Việt Nam' với eo biển hút gió và bãi tắm nước trong xanh, cát trắng."
+            },
+            {
+                "name": "Chùa Minh Thành (Pleiku, Gia Lai)",
+                "category": "tâm linh",
+                "details": "Ngôi chùa có kiến trúc độc đáo, mang đậm ảnh hưởng từ kiến trúc Phật giáo Nhật Bản, Đài Loan, là điểm check-in nổi tiếng."
+            },
+            {
+                "name": "Bảo tàng Quang Trung (Tây Sơn, Bình Định)",
+                "category": "lịch sử",
+                "details": "Quần thể bảo tàng và điện thờ danh nhân, nơi lưu giữ những di vật quan trọng về cuộc khởi nghĩa Tây Sơn và Hoàng đế Quang Trung."
+            },
+            {
+                "name": "Vườn quốc gia Kon Ka Kinh (Gia Lai)",
+                "category": "sinh thái",
+                "details": "Vườn Di sản ASEAN, là một trong những khu vực ưu tiên về bảo tồn đa dạng sinh học của Việt Nam."
+            },
+            {
+                "name": "Ghềnh Ráng Tiên Sa (Quy Nhơn, Bình Định)",
+                "category": "văn hóa",
+                "details": "Nơi có bãi tắm Hoàng Hậu, bãi Tiên Sa và là nơi an nghỉ của thi sĩ Hàn Mặc Tử."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Phở khô Gia Lai (Phở hai tô)",
+                "category": "đặc sản",
+                "details": "Đặc sản trứ danh của Pleiku, gồm một tô phở khô trộn và một tô nước lèo riêng biệt, mang lại trải nghiệm ẩm thực độc đáo."
+            },
+            {
+                "name": "Bánh hỏi cháo lòng (Bình Định)",
+                "category": "đặc sản",
+                "details": "Món ăn sáng phổ biến, kết hợp giữa bánh hỏi mềm mịn, cháo nóng hổi và đĩa lòng heo luộc, chấm nước mắm chua ngọt."
+            },
+            {
+                "name": "Gà nướng cơm lam (Gia Lai)",
+                "category": "đặc sản",
+                "details": "Gà thả đồi được ướp gia vị từ rễ cây, lá rừng rồi nướng trên than hồng, ăn cùng cơm lam dẻo thơm nấu trong ống tre."
+            },
+            {
+                "name": "Bánh xèo tôm nhảy (Bình Định)",
+                "category": "đặc sản",
+                "details": "Bánh xèo vỏ giòn rụm, nhân là những con tôm đất còn tươi rói, nhảy tanh tách khi đổ bánh, ăn kèm rau mầm."
+            },
+            {
+                "name": "Bún mắm cua (Gia Lai)",
+                "category": "đặc sản",
+                "details": "Món bún dân dã của người Jrai, có mùi vị nồng đặc trưng từ mắm cua đồng, ăn kèm măng le và da heo chiên giòn."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ hội Cồng chiêng",
+                "time": "Luân phiên tổ chức, thường vào cuối năm",
+                "details": "Lễ hội tôn vinh 'Không gian văn hóa Cồng chiêng Tây Nguyên' - Di sản văn hóa phi vật thể của nhân loại."
+            },
+            {
+                "name": "Lễ hội Đống Đa - Tây Sơn (Bình Định)",
+                "time": "Từ mùng 4 đến mùng 5 tháng Giêng âm lịch",
+                "details": "Lễ hội kỷ niệm chiến thắng Ngọc Hồi - Đống Đa của Hoàng đế Quang Trung, với các màn biểu diễn võ thuật hoành tráng."
+            },
+            {
+                "name": "Lễ Bỏ mả (Pơ Thi)",
+                "time": "Thường diễn ra vào mùa khô",
+                "details": "Lễ hội lớn và quan trọng nhất trong vòng đời của người Jrai, thể hiện quan niệm về sự sống và cái chết, với nhiều hoạt động văn hóa đặc sắc."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Rượu Bàu Đá (Bình Định)",
+            "Cà phê Pleiku",
+            "Bánh ít lá gai (Bình Định)",
+            "Măng khô, phở khô (Gia Lai)",
+            "Nem chua chợ Huyện (Bình Định)"
+        ],
+        "best_time_to_visit": "Mùa khô từ tháng 11 đến tháng 4 là thời điểm lý tưởng nhất. Đặc biệt, tháng 3-4 là mùa hoa cà phê ở Gia Lai. Mùa hè (tháng 5-8) thích hợp du lịch biển Quy Nhơn nhưng cao nguyên có thể có mưa."
+    }
+}

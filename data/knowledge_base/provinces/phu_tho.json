@@ -1,0 +1,103 @@
+{
+    "Phú Thọ": {
+        "culture_details": "Phú Thọ mới là vùng đất 'cội nguồn' hội tụ những giá trị văn hóa và lịch sử to lớn. Đây là sự kết hợp giữa 'Đất Tổ' Phú Thọ - kinh đô Văn Lang xưa với Di sản Văn hóa Phi vật thể 'Tín ngưỡng thờ cúng Hùng Vương'; Vĩnh Phúc - vùng đất nghỉ dưỡng với Tam Đảo thơ mộng và trung tâm Phật giáo Tây Thiên; và Hòa Bình - cửa ngõ vùng Tây Bắc, cái nôi của văn hóa Mường và là nơi có công trình thủy điện lớn nhất Đông Nam Á.",
+        "sub_regions": [
+            {
+                "name": "Khu vực Phú Thọ (cũ)",
+                "highlights": "Đất Tổ cội nguồn, Di tích lịch sử Đền Hùng, Hát Xoan Phú Thọ."
+            },
+            {
+                "name": "Khu vực Vĩnh Phúc",
+                "highlights": "Thị trấn nghỉ dưỡng Tam Đảo, khu du lịch tâm linh Tây Thiên, hồ Đại Lải."
+            },
+            {
+                "name": "Khu vực Hòa Bình",
+                "highlights": "Cái nôi văn hóa Mường, Thung lũng Mai Châu, Nhà máy Thủy điện Hòa Bình."
+            }
+        ],
+        "places_to_visit": [
+            {
+                "name": "Khu di tích lịch sử Đền Hùng (Phú Thọ)",
+                "category": "di sản",
+                "details": "Di sản Văn hóa Thế giới, là trung tâm tín ngưỡng thờ cúng các Vua Hùng đã có công dựng nước, biểu tượng cho cội nguồn dân tộc."
+            },
+            {
+                "name": "Khu du lịch Tam Đảo (Vĩnh Phúc)",
+                "category": "nghỉ dưỡng",
+                "details": "Thị trấn trong sương với khí hậu mát mẻ quanh năm, được mệnh danh là 'Đà Lạt của phương Bắc' với nhiều công trình kiến trúc cổ."
+            },
+            {
+                "name": "Thung lũng Mai Châu (Hòa Bình)",
+                "category": "văn hóa",
+                "details": "Thung lũng thanh bình với những nếp nhà sàn của người Thái trắng, bao quanh bởi những cánh đồng lúa xanh mướt."
+            },
+            {
+                "name": "Nhà máy Thủy điện Hòa Bình (Hòa Bình)",
+                "category": "kiến trúc",
+                "details": "Công trình thế kỷ, là nhà máy thủy điện lớn nhất Đông Nam Á, nơi du khách có thể tham quan và tìm hiểu về lịch sử xây dựng."
+            },
+            {
+                "name": "Khu du lịch tâm linh Tây Thiên (Vĩnh Phúc)",
+                "category": "tâm linh",
+                "details": "Quần thể kiến trúc tôn giáo lớn, nơi thờ Quốc Mẫu Tây Thiên và có Thiền Viện Trúc Lâm, một trong ba thiền viện lớn nhất Việt Nam."
+            },
+            {
+                "name": "Đồi chè Long Cốc (Phú Thọ)",
+                "category": "cảnh quan",
+                "details": "Được mệnh danh là 'Vịnh Hạ Long trên cạn của trung du' với hàng trăm quả đồi chè bát úp nối tiếp nhau tạo nên khung cảnh kỳ ảo."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Thịt chua Thanh Sơn (Phú Thọ)",
+                "category": "đặc sản",
+                "details": "Đặc sản của người Mường, làm từ thịt lợn mán ướp với thính gạo rang, lên men tự nhiên, có vị chua thơm đặc trưng."
+            },
+            {
+                "name": "Lợn mán thui luộc (Hòa Bình)",
+                "category": "đặc sản",
+                "details": "Thịt lợn mán được thui vàng bằng rơm cho da giòn, sau đó luộc chín tới, chấm với muối rang và hạt dổi thơm nồng."
+            },
+            {
+                "name": "Cá thính Lập Thạch (Vĩnh Phúc)",
+                "category": "đặc sản",
+                "details": "Món cá được ướp muối và thính gạo, ủ chua trong vại, khi ăn được nướng trên than hồng, có vị chua mặn và hương thơm đặc biệt."
+            },
+            {
+                "name": "Cơm lam Pắc Pó (Hòa Bình)",
+                "category": "đặc sản",
+                "details": "Gạo nếp nương nấu trong ống tre non, khi chín quyện với hương thơm của tre, ăn dẻo và ngọt thanh."
+            },
+            {
+                "name": "Bánh tai Phú Thọ",
+                "category": "ẩm thực đường phố",
+                "details": "Loại bánh dân dã hình giống cái tai, làm từ bột gạo tẻ, nhân thịt lợn và hành khô, ăn mềm và thơm."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Giỗ Tổ Hùng Vương - Lễ hội Đền Hùng",
+                "time": "Chính hội vào ngày 10 tháng 3 âm lịch",
+                "details": "Lễ hội cấp quốc gia lớn nhất Việt Nam, là ngày Quốc giỗ để tưởng nhớ công ơn các Vua Hùng, thu hút người dân cả nước về hành hương."
+            },
+            {
+                "name": "Lễ hội Tây Thiên (Vĩnh Phúc)",
+                "time": "Chính hội từ ngày 15 đến 17 tháng 2 âm lịch",
+                "details": "Một trong những lễ hội lớn nhất miền Bắc, tưởng nhớ Quốc Mẫu Tây Thiên Lăng Thị Tiêu, người có công giúp vua Hùng dựng nước."
+            },
+            {
+                "name": "Lễ hội chùa Tiên (Hòa Bình)",
+                "time": "Từ ngày 4 đến 6 tháng Giêng âm lịch",
+                "details": "Lễ hội gắn liền với tín ngưỡng thờ Mẫu và tín ngưỡng của người Mường, diễn ra trong quần thể hang động chùa Tiên."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Thịt chua Thanh Sơn (Phú Thọ)",
+            "Cam Cao Phong (Hòa Bình)",
+            "Trà hoa vàng Tam Đảo (Vĩnh Phúc)",
+            "Rượu cần Hòa Bình",
+            "Bánh kẹo đặc sản Vĩnh Phúc"
+        ],
+        "best_time_to_visit": "Mùa xuân (tháng 2-3 Âm lịch) là mùa của các lễ hội lớn nhất như Giỗ Tổ Hùng Vương, Lễ hội Tây Thiên. Mùa hè (tháng 5-8) thích hợp nghỉ mát ở Tam Đảo. Mùa thu (tháng 9-11) thời tiết đẹp, lý tưởng để du lịch Mai Châu."
+    }
+}

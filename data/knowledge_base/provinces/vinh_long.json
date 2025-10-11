@@ -1,0 +1,98 @@
+{
+    "Vĩnh Long": {
+        "culture_details": "Vĩnh Long mới là vùng đất trung tâm trù phú, nơi hội tụ và thể hiện rõ nét nhất sự đa dạng của văn hóa miệt vườn sông nước Cửu Long. Đây là sự kết hợp độc đáo giữa 'xứ Dừa' Bến Tre, quê hương của phong trào Đồng Khởi anh hùng; vùng đất văn hóa Khmer Trà Vinh với hệ thống hơn 140 ngôi chùa cổ kính; và Vĩnh Long, vùng đất cù lao 'địa linh nhân kiệt', nơi có 'Vương quốc Đỏ' Mang Thít. Vùng đất này mang đến trải nghiệm sông nước, khám phá các làng nghề và tìm hiểu về sự giao thoa văn hóa đặc sắc.",
+        "sub_regions": [
+            {
+                "name": "Khu vực Vĩnh Long (cũ)",
+                "highlights": "Vùng đất cù lao miệt vườn, 'Vương quốc Đỏ' của làng gạch gốm Mang Thít."
+            },
+            {
+                "name": "Khu vực Bến Tre",
+                "highlights": "'Xứ Dừa' của Việt Nam, quê hương Đồng Khởi, du lịch sinh thái len lỏi giữa các con rạch."
+            },
+            {
+                "name": "Khu vực Trà Vinh",
+                "highlights": "Trung tâm văn hóa Khmer Nam Bộ, thành phố xanh với nhiều chùa cổ và Ao Bà Om."
+            }
+        ],
+        "places_to_visit": [
+            {
+                "name": "Du lịch sinh thái các Cồn (Phụng, Quy, Ốc - Bến Tre)",
+                "category": "sinh thái",
+                "details": "Hành trình ngồi xuồng ba lá len lỏi trong các con rạch dừa nước, nghe đờn ca tài tử, thưởng thức trái cây và mật ong."
+            },
+            {
+                "name": "Khu di tích Ao Bà Om và Chùa Âng (Trà Vinh)",
+                "category": "di tích",
+                "details": "Quần thể ao hồ, cây cổ thụ hàng trăm năm tuổi và ngôi chùa Khmer cổ kính nhất Trà Vinh, mang đậm nét kiến trúc và văn hóa Khmer."
+            },
+            {
+                "name": "Làng gạch Mang Thít (Vĩnh Long)",
+                "category": "làng nghề",
+                "details": "Được mệnh danh là 'Vương quốc Đỏ', nơi có hàng nghìn lò gạch nằm san sát ven sông, tạo nên một cảnh quan công nghiệp truyền thống độc đáo."
+            },
+            {
+                "name": "Khu lăng mộ và di tích Cụ Nguyễn Đình Chiểu (Bến Tre)",
+                "category": "lịch sử",
+                "details": "Nơi an nghỉ và tưởng niệm nhà thơ yêu nước, danh nhân văn hóa thế giới, tác giả của Lục Vân Tiên."
+            },
+            {
+                "name": "Văn Thánh Miếu Vĩnh Long",
+                "category": "lịch sử",
+                "details": "Một trong ba Văn Thánh Miếu còn lại của Nam Bộ, là biểu tượng cho truyền thống hiếu học và trọng đạo của người dân nơi đây."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Đuông dừa và các món từ dừa (Bến Tre)",
+                "category": "đặc sản",
+                "details": "Trải nghiệm các món độc đáo như đuông dừa tắm mắm, gỏi củ hủ dừa, cơm trái dừa... tinh hoa ẩm thực xứ Dừa."
+            },
+            {
+                "name": "Bún suông (Trà Vinh)",
+                "category": "đặc sản",
+                "details": "Món bún có chả tôm dai, giòn hình dáng giống con đuông, nước dùng có vị ngọt của tôm khô và hương vị của tương hạt."
+            },
+            {
+                "name": "Cá tai tượng chiên xù (Vĩnh Long)",
+                "category": "đặc sản",
+                "details": "Cá được chiên giòn nguyên con, vảy xù lên như lông nhím, cuốn bánh tráng, rau sống và chấm nước mắm tỏi ớt."
+            },
+            {
+                "name": "Bánh tét Trà Cuôn (Trà Vinh)",
+                "category": "đặc sản",
+                "details": "Thương hiệu bánh tét nổi tiếng với nếp dẻo thơm, nhân thịt mỡ hòa quyện với lòng đỏ trứng vịt muối, có thể để được lâu."
+            },
+            {
+                "name": "Chuột đồng quay lu (Vĩnh Long)",
+                "category": "đặc sản",
+                "details": "Đặc sản 'thử thách' của miền Tây, chuột đồng được làm sạch, ướp gia vị rồi quay trong lu đất cho da vàng giòn, thịt thơm ngọt."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ hội Ok Om Bok (Lễ Cúng Trăng - Trà Vinh)",
+                "time": "Rằm tháng 10 âm lịch",
+                "details": "Lễ hội lớn và quan trọng nhất của người Khmer, tạ ơn Thần Mặt Trăng đã cho mùa màng bội thu, với các hoạt động thả đèn gió, đút cốm dẹp."
+            },
+            {
+                "name": "Lễ hội Dừa (Bến Tre)",
+                "time": "Thường niên 2-3 năm một lần",
+                "details": "Festival cấp quốc gia nhằm tôn vinh cây dừa và các sản phẩm từ dừa, thương hiệu của tỉnh Bến Tre."
+            },
+            {
+                "name": "Lễ hội Chol Chnam Thmay (Tết của người Khmer - Trà Vinh)",
+                "time": "Khoảng giữa tháng 4 dương lịch",
+                "details": "Tết cổ truyền của người Khmer, diễn ra trong 3 ngày với nhiều nghi lễ truyền thống tại chùa và các hoạt động vui chơi cộng đồng."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Kẹo dừa Bến Tre",
+            "Dừa sáp Trà Vinh",
+            "Bánh tét Trà Cuôn (Trà Vinh)",
+            "Bánh tráng Mỹ Lồng, Bánh phồng Sơn Đốc (Bến Tre)",
+            "Bưởi Năm Roi Bình Minh (Vĩnh Long)"
+        ],
+        "best_time_to_visit": "Mùa khô (tháng 12 - 4) thời tiết dễ chịu. Mùa hè (tháng 5 - 8) là mùa trái cây sum suê, lý tưởng để khám phá miệt vườn. Tháng 10-11 Âm lịch có lễ hội Ok Om Bok đặc sắc của người Khmer."
+    }
+}

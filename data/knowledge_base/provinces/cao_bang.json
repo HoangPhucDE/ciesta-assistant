@@ -1,0 +1,85 @@
+{
+    "Cao Bằng": {
+        "culture_details": "Cao Bằng là tỉnh biên giới vùng cao Đông Bắc, mảnh đất 'cội nguồn cách mạng' nơi Chủ tịch Hồ Chí Minh trở về nước sau 30 năm bôn ba và sáng lập Mặt trận Việt Minh tại Pác Bó. Vùng đất này còn được UNESCO công nhận là Công viên địa chất toàn cầu Non Nước Cao Bằng, nổi bật với cảnh quan karst hùng vĩ, nền văn hóa bản địa đặc sắc của các dân tộc Tày, Nùng và kỳ quan thiên nhiên Thác Bản Giốc tráng lệ.",
+        "sub_regions": [],
+        "places_to_visit": [
+            {
+                "name": "Thác Bản Giốc (Trùng Khánh)",
+                "category": "thiên nhiên",
+                "details": "Một trong những thác nước xuyên biên giới đẹp nhất thế giới, nằm trên dòng sông Quây Sơn. Vẻ đẹp hùng vĩ vào mùa nước lớn và thơ mộng vào mùa nước cạn."
+            },
+            {
+                "name": "Khu di tích Quốc gia đặc biệt Pác Bó (Hà Quảng)",
+                "category": "lịch sử",
+                "details": "Nơi Bác Hồ sống và làm việc những ngày đầu về nước, gắn liền với các địa danh Suối Lê-nin, Núi Các Mác, Hang Cốc Bó."
+            },
+            {
+                "name": "Động Ngườm Ngao (Trùng Khánh)",
+                "category": "thiên nhiên",
+                "details": "Hang động đá vôi tuyệt đẹp dài hơn 2.000 mét với hệ thống nhũ đá, măng đá kỳ ảo, được mệnh danh là một trong những hang động đẹp nhất Việt Nam."
+            },
+            {
+                "name": "Hồ Thang Hen (Trà Lĩnh)",
+                "category": "cảnh quan",
+                "details": "Hệ thống 36 hồ tự nhiên trên núi cao, nước hồ có màu xanh ngọc bích đặc trưng và thay đổi mực nước theo mùa một cách kỳ thú."
+            },
+            {
+                "name": "Núi Mắt Thần - Núi Thủng (Trà Lĩnh)",
+                "category": "địa chất",
+                "details": "Ngọn núi độc đáo với một lỗ thủng lớn xuyên qua đỉnh núi, nằm giữa thung lũng cỏ xanh mướt, một tuyệt tác của thiên nhiên."
+            },
+            {
+                "name": "Khu di tích Rừng Trần Hưng Đạo (Nguyên Bình)",
+                "category": "lịch sử",
+                "details": "Nơi thành lập Đội Việt Nam Tuyên truyền Giải phóng quân, tiền thân của Quân đội Nhân dân Việt Nam, vào ngày 22/12/1944."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Bánh cuốn Cao Bằng",
+                "category": "đặc sản",
+                "details": "Món bánh cuốn độc đáo ăn với nước dùng ninh từ xương, thêm chả, trứng và măng ớt, mang lại hương vị khác biệt."
+            },
+            {
+                "name": "Vịt quay 7 vị Trùng Khánh",
+                "category": "đặc sản",
+                "details": "Vịt được tẩm ướp 7 loại gia vị đặc trưng của núi rừng rồi quay trên than củi, da giòn, thịt mềm và thơm nồng."
+            },
+            {
+                "name": "Phở chua Cao Bằng",
+                "category": "đặc sản",
+                "details": "Món phở trộn với nước sốt chua ngọt, thịt ba chỉ quay, khoai lang chiên, lạc rang, rau thơm, tạo nên hương vị tổng hòa hấp dẫn."
+            },
+            {
+                "name": "Rau dạ hiến (rau bò khai)",
+                "category": "đặc sản",
+                "details": "Loại rau rừng đặc sản, thường được xào với tỏi hoặc thịt bò, có vị thơm ngai ngái đặc trưng."
+            },
+            {
+                "name": "Bánh trứng kiến (Bánh coóng phù)",
+                "category": "đặc sản",
+                "details": "Đặc sản theo mùa (tháng 4-5), làm từ trứng kiến non trộn với bột nếp, có vị béo ngậy, lạ miệng."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ hội Lồng Tồng (Hội xuống đồng)",
+                "time": "Tháng Giêng âm lịch (tùy từng địa phương)",
+                "details": "Lễ hội quan trọng nhất của người Tày, Nùng, cầu cho một năm mưa thuận gió hòa, mùa màng bội thu, vạn vật sinh sôi."
+            },
+            {
+                "name": "Lễ hội Pháo hoa Quảng Uyên",
+                "time": "Mùng 2 Tết Nguyên Đán",
+                "details": "Lễ hội độc đáo cầu may mắn đầu năm, người dân tự làm pháo hoa và thi bắn để xem pháo của ai đẹp và nổ to nhất."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Lạp xưởng hun khói Cao Bằng",
+            "Hạt dẻ Trùng Khánh",
+            "Miến dong Phia Đén",
+            "Trà Giảo Cổ Lam",
+            "Bánh khảo"
+        ],
+        "best_time_to_visit": "Tháng 8-9 là mùa lúa chín vàng và mùa thác Bản Giốc hùng vĩ nhất. Tháng 10-12 là mùa hoa tam giác mạch và hoa dã quỳ. Mùa xuân (tháng 2-3) có hoa mận, hoa lê và các lễ hội đầu năm."
+    }
+}

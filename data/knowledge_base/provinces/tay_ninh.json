@@ -1,0 +1,99 @@
+{
+    "Tây Ninh": {
+        "culture_details": "Tây Ninh mới là vùng đất chuyển tiếp đặc sắc, nơi giao thoa giữa văn hóa miền Đông và Tây Nam Bộ. Nơi đây là sự kết hợp giữa Tây Ninh - 'vùng đất Thánh' của đạo Cao Đài với Tòa Thánh nguy nga và 'nóc nhà Nam Bộ' núi Bà Đen linh thiêng; và Long An - 'cửa ngõ miền Tây' trù phú với những cánh đồng lúa 'thẳng cánh cò bay' và khu du lịch sinh thái ngập mặn độc đáo. Vùng đất này còn lưu giữ các di chỉ của nền văn hóa Óc Eo xưa.",
+        "sub_regions": [
+            {
+                "name": "Khu vực Tây Ninh (cũ)",
+                "highlights": "'Vùng đất Thánh' của đạo Cao Đài, 'Nóc nhà Nam Bộ' - Núi Bà Đen, đặc sản bánh tráng phơi sương."
+            },
+            {
+                "name": "Khu vực Long An",
+                "highlights": "'Cửa ngõ miền Tây', vùng đất của văn hóa Óc Eo, Làng nổi Tân Lập, gạo Nàng Thơm Chợ Đào."
+            }
+        ],
+        "places_to_visit": [
+            {
+                "name": "Khu du lịch Quốc gia Núi Bà Đen (Tây Ninh)",
+                "category": "tâm linh",
+                "details": "'Nóc nhà Nam Bộ' (986m) với hệ thống cáp treo hiện đại, chùa Bà Linh Sơn Thánh Mẫu linh thiêng và tượng Phật Bà bằng đồng cao nhất châu Á."
+            },
+            {
+                "name": "Tòa Thánh Cao Đài (Tây Ninh)",
+                "category": "kiến trúc",
+                "details": "Thánh địa của đạo Cao Đài, một công trình kiến trúc tôn giáo hoành tráng, độc đáo và đầy màu sắc, đặc biệt là vào giờ hành lễ."
+            },
+            {
+                "name": "Làng nổi Tân Lập (Long An)",
+                "category": "sinh thái",
+                "details": "Khu du lịch sinh thái với con đường xuyên rừng tràm dài 5km và tháp quan sát cao 38m, mang lại trải nghiệm khám phá vùng đất ngập mặn."
+            },
+            {
+                "name": "Hồ Dầu Tiếng (Tây Ninh)",
+                "category": "cảnh quan",
+                "details": "Hồ nhân tạo lớn nhất Việt Nam, là điểm cắm trại, dã ngoại lý tưởng với khung cảnh sơn thủy hữu tình."
+            },
+            {
+                "name": "Khu bảo tồn Đất ngập mặn Láng Sen (Long An)",
+                "category": "sinh thái",
+                "details": "Khu Ramsar thứ 7 của Việt Nam, là 'bảo tàng sinh thái' của vùng Đồng Tháp Mười với hệ động thực vật đa dạng, quý hiếm."
+            },
+            {
+                "name": "Nhà cổ Trăm Cột (Long An)",
+                "category": "kiến trúc",
+                "details": "Ngôi nhà cổ có kiến trúc nhà Rường Huế độc đáo với 120 cột gỗ quý, là Di tích lịch sử - văn hóa cấp quốc gia."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Bánh tráng phơi sương cuốn thịt heo Trảng Bàng (Tây Ninh)",
+                "category": "đặc sản",
+                "details": "Di sản văn hóa phi vật thể Quốc gia, bánh tráng dẻo đặc trưng cuốn với thịt luộc, rau rừng và chấm mắm nêm."
+            },
+            {
+                "name": "Lẩu mắm Long An",
+                "category": "đặc sản",
+                "details": "Phiên bản lẩu mắm đặc trưng của vùng cửa ngõ miền Tây, hương vị đậm đà và phong phú các loại rau đồng."
+            },
+            {
+                "name": "Thằn lằn núi Bà Đen (Tây Ninh)",
+                "category": "đặc sản",
+                "details": "Đặc sản độc đáo chỉ có ở núi Bà Đen, được chế biến thành nhiều món chiên, xào, băm nhỏ xúc bánh tráng, thịt thơm và bổ dưỡng."
+            },
+            {
+                "name": "Bánh canh Trảng Bàng (Tây Ninh)",
+                "category": "món chính",
+                "details": "Món ăn trứ danh với sợi bánh canh làm từ bột gạo, nước dùng ngọt thanh từ xương heo, ăn kèm giò heo và rau sống."
+            },
+            {
+                "name": "Gạo Nàng Thơm Chợ Đào (Long An)",
+                "category": "đặc sản",
+                "details": "Loại gạo đặc sản nổi tiếng, hạt thon dài, khi nấu cơm dẻo và tỏa hương thơm ngát tự nhiên."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Đại lễ Đức Chí Tôn (Tây Ninh)",
+                "time": "Ngày 9 tháng Giêng và 15 tháng 8 âm lịch",
+                "details": "Hai lễ hội lớn nhất trong năm của đạo Cao Đài, diễn ra tại Tòa Thánh với các nghi lễ trang trọng và hoành tráng."
+            },
+            {
+                "name": "Lễ hội Vía Bà Linh Sơn Thánh Mẫu (Tây Ninh)",
+                "time": "Diễn ra suốt tháng Giêng, cao điểm từ mùng 4 đến mùng 6",
+                "details": "Lễ hội Xuân lớn nhất Nam Bộ, thu hút hàng triệu du khách hành hương lên đỉnh núi Bà Đen để cầu an, cầu may."
+            },
+            {
+                "name": "Lễ hội Làm Chay (Long An)",
+                "time": "Từ ngày 14 đến 16 tháng Giêng âm lịch",
+                "details": "Lễ hội dân gian độc đáo có từ hơn 100 năm, với nghi thức xô giàn Ông Tiêu để xua đuổi tà ma, cầu mong bình an."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Muối tôm Tây Ninh",
+            "Bánh tráng phơi sương Trảng Bàng",
+            "Mãng cầu Bà Đen (na)",
+            "Rượu Đế Gò Đen (Long An)",
+            "Lạp xưởng Cần Đước (Long An)"
+        ],
+        "best_time_to_visit": "Mùa khô từ tháng 12 đến tháng 4 là thời điểm đẹp nhất, thời tiết khô ráo, nắng đẹp. Đặc biệt, tháng Giêng âm lịch là mùa lễ hội lớn nhất ở cả Tây Ninh và Long An."
+    }
+}

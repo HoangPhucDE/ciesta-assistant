@@ -1,0 +1,103 @@
+{
+    "Lâm Đồng": {
+        "culture_details": "Lâm Đồng mới là một trong những vùng du lịch đa dạng nhất Việt Nam, mang đến hành trình 'từ cao nguyên xuống biển' đầy cuốn hút. Nơi đây là sự kết hợp giữa nét lãng mạn, thơ mộng của 'Thành phố ngàn hoa' Đà Lạt với khí hậu ôn hòa quanh năm; vẻ đẹp hùng vĩ, nguyên sơ của Công viên địa chất toàn cầu UNESCO Đắk Nông; và 'thủ phủ resort' Phan Thiết - Mũi Né của Bình Thuận với những đồi cát vàng và bãi biển xanh ngắt. Vùng đất này còn là nơi giao thoa của văn hóa Tây Nguyên và văn hóa Chăm Pa cổ kính.",
+        "sub_regions": [
+            {
+                "name": "Khu vực cao nguyên Lâm Đồng (cũ)",
+                "highlights": "Khí hậu mát mẻ quanh năm, 'Thành phố ngàn hoa' Đà Lạt, kiến trúc Pháp cổ."
+            },
+            {
+                "name": "Khu vực cao nguyên Đắk Nông",
+                "highlights": "Công viên địa chất toàn cầu UNESCO, vẻ đẹp hoang sơ, những ngọn thác hùng vĩ, hồ Tà Đùng."
+            },
+            {
+                "name": "Khu vực duyên hải Bình Thuận",
+                "highlights": "'Thủ phủ resort' Mũi Né, những đồi cát khổng lồ và di sản văn hóa Chăm Pa đặc sắc."
+            }
+        ],
+        "places_to_visit": [
+            {
+                "name": "Thành phố Đà Lạt (Lâm Đồng)",
+                "category": "cảnh quan",
+                "details": "Bao gồm các điểm nhấn như Hồ Xuân Hương, Quảng trường Lâm Viên, Ga Đà Lạt, Thung lũng Tình yêu... nổi tiếng với khí hậu mát mẻ và kiến trúc Pháp."
+            },
+            {
+                "name": "Đồi Cát Bay & Bàu Trắng (Mũi Né, Bình Thuận)",
+                "category": "thiên nhiên",
+                "details": "Được mệnh danh là 'Tiểu sa mạc Sahara' của Việt Nam, nơi du khách có thể trải nghiệm trượt cát và lái xe địa hình trên những triền cát rộng lớn."
+            },
+            {
+                "name": "Công viên địa chất toàn cầu UNESCO Đắk Nông",
+                "category": "địa chất",
+                "details": "Nơi có hệ thống hang động núi lửa dài nhất Đông Nam Á, cùng với các thắng cảnh như Hồ Tà Đùng và cụm thác Dray Sáp - Gia Long."
+            },
+            {
+                "name": "Đỉnh Langbiang (Lâm Đồng)",
+                "category": "leo núi",
+                "details": "Nóc nhà của Đà Lạt, gắn liền với câu chuyện tình lãng mạn, nơi du khách có thể đi xe jeep lên đỉnh và ngắm toàn cảnh cao nguyên."
+            },
+            {
+                "name": "Làng chài Mũi Né & Suối Tiên (Bình Thuận)",
+                "category": "văn hóa",
+                "details": "Khám phá cuộc sống bình dị của ngư dân và dạo bước giữa 'chốn bồng lai tiên cảnh' với dòng suối nhỏ và những bức tường cát đỏ cam độc đáo."
+            },
+            {
+                "name": "Thác Datanla (Đà Lạt, Lâm Đồng)",
+                "category": "giải trí",
+                "details": "Ngọn thác đẹp với hệ thống máng trượt xuyên rừng dài nhất Đông Nam Á và các hoạt động mạo hiểm như đu dây vượt thác."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Lẩu bò Ba Toa (Đà Lạt)",
+                "category": "đặc sản",
+                "details": "Món lẩu trứ danh của Đà Lạt, với nước dùng đậm đà, thịt bò tươi ngon, rất thích hợp để thưởng thức trong tiết trời se lạnh."
+            },
+            {
+                "name": "Lẩu thả Phan Thiết (Bình Thuận)",
+                "category": "đặc sản",
+                "details": "Món lẩu độc đáo được trình bày đẹp mắt, nguyên liệu chính là cá mai tươi, ăn kèm bánh tráng và các loại rau địa phương."
+            },
+            {
+                "name": "Bánh tráng nướng Đà Lạt",
+                "category": "ẩm thực đường phố",
+                "details": "Được mệnh danh là 'pizza Việt Nam', là sự kết hợp của bánh tráng, trứng, hành lá, tôm khô, phô mai... nướng trên than hồng."
+            },
+            {
+                "name": "Cá lăng Sêrêpôk (Đắk Nông)",
+                "category": "đặc sản",
+                "details": "Loài cá đặc sản của dòng sông Sêrêpôk, thịt chắc và ngọt, thường được chế biến thành các món lẩu, nướng hoặc om chuối đậu."
+            },
+            {
+                "name": "Bánh căn Phan Thiết (Bình Thuận)",
+                "category": "đặc sản",
+                "details": "Bánh được đúc từ bột gạo trong khuôn đất nung, có nhân hải sản hoặc trứng, ăn kèm nước chấm cá kho hoặc mắm nêm."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Festival Hoa Đà Lạt",
+                "time": "Thường niên 2 năm một lần, vào cuối tháng 12",
+                "details": "Sự kiện văn hóa du lịch lớn nhất của Đà Lạt, tôn vinh vẻ đẹp của các loài hoa và ngành trồng hoa của thành phố."
+            },
+            {
+                "name": "Lễ hội Katê của người Chăm (Bình Thuận)",
+                "time": "Ngày 1 tháng 7 theo lịch Chăm (khoảng tháng 9-10 dương lịch)",
+                "details": "Lễ hội quan trọng và lớn nhất của cộng đồng người Chăm theo đạo Bà La Môn, diễn ra tại các tháp Chăm như Pô Sah Inư."
+            },
+            {
+                "name": "Lễ hội Văn hóa Thổ cẩm Việt Nam (Đắk Nông)",
+                "time": "Thường niên 2 năm một lần",
+                "details": "Sự kiện cấp quốc gia nhằm bảo tồn, phát huy giá trị văn hóa thổ cẩm của các dân tộc Việt Nam."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Nước mắm Phan Thiết",
+            "Thanh long Bình Thuận",
+            "Các loại mứt và trà Atisô Đà Lạt",
+            "Rượu vang Đà Lạt",
+            "Cà phê, hạt tiêu Đắk Nông"
+        ],
+        "best_time_to_visit": "Mùa khô từ tháng 12 đến tháng 4 là thời điểm lý tưởng nhất để khám phá cả ba khu vực. Mùa hè (tháng 5-8) thích hợp nghỉ mát ở Đà Lạt và tắm biển Bình Thuận. Mùa mưa (tháng 7-10) là lúc các con thác ở Đắk Nông hùng vĩ nhất."
+    }
+}

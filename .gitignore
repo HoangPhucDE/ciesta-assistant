@@ -37,7 +37,6 @@ rasa/__pycache__/
 rasa/events.db
 
 # === Datasets / temporary data ===
-data/
 tmp/
 logs/
 *.db

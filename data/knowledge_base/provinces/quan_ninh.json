@@ -1,0 +1,90 @@
+{
+    "Quảng Ninh": {
+        "culture_details": "Quảng Ninh được mệnh danh là một 'Việt Nam thu nhỏ', hội tụ cả biển, đảo, đồng bằng, trung du và miền núi biên giới. Nơi đây tự hào sở hữu Vịnh Hạ Long - Quần đảo Cát Bà, Di sản Thiên nhiên Thế giới kép được UNESCO công nhận. Quảng Ninh còn là 'vùng mỏ' lịch sử của đất nước và là đất tổ của Thiền phái Trúc Lâm Yên Tử, một trung tâm Phật giáo lớn của Việt Nam.",
+        "sub_regions": [],
+        "places_to_visit": [
+            {
+                "name": "Di sản Thiên nhiên Thế giới Vịnh Hạ Long",
+                "category": "di sản",
+                "details": "Kỳ quan thiên nhiên thế giới với hàng nghìn hòn đảo đá vôi muôn hình vạn trạng, nổi bật với các hang động kỳ ảo như Sửng Sốt, Thiên Cung và các hòn đảo biểu tượng như Gà Chọi, Đỉnh Hương."
+            },
+            {
+                "name": "Khu di tích danh thắng Yên Tử",
+                "category": "tâm linh",
+                "details": "Đất tổ của Thiền phái Trúc Lâm Việt Nam, nơi Phật hoàng Trần Nhân Tông tu hành. Du khách hành hương lên Chùa Đồng ở độ cao 1.068m."
+            },
+            {
+                "name": "Đảo Cô Tô",
+                "category": "biển",
+                "details": "Hòn đảo ngọc ở phía Đông Bắc, nổi tiếng với các bãi biển hoang sơ như Hồng Vàn, Vàn Chảy và con đường tình yêu lãng mạn."
+            },
+            {
+                "name": "Bình Liêu",
+                "category": "leo núi",
+                "details": "Được mệnh danh là 'Sa Pa thu nhỏ' của Quảng Ninh, nổi tiếng với các cung đường trekking 'sống lưng khủng long' và vẻ đẹp của ruộng bậc thang, các mùa hoa."
+            },
+            {
+                "name": "Mũi Sa Vĩ (Móng Cái)",
+                "category": "địa danh",
+                "details": "Điểm địa đầu cực Đông Bắc của Tổ quốc, nơi đặt bút vẽ nét đầu tiên trên bản đồ Việt Nam, có cụm thông tin cổ động hình 3 ngọn thông."
+            },
+            {
+                "name": "Bán đảo Tuần Châu",
+                "category": "giải trí",
+                "details": "Trung tâm du lịch giải trí hiện đại với cảng tàu khách quốc tế, các bãi tắm, khu vui chơi, biểu diễn nhạc nước và các resort sang trọng."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Chả mực giã tay Hạ Long",
+                "category": "đặc sản",
+                "details": "Đặc sản trứ danh được làm từ mực mai tươi, giã bằng tay để tạo độ dai giòn đặc trưng, khi chiên có màu vàng ruộm, thơm nức."
+            },
+            {
+                "name": "Sá sùng",
+                "category": "đặc sản",
+                "details": "Một loại hải sản quý hiếm và đắt đỏ, được mệnh danh là 'vàng ròng của biển', có thể dùng tươi để nấu phở, xào hoặc phơi khô để nướng."
+            },
+            {
+                "name": "Bún bề bề (bún tôm tít)",
+                "category": "món chính",
+                "details": "Món bún hải sản đặc trưng với nước dùng ngọt thanh từ xương và hải sản, ăn kèm bề bề tươi bóc nõn, đậu phụ, chả cá."
+            },
+            {
+                "name": "Gà đồi Tiên Yên",
+                "category": "đặc sản",
+                "details": "Giống gà thả đồi nổi tiếng, da vàng óng, thịt thơm và săn chắc, thường được chế biến đơn giản như luộc để giữ vị ngon nguyên bản."
+            },
+            {
+                "name": "Bánh gật gù",
+                "category": "đặc sản",
+                "details": "Loại bánh cuốn mềm, dẻo, khi cầm trên tay bánh mềm oặt như người ngủ gật. Thường được chấm với nước mắm chưng mỡ gà và hành phi."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ hội Yên Tử",
+                "time": "Khai hội từ ngày 10 tháng Giêng và kéo dài suốt mùa xuân",
+                "details": "Một trong những lễ hội xuân lớn nhất cả nước, thu hút hàng triệu Phật tử và du khách hành hương về đất Phật, cầu an."
+            },
+            {
+                "name": "Carnaval Hạ Long",
+                "time": "Thường niên vào dịp nghỉ lễ 30/4 - 1/5",
+                "details": "Lễ hội đường phố hiện đại, sôi động và đầy màu sắc, là một sản phẩm du lịch độc đáo, thương hiệu của Hạ Long - Quảng Ninh."
+            },
+            {
+                "name": "Lễ hội đền Cửa Ông",
+                "time": "Tháng 2 và tháng 8 âm lịch hằng năm",
+                "details": "Lễ hội lớn để tưởng nhớ Hưng Nhượng Vương Trần Quốc Tảng, một danh tướng nhà Trần, với nghi lễ rước kiệu Vua Anh và Vua Cha."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Chả mực Hạ Long (đóng gói hút chân không)",
+            "Sá sùng khô",
+            "Mực khô, ruốc hàu, ruốc tép",
+            "Rượu mơ Yên Tử",
+            "Nem chua Quảng Yên"
+        ],
+        "best_time_to_visit": "Mùa thu (tháng 9-11) và mùa xuân (tháng 3-5) là thời điểm lý tưởng nhất với thời tiết ôn hòa, nắng đẹp. Mùa hè (tháng 6-8) thích hợp du lịch biển nhưng cần chú ý dự báo thời tiết do có thể có bão."
+    }
+}

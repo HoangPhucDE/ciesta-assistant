@@ -1,0 +1,110 @@
+{
+    "Đà Nẵng": {
+        "culture_details": "Thành phố Đà Nẵng mới là trung tâm du lịch hàng đầu miền Trung và cả nước, một sự kết hợp hoàn hảo giữa thành phố biển Đà Nẵng năng động, hiện đại bậc nhất Việt Nam với nét cổ kính, quyến rũ của Di sản Văn hóa Thế giới Hội An. Vùng đất này sở hữu đến hai di sản thế giới (Hội An, Mỹ Sơn), một khu dự trữ sinh quyển thế giới (Cù Lao Chàm) và là nơi thường xuyên tổ chức các sự kiện, lễ hội mang tầm vóc quốc tế.",
+        "sub_regions": [
+            {
+                "name": "Khu vực TP. Đà Nẵng (cũ)",
+                "highlights": "Thành phố của những cây cầu, 'thành phố đáng sống nhất Việt Nam', bãi biển Mỹ Khê, khu du lịch Bà Nà Hills."
+            },
+            {
+                "name": "Khu vực Quảng Nam",
+                "highlights": "Di sản văn hóa thế giới Phố cổ Hội An và Thánh địa Mỹ Sơn, khu dự trữ sinh quyển Cù Lao Chàm."
+            }
+        ],
+        "places_to_visit": [
+            {
+                "name": "Phố cổ Hội An (Quảng Nam)",
+                "category": "di sản",
+                "details": "Di sản Văn hóa Thế giới UNESCO, một thương cảng quốc tế sầm uất xưa kia được bảo tồn gần như nguyên vẹn với không gian hoài cổ, lung linh đèn lồng."
+            },
+            {
+                "name": "Khu du lịch Sun World Bà Nà Hills (Đà Nẵng)",
+                "category": "giải trí",
+                "details": "Quần thể du lịch nghỉ dưỡng trên đỉnh núi với Cầu Vàng trứ danh, khí hậu bốn mùa trong một ngày và Làng Pháp cổ kính."
+            },
+            {
+                "name": "Thánh địa Mỹ Sơn (Quảng Nam)",
+                "category": "di sản",
+                "details": "Di sản Văn hóa Thế giới UNESCO, quần thể đền tháp Chăm Pa cổ kính, từng là trung tâm tôn giáo và chính trị của Vương quốc Chăm Pa."
+            },
+            {
+                "name": "Bãi biển Mỹ Khê (Đà Nẵng)",
+                "category": "biển",
+                "details": "Một trong những bãi biển quyến rũ nhất hành tinh với bãi cát trắng mịn, nước biển trong xanh và các hoạt động thể thao biển sôi động."
+            },
+            {
+                "name": "Khu dự trữ sinh quyển Cù Lao Chàm (Quảng Nam)",
+                "category": "sinh thái",
+                "details": "Cụm đảo hoang sơ được UNESCO công nhận, nổi tiếng với hệ sinh thái biển đa dạng, rạn san hô và các bãi biển đẹp."
+            },
+            {
+                "name": "Danh thắng Ngũ Hành Sơn (Đà Nẵng)",
+                "category": "tâm linh",
+                "details": "Quần thể 5 ngọn núi đá vôi giữa lòng thành phố, với hệ thống hang động, chùa chiền linh thiêng và Làng đá mỹ nghệ Non Nước."
+            },
+            {
+                "name": "Rừng dừa Bảy Mẫu (Hội An, Quảng Nam)",
+                "category": "sinh thái",
+                "details": "Trải nghiệm 'miền Tây thu nhỏ' trong lòng Hội An với hoạt động chèo thuyền thúng, xem biểu diễn múa thúng và thưởng thức ẩm thực."
+            },
+            {
+                "name": "Bán đảo Sơn Trà (Đà Nẵng)",
+                "category": "thiên nhiên",
+                "details": "Lá phổi xanh của Đà Nẵng, nơi có Chùa Linh Ứng với tượng Phật Quan Âm cao nhất Việt Nam, và là nhà của Voọc chà vá chân nâu."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Cao lầu Hội An",
+                "category": "đặc sản",
+                "details": "Món mỳ độc đáo chỉ có tại Hội An, sợi mỳ vàng ươm được làm từ nước giếng Bá Lễ, ăn cùng thịt xá xíu và rau thơm Trà Quế."
+            },
+            {
+                "name": "Mì Quảng",
+                "category": "đặc sản",
+                "details": "Linh hồn ẩm thực xứ Quảng, với sợi mỳ vàng từ bột nghệ, nước dùng đậm đà, ăn kèm tôm, thịt, trứng và bánh đa giòn."
+            },
+            {
+                "name": "Bánh mì Phượng (Hội An)",
+                "category": "đặc sản",
+                "details": "Được mệnh danh là 'bánh mì ngon nhất thế giới', nổi tiếng với ổ bánh mì giòn rụm và hơn 20 loại nhân đa dạng, hòa quyện."
+            },
+            {
+                "name": "Bánh tráng cuốn thịt heo hai đầu da (Đà Nẵng)",
+                "category": "đặc sản",
+                "details": "Thịt heo luộc có lớp mỡ và da ở hai đầu, cuốn cùng bánh tráng phơi sương, rau sống và chấm mắm nêm đậm đà."
+            },
+            {
+                "name": "Cơm gà Hội An",
+                "category": "món chính",
+                "details": "Cơm được nấu bằng nước luộc gà và nghệ cho màu vàng óng, ăn cùng thịt gà ta xé phay, hành tây và rau răm."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ hội Pháo hoa Quốc tế Đà Nẵng (DIFF)",
+                "time": "Thường niên vào mùa hè (tháng 6-7)",
+                "details": "Sự kiện văn hóa du lịch tầm cỡ quốc tế, các đội pháo hoa hàng đầu thế giới trình diễn những màn pháo hoa rực rỡ bên sông Hàn."
+            },
+            {
+                "name": "Đêm Rằm Phố Cổ Hội An",
+                "time": "Ngày 14 Âm lịch hằng tháng",
+                "details": "Đêm hội đặc trưng của Hội An, toàn bộ phố cổ tắt đèn điện, thắp sáng bằng đèn lồng và hoa đăng trên sông Hoài."
+            },
+            {
+                "name": "Lễ hội Bà Thu Bồn (Quảng Nam)",
+                "time": "Ngày 12 tháng 2 âm lịch hằng năm",
+                "details": "Lễ hội dân gian lớn của xứ Quảng để tưởng nhớ Bà Mẹ xứ sở, cầu cho mưa thuận gió hòa, mùa màng tươi tốt."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Đèn lồng Hội An",
+            "Chả bò Đà Nẵng",
+            "Bánh dừa nướng Quảng Nam",
+            "Tương ớt Triều Phát Hội An",
+            "Mực rim me, các loại hải sản khô",
+            "Đá mỹ nghệ Non Nước"
+        ],
+        "best_time_to_visit": "Mùa khô từ tháng 2 đến tháng 8 là thời điểm lý tưởng nhất, trời nắng đẹp, biển trong xanh. Mùa mưa từ tháng 9 đến tháng 1, đặc biệt tháng 10-11 có thể có bão và gây ngập lụt ở Hội An."
+    }
+}

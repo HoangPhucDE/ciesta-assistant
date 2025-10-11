@@ -1,0 +1,37 @@
+version: "3.1"
+
+rules:
+- rule: Chào hỏi người dùng
+  steps:
+  - intent: greet
+  - action: utter_greet
+
+- rule: Tạm biệt người dùng
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Trả lời thông tin chung về tỉnh thành
+  steps:
+  - intent: ask_about_culture
+  - action: action_query_knowledge_base
+
+- rule: Trả lời địa điểm tham quan
+  steps:
+  - intent: ask_place_to_visit
+  - action: action_query_knowledge_base
+
+- rule: Trả lời đặc sản ẩm thực
+  steps:
+  - intent: ask_what_to_eat
+  - action: action_query_knowledge_base
+
+- rule: Trả lời về lễ hội
+  steps:
+  - intent: ask_festivals
+  - action: action_query_knowledge_base
+
+- rule: Khi người dùng chỉ nói tên tỉnh
+  steps:
+  - intent: inform_location
+  - action: action_query_knowledge_base

@@ -1,0 +1,104 @@
+{
+    "Bắc Ninh": {
+        "culture_details": "Bắc Ninh mới là sự hội tụ tinh hoa của cả vùng Kinh Bắc và vùng văn hóa trung du đặc sắc. Nơi đây là cái nôi của Dân ca Quan họ - Di sản Văn hóa Phi vật thể Đại diện của Nhân loại, với những làn điệu đối đáp giao duyên mượt mà. Vùng đất này còn mang trong mình hào khí Xương Giang bất khuất của cuộc khởi nghĩa Yên Thế (Bắc Giang) và là nơi tọa lạc của Thiền viện Trúc Lâm Tây Thiên (Vĩnh Phúc), một trong những trung tâm Phật giáo lớn nhất miền Bắc.",
+        "sub_regions": [
+            {
+                "name": "Khu vực Bắc Ninh (cũ)",
+                "highlights": "Quê hương Quan họ, các làng nghề thủ công truyền thống (tranh Đông Hồ, gốm Phù Lãng), hệ thống chùa chiền cổ kính."
+            },
+            {
+                "name": "Khu vực Bắc Giang",
+                "highlights": "Vùng đất 'hào khí Xương Giang', thủ phủ vải thiều Lục Ngạn, khu bảo tồn Tây Yên Tử linh thiêng."
+            },
+            {
+                "name": "Khu vực Vĩnh Phúc",
+                "highlights": "Thị trấn nghỉ dưỡng Tam Đảo, khu du lịch tâm linh Tây Thiên, hồ Đại Lải."
+            }
+        ],
+        "places_to_visit": [
+            {
+                "name": "Chùa Dâu (Thuận Thành, Bắc Ninh)",
+                "category": "lịch sử",
+                "details": "Được công nhận là ngôi chùa cổ nhất Việt Nam, là trung tâm Phật giáo đầu tiên của nước ta, gắn liền với tín ngưỡng thờ Tứ Pháp."
+            },
+            {
+                "name": "Khu du lịch Tam Đảo (Vĩnh Phúc)",
+                "category": "nghỉ dưỡng",
+                "details": "Được mệnh danh là 'Đà Lạt của phương Bắc', thị trấn trong sương với khí hậu mát mẻ quanh năm và kiến trúc châu Âu cổ kính."
+            },
+            {
+                "name": "Khu di tích và danh thắng Tây Yên Tử (Sơn Động, Bắc Giang)",
+                "category": "tâm linh",
+                "details": "Quần thể tâm linh-sinh thái rộng lớn nằm trên sườn Tây dãy Yên Tử, theo dấu chân Phật Hoàng Trần Nhân Tông."
+            },
+            {
+                "name": "Đền Đô - Đền Lý Bát Đế (Từ Sơn, Bắc Ninh)",
+                "category": "lịch sử",
+                "details": "Nơi thờ tám vị vua đầu tiên của nhà Lý, một di tích quốc gia đặc biệt mang đậm giá trị lịch sử, văn hóa triều Lý."
+            },
+            {
+                "name": "Thiền viện Trúc Lâm Tây Thiên (Tam Đảo, Vĩnh Phúc)",
+                "category": "tâm linh",
+                "details": "Một trong ba thiền viện lớn nhất Việt Nam, là nơi đào tạo Phật giáo có hệ thống bên cạnh khu di tích Tây Thiên cổ tự."
+            },
+            {
+                "name": "Làng tranh dân gian Đông Hồ (Thuận Thành, Bắc Ninh)",
+                "category": "làng nghề",
+                "details": "Di sản văn hóa phi vật thể cấp Quốc gia, nơi khai sinh ra dòng tranh khắc gỗ dân gian độc đáo của Việt Nam."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Bánh phu thê Đình Bảng (Bắc Ninh)",
+                "category": "đặc sản",
+                "details": "Đặc sản trứ danh đất Kinh Bắc, tượng trưng cho tình yêu son sắt, với vỏ bánh dẻo trong và nhân đậu xanh ngọt bùi."
+            },
+            {
+                "name": "Gà đồi Yên Thế (Bắc Giang)",
+                "category": "đặc sản",
+                "details": "Giống gà được chăn thả tự nhiên trên đồi, thịt săn chắc, thơm ngon, đã được cấp chứng nhận thương hiệu độc quyền."
+            },
+            {
+                "name": "Bò tái kiến đốt (Tam Đảo, Vĩnh Phúc)",
+                "category": "đặc sản",
+                "details": "Món ăn độc đáo, thịt bê non được treo gần tổ kiến trên cây rừng, để kiến đốt tạo ra vị chua ngọt tự nhiên trước khi nướng."
+            },
+            {
+                "name": "Nem Bùi (Quế Võ, Bắc Ninh)",
+                "category": "đặc sản",
+                "details": "Đặc sản dân dã làm từ thịt lợn và bì lợn thái sợi, trộn thính gạo rang thơm lừng, gói bằng lá chuối."
+            },
+            {
+                "name": "Mỳ Chũ (Lục Ngạn, Bắc Giang)",
+                "category": "đặc sản",
+                "details": "Sợi mỳ làm từ gạo Bao Thai Hồng đặc biệt, có hương thơm, dai và không bị nát khi nấu, nổi tiếng khắp cả nước."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Hội Lim",
+                "time": "Chính hội vào ngày 13 tháng Giêng âm lịch",
+                "details": "Lễ hội lớn nhất vùng Kinh Bắc, Di sản văn hóa phi vật thể Quốc gia, nơi các liền anh, liền chị giao duyên qua những làn điệu Quan họ trên thuyền rồng."
+            },
+            {
+                "name": "Lễ hội Tây Thiên",
+                "time": "Chính hội từ ngày 15 đến 17 tháng 2 âm lịch",
+                "details": "Một trong những lễ hội lớn nhất miền Bắc, tưởng nhớ Quốc Mẫu Tây Thiên Lăng Thị Tiêu, người có công giúp vua Hùng dựng nước."
+            },
+            {
+                "name": "Lễ hội Tây Yên Tử",
+                "time": "Khai hội ngày 12 tháng Giêng âm lịch",
+                "details": "Lễ hội xuân quy mô lớn, tái hiện con đường hoằng dương Phật pháp của Phật hoàng Trần Nhân Tông, thu hút hàng vạn Phật tử."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Bánh phu thê Đình Bảng",
+            "Vải thiều Lục Ngạn (theo mùa)",
+            "Mỳ Chũ Lục Ngạn",
+            "Rượu Làng Vân",
+            "Cá thính Lập Thạch",
+            "Trà hoa vàng Tam Đảo"
+        ],
+        "best_time_to_visit": "Mùa xuân (tháng 1-3 Âm lịch) là mùa của các lễ hội lớn như hội Lim, hội Tây Thiên. Mùa hè (tháng 6-7) là mùa vải thiều Lục Ngạn chín rộ và là thời gian lý tưởng để nghỉ mát tại Tam Đảo. Mùa thu thời tiết mát mẻ, thích hợp tham quan các di tích."
+    }
+}

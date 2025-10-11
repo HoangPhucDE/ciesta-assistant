@@ -1,0 +1,89 @@
+{
+    "Hưng Yên": {
+        "culture_details": "Hưng Yên mới là vùng đất trung tâm của nền văn minh lúa nước Đồng bằng sông Hồng. Nơi đây là sự kết hợp giữa Hưng Yên - mảnh đất 'Thứ nhất Kinh kỳ, thứ nhì Phố Hiến' với di sản thương cảng cổ sầm uất một thời; và Thái Bình - 'quê lúa' trù phú, cái nôi của nghệ thuật hát Chèo, một trong những loại hình sân khấu dân gian lâu đời nhất Việt Nam. Vùng đất này mang đậm bản sắc văn hóa đồng bằng Bắc Bộ với những ngôi chùa cổ, làng nghề và lễ hội truyền thống.",
+        "sub_regions": [
+            {
+                "name": "Khu vực Hưng Yên (cũ)",
+                "highlights": "'Tiểu Tràng An' với Quần thể di tích Phố Hiến, quê hương của Nhãn lồng và Tương Bần."
+            },
+            {
+                "name": "Khu vực Thái Bình",
+                "highlights": "'Quê lúa' của miền Bắc, cái nôi của nghệ thuật hát Chèo, Chùa Keo - kiệt tác kiến trúc gỗ."
+            }
+        ],
+        "places_to_visit": [
+            {
+                "name": "Chùa Keo (Thái Bình)",
+                "category": "di sản",
+                "details": "Di tích Quốc gia Đặc biệt, một trong những ngôi chùa cổ đẹp nhất Việt Nam với Gác chuông 3 tầng bằng gỗ lim độc đáo."
+            },
+            {
+                "name": "Quần thể di tích Phố Hiến (Hưng Yên)",
+                "category": "lịch sử",
+                "details": "Tàn tích của một thương cảng quốc tế sầm uất thế kỷ 17, bao gồm các điểm như Chùa Chuông, Đền Mẫu, Văn Miếu Xích Đằng."
+            },
+            {
+                "name": "Làng cổ Nôm (Hưng Yên)",
+                "category": "văn hóa",
+                "details": "Ngôi làng cổ hiếm hoi còn giữ được gần như nguyên vẹn không gian và kiến trúc làng quê Bắc Bộ xưa với cây đa, giếng nước, sân đình."
+            },
+            {
+                "name": "Làng nghề chạm bạc Đồng Xâm (Thái Bình)",
+                "category": "làng nghề",
+                "details": "Làng nghề thủ công mỹ nghệ có lịch sử hơn 600 năm, nổi tiếng với các sản phẩm chạm khắc bạc, đồng tinh xảo."
+            },
+            {
+                "name": "Bãi biển Đồng Châu (Thái Bình)",
+                "category": "cảnh quan",
+                "details": "Bãi biển độc đáo với những cánh đồng ngao (vó) trải dài, tạo nên khung cảnh thanh bình, đặc biệt đẹp vào lúc bình minh và hoàng hôn."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Nhãn lồng Phố Hiến (Hưng Yên)",
+                "category": "đặc sản",
+                "details": "Đặc sản tiến vua nức tiếng với quả to, cùi dày, hạt nhỏ, vị ngọt đậm và hương thơm đặc trưng."
+            },
+            {
+                "name": "Canh cá Quỳnh Côi (Thái Bình)",
+                "category": "đặc sản",
+                "details": "Món ăn dân dã nhưng tinh tế, với bánh đa làm từ gạo, cá rô đồng chiên giòn, nước dùng ngọt thanh vị cá và thơm mùi thì là."
+            },
+            {
+                "name": "Bún thang lươn Phố Hiến (Hưng Yên)",
+                "category": "đặc sản",
+                "details": "Sự kết hợp độc đáo giữa bún thang Hà Nội và lươn xứ Nghệ, tạo nên món ăn vừa thanh tao, vừa đậm đà."
+            },
+            {
+                "name": "Bánh cáy làng Nguyễn (Thái Bình)",
+                "category": "đặc sản",
+                "details": "Món bánh đặc sản làm từ gạo nếp, mỡ lợn, mứt bí, gừng... có nhiều màu sắc và vị ngọt, béo, cay nồng."
+            },
+            {
+                "name": "Bánh dày làng Gàu (Hưng Yên)",
+                "category": "đặc sản",
+                "details": "Đặc sản truyền thống gắn với câu chuyện Lang Liêu, bánh dẻo thơm mùi gạo nếp, nhân đỗ xanh ngọt bùi."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ hội Chùa Keo (Thái Bình)",
+                "time": "Mùa xuân (mùng 4 tháng Giêng) và mùa thu (13-15 tháng 9 âm lịch)",
+                "details": "Một trong những lễ hội lớn nhất miền Bắc, đặc biệt lễ hội mùa thu có các nghi lễ và hoạt động diễn xướng dân gian độc đáo."
+            },
+            {
+                "name": "Lễ hội văn hóa dân gian Phố Hiến (Hưng Yên)",
+                "time": "Thường niên 2-3 năm một lần vào tháng 3 âm lịch",
+                "details": "Lễ hội lớn nhằm tái hiện không gian và các hoạt động của thương cảng Phố Hiến xưa sầm uất."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Nhãn lồng Hưng Yên (theo mùa)",
+            "Tương Bần Hưng Yên",
+            "Bánh cáy Thái Bình",
+            "Rượu nếp làng Keo (Thái Bình)",
+            "Long nhãn Hưng Yên"
+        ],
+        "best_time_to_visit": "Mùa xuân (tháng 1-3 âm lịch) là mùa của các lễ hội lớn. Mùa hè (tháng 7-8) là mùa nhãn lồng Hưng Yên. Mùa thu thời tiết mát mẻ, khô ráo, thích hợp để tham quan, vãn cảnh."
+    }
+}

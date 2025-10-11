@@ -1,0 +1,86 @@
+{
+    "Nghệ An": {
+        "culture_details": "Nghệ An là tỉnh có diện tích lớn nhất Việt Nam, một vùng đất 'địa linh nhân kiệt', nơi hun đúc nên những con người có khí phách kiên cường và truyền thống hiếu học. Đây là quê hương của Chủ tịch Hồ Chí Minh vĩ đại và là cái nôi của phong trào Xô Viết Nghệ Tĩnh. Văn hóa Nghệ An còn được biết đến với Di sản Văn hóa Phi vật thể của Nhân loại 'Dân ca Ví, Giặm Nghệ Tĩnh', cùng một nền ẩm thực mộc mạc nhưng đậm đà, cay nồng đặc trưng.",
+        "sub_regions": [],
+        "places_to_visit": [
+            {
+                "name": "Khu di tích Quốc gia đặc biệt Kim Liên (Nam Đàn)",
+                "category": "lịch sử",
+                "details": "Quê hương của Chủ tịch Hồ Chí Minh, bao gồm làng Hoàng Trù (quê ngoại) và làng Sen (quê nội) với những ngôi nhà tranh giản dị, chứa đựng những câu chuyện cảm động."
+            },
+            {
+                "name": "Bãi biển Cửa Lò",
+                "category": "biển",
+                "details": "Một trong những bãi biển đẹp và sầm uất nhất Bắc Trung Bộ, nổi tiếng với dải cát trắng mịn, nước trong và các loại hải sản tươi ngon."
+            },
+            {
+                "name": "Cánh đồng hoa hướng dương (Nghĩa Đàn)",
+                "category": "cảnh quan",
+                "details": "Cánh đồng hoa hướng dương lớn nhất Việt Nam rộng gần 100 hecta, nở rộ vàng rực vào hai mùa trong năm, thu hút hàng vạn du khách."
+            },
+            {
+                "name": "Đảo chè Thanh Chương",
+                "category": "sinh thái",
+                "details": "Những ốc đảo chè xanh mướt nằm giữa lòng hồ đập Cầu Cau, được mệnh danh là 'Vịnh Hạ Long trên cạn' của xứ Nghệ."
+            },
+            {
+                "name": "Khu di tích lịch sử Truông Bồn (Đô Lương)",
+                "category": "lịch sử",
+                "details": "Di tích Quốc gia Đặc biệt, nơi tưởng niệm sự hy sinh anh dũng của 13 chiến sĩ thanh niên xung phong trên 'tọa độ lửa' Truông Bồn."
+            },
+            {
+                "name": "Vườn quốc gia Pù Mát",
+                "category": "thiên nhiên",
+                "details": "Khu dự trữ sinh quyển thế giới có tính đa dạng sinh học cao bậc nhất Việt Nam, nổi bật với thác Kèm hùng vĩ và hệ động thực vật phong phú."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Cháo lươn / Súp lươn Nghệ An",
+                "category": "đặc sản",
+                "details": "Đặc sản trứ danh số một của xứ Nghệ, lươn đồng được chế biến khéo léo, thịt mềm thơm, nước dùng cay nồng vị ớt và thơm mùi hành tăm."
+            },
+            {
+                "name": "Bánh mướt Diễn Châu",
+                "category": "đặc sản",
+                "details": "Loại bánh tráng từ bột gạo, mỏng, mềm và mướt, thường được ăn kèm chả lụa, ram, hoặc chấm với nước dùng xương hầm."
+            },
+            {
+                "name": "Mực nháy Cửa Lò",
+                "category": "hải sản",
+                "details": "Mực tươi rói vừa được đánh bắt, còn nhấp nháy, được chế biến đơn giản như luộc, hấp, nướng để giữ trọn vị ngọt tự nhiên của biển."
+            },
+            {
+                "name": "Cháo canh",
+                "category": "món chính",
+                "details": "Món ăn sáng phổ biến, sợi bánh canh làm từ bột mỳ dai dai, nước dùng hầm từ xương heo đậm đà, ăn kèm chả và rau thơm."
+            },
+            {
+                "name": "Nhút Thanh Chương",
+                "category": "đặc sản",
+                "details": "Món ăn dân dã được ví như 'kim chi của người xứ Nghệ', làm từ mít non hoặc xơ mít muối mặn, có thể dùng để kho cá hoặc làm nộm."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ hội Làng Sen",
+                "time": "Dịp sinh nhật Bác 19 tháng 5 hằng năm",
+                "details": "Lễ hội cấp quốc gia để bày tỏ lòng biết ơn và tôn kính đối với Chủ tịch Hồ Chí Minh, diễn ra tại Khu di tích Kim Liên với nhiều hoạt động văn hóa ý nghĩa."
+            },
+            {
+                "name": "Lễ hội Đền Cờn (Hoàng Mai)",
+                "time": "Từ ngày 19 đến 21 tháng Giêng âm lịch",
+                "details": "Một trong bốn ngôi đền linh thiêng nhất xứ Nghệ ('Cờn, Quả, Bạch, Chiêu'), lễ hội cầu ngư và tưởng nhớ Tứ vị Thánh Nương."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Tương Nam Đàn",
+            "Nhút Thanh Chương",
+            "Cam xã Đoài (theo mùa)",
+            "Nước mắm Vạn Phần, Cửa Lò",
+            "Giò bê Nam Đàn",
+            "Kẹo Cu đơ (đặc sản chung Nghệ - Tĩnh)"
+        ],
+        "best_time_to_visit": "Tháng 3-4 và 11-12 là mùa hoa hướng dương. Tháng 5-8 là mùa du lịch biển Cửa Lò. Đặc biệt, tháng 5 có Lễ hội Làng Sen rất ý nghĩa. Nên tránh mùa mưa bão từ tháng 8 đến tháng 10."
+    }
+}

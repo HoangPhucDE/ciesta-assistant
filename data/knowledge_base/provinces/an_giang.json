@@ -1,0 +1,111 @@
+{
+    "An Giang": {
+        "culture_details": "An Giang mới là sự tổng hòa của hai sắc thái du lịch đặc trưng ở cực Tây Nam Tổ quốc. Vùng đất này mang trong mình nét văn hóa tâm linh sâu sắc của An Giang, biểu hiện qua Lễ hội Vía Bà Chúa Xứ cấp quốc gia - một trong những lễ hội lớn nhất Việt Nam, cùng sự đa dạng văn hóa của cộng đồng Kinh, Khmer, Chăm, Hoa. Kết hợp với Kiên Giang, vùng đất này sở hữu thêm 'viên ngọc' Phú Quốc, một thiên đường biển đảo nhiệt đới đã được quốc tế công nhận, và thành phố biên mậu Hà Tiên, nơi ghi đậm dấu ấn lịch sử khai phá của dòng họ Mạc Cửu từ thế kỷ 18.",
+        "sub_regions": [
+            {
+                "name": "Khu vực An Giang (cũ)",
+                "highlights": "Trung tâm tâm linh của miền Tây với Miếu Bà Chúa Xứ Núi Sam, vùng Thất Sơn huyền bí và hệ sinh thái rừng tràm Trà Sư độc đáo."
+            },
+            {
+                "name": "Khu vực Kiên Giang",
+                "highlights": "Thiên đường biển đảo Phú Quốc, quần đảo Nam Du, quần đảo Hải Tặc và thành phố biên giới Hà Tiên."
+            }
+        ],
+        "places_to_visit": [
+            {
+                "name": "Khu di tích Miếu Bà Chúa Xứ Núi Sam (Châu Đốc)",
+                "category": "tâm linh",
+                "details": "Di tích Quốc gia Đặc biệt, là điểm hành hương linh thiêng bậc nhất miền Nam, nơi du khách thập phương đến cầu an, tài lộc."
+            },
+            {
+                "name": "Đảo Phú Quốc",
+                "category": "biển",
+                "details": "Đảo lớn nhất Việt Nam, nổi tiếng với các bãi biển đẹp như Bãi Sao, Bãi Khem, các khu nghỉ dưỡng sang trọng và hệ sinh thái đa dạng."
+            },
+            {
+                "name": "Rừng tràm Trà Sư (Tịnh Biên)",
+                "category": "sinh thái",
+                "details": "Hệ sinh thái rừng ngập mặn tiêu biểu, trải nghiệm đi xuồng len lỏi qua thảm bèo xanh và quan sát các loài chim quý hiếm."
+            },
+            {
+                "name": "Nhà tù Phú Quốc (An Thới)",
+                "category": "lịch sử",
+                "details": "Di tích Quốc gia Đặc biệt, 'địa ngục trần gian' tái hiện tội ác chiến tranh và tinh thần đấu tranh bất khuất của các chiến sĩ cách mạng."
+            },
+            {
+                "name": "Quần đảo Nam Du",
+                "category": "biển",
+                "details": "Cụm đảo hoang sơ được mệnh danh là 'Maldives của Việt Nam', lý tưởng cho các hoạt động lặn biển ngắm san hô, khám phá."
+            },
+            {
+                "name": "Thành phố Hà Tiên",
+                "category": "lịch sử",
+                "details": "Vùng đất 'Hà Tiên thập cảnh' với nhiều di tích gắn liền với dòng họ Mạc Cửu như Lăng Mạc Cửu, Thạch Động, Chùa Phù Dung."
+            },
+            {
+                "name": "Hồ Tà Pạ & Chùa Tà Pạ (Tri Tôn)",
+                "category": "cảnh quan",
+                "details": "Hồ nước xanh màu ngọc bích tuyệt đẹp dưới chân núi, một 'tuyệt tình cốc' của vùng Bảy Núi."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Lẩu mắm Châu Đốc",
+                "category": "đặc sản",
+                "details": "Tinh hoa ẩm thực miền Tây với nước lẩu nấu từ mắm cá sặc hoặc cá linh, ăn kèm gần 40 loại rau đồng và hải sản tươi."
+            },
+            {
+                "name": "Gỏi cá trích Phú Quốc",
+                "category": "đặc sản",
+                "details": "Sự kết hợp tinh tế giữa thịt cá trích tươi sống, dừa nạo, đậu phộng và rau thơm, cuốn bánh tráng chấm nước mắm hảo hạng."
+            },
+            {
+                "name": "Bò bảy món Núi Sam",
+                "category": "đặc sản",
+                "details": "Thịt bò tươi được chế biến thành 7 món ăn hấp dẫn ngay tại bàn, nổi tiếng nhất là lòng bò luộc và bò đun bánh hỏi."
+            },
+            {
+                "name": "Bún quậy Kiến Xây (Phú Quốc)",
+                "category": "đặc sản",
+                "details": "Món bún tươi ăn liền độc đáo, thực khách tự 'quậy' chả tôm, chả cá trong bát và tự pha nước chấm theo khẩu vị riêng."
+            },
+            {
+                "name": "Bún kèn Hà Tiên",
+                "category": "món chính",
+                "details": "Món bún có nước dùng nấu từ cá và nước cốt dừa, màu vàng ươm của nghệ, vị béo ngậy đặc trưng không nơi nào có."
+            },
+            {
+                "name": "Gà đốt lá chúc Ô Thum (Tri Tôn)",
+                "category": "đặc sản",
+                "details": "Gà thả vườn được ướp với lá chúc (một loại chanh rừng) và các gia vị rồi đốt trong nồi đất, thịt thơm và mềm."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ hội Vía Bà Chúa Xứ Núi Sam",
+                "time": "Chính lễ từ 22 đến 27 tháng 4 âm lịch hằng năm",
+                "details": "Di sản Văn hóa Phi vật thể Quốc gia, một trong những lễ hội lớn nhất Việt Nam, thể hiện tín ngưỡng thờ Mẫu và cầu mong quốc thái dân an."
+            },
+            {
+                "name": "Lễ hội Anh hùng dân tộc Nguyễn Trung Trực (Rạch Giá)",
+                "time": "Từ ngày 26 đến 28 tháng 8 âm lịch hằng năm",
+                "details": "Lễ giỗ lớn nhất vùng Đồng bằng sông Cửu Long để tưởng nhớ vị anh hùng dân tộc đã hy sinh trong cuộc kháng chiến chống Pháp."
+            },
+            {
+                "name": "Lễ hội Đua bò Bảy Núi",
+                "time": "Dịp lễ Dolta của đồng bào Khmer (khoảng cuối tháng 8, đầu tháng 9 âm lịch)",
+                "details": "Một hoạt động văn hóa - thể thao độc đáo của người Khmer, vừa là lễ cúng tạ ơn tổ tiên, vừa cầu cho một vụ mùa bội thu."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Nước mắm Phú Quốc",
+            "Hồ tiêu Phú Quốc",
+            "Rượu sim Phú Quốc",
+            "Đường thốt nốt An Giang",
+            "Mắm Châu Đốc (mắm thái, mắm trèn...)",
+            "Khô cá sặc bổi",
+            "Ngọc trai Phú Quốc"
+        ],
+        "best_time_to_visit": "Mùa khô (tháng 11 - 4) là 'mùa vàng' du lịch, biển êm, nắng đẹp, lý tưởng cho Phú Quốc và Nam Du. Mùa nước nổi (tháng 9 - 11) là thời điểm đặc sắc cho khu vực An Giang để thấy vẻ đẹp rừng tràm và thưởng thức đặc sản mùa lũ. Nên tránh đi biển vào mùa mưa bão (tháng 7-9)."
+    }
+}

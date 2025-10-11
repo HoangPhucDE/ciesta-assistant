@@ -1,0 +1,91 @@
+{
+    "Huế": {
+        "culture_details": "Huế là kinh đô cuối cùng của triều đại phong kiến Việt Nam, một thành phố mang vẻ đẹp trầm mặc, thơ mộng và sâu lắng. Nơi đây là trung tâm của các di sản thế giới được UNESCO công nhận, bao gồm Quần thể Di tích Cố đô Huế và Nhã nhạc Cung đình. Văn hóa Huế thể hiện qua kiến trúc lăng tẩm uy nghiêm, tà áo dài tím thướt tha, và một nền ẩm thực cung đình tinh tế, cầu kỳ bậc nhất Việt Nam.",
+        "sub_regions": [],
+        "places_to_visit": [
+            {
+                "name": "Quần thể di tích Cố đô Huế (Đại Nội)",
+                "category": "di sản",
+                "details": "Di sản Văn hóa Thế giới UNESCO, bao gồm Kinh thành, Hoàng thành và Tử cấm thành, nơi ở và làm việc của 13 đời vua Nguyễn."
+            },
+            {
+                "name": "Lăng Tự Đức (Khiêm Lăng)",
+                "category": "kiến trúc",
+                "details": "Được mệnh danh là lăng tẩm đẹp nhất, mang phong cách thơ mộng, trữ tình với kiến trúc hài hòa giữa thiên nhiên và nghệ thuật."
+            },
+            {
+                "name": "Lăng Minh Mạng (Hiếu Lăng)",
+                "category": "kiến trúc",
+                "details": "Công trình kiến trúc uy nghiêm, mẫu mực nhất thời nhà Nguyễn, thể hiện sự đối xứng tuyệt đối và hòa hợp với cảnh quan."
+            },
+            {
+                "name": "Lăng Khải Định (Ứng Lăng)",
+                "category": "kiến trúc",
+                "details": "Lăng tẩm có kiến trúc độc đáo, là sự giao thoa của nhiều trường phái kiến trúc Đông - Tây, nổi bật với nghệ thuật khảm sành sứ."
+            },
+            {
+                "name": "Chùa Thiên Mụ (Linh Mụ Tự)",
+                "category": "tâm linh",
+                "details": "Ngôi chùa cổ linh thiêng bên bờ sông Hương, biểu tượng của xứ Huế với ngọn tháp Phước Duyên 7 tầng."
+            },
+            {
+                "name": "Sông Hương và Cầu Tràng Tiền",
+                "category": "cảnh quan",
+                "details": "Dòng sông thơ mộng chảy qua lòng thành phố cùng cây cầu 6 vài 12 nhịp đã trở thành biểu tượng bất hủ của Huế."
+            },
+            {
+                "name": "Nhà vườn An Hiên",
+                "category": "văn hóa",
+                "details": "Một trong những ngôi nhà vườn cổ tiêu biểu nhất của Huế, mang đậm nét kiến trúc truyền thống và không gian sân vườn yên tĩnh."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Bún Bò Huế",
+                "category": "đặc sản",
+                "details": "Linh hồn của ẩm thực Cố đô, với nước dùng đậm đà vị ruốc và sả, sợi bún to, ăn kèm thịt bò, chả cua, huyết."
+            },
+            {
+                "name": "Cơm Hến",
+                "category": "đặc sản",
+                "details": "Món ăn dân dã đặc trưng, là sự hòa quyện của cơm trắng nguội, hến xào, tóp mỡ, mắm ruốc, rau sống và lạc rang."
+            },
+            {
+                "name": "Các loại bánh Huế (bèo, nậm, lọc, ram ít...)",
+                "category": "đặc sản",
+                "details": "Thế giới ẩm thực thu nhỏ với những loại bánh làm từ bột gạo, bột năng... với nhân tôm, thịt, được chế biến tinh tế, đẹp mắt."
+            },
+            {
+                "name": "Nem lụi",
+                "category": "đặc sản",
+                "details": "Thịt heo xay nhuyễn được quấn quanh thân sả rồi nướng trên than hồng, ăn kèm bánh tráng, rau sống và nước lèo đặc biệt."
+            },
+            {
+                "name": "Chè Huế",
+                "category": "tráng miệng",
+                "details": "Nét văn hóa ẩm thực độc đáo với hàng chục loại chè khác nhau, từ cung đình (chè hạt sen) đến dân dã (chè bột lọc heo quay)."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Festival Huế",
+                "time": "Thường niên 2 năm một lần, vào các năm chẵn",
+                "details": "Sự kiện văn hóa nghệ thuật mang tầm quốc tế, tôn vinh các giá trị di sản Cố đô và các hoạt động nghệ thuật đương đại."
+            },
+            {
+                "name": "Lễ hội Điện Hòn Chén",
+                "time": "Tháng 3 và tháng 7 âm lịch hằng năm",
+                "details": "Lễ hội dân gian lớn nhất ở Huế, gắn liền với tín ngưỡng thờ Mẫu Thiên Y A Na, với các nghi lễ rước kiệu long trọng trên sông Hương."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Kẹo mè xửng",
+            "Tôm chua, mắm ruốc",
+            "Trà Cung đình Huế",
+            "Nón lá bài thơ",
+            "Hạt sen Tịnh Tâm",
+            "Sản phẩm Pháp lam Huế"
+        ],
+        "best_time_to_visit": "Mùa thu (tháng 9-10) và mùa xuân (tháng 3-5) là hai thời điểm đẹp nhất, thời tiết mát mẻ, dễ chịu. Đặc biệt nên đến vào dịp Festival Huế để trải nghiệm không khí lễ hội. Cần lưu ý mùa mưa lũ từ tháng 10 đến tháng 12."
+    }
+}

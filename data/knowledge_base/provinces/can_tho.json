@@ -1,0 +1,98 @@
+{
+    "Cần Thơ": {
+        "culture_details": "Thành phố Cần Thơ mới là 'trái tim' và thủ phủ của toàn vùng Đồng bằng sông Cửu Long. Đây là sự hòa quyện giữa nét năng động, hiện đại của 'Tây Đô' Cần Thơ với trung tâm văn hóa Khmer Nam Bộ đặc sắc của Sóc Trăng, cùng vẻ trù phú, yên bình của vựa lúa Hậu Giang. Vùng đất này nổi tiếng với văn hóa chợ nổi, những ngôi chùa Khmer lộng lẫy và các lễ hội dân gian sôi động bậc nhất miền Tây.",
+        "sub_regions": [
+            {
+                "name": "Khu vực TP. Cần Thơ (cũ)",
+                "highlights": "'Thủ phủ miền Tây', trung tâm kinh tế, văn hóa với Chợ nổi Cái Răng và Bến Ninh Kiều."
+            },
+            {
+                "name": "Khu vực Sóc Trăng",
+                "highlights": "Trung tâm văn hóa Khmer Nam Bộ, nổi tiếng với Chùa Dơi, Chùa Chén Kiểu và Lễ hội Đua ghe Ngo."
+            },
+            {
+                "name": "Khu vực Hậu Giang",
+                "highlights": "Vựa lúa của miền Tây, nổi bật với Khu bảo tồn thiên nhiên Lung Ngọc Hoàng và chợ nổi Ngã Bảy."
+            }
+        ],
+        "places_to_visit": [
+            {
+                "name": "Chợ nổi Cái Răng (Cần Thơ)",
+                "category": "văn hóa",
+                "details": "Di sản văn hóa phi vật thể quốc gia, chợ nổi sầm uất và đặc trưng nhất miền Tây, nơi mọi hoạt động mua bán diễn ra trên sông."
+            },
+            {
+                "name": "Chùa Dơi - Wath Mahatup (Sóc Trăng)",
+                "category": "tâm linh",
+                "details": "Ngôi chùa Khmer cổ có kiến trúc độc đáo và là nơi trú ngụ của hàng vạn con dơi quạ lớn một cách kỳ lạ."
+            },
+            {
+                "name": "Bến Ninh Kiều & Cầu Tình Yêu (Cần Thơ)",
+                "category": "giải trí",
+                "details": "Biểu tượng của thành phố Cần Thơ, là công viên bến cảng đẹp nhất miền Tây, tấp nập du thuyền và các hoạt động về đêm."
+            },
+            {
+                "name": "Chùa Chén Kiểu - Wath Sro Loun (Sóc Trăng)",
+                "category": "tâm linh",
+                "details": "Ngôi chùa Khmer độc đáo, trang trí bằng những mảnh vỡ của chén, đĩa kiểu tạo nên các bức tranh hoa văn đầy màu sắc."
+            },
+            {
+                "name": "Nhà cổ Bình Thủy (Cần Thơ)",
+                "category": "kiến trúc",
+                "details": "Ngôi nhà cổ hơn 100 năm tuổi, kết hợp hài hòa kiến trúc Đông - Tây, là bối cảnh của nhiều bộ phim nổi tiếng."
+            },
+            {
+                "name": "Khu bảo tồn thiên nhiên Lung Ngọc Hoàng (Hậu Giang)",
+                "category": "sinh thái",
+                "details": "Được mệnh danh là 'lá phổi xanh' của Đồng bằng sông Cửu Long, nơi bảo tồn hệ sinh thái đất ngập nước đa dạng."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Lẩu mắm Cần Thơ",
+                "category": "đặc sản",
+                "details": "Phiên bản lẩu mắm trứ danh của thủ phủ miền Tây, đậm đà hương vị mắm và ăn kèm hàng chục loại rau đồng tươi ngon."
+            },
+            {
+                "name": "Bún nước lèo Sóc Trăng",
+                "category": "đặc sản",
+                "details": "Sự giao thoa ẩm thực Kinh - Khmer - Hoa với nước dùng nấu từ mắm, ngải bún và sả, ăn kèm cá lóc, thịt heo quay."
+            },
+            {
+                "name": "Bánh xèo Cần Thơ",
+                "category": "món chính",
+                "details": "Bánh xèo có kích thước lớn, vỏ vàng giòn, nhân đầy đặn gồm tôm, thịt, giá đỗ, ăn cùng rau sống và nước mắm chua ngọt."
+            },
+            {
+                "name": "Bánh pía Sóc Trăng",
+                "category": "đặc sản",
+                "details": "Thương hiệu bánh nổi tiếng khắp cả nước với lớp vỏ ngàn lớp và nhân sầu riêng, đậu xanh, trứng muối thơm lừng."
+            },
+            {
+                "name": "Cá lóc nướng trui",
+                "category": "đặc sản",
+                "details": "Món ăn dân dã đặc trưng, cá lóc đồng được xiên qua que tre, vùi trong rơm khô và nướng cho đến khi chín thơm."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ hội Oóc Om Bóc và Đua ghe Ngo (Sóc Trăng)",
+                "time": "Rằm tháng 10 âm lịch hằng năm",
+                "details": "Lễ hội lớn và đặc sắc nhất của đồng bào Khmer Nam Bộ, với nghi lễ cúng trăng và cuộc tranh tài ghe Ngo sôi động trên sông."
+            },
+            {
+                "name": "Lễ hội Bánh Dân gian Nam Bộ (Cần Thơ)",
+                "time": "Thường niên vào tháng 4",
+                "details": "Sự kiện văn hóa ẩm thực cấp quốc gia, quy tụ hàng trăm loại bánh dân gian từ khắp các vùng miền."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Bánh pía Sóc Trăng",
+            "Bánh tét lá cẩm Cần Thơ",
+            "Lạp xưởng Sóc Trăng",
+            "Khô cá lóc",
+            "Rượu mận Sáu Tia (Cần Thơ)"
+        ],
+        "best_time_to_visit": "Mùa khô (tháng 12 - 4) thời tiết dễ chịu. Mùa nước nổi (tháng 9 - 11) để trải nghiệm chợ nổi và sản vật mùa lũ. Đặc biệt, Rằm tháng 10 Âm lịch là thời điểm diễn ra lễ hội Đua ghe Ngo lớn nhất Sóc Trăng."
+    }
+}

@@ -1,0 +1,85 @@
+{
+    "Thanh Hóa": {
+        "culture_details": "Thanh Hóa là một tỉnh lớn, được mệnh danh là 'vùng đất đế vương', nơi phát tích của nhiều triều đại nhất Việt Nam (Tiền Lê, Hậu Lê, Hồ, chúa Trịnh). Đây cũng là cái nôi của nền văn hóa Đông Sơn rực rỡ với biểu tượng là trống đồng. Với địa hình đa dạng từ miền núi Pù Luông hoang sơ, đồng bằng trù phú đến bãi biển Sầm Sơn sầm uất, Thanh Hóa là một Việt Nam thu nhỏ hội tụ đầy đủ các giá trị lịch sử, văn hóa và tự nhiên.",
+        "sub_regions": [],
+        "places_to_visit": [
+            {
+                "name": "Thành nhà Hồ (Vĩnh Lộc)",
+                "category": "di sản",
+                "details": "Di sản Văn hóa Thế giới UNESCO, kinh đô nước Đại Ngu, nổi bật với kỹ thuật xây dựng hoàn toàn bằng những khối đá lớn độc đáo."
+            },
+            {
+                "name": "Khu di tích Quốc gia đặc biệt Lam Kinh (Thọ Xuân)",
+                "category": "lịch sử",
+                "details": "Kinh đô thứ hai của nhà Hậu Lê, là nơi an nghỉ của các vua và hoàng hậu, gắn liền với cuộc khởi nghĩa Lam Sơn của Lê Lợi."
+            },
+            {
+                "name": "Khu bảo tồn thiên nhiên Pù Luông (Bá Thước)",
+                "category": "sinh thái",
+                "details": "Thung lũng hoang sơ với những thửa ruộng bậc thang tuyệt đẹp, là nơi sinh sống của cộng đồng dân tộc Thái, Mường."
+            },
+            {
+                "name": "Thành phố biển Sầm Sơn",
+                "category": "biển",
+                "details": "Một trong những bãi biển lâu đời và sầm uất nhất Việt Nam, nổi tiếng với bãi cát dài, sóng lớn và nhiều hoạt động du lịch."
+            },
+            {
+                "name": "Suối cá thần Cẩm Lương (Cẩm Thủy)",
+                "category": "địa danh",
+                "details": "Suối nước trong vắt với hàng nghìn con cá tự nhiên không ai đánh bắt, gắn liền với những truyền thuyết linh thiêng của người Mường."
+            },
+            {
+                "name": "Vườn Quốc gia Bến En (Như Thanh)",
+                "category": "sinh thái",
+                "details": "Được mệnh danh là 'Vịnh Hạ Long trên cạn' của xứ Thanh, với hồ Mực rộng lớn và hệ sinh thái động thực vật phong phú."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Nem chua Thanh Hóa",
+                "category": "đặc sản",
+                "details": "Đặc sản trứ danh toàn quốc, làm từ thịt lợn lên men, có vị chua thanh, giòn sần sật của bì, cay nồng của tỏi ớt."
+            },
+            {
+                "name": "Chả tôm Thanh Hóa",
+                "category": "đặc sản",
+                "details": "Tôm được giã nhuyễn trộn với bột gấc để có màu đỏ tự nhiên, kẹp vào que nứa rồi nướng trên than hoa, ăn kèm nước chấm chua ngọt."
+            },
+            {
+                "name": "Bánh khoái tép",
+                "category": "ẩm thực đường phố",
+                "details": "Món bánh dân dã tương tự bánh xèo nhưng nhỏ hơn, giòn rụm, nhân là những con tép tươi từ sông Mã, ăn kèm rau sống."
+            },
+            {
+                "name": "Gỏi cá nhệch Nga Sơn",
+                "category": "đặc sản",
+                "details": "Món gỏi công phu làm từ cá nhệch, trộn với thính gạo rang và ăn kèm nhiều loại lá thuốc nam, chấm với chẻo cá đậm đà."
+            },
+            {
+                "name": "Vịt Cổ Lũng (Pù Luông)",
+                "category": "đặc sản",
+                "details": "Giống vịt quý hiếm, xương nhỏ, thịt chắc và thơm, thường được chế biến thành các món luộc, nướng hoặc quay."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ hội Lam Kinh",
+                "time": "Ngày 22 tháng 8 âm lịch",
+                "details": "Lễ hội cấp quốc gia kỷ niệm ngày mất của Anh hùng dân tộc Lê Lợi, tái hiện lại nhiều nghi lễ và trò diễn dân gian thời Hậu Lê."
+            },
+            {
+                "name": "Lễ hội đền Bà Triệu",
+                "time": "Từ ngày 20 đến 24 tháng 2 âm lịch",
+                "details": "Lễ hội lớn để tưởng nhớ nữ anh hùng Triệu Thị Trinh (Bà Triệu) đã có công đánh đuổi giặc Ngô."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Nem chua Thanh Hóa",
+            "Bánh gai Tứ Trụ",
+            "Nước mắm Ba Làng, mắm tép Hà Yên",
+            "Chè lam Phủ Quảng",
+            "Bưởi Luận Văn (tiến vua)"
+        ],
+        "best_time_to_visit": "Mùa hè (tháng 5-8) lý tưởng cho du lịch biển Sầm Sơn, Hải Tiến. Mùa lúa chín ở Pù Luông (tháng 6 và tháng 10) là thời điểm đẹp nhất để trekking. Mùa thu (tháng 9-11) thời tiết dễ chịu, thích hợp tham quan các di tích lịch sử."
+    }
+}

@@ -1,0 +1,94 @@
+{
+    "Cà Mau": {
+        "culture_details": "Cà Mau mới là vùng đất 'cực Nam' thiêng liêng của Tổ quốc, nơi con người và thiên nhiên hòa quyện. Vùng đất này là sự kết hợp giữa hệ sinh thái rừng ngập mặn U Minh Hạ trù phú, điểm cuối cùng của dải đất hình chữ S tại Mũi Cà Mau, với nét văn hóa giao thoa Kinh - Khmer - Hoa đặc sắc của Bạc Liêu, nổi tiếng qua giai thoại 'Công tử Bạc Liêu' và là một trong những cái nôi của nghệ thuật Đờn ca tài tử Nam Bộ.",
+        "sub_regions": [
+            {
+                "name": "Khu vực Cà Mau (cũ)",
+                "highlights": "Cực Nam Tổ quốc - Mũi Cà Mau, Vườn quốc gia U Minh Hạ, xứ sở của tôm cua."
+            },
+            {
+                "name": "Khu vực Bạc Liêu",
+                "highlights": "Giai thoại Công tử Bạc Liêu, Cánh đồng điện gió trên biển, quê hương của bản Dạ Cổ Hoài Lang."
+            }
+        ],
+        "places_to_visit": [
+            {
+                "name": "Mũi Cà Mau (Ngọc Hiển, Cà Mau)",
+                "category": "địa danh",
+                "details": "Điểm cực Nam trên đất liền, nơi duy nhất ở Việt Nam có thể ngắm mặt trời mọc ở biển Đông và lặn ở biển Tây. Có Cột mốc tọa độ Quốc gia GPS 0001."
+            },
+            {
+                "name": "Nhà Công tử Bạc Liêu (TP. Bạc Liêu)",
+                "category": "lịch sử",
+                "details": "Ngôi biệt thự bề thế nhất miền Tây một thời, gắn liền với cuộc đời của 'Công tử Bạc Liêu' Trần Trinh Huy - người nổi tiếng ăn chơi và phóng khoáng."
+            },
+            {
+                "name": "Vườn Quốc gia U Minh Hạ (Cà Mau)",
+                "category": "sinh thái",
+                "details": "Một trong những khu rừng ngập mặn lớn và độc đáo nhất thế giới, nơi du khách có thể đi xuồng khám phá hệ sinh thái và trải nghiệm lấy mật ong."
+            },
+            {
+                "name": "Cánh đồng điện gió Bạc Liêu",
+                "category": "kiến trúc",
+                "details": "Cánh đồng điện gió trên biển đầu tiên của Việt Nam, với hàng chục tuabin khổng lồ trên biển, là điểm check-in rất nổi tiếng."
+            },
+            {
+                "name": "Chùa Xiêm Cán (Bạc Liêu)",
+                "category": "tâm linh",
+                "details": "Ngôi chùa Khmer lộng lẫy và lớn nhất khu vực với kiến trúc Angkor đặc trưng, thể hiện đời sống tín ngưỡng của người Khmer."
+            },
+            {
+                "name": "Sân chim Cà Mau (TP. Cà Mau)",
+                "category": "sinh thái",
+                "details": "Một vườn chim tự nhiên nằm ngay trong lòng thành phố, là nơi trú ngụ của hàng nghìn cá thể cò, vạc và các loài chim khác."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Cua Cà Mau",
+                "category": "đặc sản",
+                "details": "Được mệnh danh là loại cua ngon nhất Việt Nam, thịt chắc, ngọt và gạch nhiều, có thể chế biến thành các món luộc, rang me, nướng..."
+            },
+            {
+                "name": "Bánh tằm Ngan Dừa (Bạc Liêu)",
+                "category": "đặc sản",
+                "details": "Sợi bánh tằm mềm dai làm từ gạo, ăn cùng bì, thịt nạc, giá đỗ và chan nước xốt bì xíu hoặc cà ri đậm đà."
+            },
+            {
+                "name": "Lẩu mắm U Minh (Cà Mau)",
+                "category": "đặc sản",
+                "details": "Phiên bản lẩu mắm đặc trưng của vùng U Minh, nấu từ mắm sặc, ăn kèm các loại cá đồng và rau rừng như đọt choại, bông súng."
+            },
+            {
+                "name": "Bún bò cay Bạc Liêu",
+                "category": "món chính",
+                "details": "Món bún bò có hương vị độc đáo, nước dùng cay nồng vị sa tế và sả, khác biệt so với bún bò ở các vùng miền khác."
+            },
+            {
+                "name": "Ba khía Rạch Gốc (Cà Mau)",
+                "category": "đặc sản",
+                "details": "Đặc sản trứ danh, ba khía được muối chua, khi ăn trộn với tỏi ớt chanh đường, có vị mặn mòi, đậm đà khó quên."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ hội Vía Bà Quan Âm Nam Hải (Bạc Liêu)",
+                "time": "Từ ngày 22 đến 24 tháng 3 âm lịch",
+                "details": "Lễ hội Phật giáo lớn của tỉnh Bạc Liêu, thu hút hàng chục ngàn người về chiêm bái, cầu an tại khu Quan Âm Phật Đài."
+            },
+            {
+                "name": "Lễ hội Nghinh Ông (Cà Mau)",
+                "time": "Tháng 2 âm lịch hằng năm",
+                "details": "Lễ hội cầu ngư lớn nhất của ngư dân Cà Mau, thể hiện lòng biết ơn đối với cá Ông và cầu mong một mùa biển bội thu."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Mật ong rừng U Minh (Cà Mau)",
+            "Tôm khô, khô cá sặc bổi (Cà Mau)",
+            "Nhãn da bò Bạc Liêu",
+            "Mắm Vĩnh Hưng (Bạc Liêu)",
+            "Ba khía muối"
+        ],
+        "best_time_to_visit": "Mùa khô từ tháng 12 đến tháng 4 là thời điểm lý tưởng nhất, khô ráo, thuận tiện cho việc tham quan Đất Mũi và các điểm ngoài trời. Mùa mưa (mùa nước nổi) từ tháng 5 đến tháng 11 mang lại trải nghiệm sinh thái U Minh đặc sắc."
+    }
+}

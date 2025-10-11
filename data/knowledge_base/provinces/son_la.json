@@ -1,0 +1,85 @@
+{
+    "Sơn La": {
+        "culture_details": "Sơn La là một tỉnh miền núi rộng lớn ở Tây Bắc, được mệnh danh là 'trái tim' của vùng với nhiều cảnh quan kỳ vĩ. Nơi đây nổi tiếng nhất với cao nguyên Mộc Châu, một 'thiên đường hoa' với khí hậu mát mẻ và những đồi chè bạt ngàn. Sơn La còn là nơi có Nhà máy Thủy điện lớn nhất Đông Nam Á, di tích lịch sử Nhà tù Sơn La, và là cái nôi của nền văn hóa dân tộc Thái đặc sắc với những điệu múa xòe hoa và ẩm thực độc đáo.",
+        "sub_regions": [],
+        "places_to_visit": [
+            {
+                "name": "Cao nguyên Mộc Châu",
+                "category": "cảnh quan",
+                "details": "Bao gồm các điểm nhấn như Đồi chè Trái tim, Rừng thông Bản Áng, Thác Dải Yếm. Nổi tiếng với các mùa hoa mận, hoa cải, dã quỳ."
+            },
+            {
+                "name": "Tà Xùa (Bắc Yên)",
+                "category": "săn mây",
+                "details": "Một trong những 'thiên đường săn mây' đẹp nhất Việt Nam, nổi tiếng với cung đường trekking 'sống lưng khủng long' hùng vĩ."
+            },
+            {
+                "name": "Cầu kính Bạch Long (Mộc Châu)",
+                "category": "giải trí",
+                "details": "Từng được Sách kỷ lục Guinness công nhận là cầu kính đi bộ dài nhất thế giới, mang lại trải nghiệm mạo hiểm và tầm nhìn ngoạn mục."
+            },
+            {
+                "name": "Nhà máy Thủy điện Sơn La (Mường La)",
+                "category": "kiến trúc",
+                "details": "Công trình thủy điện lớn nhất Đông Nam Á, một biểu tượng cho sự phát triển công nghiệp của Việt Nam."
+            },
+            {
+                "name": "Di tích lịch sử Nhà tù Sơn La (TP. Sơn La)",
+                "category": "lịch sử",
+                "details": "Nơi giam giữ và tôi luyện ý chí của nhiều chiến sĩ cách mạng kiên trung trong thời kỳ kháng chiến chống Pháp."
+            },
+            {
+                "name": "Thung lũng mận Nà Ka (Mộc Châu)",
+                "category": "sinh thái",
+                "details": "Thung lũng mận lớn nhất Mộc Châu, vào mùa xuân hoa mận nở trắng trời như một bức tranh tuyết."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Bê chao Mộc Châu",
+                "category": "đặc sản",
+                "details": "Thịt bê non được thái mỏng, chao qua dầu nóng, ăn mềm ngọt, chấm cùng nước tương đặc biệt. Món ăn phải thử khi đến Mộc Châu."
+            },
+            {
+                "name": "Cá nướng Pa Pỉnh Tộp",
+                "category": "đặc sản",
+                "details": "Đặc sản trứ danh của người Thái, cá chép/trôi được mổ dọc sống lưng, nhồi gia vị mắc khén, rau thơm rồi kẹp nướng trên than."
+            },
+            {
+                "name": "Sữa tươi và các sản phẩm từ sữa Mộc Châu",
+                "category": "đặc sản",
+                "details": "Thương hiệu sữa nổi tiếng với các sản phẩm như sữa tươi thanh trùng, sữa chua, bánh sữa thơm ngon, bổ dưỡng."
+            },
+            {
+                "name": "Nậm pịa",
+                "category": "đặc sản",
+                "details": "Món ăn độc đáo và thử thách nhất của người Thái, là một loại súp sền sệt nấu từ nội tạng và dịch tiêu hóa non của động vật ăn cỏ."
+            },
+            {
+                "name": "Thịt trâu gác bếp",
+                "category": "đặc sản",
+                "details": "Thịt trâu tươi được tẩm ướp gia vị (đặc biệt là mắc khén) rồi hun khói bằng khói bếp củi trong nhiều ngày, tạo ra hương vị độc đáo."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ hội Hết Chá",
+                "time": "Tháng 3 dương lịch hằng năm",
+                "details": "Lễ hội độc đáo của người Thái trắng ở Mộc Châu, là dịp để tạ ơn thầy mo đã chữa bệnh và cầu cho bản làng ấm no, khỏe mạnh."
+            },
+            {
+                "name": "Tết Độc lập của người H'Mông (Mộc Châu)",
+                "time": "Ngày 2 tháng 9 hằng năm",
+                "details": "Ngày hội văn hóa lớn nhất trong năm của người H'Mông, thu hút hàng vạn người về trung tâm Mộc Châu để vui chơi, giao lưu."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Chè Shan tuyết Mộc Châu",
+            "Thịt trâu gác bếp",
+            "Sữa và bánh sữa Mộc Châu",
+            "Mận hậu, dâu tây sấy dẻo (theo mùa)",
+            "Cà phê Arabica Sơn La"
+        ],
+        "best_time_to_visit": "Tháng 11-12 là mùa hoa cải trắng, dã quỳ. Tháng 1-2 là mùa hoa mận, hoa đào. Tháng 9 có Tết Độc lập của người H'Mông. Từ tháng 10 đến tháng 4 năm sau là thời điểm săn mây Tà Xùa đẹp nhất."
+    }
+}

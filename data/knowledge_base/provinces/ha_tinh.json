@@ -1,0 +1,85 @@
+{
+    "Hà Tĩnh": {
+        "culture_details": "Hà Tĩnh là tỉnh thuộc vùng Bắc Trung Bộ, một mảnh đất 'địa linh nhân kiệt' với truyền thống hiếu học và văn hóa sâu sắc. Đây là quê hương của Đại thi hào Nguyễn Du - Danh nhân Văn hóa Thế giới, và là nơi khai sinh ra Di sản Văn hóa Phi vật thể của Nhân loại 'Dân ca Ví, Giặm Nghệ Tĩnh' (cùng với Nghệ An). Lịch sử Hà Tĩnh còn gắn liền với tinh thần cách mạng quật cường qua phong trào Xô Viết Nghệ Tĩnh và sự hy sinh anh dũng tại Ngã ba Đồng Lộc.",
+        "sub_regions": [],
+        "places_to_visit": [
+            {
+                "name": "Khu di tích Ngã ba Đồng Lộc (Can Lộc)",
+                "category": "lịch sử",
+                "details": "Di tích Quốc gia Đặc biệt, nơi tưởng niệm sự hy sinh anh dũng của 10 nữ anh hùng liệt sĩ thanh niên xung phong, là biểu tượng bất tử của chủ nghĩa anh hùng cách mạng."
+            },
+            {
+                "name": "Khu lưu niệm Đại thi hào Nguyễn Du (Nghi Xuân)",
+                "category": "lịch sử",
+                "details": "Di tích Quốc gia Đặc biệt, là quần thể kiến trúc tưởng niệm và trưng bày các tài liệu, hiện vật về cuộc đời và sự nghiệp của tác giả Truyện Kiều."
+            },
+            {
+                "name": "Bãi biển Thiên Cầm (Cẩm Xuyên)",
+                "category": "biển",
+                "details": "Bãi biển đẹp nhất Hà Tĩnh với đường bờ biển hình cánh cung, bãi cát trắng mịn và làn nước trong xanh, được mệnh danh là 'Cung đàn biển' của miền Trung."
+            },
+            {
+                "name": "Chùa Hương Tích (Can Lộc)",
+                "category": "tâm linh",
+                "details": "Nằm trên đỉnh núi Hồng Lĩnh, được mệnh danh là 'Hoan Châu đệ nhất danh lam', là một trong 21 thắng cảnh nổi tiếng nhất của Việt Nam xưa."
+            },
+            {
+                "name": "Hồ Kẻ Gỗ",
+                "category": "cảnh quan",
+                "details": "Hồ nước nhân tạo lớn nhất Hà Tĩnh, một công trình thủy lợi kỳ vĩ gắn liền với bài hát 'Người đi xây hồ Kẻ Gỗ', nay là khu du lịch sinh thái."
+            },
+            {
+                "name": "Vườn Quốc gia Vũ Quang",
+                "category": "sinh thái",
+                "details": "Nơi được mệnh danh là 'vườn di sản ASEAN', có giá trị đa dạng sinh học cao với nhiều loài quý hiếm, đặc biệt là loài Sao la."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Kẹo Cu đơ",
+                "category": "đặc sản",
+                "details": "Đặc sản trứ danh làm từ mật mía, gừng, lạc và bánh đa, có vị ngọt đậm, cay nồng của gừng và giòn tan."
+            },
+            {
+                "name": "Ram bánh mướt",
+                "category": "đặc sản",
+                "details": "Sự kết hợp độc đáo giữa bánh mướt (bánh cuốn) mềm mại bên ngoài và nem rán (ram) giòn rụm bên trong, chấm nước mắm chua ngọt."
+            },
+            {
+                "name": "Bún bò Đò Trai",
+                "category": "món chính",
+                "details": "Thương hiệu bún bò nổi tiếng của Hà Tĩnh, nước dùng có vị ngọt thanh đặc trưng, khác biệt so với bún bò Huế."
+            },
+            {
+                "name": "Gỏi cá đục Vũng Áng",
+                "category": "hải sản",
+                "details": "Món gỏi làm từ cá đục tươi sống, thịt ngọt và chắc, trộn với các loại gia vị và ăn kèm lá sung, chuối xanh."
+            },
+            {
+                "name": "Cháo canh",
+                "category": "món chính",
+                "details": "Món ăn sáng phổ biến, sợi bánh canh làm từ bột mỳ dai dai, nước dùng hầm từ xương heo đậm đà, ăn kèm chả và rau thơm."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ hội Chùa Hương Tích",
+                "time": "Khai hội từ ngày 6 tháng Giêng, kéo dài đến hết tháng 3 âm lịch",
+                "details": "Lễ hội hành hương leo núi dâng hương đầu năm, cầu mong bình an, may mắn tại 'Hoan Châu đệ nhất danh lam'."
+            },
+            {
+                "name": "Lễ hội Sĩ, Nông, Công, Thương, Ngư (Cẩm Xuyên)",
+                "time": "Tháng 4 âm lịch hằng năm",
+                "details": "Lễ hội cầu ngư và tôn vinh các ngành nghề truyền thống, với các hoạt động đua thuyền, kéo co và các trò chơi dân gian."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Kẹo Cu đơ",
+            "Bưởi Phúc Trạch (theo mùa)",
+            "Cam bù Hương Sơn (theo mùa)",
+            "Nước mắm Cửa Nhượng",
+            "Mực khô Vũng Áng"
+        ],
+        "best_time_to_visit": "Mùa xuân (tháng 2-4) thời tiết mát mẻ, mùa của lễ hội. Mùa hè (tháng 4-6) là thời điểm lý tưởng để du lịch biển Thiên Cầm. Nên tránh mùa mưa bão từ tháng 8 đến tháng 11."
+    }
+}

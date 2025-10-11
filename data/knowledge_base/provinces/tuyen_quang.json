@@ -1,0 +1,94 @@
+{
+    "Tuyên Quang": {
+        "culture_details": "Tuyên Quang mới là vùng đất hội tụ giữa lịch sử cách mạng hào hùng và thiên nhiên kỳ vĩ bậc nhất vùng núi phía Bắc. Nơi đây là sự kết hợp giữa 'Thủ đô Khu giải phóng', 'Thủ đô Kháng chiến' Tuyên Quang với khu di tích lịch sử Tân Trào, và Hà Giang - mảnh đất địa đầu Tổ quốc với Công viên địa chất toàn cầu UNESCO Cao nguyên đá Đồng Văn. Vùng đất này còn là không gian văn hóa đặc sắc của các dân tộc Tày, Mông, Dao với Lễ hội Thành Tuyên độc đáo và Chợ tình Khâu Vai nổi tiếng.",
+        "sub_regions": [
+            {
+                "name": "Khu vực Tuyên Quang (cũ)",
+                "highlights": "'Thủ đô kháng chiến', nơi có Khu di tích Tân Trào, hồ Na Hang - Lâm Bình và Lễ hội Thành Tuyên."
+            },
+            {
+                "name": "Khu vực Hà Giang",
+                "highlights": "Vùng đất địa đầu Tổ quốc, Cao nguyên đá Đồng Văn, cung đường đèo Mã Pí Lèng huyền thoại."
+            }
+        ],
+        "places_to_visit": [
+            {
+                "name": "Cao nguyên đá Đồng Văn (Hà Giang)",
+                "category": "di sản",
+                "details": "Công viên địa chất toàn cầu UNESCO, nổi tiếng với cảnh quan núi đá tai mèo hùng vĩ và những cung đường đèo hiểm trở."
+            },
+            {
+                "name": "Khu di tích Quốc gia đặc biệt Tân Trào (Tuyên Quang)",
+                "category": "lịch sử",
+                "details": "Thủ đô lâm thời của Khu giải phóng và là nơi diễn ra những sự kiện quyết định vận mệnh dân tộc trước Cách mạng tháng Tám 1945."
+            },
+            {
+                "name": "Đèo Mã Pí Lèng & Sông Nho Quế (Hà Giang)",
+                "category": "thiên nhiên",
+                "details": "Một trong 'Tứ đại đỉnh đèo' Việt Nam, nhìn xuống dòng Nho Quế màu ngọc bích và Hẻm Tu Sản - hẻm vực sâu nhất Đông Nam Á."
+            },
+            {
+                "name": "Khu du lịch sinh thái Na Hang - Lâm Bình (Tuyên Quang)",
+                "category": "sinh thái",
+                "details": "Được mệnh danh là 'Hạ Long trên cạn của Tuyên Quang', với lòng hồ rộng lớn, 99 ngọn núi đá vôi và Thác Mơ hùng vĩ."
+            },
+            {
+                "name": "Cột cờ Lũng Cú (Hà Giang)",
+                "category": "địa danh",
+                "details": "Điểm cực Bắc thiêng liêng của Tổ quốc, nơi lá cờ đỏ sao vàng rộng 54m² tung bay, tượng trưng cho 54 dân tộc anh em."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Thắng cố",
+                "category": "đặc sản",
+                "details": "Món ăn truyền thống của người H'Mông, là một loại súp nấu từ thịt và nội tạng ngựa (hoặc bò, trâu), thảo quả, hạt dổi."
+            },
+            {
+                "name": "Cháo ấu tẩu (Hà Giang)",
+                "category": "đặc sản",
+                "details": "Món cháo độc đáo nấu từ củ ấu tẩu (có độc tính, cần chế biến kỹ), có vị đắng sau đó ngọt hậu, giúp giải cảm."
+            },
+            {
+                "name": "Mắm cá ruộng Chiêm Hóa (Tuyên Quang)",
+                "category": "đặc sản",
+                "details": "Đặc sản của người Tày, làm từ cá ruộng muối chua, khi ăn có thể chưng với trứng hoặc thịt, hương vị rất đặc trưng."
+            },
+            {
+                "name": "Bánh tam giác mạch (Hà Giang)",
+                "category": "đặc sản",
+                "details": "Loại bánh được làm từ hạt của hoa tam giác mạch, có vị ngọt bùi, xốp mềm, là thức quà đặc trưng của cao nguyên đá."
+            },
+            {
+                "name": "Cơm lam (Tuyên Quang)",
+                "category": "đặc sản",
+                "details": "Gạo nếp nương nấu trong ống tre non, khi chín quyện với hương thơm của tre, ăn dẻo và ngọt thanh."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ hội Thành Tuyên (Tuyên Quang)",
+                "time": "Dịp Tết Trung thu (Rằm tháng 8 âm lịch)",
+                "details": "Lễ hội Trung thu độc đáo và lớn nhất Việt Nam, được Sách kỷ lục Guinness công nhận, với những mô hình đèn lồng khổng lồ diễu hành khắp thành phố."
+            },
+            {
+                "name": "Chợ tình Khâu Vai (Hà Giang)",
+                "time": "Ngày 27 tháng 3 âm lịch hằng năm",
+                "details": "Phiên chợ tình độc đáo dành cho những người có tình yêu dang dở, mang giá trị nhân văn sâu sắc về tình yêu và sự vị tha."
+            },
+            {
+                "name": "Lễ hội hoa Tam giác mạch (Hà Giang)",
+                "time": "Thường niên vào tháng 10 - 11",
+                "details": "Lễ hội tôn vinh loài hoa biểu tượng của cao nguyên đá, với nhiều hoạt động văn hóa, nghệ thuật của các dân tộc."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Mật ong bạc hà (Hà Giang)",
+            "Thịt trâu gác bếp",
+            "Cam sành Hàm Yên (Tuyên Quang)",
+            "Rượu ngô Na Hang (Tuyên Quang)",
+            "Trà Shan tuyết cổ thụ (Hà Giang)"
+        ],
+        "best_time_to_visit": "Mùa thu (tháng 9-10) là thời điểm đẹp nhất, có Lễ hội Thành Tuyên và mùa lúa chín vàng ở Hà Giang. Tháng 10-11 là mùa hoa tam giác mạch. Mùa xuân (tháng 2-4) có hoa mận, hoa đào và các lễ hội đầu năm."
+    }
+}

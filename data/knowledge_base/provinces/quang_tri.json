@@ -1,0 +1,94 @@
+{
+    "Quảng Trị": {
+        "culture_details": "Quảng Trị mới là 'vùng đất lửa' linh thiêng, nơi mang trong mình những ký ức lịch sử hào hùng và bi tráng nhất của dân tộc trong thế kỷ 20. Đây là sự kết hợp giữa 'vĩ tuyến 17' Quảng Trị - biểu tượng của nỗi đau chia cắt và khát vọng thống nhất với các di tích như cầu Hiền Lương, thành cổ Quảng Trị; và Quảng Bình - 'vương quốc hang động' với Di sản Thiên nhiên Thế giới Phong Nha - Kẻ Bàng và là quê hương của Đại tướng Võ Nguyên Giáp.",
+        "sub_regions": [
+            {
+                "name": "Khu vực Quảng Trị (cũ)",
+                "highlights": "Vùng đất lửa với vĩ tuyến 17, cầu Hiền Lương, Thành cổ Quảng Trị, địa đạo Vịnh Mốc."
+            },
+            {
+                "name": "Khu vực Quảng Bình",
+                "highlights": "Di sản Thiên nhiên Thế giới Phong Nha - Kẻ Bàng, 'vương quốc hang động', quê hương Đại tướng Võ Nguyên Giáp."
+            }
+        ],
+        "places_to_visit": [
+            {
+                "name": "Vườn quốc gia Phong Nha - Kẻ Bàng (Quảng Bình)",
+                "category": "di sản",
+                "details": "Di sản Thiên nhiên Thế giới UNESCO, hệ thống núi đá vôi cổ với hơn 300 hang động kỳ vĩ, bao gồm Động Phong Nha, Động Thiên Đường."
+            },
+            {
+                "name": "Khu di tích Lịch sử Quốc gia Đặc biệt Đôi bờ Hiền Lương - Bến Hải (Quảng Trị)",
+                "category": "lịch sử",
+                "details": "Biểu tượng của nỗi đau chia cắt đất nước trong 21 năm, nơi có cây cầu Hiền Lương lịch sử và cột cờ trên vĩ tuyến 17."
+            },
+            {
+                "name": "Địa đạo Vịnh Mốc (Quảng Trị)",
+                "category": "lịch sử",
+                "details": "Một 'làng' dưới lòng đất với hệ thống đường hầm, bếp, hội trường... nơi người dân sinh sống và chiến đấu trong những năm chiến tranh."
+            },
+            {
+                "name": "Mộ Đại tướng Võ Nguyên Giáp (Vũng Chùa - Đảo Yến, Quảng Bình)",
+                "category": "lịch sử",
+                "details": "Nơi an nghỉ cuối cùng của vị Đại tướng huyền thoại của dân tộc, một địa điểm tâm linh và lịch sử quan trọng."
+            },
+            {
+                "name": "Thành cổ Quảng Trị",
+                "category": "lịch sử",
+                "details": "Nơi diễn ra cuộc chiến 81 ngày đêm khốc liệt vào mùa hè năm 1972, được xem là một nghĩa trang không nấm mồ."
+            },
+            {
+                "name": "Sông Chày - Hang Tối (Quảng Bình)",
+                "category": "trải nghiệm",
+                "details": "Khu du lịch trải nghiệm với các hoạt động đu dây zipline, chèo thuyền kayak trên dòng sông xanh ngọc và tắm bùn trong hang động."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Cháo canh cá lóc (Quảng Bình)",
+                "category": "đặc sản",
+                "details": "Món ăn sáng phổ biến với sợi mì tự làm từ bột gạo, nước dùng đậm đà và thịt cá lóc đồng thơm ngọt."
+            },
+            {
+                "name": "Bún hến Mai Xá (Quảng Trị)",
+                "category": "đặc sản",
+                "details": "Món bún độc đáo với nước dùng chan xâm xấp, vị ngọt của hến và cay nồng của gừng, chỉ có tại làng Mai Xá."
+            },
+            {
+                "name": "Lẩu cá khoai (Quảng Bình)",
+                "category": "đặc sản",
+                "details": "Đặc sản mùa đông (khoảng tháng 9-12), cá khoai thân mềm như tan trong miệng, nấu lẩu với cà chua, khế chua, nấm."
+            },
+            {
+                "name": "Bánh lọc Mỹ Chánh (Quảng Trị)",
+                "category": "đặc sản",
+                "details": "Bánh bột lọc nổi tiếng với nhân tôm thịt, được gói bằng lá chuối, vỏ bánh trong và dai, chấm nước mắm ngọt."
+            },
+            {
+                "name": "Đẻn biển (Quảng Bình)",
+                "category": "đặc sản",
+                "details": "Một loại rắn biển, được chế biến thành nhiều món như ram đẻn, cháo đẻn, tiết đẻn, là đặc sản quý và bổ dưỡng."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ hội 'Thống nhất non sông'",
+                "time": "Ngày 30 tháng 4 hằng năm",
+                "details": "Lễ hội cấp quốc gia diễn ra tại Khu di tích Đôi bờ Hiền Lương, kỷ niệm ngày giải phóng miền Nam, thống nhất đất nước."
+            },
+            {
+                "name": "Lễ hội đua thuyền truyền thống trên sông Kiến Giang (Quảng Bình)",
+                "time": "Ngày 2 tháng 9 hằng năm",
+                "details": "Lễ hội đua thuyền có lịch sử lâu đời, thể hiện tinh thần thượng võ và là hoạt động văn hóa lớn mừng Tết Độc lập."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Khoai deo (Quảng Bình)",
+            "Rượu Kim Long (Quảng Trị)",
+            "Nước mắm Bảo Ninh (Quảng Bình)",
+            "Tiêu Của (Quảng Trị)",
+            "Mực khô, ruốc biển"
+        ],
+        "best_time_to_visit": "Mùa khô từ tháng 3 đến tháng 8 là thời gian lý tưởng nhất để khám phá hang động và du lịch biển. Cần hết sức lưu ý và tránh mùa mưa bão, lũ lụt từ tháng 9 đến tháng 12."
+    }
+}

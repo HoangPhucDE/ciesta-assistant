@@ -1,0 +1,94 @@
+{
+    "Quảng Ngãi": {
+        "culture_details": "Quảng Ngãi mới là sự giao thoa độc đáo giữa văn hóa ven biển miền Trung và văn hóa Bắc Tây Nguyên. Nơi đây là cái nôi của nền văn hóa Sa Huỳnh rực rỡ, vùng đất lưu giữ ký ức lịch sử hào hùng tại Sơn Mỹ (Mỹ Lai) và quê hương của Hải đội Hoàng Sa. Sáp nhập với Kon Tum, vùng đất này được bổ sung thêm không gian văn hóa cồng chiêng, những mái nhà Rông cao vút đặc trưng của người Ba Na, Xê Đăng và 'Đà Lạt thứ hai' Măng Đen thơ mộng.",
+        "sub_regions": [
+            {
+                "name": "Khu vực Quảng Ngãi (cũ)",
+                "highlights": "Cái nôi văn hóa Sa Huỳnh, Di tích Sơn Mỹ, 'Vương quốc tỏi' - Đảo Lý Sơn."
+            },
+            {
+                "name": "Khu vực Kon Tum",
+                "highlights": "Vùng đất Bắc Tây Nguyên, Nhà thờ Gỗ trăm tuổi, Nhà Rông Kon Klor, Măng Đen."
+            }
+        ],
+        "places_to_visit": [
+            {
+                "name": "Đảo Lý Sơn (Quảng Ngãi)",
+                "category": "biển",
+                "details": "Hòn đảo núi lửa độc đáo, được mệnh danh là 'Vương quốc tỏi', nổi tiếng với Cổng Tò Vò, Chùa Hang và những bãi biển nước trong vắt."
+            },
+            {
+                "name": "Nhà thờ Gỗ Kon Tum",
+                "category": "kiến trúc",
+                "details": "Kiệt tác kiến trúc hơn 100 năm tuổi, kết hợp hài hòa giữa phong cách Roman và kiến trúc nhà sàn của người Ba Na, hoàn toàn bằng gỗ."
+            },
+            {
+                "name": "Khu du lịch sinh thái Măng Đen (Kon Tum)",
+                "category": "nghỉ dưỡng",
+                "details": "Được mệnh danh là 'Đà Lạt thứ hai' với khí hậu mát mẻ quanh năm, rừng thông nguyên sinh và các hồ, thác đẹp như hồ Đăk Ke, thác Pa Sỹ."
+            },
+            {
+                "name": "Khu chứng tích Sơn Mỹ - Mỹ Lai (Quảng Ngãi)",
+                "category": "lịch sử",
+                "details": "Di tích quốc gia đặc biệt, nơi tưởng niệm vụ thảm sát do quân đội Mỹ gây ra năm 1968, một chứng tích đau thương về chiến tranh."
+            },
+            {
+                "name": "Nhà Rông Kon Klor (Kon Tum)",
+                "category": "văn hóa",
+                "details": "Nhà Rông lớn nhất Tây Nguyên, là 'trái tim', linh hồn và là nơi sinh hoạt cộng đồng của người Ba Na bên cạnh cây cầu treo Kon Klor."
+            },
+            {
+                "name": "Biển Mỹ Khê (Quảng Ngãi)",
+                "category": "biển",
+                "details": "Bãi biển hoang sơ, yên tĩnh với bãi cát trắng mịn và hàng dương xanh ngắt, khác với bãi biển Mỹ Khê sầm uất ở Đà Nẵng."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Don (Quảng Ngãi)",
+                "category": "đặc sản",
+                "details": "Món ăn dân dã đặc trưng làm từ con don sống ở sông Trà, có vị ngọt thanh, ăn kèm bánh tráng nướng."
+            },
+            {
+                "name": "Gỏi lá Kon Tum",
+                "category": "đặc sản",
+                "details": "Trải nghiệm ẩm thực độc đáo với 40-50 loại lá rừng khác nhau, cuốn với thịt ba chỉ, tôm và chấm nước sốt đặc biệt."
+            },
+            {
+                "name": "Ram bắp (Quảng Ngãi)",
+                "category": "ẩm thực đường phố",
+                "details": "Món ram giòn rụm với nhân bắp (ngô) bào mỏng trộn với gia vị, cuốn bánh tráng và chiên vàng."
+            },
+            {
+                "name": "Gà nướng cơm lam Kon Tum",
+                "category": "đặc sản",
+                "details": "Gà thả đồi được ướp gia vị từ rễ cây, lá rừng rồi nướng trên than hồng, ăn cùng cơm lam dẻo thơm nấu trong ống tre."
+            },
+            {
+                "name": "Kẹo gương Quảng Ngãi",
+                "category": "đặc sản",
+                "details": "Món kẹo trong như gương, giòn tan, làm từ đường, mạch nha và mè (vừng), lạc rang."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ Khao lề thế lính Hoàng Sa (Lý Sơn, Quảng Ngãi)",
+                "time": "Tháng 2 và 3 âm lịch",
+                "details": "Di sản văn hóa phi vật thể Quốc gia, lễ hội tri ân các hùng binh Hoàng Sa đã hy sinh để bảo vệ chủ quyền biển đảo."
+            },
+            {
+                "name": "Lễ hội Nhà Rông Mới",
+                "time": "Thường diễn ra sau mùa thu hoạch (khoảng tháng 3-4)",
+                "details": "Lễ hội lớn nhất của người Ba Na ở Kon Tum, mừng ngôi nhà Rông mới của làng với các nghi lễ đâm trâu và múa cồng chiêng."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Tỏi Lý Sơn (Quảng Ngãi)",
+            "Rượu vang sim Măng Đen (Kon Tum)",
+            "Kẹo gương, mạch nha (Quảng Ngãi)",
+            "Cà phê, Sâm dây (Kon Tum)",
+            "Quế Trà Bồng (Quảng Ngãi)"
+        ],
+        "best_time_to_visit": "Mùa khô từ tháng 12 đến tháng 4 là thời điểm lý tưởng nhất cho cả hai khu vực. Mùa hè (tháng 4-8) là thời điểm tốt nhất để du lịch biển và đảo Lý Sơn. Măng Đen mát mẻ quanh năm."
+    }
+}

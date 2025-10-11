@@ -1,0 +1,99 @@
+{
+    "Đắk Lắk": {
+        "culture_details": "Đắk Lắk mới là một hành trình trải nghiệm độc đáo 'từ cao nguyên xuống biển'. Nơi đây là sự hòa quyện giữa 'thủ phủ cà phê' Buôn Ma Thuột với không gian văn hóa Cồng chiêng Tây Nguyên hùng vĩ, và 'xứ sở hoa vàng trên cỏ xanh' Phú Yên với những kỳ quan địa chất ven biển độc nhất vô nhị. Sự kết hợp này tạo nên một vùng đất đa dạng về cảnh quan, văn hóa và ẩm thực, từ hương vị cà phê Ban Mê đến vị mặn mòi của cá ngừ đại dương.",
+        "sub_regions": [
+            {
+                "name": "Khu vực Đắk Lắk (cũ)",
+                "highlights": "Thủ phủ cà phê Buôn Ma Thuột, văn hóa cồng chiêng, Vườn quốc gia Yok Đôn."
+            },
+            {
+                "name": "Khu vực Phú Yên",
+                "highlights": "Xứ sở 'hoa vàng trên cỏ xanh', Gành Đá Đĩa độc đáo, Mũi Điện - cực Đông trên đất liền."
+            }
+        ],
+        "places_to_visit": [
+            {
+                "name": "Gành Đá Đĩa (Phú Yên)",
+                "category": "địa chất",
+                "details": "Kiệt tác của thiên nhiên với hàng chục nghìn cột đá bazan hình lục giác xếp chồng lên nhau như một tổ ong khổng lồ bên bờ biển."
+            },
+            {
+                "name": "Làng cà phê Trung Nguyên (Buôn Ma Thuột)",
+                "category": "văn hóa",
+                "details": "Một không gian kiến trúc độc đáo, nơi du khách có thể tìm hiểu lịch sử, văn hóa cà phê và thưởng thức những ly cà phê năng lượng."
+            },
+            {
+                "name": "Bãi Xép - Gành Ông (Phú Yên)",
+                "category": "cảnh quan",
+                "details": "Nổi tiếng qua bộ phim 'Tôi thấy hoa vàng trên cỏ xanh', là sự kết hợp hài hòa giữa bãi biển, bãi đá và đồng cỏ xanh mướt."
+            },
+            {
+                "name": "Buôn Đôn (Đắk Lắk)",
+                "category": "văn hóa",
+                "details": "Làng đảo nổi tiếng với truyền thống săn bắt và thuần dưỡng voi rừng, trải nghiệm cầu treo và kiến trúc nhà sàn."
+            },
+            {
+                "name": "Mũi Điện - Hải đăng Đại Lãnh (Phú Yên)",
+                "category": "địa danh",
+                "details": "Nơi đón ánh bình minh đầu tiên trên đất liền Việt Nam, với ngọn hải đăng cổ kính và bãi Môn thơ mộng dưới chân."
+            },
+            {
+                "name": "Cụm thác Dray Sáp - Dray Nur (Đắk Lắk)",
+                "category": "thiên nhiên",
+                "details": "Hệ thống thác nước hùng vĩ trên dòng sông Sêrêpôk, gắn liền với những câu chuyện truyền thuyết của người Ê Đê."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Mắt cá ngừ đại dương (Phú Yên)",
+                "category": "đặc sản",
+                "details": "Món ăn trứ danh được hầm với các vị thuốc bắc, có vị béo ngậy, bổ dưỡng, là trải nghiệm ẩm thực không thể bỏ lỡ."
+            },
+            {
+                "name": "Gà nướng cơm lam Bản Đôn (Đắk Lắk)",
+                "category": "đặc sản",
+                "details": "Gà thả vườn được ướp gia vị đặc trưng của núi rừng rồi nướng trên than hồng, ăn cùng cơm lam nấu trong ống tre."
+            },
+            {
+                "name": "Sò huyết đầm Ô Loan (Phú Yên)",
+                "category": "hải sản",
+                "details": "Đặc sản nổi tiếng với sò to, thịt dày và ngọt, thường được chế biến thành các món nướng mỡ hành, rang me, nấu cháo."
+            },
+            {
+                "name": "Bún đỏ Ban Mê (Đắk Lắk)",
+                "category": "món chính",
+                "details": "Món bún có sợi màu đỏ đặc trưng từ hạt điều, nước dùng đậm đà vị riêu cua và xương heo."
+            },
+            {
+                "name": "Bánh hỏi lòng heo (Phú Yên)",
+                "category": "món chính",
+                "details": "Bánh hỏi mềm mịn ăn kèm lòng heo luộc, bánh tráng, rau sống và chấm nước mắm chua ngọt đặc biệt."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ hội Cà phê Buôn Ma Thuột",
+                "time": "Thường được tổ chức 2 năm một lần vào tháng 3",
+                "details": "Lễ hội cấp quốc gia nhằm tôn vinh cây cà phê, quảng bá thương hiệu Cà phê Buôn Ma Thuột và văn hóa Tây Nguyên."
+            },
+            {
+                "name": "Lễ hội Cầu ngư",
+                "time": "Diễn ra vào mùa xuân tại nhiều làng chài ven biển",
+                "details": "Nét văn hóa tín ngưỡng của ngư dân vùng biển, cầu cho mưa thuận gió hòa, trời yên biển lặng, đánh bắt bội thu."
+            },
+            {
+                "name": "Lễ hội Đua voi Buôn Đôn",
+                "time": "Thường được tổ chức 2 năm một lần vào tháng 3",
+                "details": "Ngày hội văn hóa lớn nhất của các dân tộc Tây Nguyên, tôn vinh tinh thần thượng võ và tài thuần dưỡng voi."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Cà phê Buôn Ma Thuột",
+            "Bò một nắng Phú Yên",
+            "Mật ong hoa cà phê",
+            "Hạt tiêu, bột ca cao Đắk Lắk",
+            "Nước mắm Gành Đỏ (Phú Yên)"
+        ],
+        "best_time_to_visit": "Mùa khô (tháng 11 - 4) là thời điểm lý tưởng cho cả hai khu vực. Đặc biệt tháng 3 là mùa hoa cà phê ở Đắk Lắk và mùa lễ hội. Mùa hè (tháng 5-8) thích hợp du lịch biển Phú Yên nhưng có thể có mưa ở Tây Nguyên."
+    }
+}

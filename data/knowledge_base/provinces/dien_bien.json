@@ -1,0 +1,85 @@
+{
+    "Điện Biên": {
+        "culture_details": "Điện Biên là tỉnh duy nhất có chung đường biên giới với cả Lào và Trung Quốc, là mảnh đất lịch sử thiêng liêng nơi ghi dấu Chiến thắng Điện Biên Phủ 'lừng lẫy năm châu, chấn động địa cầu', đặt dấu chấm hết cho chủ nghĩa thực dân Pháp tại Đông Dương. Nơi đây không chỉ là một bảo tàng lịch sử sống động mà còn là quê hương của 19 dân tộc anh em, trong đó nổi bật là văn hóa của dân tộc Thái với những điệu múa xòe và các món ăn đậm chất núi rừng Tây Bắc.",
+        "sub_regions": [],
+        "places_to_visit": [
+            {
+                "name": "Quần thể Di tích Chiến trường Điện Biên Phủ",
+                "category": "lịch sử",
+                "details": "Bao gồm các di tích nổi tiếng như Đồi A1, Hầm chỉ huy tướng Đờ Cát-xtơ-ri, Tượng đài Chiến thắng, Cầu Mường Thanh lịch sử..."
+            },
+            {
+                "name": "Bảo tàng Chiến thắng lịch sử Điện Biên Phủ",
+                "category": "lịch sử",
+                "details": "Công trình kiến trúc hiện đại có thiết kế hình chiếc mũ nan, trưng bày bức tranh panorama toàn cảnh lớn nhất Đông Nam Á về chiến dịch Điện Biên Phủ."
+            },
+            {
+                "name": "Sở chỉ huy chiến dịch Mường Phăng",
+                "category": "lịch sử",
+                "details": "Nơi làm việc của Đại tướng Võ Nguyên Giáp và Bộ chỉ huy chiến dịch, nằm ẩn mình trong khu rừng nguyên sinh dưới chân núi Pú Đồn."
+            },
+            {
+                "name": "Cột mốc A Pa Chải - Cực Tây Tổ quốc",
+                "category": "địa danh",
+                "details": "Nơi được mệnh danh 'một tiếng gà gáy ba nước cùng nghe', là điểm Cực Tây trên đất liền của Việt Nam, giáp ranh với Lào và Trung Quốc."
+            },
+            {
+                "name": "Đèo Pha Đin",
+                "category": "thiên nhiên",
+                "details": "Một trong 'Tứ đại đỉnh đèo' của Việt Nam, cung đường hiểm trở hùng vĩ, là ranh giới tự nhiên giữa Sơn La và Điện Biên."
+            },
+            {
+                "name": "Cánh đồng Mường Thanh",
+                "category": "cảnh quan",
+                "details": "Cánh đồng lớn nhất vùng Tây Bắc, nổi tiếng với vựa lúa gạo Tám thơm ngon, khung cảnh trù phú, thanh bình."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Gà nướng mắc khén",
+                "category": "đặc sản",
+                "details": "Gà đồi được tẩm ướp với mắc khén - 'linh hồn' của gia vị Tây Bắc, nướng trên than củi cho da giòn, thịt thơm lừng."
+            },
+            {
+                "name": "Xôi nếp nương ngũ sắc",
+                "category": "đặc sản",
+                "details": "Món xôi dẻo thơm nấu từ gạo nếp nương, được nhuộm màu tự nhiên từ các loại lá cây rừng, tượng trưng cho ngũ hành."
+            },
+            {
+                "name": "Cá nướng Pa Pỉnh Tộp",
+                "category": "đặc sản",
+                "details": "Đặc sản của người Thái, cá được mổ dọc sống lưng, nhồi các loại rau thơm và gia vị rồi kẹp que tre nướng trên than hồng."
+            },
+            {
+                "name": "Thịt trâu gác bếp",
+                "category": "đặc sản",
+                "details": "Thịt trâu tươi được tẩm ướp gia vị rồi hun khói bằng khói bếp củi trong nhiều ngày, tạo ra hương vị độc đáo, đậm đà."
+            },
+            {
+                "name": "Chẩm chéo",
+                "category": "gia vị",
+                "details": "Thức chấm trứ danh của người Thái, kết hợp giữa muối, ớt, tỏi, mắc khén và các loại rau thơm, dùng để chấm xôi, thịt luộc, măng."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ hội Hoa Ban",
+                "time": "Thường niên vào tháng 3",
+                "details": "Lễ hội văn hóa lớn nhất tỉnh, tôn vinh vẻ đẹp hoa ban - biểu tượng của núi rừng Tây Bắc và các giá trị văn hóa dân tộc Thái."
+            },
+            {
+                "name": "Lễ Kỷ niệm Chiến thắng Điện Biên Phủ",
+                "time": "Ngày 7 tháng 5 hằng năm",
+                "details": "Sự kiện trọng đại của cả nước, được tổ chức long trọng tại Điện Biên với nhiều hoạt động diễu binh, diễu hành và tri ân."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Thịt trâu gác bếp",
+            "Gạo Tám Điện Biên",
+            "Sâu chít",
+            "Măng khô, nấm hương rừng",
+            "Hạt mắc khén, hạt dổi"
+        ],
+        "best_time_to_visit": "Tháng 3 là mùa hoa ban nở trắng trời và diễn ra lễ hội. Tháng 9 là mùa lúa chín vàng trên cánh đồng Mường Thanh. Dịp kỷ niệm chiến thắng 7/5 là thời điểm ý nghĩa để sống lại không khí lịch sử hào hùng."
+    }
+}

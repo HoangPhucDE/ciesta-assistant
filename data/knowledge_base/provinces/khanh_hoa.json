@@ -1,0 +1,99 @@
+{
+    "Khánh Hòa": {
+        "culture_details": "Khánh Hòa mới là 'thủ phủ du lịch biển' của Việt Nam, nơi hội tụ giữa thành phố biển Nha Trang sôi động bậc nhất và vùng đất Ninh Thuận đầy nắng gió với di sản văn hóa Chăm đặc sắc. Đây là sự kết hợp giữa những vịnh biển được xếp vào hàng đẹp nhất thế giới, các hoạt động lặn biển, nghỉ dưỡng cao cấp, với vẻ đẹp hoang sơ của vịnh Vĩnh Hy, những vườn nho trĩu quả, làng gốm Chăm cổ nhất Đông Nam Á và các tháp Chăm cổ kính.",
+        "sub_regions": [
+            {
+                "name": "Khu vực Khánh Hòa (cũ)",
+                "highlights": "Thành phố biển Nha Trang, Vịnh Cam Ranh, các hòn đảo xinh đẹp và hoạt động lặn biển."
+            },
+            {
+                "name": "Khu vực Ninh Thuận",
+                "highlights": "'Vùng đất của nắng và gió', trung tâm văn hóa Chăm, nổi tiếng với vườn nho, đồi cừu, và các tháp Chăm hùng vĩ."
+            }
+        ],
+        "places_to_visit": [
+            {
+                "name": "Vịnh Nha Trang (Khánh Hòa)",
+                "category": "biển",
+                "details": "Một trong những vịnh biển đẹp nhất thế giới, nổi tiếng với các hòn đảo như Hòn Mun (lặn san hô), Hòn Tằm và công viên giải trí VinWonders."
+            },
+            {
+                "name": "Cụm tháp Chăm Pô Klong Garai (Ninh Thuận)",
+                "category": "lịch sử",
+                "details": "Quần thể tháp Chăm hùng vĩ và nguyên vẹn nhất còn lại ở Việt Nam, một kiệt tác kiến trúc, nghệ thuật của người Chăm."
+            },
+            {
+                "name": "Tháp Bà Ponagar (Khánh Hòa)",
+                "category": "lịch sử",
+                "details": "Quần thể kiến trúc Chăm Pa cổ, nơi diễn ra Lễ hội Tháp Bà hằng năm, một biểu tượng văn hóa tín ngưỡng của Nha Trang."
+            },
+            {
+                "name": "Vịnh Vĩnh Hy (Ninh Thuận)",
+                "category": "thiên nhiên",
+                "details": "Một trong 4 vịnh biển đẹp nhất Việt Nam, mang vẻ đẹp hoang sơ với làn nước trong xanh, các rạn san hô và những bãi đá độc đáo."
+            },
+            {
+                "name": "Viện Hải dương học Nha Trang (Khánh Hòa)",
+                "category": "khám phá",
+                "details": "Nơi lưu giữ và trưng bày hàng chục nghìn mẫu vật sinh vật biển, bao gồm cả bộ xương cá voi khổng lồ dài 18 mét."
+            },
+            {
+                "name": "Làng gốm Bàu Trúc (Ninh Thuận)",
+                "category": "làng nghề",
+                "details": "Làng gốm cổ nhất Đông Nam Á còn hoạt động, nổi tiếng với kỹ thuật làm gốm thủ công độc đáo không cần bàn xoay của người Chăm."
+            }
+        ],
+        "what_to_eat": [
+            {
+                "name": "Nem nướng Nha Trang (Khánh Hòa)",
+                "category": "đặc sản",
+                "details": "Đặc sản trứ danh với những xiên nem nướng thơm lừng, ăn kèm bánh tráng chiên giòn, rau sống và nước chấm đặc biệt."
+            },
+            {
+                "name": "Thịt cừu, Dông 7 món (Ninh Thuận)",
+                "category": "đặc sản",
+                "details": "Các món ăn độc đáo của xứ Phan Rang, thịt cừu được chế biến thành nhiều món nướng, lẩu; còn dông cát thì có thể làm gỏi, nướng, chả..."
+            },
+            {
+                "name": "Bún sứa Nha Trang (Khánh Hòa)",
+                "category": "món chính",
+                "details": "Món bún có nước dùng thanh ngọt nấu từ cá, ăn kèm những miếng sứa trắng giòn sần sật và chả cá."
+            },
+            {
+                "name": "Cơm gà Phan Rang (Ninh Thuận)",
+                "category": "món chính",
+                "details": "Gà ta thả vườn thịt săn chắc, da vàng óng, ăn cùng cơm nấu bằng nước luộc gà và chấm muối ớt lá chanh."
+            },
+            {
+                "name": "Yến sào Khánh Hòa",
+                "category": "đặc sản",
+                "details": "Thực phẩm cao cấp, bổ dưỡng được chế biến thành nhiều món như chè yến, súp yến, là thương hiệu nổi tiếng của tỉnh."
+            }
+        ],
+        "festivals": [
+            {
+                "name": "Lễ hội Tháp Bà Ponagar (Khánh Hòa)",
+                "time": "Từ ngày 20 đến 23 tháng 3 âm lịch",
+                "details": "Lễ hội dân gian lớn nhất khu vực Nam Trung Bộ, tôn vinh Mẹ Xứ Sở của người Chăm và thu hút đông đảo người dân tham gia."
+            },
+            {
+                "name": "Lễ hội Katê của người Chăm (Ninh Thuận)",
+                "time": "Ngày 1 tháng 7 theo lịch Chăm (khoảng tháng 9-10 dương lịch)",
+                "details": "Lễ hội quan trọng và lớn nhất của cộng đồng người Chăm theo đạo Bà La Môn, diễn ra tại các tháp Chăm."
+            },
+            {
+                "name": "Festival Biển Nha Trang",
+                "time": "Thường niên 2 năm một lần, vào mùa hè",
+                "details": "Sự kiện văn hóa - du lịch tầm cỡ quốc gia và quốc tế, với nhiều hoạt động biểu diễn nghệ thuật, thể thao và du lịch đặc sắc."
+            }
+        ],
+        "specialties_as_gifts": [
+            "Yến sào Khánh Hòa",
+            "Nem chua Nha Trang",
+            "Nho và rượu nho Ninh Thuận",
+            "Tỏi Phan Rang, Táo Ninh Thuận",
+            "Đồ gốm Bàu Trúc, thổ cẩm Mỹ Nghiệp (Ninh Thuận)"
+        ],
+        "best_time_to_visit": "Đây là vùng có số ngày nắng nhiều nhất cả nước. Thời gian lý tưởng kéo dài từ tháng 1 đến tháng 9, trời trong xanh, biển lặng. Đặc biệt nên đến vào dịp Lễ hội Katê (tháng 9-10) để trải nghiệm văn hóa Chăm."
+    }
+}
