@@ -1,132 +1,141 @@
-# FILE: actions/actions.py
+version: "3.1"
 
-import json
-import os
-import unicodedata
-from typing import Any, Text, Dict, List
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - ask_culture
+  - ask_attractions
+  - ask_festival
+  - ask_cuisine
+  - ask_new_province
+  - ask_travel_tips
+  - ask_transportation
 
-from rasa_sdk import Action, Tracker
-from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import SlotSet
+entities:
+  - location
+  - time
+  - sub_region
+  - category
 
-# --- Hàm hỗ trợ chuẩn hóa tên file ---
-def normalize_vietnamese_text(text: Text) -> Text:
-    """
-    Chuẩn hóa văn bản tiếng Việt để tạo tên file.
-    Ví dụ: "Hà Nội" -> "ha_noi", "Cà Mau" -> "ca_mau"
-    """
-    if not text:
-        return ""
-    # Chuyển thành dạng không dấu
-    no_accent_text = "".join(
-        c for c in unicodedata.normalize("NFD", text) 
-        if unicodedata.category(c) != "Mn"
-    )
-    # Xử lý chữ "Đ"
-    no_accent_text = no_accent_text.replace("Đ", "D").replace("đ", "d")
-    # Thay thế khoảng trắng bằng gạch dưới và chuyển thành chữ thường
-    return no_accent_text.replace(" ", "_").lower()
+slots:
+  location:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: location
+  requested_info:
+    type: text
+    mappings:
+      - type: from_intent
+        value: "places_to_visit"
+        intent: ask_attractions
+      - type: from_intent
+        value: "what_to_eat"
+        intent: ask_cuisine
+      - type: from_intent
+        value: "festivals"
+        intent: ask_festival
+      - type: from_intent
+        value: "sub_regions"
+        intent: ask_new_province
+      - type: from_intent
+        value: "travel_tips"
+        intent: ask_travel_tips
+      - type: from_intent
+        value: "transportation"
+        intent: ask_transportation
+      - type: from_text
+  time:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: time
+  sub_region:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: sub_region
+  category:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: category
 
-# --- Action chính để tra cứu và trả lời ---
-class ActionQueryKnowledgeBase(Action):
+responses:
+  utter_greet:
+    - text: "Xin chào! Tôi là bot du lịch Việt Nam. Bạn muốn biết gì về các tỉnh thành mới sau sáp nhập?"
+  utter_goodbye:
+    - text: "Tạm biệt! Hẹn gặp lại bạn trong hành trình khám phá Việt Nam."
+  utter_affirm:
+    - text: "Được thôi, tiếp tục nào!"
+  utter_deny:
+    - text: "Ồ, không sao! Bạn muốn hỏi gì khác không?"
+  utter_mood_great:
+    - text: "Tuyệt vời! Hôm nay khám phá tỉnh thành nào?"
+  utter_mood_unhappy:
+    - text: "Đừng buồn! Để tôi gợi ý một điểm du lịch đẹp ở Việt Nam nhé!"
+  utter_bot_challenge:
+    - text: "Tôi là bot du lịch, được xây dựng bằng Rasa để giúp bạn khám phá văn hóa Việt Nam!"
+  utter_ask_for_location:
+    - text: "Bạn muốn biết thông tin về tỉnh/thành phố nào? Ví dụ: Bắc Ninh, An Giang..."
+  utter_culture_info:
+    - text: "Văn hóa {location} nổi bật với {culture_details}."
+  utter_attractions_info:
+    - text: "Ở {location}, bạn có thể tham quan {attractions_list}."
+  utter_festival_info:
+    - text: "Lễ hội ở {location} vào {time} là {festival_details}."
+  utter_cuisine_info:
+    - text: "Ẩm thực {location} nổi tiếng với {cuisine_details}."
+  utter_new_province_info:
+    - text: "{location} mới gồm các khu vực: {sub_regions_list}."
+  utter_travel_tips_info:
+    - text: "Mẹo du lịch ở {location}: {travel_tips_details}."
+  utter_transportation_info:
+    - text: "Phương tiện di chuyển đến {location}: {transportation_details}."
 
-    def name(self) -> Text:
-        return "action_query_knowledge_base"
+actions:
+  - action_query_knowledge_base
 
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-        # Lấy thông tin từ slot
-        location = tracker.get_slot("location")
-        requested_info = tracker.get_slot("requested_info")
-
-        # Nếu không có địa điểm, yêu cầu người dùng cung cấp
-        if not location:
-            dispatcher.utter_message(response="utter_ask_for_location")
-            return []
-
-        try:
-            # Xây dựng đường dẫn file dựa trên tên địa điểm đã chuẩn hóa
-            normalized_location = normalize_vietnamese_text(location)
-            file_path = os.path.join("data", "knowledge_base", "provinces", f"{normalized_location}.json")
-
-            with open(file_path, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-            
-            # Tìm đúng data của tỉnh trong file JSON
-            province_data = None
-            for key in data:
-                if normalize_vietnamese_text(key) == normalized_location:
-                    province_data = data[key]
-                    break
-            
-            if not province_data:
-                dispatcher.utter_message(text=f"Xin lỗi, tôi chưa có dữ liệu chi tiết cho '{location}'.")
-                return [SlotSet("location", None), SlotSet("requested_info", None)]
-
-            # Xây dựng câu trả lời dựa trên yêu cầu
-            response_title = ""
-            response_body = ""
-
-            if requested_info == "places_to_visit":
-                response_title = f"🏞️ **Các địa điểm không thể bỏ lỡ tại {location}:**\n\n"
-                places = province_data.get("places_to_visit", [])
-                if places:
-                    for item in places[:5]:  # Giới hạn 5 địa điểm
-                        name = item.get("name", "N/A")
-                        details = item.get("details", "")
-                        response_body += f"📍 **{name}**\n{details}\n\n"
-                else:
-                    response_body = "Hiện chưa có thông tin chi tiết về địa điểm tham quan."
-            
-            elif requested_info == "what_to_eat":
-                response_title = f"🍜 **Đặc sản ẩm thực tại {location}:**\n\n"
-                foods = province_data.get("what_to_eat", [])
-                if foods:
-                    for item in foods[:5]:
-                        name = item.get("name", "N/A")
-                        details = item.get("details", "")
-                        response_body += f"🍽️ **{name}**\n{details}\n\n"
-                else:
-                    response_body = "Hiện chưa có thông tin về đặc sản ẩm thực."
-            
-            elif requested_info == "festivals":
-                response_title = f"🎊 **Các lễ hội đặc sắc tại {location}:**\n\n"
-                festivals = province_data.get("festivals", [])
-                if festivals:
-                    for item in festivals:
-                        name = item.get("name", "N/A")
-                        time = item.get("time", "")
-                        details = item.get("details", "")
-                        response_body += f"🎉 **{name}**\n⏰ Thời gian: {time}\n{details}\n\n"
-                else:
-                    response_body = "Hiện chưa có thông tin về lễ hội."
-            
-            else:  # Trường hợp "general" hoặc hỏi chung
-                response_title = f"📝 **Thông tin về {location}:**\n\n"
-                culture = province_data.get("culture_details", "")
-                response_body += f"{culture}\n\n"
-                
-                # Thêm gợi ý
-                response_body += "💡 Bạn có thể hỏi tôi về:\n"
-                response_body += "• Địa điểm tham quan\n"
-                response_body += "• Đặc sản ẩm thực\n"
-                response_body += "• Lễ hội văn hóa\n"
-
-            # Gửi câu trả lời
-            full_response = response_title + response_body
-            dispatcher.utter_message(text=full_response)
-
-        except FileNotFoundError:
-            dispatcher.utter_message(
-                text=f"Xin lỗi, tôi chưa có thông tin chi tiết về '{location}'. "
-                     f"Hiện tôi có dữ liệu về 34 tỉnh thành Việt Nam. Bạn có thể thử hỏi về tỉnh khác!"
-            )
-        
-        except Exception as e:
-            print(f"❌ Lỗi: {e}")
-            dispatcher.utter_message(text="Rất tiếc, đã có lỗi xảy ra khi tôi tìm kiếm thông tin.")
-
-        # Xóa slot sau khi trả lời
-        return [SlotSet("location", None), SlotSet("requested_info", None)]
+# Ánh xạ synonyms cho entities (tích hợp với EntitySynonymMapper)
+entity_synonyms:
+  # Synonyms cho các tỉnh cũ/mới
+  kinh_bac: bac_ninh
+  bac_giang: bac_ninh
+  vinh_phuc: bac_ninh
+  yen_bai: lao_cai
+  bac_kan: thai_nguyen
+  hoa_binh: phu_tho
+  thai_binh: hung_yen
+  hai_duong: hai_phong
+  ha_nam: ninh_binh
+  nam_dinh: ninh_binh
+  quang_binh: quang_tri
+  quang_nam: da_nang
+  kon_tum: quang_ngai
+  binh_dinh: gia_lai
+  ninh_thuan: khanh_hoa
+  dak_nong: lam_dong
+  binh_thuan: lam_dong
+  phu_yen: dak_lak
+  ba_ria_vung_tau: ho_chi_minh
+  binh_duong: ho_chi_minh
+  binh_phuoc: dong_nai
+  long_an: tay_ninh
+  soc_trang: can_tho
+  hau_giang: can_tho
+  ben_tre: vinh_long
+  tra_vinh: vinh_long
+  tien_giang: dong_thap
+  bac_lieu: ca_mau
+  kien_giang: an_giang
+  # Các synonym phổ biến khác
+  phu_quoc: an_giang
+  chau_doc: an_giang
+  saigon: ho_chi_minh
+  hue: hue  # Giữ nguyên cho các tỉnh không sáp nhập
+  # Thêm nếu cần cho các tỉnh khác
