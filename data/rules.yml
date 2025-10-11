@@ -11,27 +11,62 @@ rules:
   - intent: goodbye
   - action: utter_goodbye
 
-- rule: Trả lời thông tin chung về tỉnh thành
+- rule: Khẳng định
   steps:
-  - intent: ask_about_culture
-  - action: action_query_knowledge_base
+  - intent: affirm
+  - action: utter_affirm
 
-- rule: Trả lời địa điểm tham quan
+- rule: Phủ định
   steps:
-  - intent: ask_place_to_visit
-  - action: action_query_knowledge_base
+  - intent: deny
+  - action: utter_deny
 
-- rule: Trả lời đặc sản ẩm thực
+- rule: Tâm trạng vui
   steps:
-  - intent: ask_what_to_eat
-  - action: action_query_knowledge_base
+  - intent: mood_great
+  - action: utter_mood_great
 
-- rule: Trả lời về lễ hội
+- rule: Tâm trạng buồn
   steps:
-  - intent: ask_festivals
-  - action: action_query_knowledge_base
+  - intent: mood_unhappy
+  - action: utter_mood_unhappy
 
-- rule: Khi người dùng chỉ nói tên tỉnh
+- rule: Kiểm tra bot
   steps:
-  - intent: inform_location
+  - intent: bot_challenge
+  - action: utter_bot_challenge
+- rule: Hỏi về sáp nhập tỉnh mới
+  steps:
+  - intent: ask_new_province
   - action: action_query_knowledge_base
+  - action: utter_new_province_info
+
+- rule: Hỏi mẹo du lịch
+  steps:
+  - intent: ask_travel_tips
+  - action: action_query_knowledge_base
+  - action: utter_travel_tips_info
+
+- rule: Hỏi phương tiện di chuyển
+  steps:
+  - intent: ask_transportation
+  - action: action_query_knowledge_base
+  - action: utter_transportation_info
+
+- rule: Hỏi lễ hội với thời gian
+  condition:
+  - slot_was_set:
+      - time: true
+  steps:
+  - intent: ask_festival
+  - action: action_query_knowledge_base
+  - action: utter_festival_info
+- rule: Xử lý câu hỏi ngoài phạm vi
+  steps:
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+
+- rule: Fallback khi bot không chắc chắn
+  steps:
+  - action: action_default_fallback
+  - action: utter_out_of_scope
