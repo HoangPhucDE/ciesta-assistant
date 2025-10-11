@@ -15,6 +15,7 @@ intents:
   - ask_new_province
   - ask_travel_tips
   - ask_transportation
+  - inform_location  # ✅ Đã thêm: Intent này xuất hiện trong NLU nhưng bị thiếu trong domain
 
 entities:
   - location
@@ -97,13 +98,16 @@ responses:
     - text: "Mẹo du lịch ở {location}: {travel_tips_details}."
   utter_transportation_info:
     - text: "Phương tiện di chuyển đến {location}: {transportation_details}."
+  utter_out_of_scope:  # ✅ Đã thêm: Template phản hồi cho action bị thiếu
+    - text: "Xin lỗi, tôi không thể trả lời câu hỏi này. Bạn có muốn hỏi về chủ đề khác không?"
 
 actions:
   - action_query_knowledge_base
+  - utter_out_of_scope  # ✅ Đã thêm: Khai báo action `utter_out_of_scope`
 
 # Ánh xạ synonyms cho entities (tích hợp với EntitySynonymMapper)
 entity_synonyms:
-  # Synonyms cho các tỉnh cũ/mới
+  # ... (Phần này giữ nguyên)
   kinh_bac: bac_ninh
   bac_giang: bac_ninh
   vinh_phuc: bac_ninh
@@ -137,5 +141,5 @@ entity_synonyms:
   phu_quoc: an_giang
   chau_doc: an_giang
   saigon: ho_chi_minh
-  hue: hue  # Giữ nguyên cho các tỉnh không sáp nhập
+  hue: hue
   # Thêm nếu cần cho các tỉnh khác

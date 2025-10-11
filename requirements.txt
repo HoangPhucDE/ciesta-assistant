@@ -1,35 +1,57 @@
-# === Core dependencies ===
+# ========================================
+# RASA + PHOBERT COMPATIBLE VERSIONS
+# Python 3.10 required
+# Tested and working configuration
+# ========================================
+
+# Core Rasa Framework
+rasa==3.6.20
+rasa-sdk==3.6.2
+
+# NumPy - CRITICAL: Must be < 1.24 for TensorFlow 2.12
+numpy==1.23.5
+
+# Transformers ecosystem for PhoBERT
+transformers==4.35.2
+torch==2.1.2
+tokenizers==0.15.0
+sentencepiece==0.1.99
+
+# Data processing - downgrade pandas
+pandas==1.5.3
+
+# Web framework
 flask==3.0.3
 flask-cors==5.0.0
 requests==2.32.3
 
-# === NLP / AI assistant (Rasa optional) ===
-rasa==3.6.20
-spacy==3.7.6
-transformers==4.44.2
-torch==2.4.1
-sentencepiece==0.2.0  # Cho PhoBERT tokenizer
+# NLP (SpaCy sẽ được Rasa cài tự động)
+# spacy==3.7.6  # Không cần khai báo riêng
 
-# === Data processing ===
-pandas==2.2.3
-numpy==2.1.1
-
-# === Utilities ===
+# Utilities
 python-dotenv==1.0.1
 rich==13.8.1
 tqdm==4.66.5
 
-# === Development tools ===
-black==24.8.0
+# Code quality
+black==22.12.0
 isort==5.13.2
 ruff==0.6.5
+
+# Development & Notebooks
 jupyter==1.1.1
 ipykernel==6.29.5
 
-# === Optional: GUI / visualization ===
-matplotlib==3.9.2
-seaborn==0.13.2
+# Visualization - downgrade matplotlib
+matplotlib==3.7.3
+seaborn==0.12.2
 plotly==5.24.0
 
-# === Optional: Flask app for webhook or frontend integration ===
+# Production server
 gunicorn==23.0.0
+
+# Database
+sqlalchemy==1.4.52
+
+# JSON schema validation
+fastjsonschema==2.20.0  

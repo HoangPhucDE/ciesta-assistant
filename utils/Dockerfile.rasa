@@ -1,0 +1,27 @@
+# Dockerfile cho Rasa + PhoBERT
+FROM rasa/rasa:3.6.20-full
+
+# Switch to root để cài packages
+USER root
+
+# Cài dependencies cho PhoBERT
+RUN pip install --no-cache-dir \
+    transformers==4.35.2 \
+    torch==2.1.2 \
+    tokenizers==0.15.0 \
+    sentencepiece==0.1.99
+
+# Pre-download PhoBERT model (optional - tăng tốc lần chạy đầu)
+# RUN python -c "from transformers import AutoModel, AutoTokenizer; \
+#     AutoModel.from_pretrained('vinai/phobert-base', cache_dir='/app/.cache'); \
+#     AutoTokenizer.from_pretrained('vinai/phobert-base', cache_dir='/app/.cache')"
+
+# Switch back to rasa user
+USER 1001
+
+# Set working directory
+WORKDIR /app
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+    CMD curl -f http://localhost:5005/ || exit 1

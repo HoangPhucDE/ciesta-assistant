@@ -70,3 +70,32 @@ rules:
   steps:
   - action: action_default_fallback
   - action: utter_out_of_scope
+
+# rules.yml (Bổ sung thêm vào file hiện tại của bạn)
+
+- rule: Hỏi ẩm thực (có địa điểm)
+  condition:
+  - slot_was_set:
+    - location: true # Nếu slot location đã được set
+  steps:
+  - intent: ask_cuisine
+  - action: action_query_knowledge_base
+  - action: utter_cuisine_info       # ✅ Sử dụng utter_cuisine_info
+  
+- rule: Hỏi ẩm thực (thiếu địa điểm)
+  condition:
+  - slot_was_set:
+    - location: null # Nếu slot location chưa được set
+  steps:
+  - intent: ask_cuisine
+  - action: utter_ask_for_location  # ✅ Sử dụng utter_ask_for_location
+
+- rule: Người dùng cung cấp địa điểm sau khi bot hỏi
+  condition:
+  - active_loop: null # Rule này chỉ chạy khi không có form đang hoạt động
+  steps:
+  - intent: inform_location         # ✅ Sử dụng inform_location
+  - action: action_query_knowledge_base
+  - action: utter_cuisine_info
+    # Lưu ý: Cần đảm bảo intent inform_location được dùng để điền slot 'location' 
+    # trong domain.yml để action_query_knowledge_base có thể hoạt động.

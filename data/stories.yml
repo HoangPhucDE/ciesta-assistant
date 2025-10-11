@@ -4,66 +4,83 @@ stories:
 - story: Hỏi về văn hóa
   steps:
   - intent: ask_culture
+    entities:
+    - location: "Bắc Ninh"
   - slot_was_set:
-      - location: "Bắc Ninh"
+    - location: "Bắc Ninh"
   - action: action_query_knowledge_base
   - action: utter_culture_info
 
 - story: Hỏi về điểm tham quan
   steps:
   - intent: ask_attractions
+    entities:
+    - location: "An Giang"
   - slot_was_set:
-      - location: "An Giang"
+    - location: "An Giang"
   - action: action_query_knowledge_base
   - action: utter_attractions_info
 
-- story: Hỏi về lễ hội (với time filter)
+- story: Hỏi về lễ hội với time filter
   steps:
   - intent: ask_festival
+    entities:
+    - location: "Bắc Ninh"
+    - time: "tháng Giêng"
   - slot_was_set:
-      - location: "Bắc Ninh"
-      - time: "tháng Giêng"
+    - location: "Bắc Ninh"
+    - time: "tháng Giêng"
   - action: action_query_knowledge_base
   - action: utter_festival_info
 
 - story: Hỏi về sáp nhập tỉnh mới
   steps:
   - intent: ask_new_province
+    entities:
+    - location: "Bắc Ninh"
   - slot_was_set:
-      - location: "Bắc Ninh"
+    - location: "Bắc Ninh"
   - action: action_query_knowledge_base
   - action: utter_new_province_info
 
 - story: Hỏi mẹo du lịch
   steps:
   - intent: ask_travel_tips
+    entities:
+    - location: "Đà Nẵng"
   - slot_was_set:
-      - location: "Đà Nẵng"
+    - location: "Đà Nẵng"
   - action: action_query_knowledge_base
   - action: utter_travel_tips_info
 
 - story: Hỏi phương tiện di chuyển
   steps:
   - intent: ask_transportation
+    entities:
+    - location: "An Giang"
   - slot_was_set:
-      - location: "An Giang"
+    - location: "An Giang"
   - action: action_query_knowledge_base
   - action: utter_transportation_info
 
 - story: Xử lý câu hỏi ngoài phạm vi
   steps:
   - intent: out_of_scope
-  - action: utter_out_of_scope  # Thêm response này trong domain.yml nếu cần
+  - action: utter_out_of_scope
 
-- story: Luồng hội thoại dài (ví dụ: hỏi sáp nhập rồi hỏi khu vực con)
+- story: "Luồng hội thoại dài: Hỏi sáp nhập rồi hỏi khu vực con"  # Quote tên story để xử lý ký tự đặc biệt
   steps:
   - intent: ask_new_province
+    entities:
+    - location: "Bắc Ninh"
   - slot_was_set:
-      - location: "Bắc Ninh"
+    - location: "Bắc Ninh"
   - action: action_query_knowledge_base
   - action: utter_new_province_info
   - intent: ask_attractions
+    entities:
+    - location: "Bắc Giang"  # Chuyển sub_region thành location để đồng bộ với action
   - slot_was_set:
-      - sub_region: "Bắc Giang"
+    - location: "Bắc Giang"
   - action: action_query_knowledge_base
   - action: utter_attractions_info

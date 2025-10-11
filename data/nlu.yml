@@ -24,6 +24,56 @@ nlu:
     - chúc ngủ ngon
     - hẹn gặp sau
 
+- intent: deny
+  examples: |
+    - không
+    - không phải
+    - sai rồi
+    - chưa
+    - không muốn
+    - dừng lại
+    - bỏ qua
+    - không cần
+
+- intent: mood_great
+  examples: |
+    - tôi ổn
+    - rất tốt
+    - tôi cảm thấy tuyệt
+    - vui vẻ
+    - hạnh phúc
+    - khá tốt
+    - tôi đang vui
+
+- intent: mood_unhappy
+  examples: |
+    - tôi buồn
+    - không vui
+    - hơi tệ
+    - tôi không ổn
+    - chán quá
+    - mệt mỏi
+    - có gì đó không đúng
+
+- intent: bot_challenge
+  examples: |
+    - bạn là ai
+    - bạn là người hay bot
+    - bạn có phải là người không
+    - ai đã tạo ra bạn
+    - bot
+
+- intent: affirm
+  examples: |
+    - đúng
+    - phải
+    - có
+    - vâng
+    - chính xác
+    - đồng ý
+    - ok
+    - tiếp tục
+
 - intent: ask_culture
   examples: |
     - cho tôi biết về [Hà Nội](location)

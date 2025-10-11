@@ -2,7 +2,6 @@ version: "3.1"
 nlu:
 - lookup: location
   examples: |
-    # === 11 ĐƠN VỊ GIỮ NGUYÊN ===
     - Hà Nội
     - Huế
     - Cao Bằng
@@ -14,7 +13,6 @@ nlu:
     - Quảng Ninh
     - Thanh Hóa
     - Sơn La
-    # === 23 ĐƠN VỊ SÁP NHẬP ===
     - Lào Cai
     - Thái Nguyên
     - Phú Thọ

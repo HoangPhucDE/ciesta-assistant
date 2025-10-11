@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  # Rasa Server
+  rasa:
+    image: rasa/rasa:3.6.20-full
+    container_name: rasa-server
+    ports:
+      - "5005:5005"
+    volumes:
+      # Mount project directory
+      - ./:/app
+      # Cache for faster rebuilds
+      - pip-cache:/root/.cache/pip
+      # Models directory
+      - ./models:/app/models
+    command: >
+      run --enable-api --cors "*" --debug --endpoints endpoints.yml
+    environment:
+      - ACTION_SERVER_URL=http://action-server:5055/webhook
+    depends_on:
+      - action-server
+    networks:
+      - rasa-network
+    restart: unless-stopped
+
+  # Action Server
+  action-server:
+    image: rasa/rasa-sdk:3.6.2
+    container_name: rasa-actions
+    ports:
+      - "5055:5055"
+    volumes:
+      # Mount actions directory
+      - ./actions:/app/actions
+      # Mount data for knowledge base
+      - ./data:/app/data
+      # Cache
+      - pip-cache:/root/.cache/pip
+    command: >
+      start --actions actions --debug
+    networks:
+      - rasa-network
+    restart: unless-stopped
+
+  # Redis (Optional - for production)
+  redis:
+    image: redis:7-alpine
+    container_name: rasa-redis
+    ports:
+      - "6379:6379"
+    networks:
+      - rasa-network
+    restart: unless-stopped
+    healthcheck:
+      test: [ "CMD", "redis-cli", "ping" ]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+# Named volumes for caching
+volumes:
+  pip-cache:
+    driver: local
+
+# Custom network
+networks:
+  rasa-network:
+    driver: bridge

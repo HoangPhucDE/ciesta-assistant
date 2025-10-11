@@ -1,0 +1,11 @@
+# Dependencies cho Action Server
+# (Chỉ cài những gì cần thiết cho actions)
+
+# Nếu actions cần xử lý dữ liệu
+pandas==1.5.3
+
+# Nếu cần call API
+requests==2.32.3
+
+# Utilities
+python-dotenv==1.0.1
