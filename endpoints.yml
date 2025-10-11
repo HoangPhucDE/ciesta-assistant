@@ -1,20 +1,7 @@
 # FILE: endpoints.yml
-
-# Server which runs your custom actions (actions.py).
-# Chạy action server local trên port 5055 (chạy lệnh: rasa run actions).
 action_endpoint:
-  url: "http://localhost:5055/webhook"  # Linh hoạt: Có thể thay bằng biến môi trường $ACTION_SERVER_URL khi deploy
+  url: ${ACTION_SERVER_URL:http://localhost:5055/webhook}  # Linh hoạt với action server
 
-# Tracker store để lưu lịch sử hội thoại.
-# Sử dụng InMemoryTrackerStore (mặc định) cho local, sau này thay bằng Redis/MongoDB để persistent.
 tracker_store:
-  type: InMemoryTrackerStore  # Linh hoạt: Thay bằng redis hoặc mongod khi cần scale
-
-# Event broker nếu cần stream sự kiện (tùy chọn, bỏ nếu chưa cần).
-#event_broker:
-#  type: pika
-#  url: amqp://guest:guest@localhost:5672/  # Linh hoạt: Sử dụng RabbitMQ cho production
-
-# Model server nếu kéo model từ server remote (tùy chọn, bỏ nếu train local).
-#models:
-#  url: http://localhost:5000/models  # Linh hoạt: Dùng cho CI/CD sau này
+  type: redis
+  url: ${REDIS_URL:redis://localhost:6379/0}  # Redis cho local, linh hoạt khi deploy

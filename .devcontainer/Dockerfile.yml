@@ -1,0 +1,36 @@
+version: '3.0'
+services:
+rasa:
+image: rasa/rasa:3.6.20-full  # Phiên bản Rasa hỗ trợ Python 3.10
+ports:
+- "5005:5005"  # REST và SocketIO endpoint
+volumes:
+- /home/hoangphuc/Documents/ciesta-asisstant:/ciesta-asisstant  # Mount giống Dev Container
+command: run -m models --enable-api --cors "*" --debug  # Enable API cho REST và SocketIO
+user: root  # Đồng bộ với Dev Container (remoteUser: root)
+environment:
+- ACTION_SERVER_URL=http://action_server:5055/webhook  # Kết nối action server
+- SOCKETIO_URL=http://localhost:5005  # Cho SocketIO local
+- RASA_ENTERPRISE_URL=http://localhost:5002/api  # Cho Rasa Enterprise (nếu dùng)
+- REDIS_URL=redis://redis:6379/0  # Redis tracker
+depends_on:
+- action_server
+- redis
+network_mode: host  # Đồng bộ với Dev Container (--network=host)
+
+action_server:
+image: rasa/rasa-sdk:3.6.2
+ports:
+- "5055:5055"  # Action endpoint
+volumes:
+- /home/hoangphuc/Documents/ciesta-asisstant/actions:/app/actions  # Mount actions.py
+command: start --actions actions --debug
+user: root  # Đồng bộ với Dev Container
+network_mode: host
+
+redis:
+image: redis:alpine
+ports:
+- "6379:6379"
+user: root  # Đồng bộ với Dev Container
+network_mode: host
