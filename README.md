@@ -1,176 +1,346 @@
-# 🌙 **Ciesta Assistant**
+# 🌏 Ciesta - Bot Du lịch Việt Nam
 
-![Python](https://img.shields.io/badge/python-3.13-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
-![Platform](https://img.shields.io/badge/platform-Linux%20|%20Windows%20|%20macOS-lightgrey)
-![Status](https://img.shields.io/badge/status-active-brightgreen)
+Bot chatbot thông minh giới thiệu văn hóa và du lịch **34 tỉnh thành Việt Nam** theo Nghị quyết sắp xếp đơn vị hành chính cấp tỉnh (12/6/2025).
 
-> **Ciesta Assistant** là một **trợ lý AI mã nguồn mở** dành cho **Linux** và **đa nền tảng**, được phát triển với mục tiêu trở thành **nền tảng chatbot thông minh, thân thiện và dễ mở rộng** cho người dùng và nhà phát triển.
+## 🚀 Tính năng
 
----
+- ✅ **Giới thiệu văn hóa** 34 tỉnh thành sau sáp nhập
+- ✅ **Gợi ý địa điểm** tham quan, check-in
+- ✅ **Ẩm thực đặc sản** và quà lưu niệm
+- ✅ **Lễ hội truyền thống** và sự kiện văn hóa
+- ✅ **Mẹo du lịch** và thông tin di chuyển
+- ✅ Sử dụng **PhoBERT Large** cho tiếng Việt
+- ✅ Hỗ trợ nhiều cách gọi tên địa điểm
 
-## 🧠 **Tổng quan**
+## 📋 Yêu cầu hệ thống
 
-**Ciesta Assistant** là chatbot hoạt động **cục bộ (local)**, sử dụng **PyQt5** cho giao diện người dùng và **Rasa** cho xử lý ngôn ngữ tự nhiên (NLP).  
-Dự án hướng đến mô hình **Hybrid AI** – kết hợp giữa **AI cục bộ** và **dịch vụ AI đám mây** (OpenAI, Gemini, Ollama, v.v.) để tối ưu hóa khả năng phản hồi và khả năng tùy biến.
+- Python 3.8+
+- RAM: Tối thiểu 8GB (khuyến nghị 16GB cho PhoBERT Large)
+- Disk: ~5GB cho model và dependencies
 
----
+## 🛠️ Cài đặt
 
-## ⚙️ **Kiến trúc hệ thống**
+### Bước 1: Clone repository
 
-Dự án được thiết kế theo mô hình **MVC (Model – View – Controller)**, giúp tách biệt rõ ràng các tầng chức năng và dễ dàng mở rộng trong tương lai.
-
-- **Model:** Quản lý dữ liệu, NLP (Rasa), database, cấu hình hệ thống.  
-- **View:** Giao diện đồ họa được phát triển bằng **PyQt5 / PySide6**.  
-- **Controller:** Xử lý logic, sự kiện người dùng và giao tiếp giữa View ↔ Backend.
-
----
-
-## 🧩 **Thành phần chính**
-
-| Thành phần           | Công nghệ               | Mô tả |
-| -------------------- | ----------------------- | ------ |
-| **Frontend**         | PyQt5 / PySide6         | Giao diện người dùng đa nền tảng |
-| **Backend**          | Python 3.x              | Xử lý luồng hội thoại, tương tác dữ liệu |
-| **NLP Engine**       | Rasa                    | Phân tích và hiểu ngôn ngữ tự nhiên |
-| **Database**         | SQLite / SQLAlchemy     | Lưu trữ hội thoại, cấu hình người dùng |
-| **Speech (TTS/STT)** | gTTS, SpeechRecognition | Chuyển đổi giọng nói đầu vào / đầu ra |
-| **Build**            | Flatpak / PyInstaller   | Đóng gói và triển khai đa nền tảng |
-
----
-
-# 🧠 Ciesta Assistant — Project Structure (MVC + DevContainer)
-
-ciesta-assistant/
-├── .devcontainer/                 # 🐳 Cấu hình cho VS Code DevContainer
-│   ├── devcontainer.json
-│   └── Dockerfile
-│
-├── ciesta/                        # 🌐 Core source code (MVC structure)
-│   ├── model/                     # 📘 M - Data, NLP, AI models
-│   │   ├── __init__.py
-│   │   ├── nlp_model.py           # Xử lý NLP bằng Rasa / spaCy / Transformers
-│   │   ├── user_data.py           # Lưu và truy xuất dữ liệu người dùng
-│   │   └── settings_model.py      # Model cho cấu hình hệ thống
-│   │
-│   ├── view/                      # 🪟 V - Giao diện người dùng (PyQt / QML)
-│   │   ├── __init__.py
-│   │   ├── main_window.py         # Giao diện chính chatbot
-│   │   ├── chat_view.py           # Khung hội thoại
-│   │   ├── settings_view.py       # Giao diện cấu hình
-│   │   └── assets/                # Icon, hình ảnh, CSS/QSS
-│   │       ├── icons/
-│   │       └── styles/
-│   │
-│   ├── controller/                # 🧩 C - Xử lý logic giữa View và Model
-│   │   ├── __init__.py
-│   │   ├── chat_controller.py     # Kết nối NLP model và view chat
-│   │   ├── settings_controller.py # Điều khiển phần cài đặt
-│   │   └── system_controller.py   # Điều khiển API, IO, đa nền tảng
-│   │
-│   ├── core/                      # ⚙️ Chức năng lõi của ứng dụng
-│   │   ├── __init__.py
-│   │   ├── config.py              # Cấu hình toàn hệ thống
-│   │   ├── logger.py              # Ghi log
-│   │   ├── utils.py               # Tiện ích chung
-│   │   └── platform_integration.py# Xử lý đa hệ điều hành (Linux/macOS/Windows)
-│   │
-│   └── main.py                    # Điểm khởi chạy ứng dụng
-│
-├── rasa/                          # 💬 NLP Backend (Rasa project folder)
-│   ├── domain.yml
-│   ├── config.yml
-│   ├── data/
-│   │   ├── nlu.yml
-│   │   └── stories.yml
-│   └── actions/
-│       └── actions.py
-│
-├── tests/                         # 🧪 Unit tests & integration tests
-│   ├── test_chat_controller.py
-│   ├── test_nlp_model.py
-│   └── test_ui_launch.py
-│
-├── requirements.txt               # 📦 Python dependencies
-├── README.md                      # 📖 Giới thiệu dự án
-├── LICENSE                        # ⚖️ Giấy phép
-└── .gitignore
-
-
-## 🚀 **Cài đặt**
-
-### 1️⃣ Clone dự án
 ```bash
-git clone https://github.com/HoangPhucDE/ciesta-assistant.git
+git clone <your-repo-url>
 cd ciesta-assistant
+```
 
-2️⃣ Tạo môi trường và cài đặt dependencies
-python3 -m venv venv
-source venv/bin/activate   # Trên Linux/macOS
-venv\Scripts\activate      # Trên Windows
+### Bước 2: Tạo virtual environment
 
-pip install -r requirements.txt
+```bash
+python -m venv .venv
+source .venv/bin/activate  # Linux/Mac
+# hoặc
+.venv\Scripts\activate  # Windows
+```
 
-3️⃣ Khởi chạy Rasa server
+### Bước 3: Cài đặt dependencies
 
-cd ciesta/rasa
+```bash
+pip install rasa==3.6.0
+pip install transformers torch
+pip install rasa-sdk
+```
+
+### Bước 4: Cấu trúc thư mục
+
+```
+ciesta-assistant/
+├── config.yml                    # Cấu hình pipeline (PhoBERT)
+├── domain.yml                    # Domain với intents, entities, actions
+├── endpoints.yml                 # Cấu hình endpoints
+├── credentials.yml               # Cấu hình channels
+├── actions.py                    # Custom actions
+├── validate_knowledge_base.py    # Script kiểm tra KB
+├── data/
+│   ├── nlu.yml                  # Training data cho NLU
+│   ├── rules.yml                # Rules cho bot
+│   ├── stories.yml              # Stories cho training
+│   └── knowledge_base/          # 34 file JSON
+│       ├── ha_noi.json
+│       ├── bac_ninh.json
+│       ├── an_giang.json
+│       └── ... (31 files khác)
+└── models/                      # Models sau khi train
+```
+
+## 📦 Chuẩn bị dữ liệu
+
+### Kiểm tra knowledge base
+
+```bash
+python validate_knowledge_base.py
+```
+
+### Tạo file template cho tỉnh thiếu
+
+```bash
+python validate_knowledge_base.py --create-missing
+```
+
+Sau đó điền thông tin vào các file JSON được tạo.
+
+## 🎯 Training
+
+### Train model
+
+```bash
 rasa train
-rasa run --enable-api
+```
 
-4️⃣ Chạy ứng dụng chính
+**Lưu ý:** Lần train đầu tiên sẽ tải PhoBERT Large (~1.3GB), có thể mất 10-30 phút.
 
-python run.py
+### Train chỉ NLU
 
-💬 Tính năng nổi bật
+```bash
+rasa train nlu
+```
 
-💡 Gửi và nhận tin nhắn theo thời gian thực
+### Train chỉ Core
 
-🌗 Giao diện chế độ tối / sáng linh hoạt
+```bash
+rasa train core
+```
 
-🗣️ Hỗ trợ giọng nói (TTS/STT – đang phát triển)
+## 🚀 Chạy bot
 
-🧠 NLP nội bộ bằng Rasa + mở rộng với AI đám mây
+### Chạy trong shell (test)
 
-⚙️ Tùy chỉnh và lưu hội thoại / cấu hình cá nhân
+```bash
+# Terminal 1: Start action server
+rasa run actions
 
-🧱 Hướng phát triển tương lai
+# Terminal 2: Start shell
+rasa shell
+```
 
-Tích hợp Rust Core Engine – tăng hiệu năng xử lý
+### Chạy với REST API
 
-Xây dựng plugin system – mở rộng tính năng dễ dàng
+```bash
+# Terminal 1: Action server
+rasa run actions
 
-Hỗ trợ Flatpak chính thức trên Linux
+# Terminal 2: Rasa server
+rasa run --enable-api --cors "*"
+```
 
-Phát triển API mở cho developer bên thứ ba
+API sẽ chạy tại: `http://localhost:5005`
 
-Tích hợp điều khiển bằng giọng nói toàn diện
+### Test API
 
-🛠️ Công cụ cho lập trình viên
+```bash
+curl -X POST http://localhost:5005/webhooks/rest/webhook \
+  -H "Content-Type: application/json" \
+  -d '{
+    "sender": "test_user",
+    "message": "Giới thiệu về Bắc Ninh"
+  }'
+```
 
-| Script                     | Mô tả                               |
-| -------------------------- | ----------------------------------- |
-| `scripts/run_rasa.sh`      | Chạy server NLP Rasa                |
-| `scripts/build_flatpak.sh` | Đóng gói ứng dụng dạng Flatpak      |
-| `scripts/dev_setup.sh`     | Cài đặt môi trường phát triển nhanh |
+## 💬 Ví dụ sử dụng
 
-🧑‍💻 Đóng góp
+### Hỏi về văn hóa
+```
+User: Giới thiệu về Bắc Ninh
+Bot: [Thông tin văn hóa Bắc Ninh sau sáp nhập Bắc Giang]
+```
 
-Mọi đóng góp đều được hoan nghênh 💜
-Hãy fork dự án, tạo branch mới, và gửi Pull Request về repository chính:
+### Hỏi về địa điểm
+```
+User: Đà Nẵng có địa điểm nào đẹp?
+Bot: [Danh sách địa điểm tham quan]
+```
 
-git checkout -b feature/my-improvement
-git commit -m "Add: new feature"
-git push origin feature/my-improvement
+### Hỏi về ẩm thực
+```
+User: Ăn gì ở Hội An?
+Bot: [Món ăn đặc sản Đà Nẵng - bao gồm cả Hội An]
+```
 
-📄 Giấy phép
+### Hỏi về lễ hội
+```
+User: Bắc Ninh có lễ hội gì?
+Bot: [Hội Lim, lễ hội Quan họ...]
+```
 
-Phát hành theo MIT License –
-Bạn được phép sử dụng, chỉnh sửa và phân phối lại tự do,
-miễn là ghi nguồn gốc dự án Ciesta Assistant.
+### Hỏi về tỉnh sau sáp nhập
+```
+User: Bắc Giang giờ thuộc tỉnh nào?
+Bot: [Thông tin về sáp nhập vào Bắc Ninh]
+```
 
-🪶 Tác giả
+## 🔧 Cấu hình
 
-|%20Nguyễn Hoàng Phúc%20|%20Trần Châu Thanh Phong%20|
+### Thay đổi model
 
-📧 Liên hệ qua GitHub Issues
+Trong `config.yml`, có thể đổi sang PhoBERT Base để giảm RAM:
 
+```yaml
+- name: LanguageModelFeaturizer
+  model_name: "vinai/phobert-base"  # Thay vì phobert-large
+  model_weights: "vinai/phobert-base"
+```
+
+### Giảm batch size nếu thiếu RAM
+
+```yaml
+- name: DIETClassifier
+  epochs: 100
+  batch_size: [32, 64]  # Giảm từ [64, 256]
+```
+
+### Thêm channels
+
+Trong `credentials.yml`:
+
+```yaml
+# Facebook Messenger
+facebook:
+  verify: "your-verify-token"
+  secret: "your-app-secret"
+  page-access-token: "your-page-token"
+
+# Telegram
+telegram:
+  access_token: "your-bot-token"
+  verify: "your-verify-token"
+  webhook_url: "https://your-domain/webhooks/telegram/webhook"
+```
+
+## 📊 34 Tỉnh thành
+
+### 6 Thành phố trực thuộc TW
+1. Hà Nội
+2. Huế  
+3. Đà Nẵng (← Quảng Nam)
+4. Hải Phòng (← Hải Dương)
+5. Hồ Chí Minh (← Bình Dương, Bà Rịa Vũng Tàu)
+6. Cần Thơ (← Sóc Trăng, Hậu Giang)
+
+### 28 Tỉnh (xem file danh sách đầy đủ)
+
+## 🐛 Xử lý lỗi
+
+### Lỗi: `Can't load class for name 'HFTransformersNLP'`
+
+**Nguyên nhân:** Component cũ đã bị loại bỏ  
+**Giải pháp:** Sử dụng `LanguageModelFeaturizer` như trong config.yml mẫu
+
+### Lỗi: Out of Memory
+
+**Giải pháp:**
+1. Đổi sang PhoBERT Base
+2. Giảm `batch_size`
+3. Giảm `epochs`
+4. Tăng RAM
+
+### Lỗi: Intent không được nhận diện
+
+**Giải pháp:**
+1. Kiểm tra `domain.yml` có đầy đủ intent không
+2. Thêm ví dụ trong `nlu.yml`
+3. Train lại model
+
+### Bot không tìm thấy tỉnh
+
+**Giải pháp:**
+1. Kiểm tra file JSON có trong `data/knowledge_base/`
+2. Chạy `python validate_knowledge_base.py`
+3. Kiểm tra `location_map` trong `actions.py`
+
+## 📝 Bổ sung dữ liệu
+
+### Thêm tỉnh mới
+
+1. Tạo file `ten_tinh.json` trong `data/knowledge_base/`
+2. Sao chép cấu trúc từ `bac_ninh.json`
+3. Điền thông tin
+4. Chạy validate: `python validate_knowledge_base.py`
+
+### Thêm intent mới
+
+1. Thêm vào `domain.yml`:
+```yaml
+intents:
+  - intent_moi
+```
+
+2. Thêm examples vào `nlu.yml`:
+```yaml
+- intent: intent_moi
+  examples: |
+    - câu ví dụ 1
+    - câu ví dụ 2
+```
+
+3. Thêm rule/story vào `rules.yml` hoặc `stories.yml`
+
+4. Train lại: `rasa train`
+
+## 🧪 Testing
+
+### Test NLU
+
+```bash
+rasa test nlu --nlu data/nlu.yml
+```
+
+### Test stories
+
+```bash
+rasa test core --stories data/stories.yml
+```
+
+### Interactive learning
+
+```bash
+rasa interactive
+```
+
+## 📈 Monitoring
+
+### Xem logs
+
+```bash
+rasa run --debug
+```
+
+### Tracker store (lưu lịch sử)
+
+Uncomment trong `endpoints.yml`:
+
+```yaml
+tracker_store:
+  type: SQL
+  dialect: "postgresql"
+  url: "postgresql://user:password@localhost/rasa"
+```
+
+## 🤝 Đóng góp
+
+1. Fork repository
+2. Tạo branch: `git checkout -b feature/new-feature`
+3. Commit: `git commit -m 'Add new feature'`
+4. Push: `git push origin feature/new-feature`
+5. Tạo Pull Request
+
+## 📄 License
+
+MIT License
+
+## 👥 Liên hệ
+
+- Email: your-email@example.com
+- Issues: [GitHub Issues](your-repo-url/issues)
+
+## 🙏 Credits
+
+- **Rasa**: Framework chatbot
+- **PhoBERT**: VinAI Research
+- **Dữ liệu**: Nghị quyết Quốc hội về sắp xếp đơn vị hành chính (12/6/2025)
+
+---
+
+Made with ❤️ for Vietnam Tourism

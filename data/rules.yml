@@ -1,101 +1,104 @@
 version: "3.1"
 
 rules:
-- rule: Chào hỏi người dùng
-  steps:
-  - intent: greet
-  - action: utter_greet
+  # Rule 1: Chào hỏi
+  - rule: Chào người dùng
+    steps:
+      - intent: greet
+      - action: utter_greet
 
-- rule: Tạm biệt người dùng
-  steps:
-  - intent: goodbye
-  - action: utter_goodbye
+  # Rule 2: Tạm biệt
+  - rule: Tạm biệt người dùng
+    steps:
+      - intent: goodbye
+      - action: utter_goodbye
 
-- rule: Khẳng định
-  steps:
-  - intent: affirm
-  - action: utter_affirm
+  # Rule 3: Bot challenge
+  - rule: Trả lời khi hỏi về bot
+    steps:
+      - intent: bot_challenge
+      - action: utter_bot_challenge
 
-- rule: Phủ định
-  steps:
-  - intent: deny
-  - action: utter_deny
+  # Rule 4: Xử lý out of scope
+  - rule: Xử lý câu hỏi ngoài phạm vi
+    steps:
+      - intent: out_of_scope
+      - action: utter_out_of_scope
 
-- rule: Tâm trạng vui
-  steps:
-  - intent: mood_great
-  - action: utter_mood_great
+  # Rule 5: Khi người dùng vui
+  - rule: Phản hồi khi người dùng vui
+    steps:
+      - intent: mood_great
+      - action: utter_mood_great
 
-- rule: Tâm trạng buồn
-  steps:
-  - intent: mood_unhappy
-  - action: utter_mood_unhappy
+  # Rule 6: Khi người dùng buồn
+  - rule: Phản hồi khi người dùng buồn
+    steps:
+      - intent: mood_unhappy
+      - action: utter_mood_unhappy
 
-- rule: Kiểm tra bot
-  steps:
-  - intent: bot_challenge
-  - action: utter_bot_challenge
-- rule: Hỏi về sáp nhập tỉnh mới
-  steps:
-  - intent: ask_new_province
-  - action: action_query_knowledge_base
-  - action: utter_new_province_info
+  # Rule 7: Xác nhận
+  - rule: Xử lý xác nhận
+    steps:
+      - intent: affirm
+      - action: utter_affirm
 
-- rule: Hỏi mẹo du lịch
-  steps:
-  - intent: ask_travel_tips
-  - action: action_query_knowledge_base
-  - action: utter_travel_tips_info
+  # Rule 8: Từ chối
+  - rule: Xử lý từ chối
+    steps:
+      - intent: deny
+      - action: utter_deny
 
-- rule: Hỏi phương tiện di chuyển
-  steps:
-  - intent: ask_transportation
-  - action: action_query_knowledge_base
-  - action: utter_transportation_info
+  # Rule 9: Hỏi về văn hóa
+  - rule: Trả lời câu hỏi về văn hóa
+    steps:
+      - intent: ask_culture
+      - action: action_query_knowledge_base
 
-- rule: Hỏi lễ hội với thời gian
-  condition:
-  - slot_was_set:
-      - time: true
-  steps:
-  - intent: ask_festival
-  - action: action_query_knowledge_base
-  - action: utter_festival_info
-- rule: Xử lý câu hỏi ngoài phạm vi
-  steps:
-  - intent: out_of_scope
-  - action: utter_out_of_scope
+  # Rule 10: Hỏi về địa điểm
+  - rule: Trả lời câu hỏi về địa điểm tham quan
+    steps:
+      - intent: ask_attractions
+      - action: action_query_knowledge_base
 
-- rule: Fallback khi bot không chắc chắn
-  steps:
-  - action: action_default_fallback
-  - action: utter_out_of_scope
+  # Rule 11: Hỏi về ẩm thực
+  - rule: Trả lời câu hỏi về ẩm thực
+    steps:
+      - intent: ask_cuisine
+      - action: action_query_knowledge_base
 
-# rules.yml (Bổ sung thêm vào file hiện tại của bạn)
+  # Rule 12: Hỏi về lễ hội
+  - rule: Trả lời câu hỏi về lễ hội
+    steps:
+      - intent: ask_festival
+      - action: action_query_knowledge_base
 
-- rule: Hỏi ẩm thực (có địa điểm)
-  condition:
-  - slot_was_set:
-    - location: true # Nếu slot location đã được set
-  steps:
-  - intent: ask_cuisine
-  - action: action_query_knowledge_base
-  - action: utter_cuisine_info       # ✅ Sử dụng utter_cuisine_info
-  
-- rule: Hỏi ẩm thực (thiếu địa điểm)
-  condition:
-  - slot_was_set:
-    - location: null # Nếu slot location chưa được set
-  steps:
-  - intent: ask_cuisine
-  - action: utter_ask_for_location  # ✅ Sử dụng utter_ask_for_location
+  # Rule 13: Hỏi về mẹo du lịch
+  - rule: Trả lời câu hỏi về mẹo du lịch
+    steps:
+      - intent: ask_travel_tips
+      - action: action_query_knowledge_base
 
-- rule: Người dùng cung cấp địa điểm sau khi bot hỏi
-  condition:
-  - active_loop: null # Rule này chỉ chạy khi không có form đang hoạt động
-  steps:
-  - intent: inform_location         # ✅ Sử dụng inform_location
-  - action: action_query_knowledge_base
-  - action: utter_cuisine_info
-    # Lưu ý: Cần đảm bảo intent inform_location được dùng để điền slot 'location' 
-    # trong domain.yml để action_query_knowledge_base có thể hoạt động.
+  # Rule 14: Hỏi về phương tiện
+  - rule: Trả lời câu hỏi về phương tiện di chuyển
+    steps:
+      - intent: ask_transportation
+      - action: action_query_knowledge_base
+
+  # Rule 15: Hỏi về tỉnh mới sau sáp nhập
+  - rule: Trả lời câu hỏi về tỉnh thành sau sáp nhập
+    steps:
+      - intent: ask_new_province
+      - action: action_query_knowledge_base
+
+  # Rule 16: Người dùng cung cấp địa điểm
+  - rule: Người dùng cho biết địa điểm
+    steps:
+      - intent: inform_location
+      - action: action_query_knowledge_base
+
+  # Rule 17: Fallback khi bot không chắc chắn
+  - rule: Xử lý fallback
+    steps:
+      - intent: nlu_fallback
+      - action: action_default_fallback

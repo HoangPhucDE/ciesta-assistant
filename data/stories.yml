@@ -1,86 +1,266 @@
 version: "3.1"
 
 stories:
-- story: Hỏi về văn hóa
-  steps:
-  - intent: ask_culture
-    entities:
-    - location: "Bắc Ninh"
-  - slot_was_set:
-    - location: "Bắc Ninh"
-  - action: action_query_knowledge_base
-  - action: utter_culture_info
+  # Story 1: Hỏi về văn hóa một tỉnh
+  - story: Hỏi văn hóa sau khi chào
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_culture
+        entities:
+          - location: "Hà Nội"
+      - action: action_query_knowledge_base
+      - intent: goodbye
+      - action: utter_goodbye
 
-- story: Hỏi về điểm tham quan
-  steps:
-  - intent: ask_attractions
-    entities:
-    - location: "An Giang"
-  - slot_was_set:
-    - location: "An Giang"
-  - action: action_query_knowledge_base
-  - action: utter_attractions_info
+  # Story 2: Hỏi về địa điểm tham quan
+  - story: Hỏi địa điểm du lịch
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_attractions
+        entities:
+          - location: "Đà Nẵng"
+      - action: action_query_knowledge_base
+      - intent: affirm
+      - action: utter_affirm
+      - intent: goodbye
+      - action: utter_goodbye
 
-- story: Hỏi về lễ hội với time filter
-  steps:
-  - intent: ask_festival
-    entities:
-    - location: "Bắc Ninh"
-    - time: "tháng Giêng"
-  - slot_was_set:
-    - location: "Bắc Ninh"
-    - time: "tháng Giêng"
-  - action: action_query_knowledge_base
-  - action: utter_festival_info
+  # Story 3: Hỏi về ẩm thực
+  - story: Hỏi về đặc sản
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_cuisine
+        entities:
+          - location: "Huế"
+      - action: action_query_knowledge_base
+      - intent: ask_cuisine
+        entities:
+          - location: "Hội An"
+      - action: action_query_knowledge_base
+      - intent: goodbye
+      - action: utter_goodbye
 
-- story: Hỏi về sáp nhập tỉnh mới
-  steps:
-  - intent: ask_new_province
-    entities:
-    - location: "Bắc Ninh"
-  - slot_was_set:
-    - location: "Bắc Ninh"
-  - action: action_query_knowledge_base
-  - action: utter_new_province_info
+  # Story 4: Hỏi về lễ hội
+  - story: Tìm hiểu lễ hội
+    steps:
+      - intent: ask_festival
+        entities:
+          - location: "Bắc Ninh"
+      - action: action_query_knowledge_base
+      - intent: affirm
+      - action: utter_affirm
 
-- story: Hỏi mẹo du lịch
-  steps:
-  - intent: ask_travel_tips
-    entities:
-    - location: "Đà Nẵng"
-  - slot_was_set:
-    - location: "Đà Nẵng"
-  - action: action_query_knowledge_base
-  - action: utter_travel_tips_info
+  # Story 5: Hỏi về phương tiện di chuyển
+  - story: Hỏi về cách di chuyển
+    steps:
+      - intent: ask_transportation
+        entities:
+          - location: "Nha Trang"
+      - action: action_query_knowledge_base
+      - intent: goodbye
+      - action: utter_goodbye
 
-- story: Hỏi phương tiện di chuyển
-  steps:
-  - intent: ask_transportation
-    entities:
-    - location: "An Giang"
-  - slot_was_set:
-    - location: "An Giang"
-  - action: action_query_knowledge_base
-  - action: utter_transportation_info
+  # Story 6: Hỏi về tỉnh mới sau sáp nhập
+  - story: Tìm hiểu tỉnh thành mới
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_new_province
+        entities:
+          - location: "Bắc Ninh"
+      - action: action_query_knowledge_base
+      - intent: ask_culture
+        entities:
+          - location: "Bắc Ninh"
+      - action: action_query_knowledge_base
+      - intent: goodbye
+      - action: utter_goodbye
 
-- story: Xử lý câu hỏi ngoài phạm vi
-  steps:
-  - intent: out_of_scope
-  - action: utter_out_of_scope
+  # Story 7: Hỏi mẹo du lịch
+  - story: Xin mẹo du lịch
+    steps:
+      - intent: ask_travel_tips
+        entities:
+          - location: "Đà Lạt"
+      - action: action_query_knowledge_base
+      - intent: ask_attractions
+        entities:
+          - location: "Đà Lạt"
+      - action: action_query_knowledge_base
+      - intent: affirm
+      - action: utter_affirm
 
-- story: "Luồng hội thoại dài: Hỏi sáp nhập rồi hỏi khu vực con"  # Quote tên story để xử lý ký tự đặc biệt
-  steps:
-  - intent: ask_new_province
-    entities:
-    - location: "Bắc Ninh"
-  - slot_was_set:
-    - location: "Bắc Ninh"
-  - action: action_query_knowledge_base
-  - action: utter_new_province_info
-  - intent: ask_attractions
-    entities:
-    - location: "Bắc Giang"  # Chuyển sub_region thành location để đồng bộ với action
-  - slot_was_set:
-    - location: "Bắc Giang"
-  - action: action_query_knowledge_base
-  - action: utter_attractions_info
+  # Story 8: Người dùng buồn, bot gợi ý địa điểm
+  - story: An ủi và gợi ý du lịch
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: mood_unhappy
+      - action: utter_mood_unhappy
+      - intent: inform_location
+        entities:
+          - location: "Phú Quốc"
+      - action: action_query_knowledge_base
+
+  # Story 9: Chuỗi hỏi nhiều thông tin về một tỉnh
+  - story: Hỏi chi tiết về một tỉnh
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_culture
+        entities:
+          - location: "Cần Thơ"
+      - action: action_query_knowledge_base
+      - intent: ask_attractions
+        entities:
+          - location: "Cần Thơ"
+      - action: action_query_knowledge_base
+      - intent: ask_cuisine
+        entities:
+          - location: "Cần Thơ"
+      - action: action_query_knowledge_base
+      - intent: ask_festival
+        entities:
+          - location: "Cần Thơ"
+      - action: action_query_knowledge_base
+      - intent: goodbye
+      - action: utter_goodbye
+
+  # Story 10: So sánh nhiều tỉnh
+  - story: So sánh các tỉnh
+    steps:
+      - intent: ask_cuisine
+        entities:
+          - location: "An Giang"
+      - action: action_query_knowledge_base
+      - intent: ask_cuisine
+        entities:
+          - location: "Cà Mau"
+      - action: action_query_knowledge_base
+      - intent: affirm
+      - action: utter_affirm
+
+  # Story 11: Hỏi ngoài phạm vi
+  - story: Xử lý câu hỏi ngoài phạm vi
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: out_of_scope
+      - action: utter_out_of_scope
+      - intent: ask_culture
+        entities:
+          - location: "Ninh Bình"
+      - action: action_query_knowledge_base
+
+  # Story 12: Người dùng vui và muốn khám phá
+  - story: Tâm trạng vui và khám phá
+    steps:
+      - intent: mood_great
+      - action: utter_mood_great
+      - intent: inform_location
+        entities:
+          - location: "Sapa"
+      - action: action_query_knowledge_base
+      - intent: ask_travel_tips
+        entities:
+          - location: "Sapa"
+      - action: action_query_knowledge_base
+
+  # Story 13: Hỏi về tỉnh rồi từ chối
+  - story: Hỏi nhưng không quan tâm
+    steps:
+      - intent: ask_attractions
+        entities:
+          - location: "Vũng Tàu"
+      - action: action_query_knowledge_base
+      - intent: deny
+      - action: utter_deny
+      - intent: goodbye
+      - action: utter_goodbye
+
+  # Story 14: Bot challenge trong cuộc hội thoại
+  - story: Hỏi về bot giữa chừng
+    steps:
+      - intent: ask_culture
+        entities:
+          - location: "Hạ Long"
+      - action: action_query_knowledge_base
+      - intent: bot_challenge
+      - action: utter_bot_challenge
+      - intent: affirm
+      - action: utter_affirm
+      - intent: goodbye
+      - action: utter_goodbye
+
+  # Story 15: Hỏi liên tiếp nhiều tỉnh miền Bắc
+  - story: Khám phá miền Bắc
+    steps:
+      - intent: greet
+      - action: utter_greet
+      - intent: ask_attractions
+        entities:
+          - location: "Hà Nội"
+      - action: action_query_knowledge_base
+      - intent: ask_attractions
+        entities:
+          - location: "Ninh Bình"
+      - action: action_query_knowledge_base
+      - intent: ask_attractions
+        entities:
+          - location: "Lào Cai"
+      - action: action_query_knowledge_base
+      - intent: goodbye
+      - action: utter_goodbye
+
+  # Story 16: Khám phá miền Trung
+  - story: Du lịch miền Trung
+    steps:
+      - intent: ask_culture
+        entities:
+          - location: "Huế"
+      - action: action_query_knowledge_base
+      - intent: ask_culture
+        entities:
+          - location: "Đà Nẵng"
+      - action: action_query_knowledge_base
+      - intent: ask_culture
+        entities:
+          - location: "Hội An"
+      - action: action_query_knowledge_base
+
+  # Story 17: Khám phá miền Nam
+  - story: Du lịch miền Nam
+    steps:
+      - intent: ask_cuisine
+        entities:
+          - location: "Hồ Chí Minh"
+      - action: action_query_knowledge_base
+      - intent: ask_cuisine
+        entities:
+          - location: "Cần Thơ"
+      - action: action_query_knowledge_base
+      - intent: ask_cuisine
+        entities:
+          - location: "Cà Mau"
+      - action: action_query_knowledge_base
+      - intent: goodbye
+      - action: utter_goodbye
+
+  # Story 18: Hỏi về Tây Nguyên
+  - story: Khám phá Tây Nguyên
+    steps:
+      - intent: ask_culture
+        entities:
+          - location: "Đắk Lắk"
+      - action: action_query_knowledge_base
+      - intent: ask_culture
+        entities:
+          - location: "Gia Lai"
+      - action: action_query_knowledge_base
+      - intent: ask_festival
+        entities:
+          - location: "Lâm Đồng"
+      - action: action_query_knowledge_base

@@ -5,13 +5,13 @@ from utils import load_stylesheet, load_config  # Load theme/config
 from views.login_view import LoginView  # Import views
 from views.chat_view import ChatView
 from views.settings_view import SettingsView
-from backend.api_client import APIClient
+from controllers.api_client import APIClient
 
 
 class MainApp(QMainWindow):  # Window chính
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("AI Chatbot Frontend")  # Tiêu đề
+        self.setWindowTitle("Ciesta")  # Tiêu đề
         self.setGeometry(100, 100, 700, 900)  # Kích thước
 
         config = load_config()  # Load config

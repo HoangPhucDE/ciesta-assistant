@@ -1,5 +1,7 @@
+# FILE: domain.yml (PHIÊN BẢN TỐI ƯU HÓA)
 version: "3.1"
 
+# === Intents ===
 intents:
   - greet
   - goodbye
@@ -8,138 +10,94 @@ intents:
   - mood_great
   - mood_unhappy
   - bot_challenge
-  - ask_culture
-  - ask_attractions
-  - ask_festival
-  - ask_cuisine
-  - ask_new_province
-  - ask_travel_tips
-  - ask_transportation
-  - inform_location  # ✅ Đã thêm: Intent này xuất hiện trong NLU nhưng bị thiếu trong domain
+  - ask_culture          # Hỏi về văn hóa chung
+  - ask_attractions      # Hỏi về địa điểm tham quan
+  - ask_festival         # Hỏi về lễ hội
+  - ask_cuisine          # Hỏi về ẩm thực
+  - ask_travel_tips      # Hỏi về mẹo du lịch
+  - ask_transportation   # Hỏi về phương tiện di chuyển
+  - ask_new_province     # Hỏi về tỉnh thành mới
+  - inform_location      # Người dùng cung cấp tên địa điểm
+  - out_of_scope         # Câu hỏi ngoài phạm vi
 
+# === Entities ===
 entities:
   - location
-  - time
-  - sub_region
   - category
 
+# === Slots ===
 slots:
   location:
     type: text
+    influence_conversation: true
     mappings:
       - type: from_entity
         entity: location
+  
+  # Slot "thông minh" để biết người dùng muốn hỏi thông tin gì
   requested_info:
     type: text
+    influence_conversation: false
     mappings:
       - type: from_intent
-        value: "places_to_visit"
         intent: ask_attractions
+        value: "places_to_visit"
       - type: from_intent
-        value: "what_to_eat"
         intent: ask_cuisine
+        value: "what_to_eat"
       - type: from_intent
-        value: "festivals"
         intent: ask_festival
+        value: "festivals"
       - type: from_intent
-        value: "sub_regions"
-        intent: ask_new_province
-      - type: from_intent
-        value: "travel_tips"
         intent: ask_travel_tips
+        value: "best_time_to_visit"
       - type: from_intent
-        value: "transportation"
+        intent: ask_culture
+        value: "general"
+      - type: from_intent
         intent: ask_transportation
-      - type: from_text
-  time:
-    type: text
-    mappings:
-      - type: from_entity
-        entity: time
-  sub_region:
-    type: text
-    mappings:
-      - type: from_entity
-        entity: sub_region
-  category:
-    type: text
-    mappings:
-      - type: from_entity
-        entity: category
+        value: "transportation"
 
+# === Responses ===
 responses:
   utter_greet:
-    - text: "Xin chào! Tôi là bot du lịch Việt Nam. Bạn muốn biết gì về các tỉnh thành mới sau sáp nhập?"
+    - text: "Xin chào! Tôi là Ciesta, bot giới thiệu văn hóa và du lịch các tỉnh thành Việt Nam. Bạn muốn biết gì hôm nay?"
+  
   utter_goodbye:
     - text: "Tạm biệt! Hẹn gặp lại bạn trong hành trình khám phá Việt Nam."
+  
   utter_affirm:
     - text: "Được thôi, tiếp tục nào!"
+  
   utter_deny:
-    - text: "Ồ, không sao! Bạn muốn hỏi gì khác không?"
+    - text: "Không sao! Bạn muốn hỏi gì khác không?"
+  
   utter_mood_great:
-    - text: "Tuyệt vời! Hôm nay khám phá tỉnh thành nào?"
+    - text: "Tuyệt vời! Hôm nay bạn muốn khám phá tỉnh thành nào?"
+  
   utter_mood_unhappy:
-    - text: "Đừng buồn! Để tôi gợi ý một điểm du lịch đẹp ở Việt Nam nhé!"
+    - text: "Đừng buồn! Tôi sẽ gợi ý một điểm du lịch thú vị ở Việt Nam nhé!"
+  
   utter_bot_challenge:
-    - text: "Tôi là bot du lịch, được xây dựng bằng Rasa để giúp bạn khám phá văn hóa Việt Nam!"
+    - text: "Tôi là Ciesta, bot du lịch được xây dựng bằng Rasa để giúp bạn khám phá văn hóa và du lịch các tỉnh thành Việt Nam!"
+  
   utter_ask_for_location:
     - text: "Bạn muốn biết thông tin về tỉnh/thành phố nào? Ví dụ: Bắc Ninh, An Giang..."
-  utter_culture_info:
-    - text: "Văn hóa {location} nổi bật với {culture_details}."
-  utter_attractions_info:
-    - text: "Ở {location}, bạn có thể tham quan {attractions_list}."
-  utter_festival_info:
-    - text: "Lễ hội ở {location} vào {time} là {festival_details}."
-  utter_cuisine_info:
-    - text: "Ẩm thực {location} nổi tiếng với {cuisine_details}."
-  utter_new_province_info:
-    - text: "{location} mới gồm các khu vực: {sub_regions_list}."
-  utter_travel_tips_info:
-    - text: "Mẹo du lịch ở {location}: {travel_tips_details}."
-  utter_transportation_info:
-    - text: "Phương tiện di chuyển đến {location}: {transportation_details}."
-  utter_out_of_scope:  # ✅ Đã thêm: Template phản hồi cho action bị thiếu
-    - text: "Xin lỗi, tôi không thể trả lời câu hỏi này. Bạn có muốn hỏi về chủ đề khác không?"
+  
+  utter_out_of_scope:
+    - text: "Xin lỗi, tôi chưa biết trả lời câu hỏi này. Bạn có muốn hỏi về chủ đề khác không?"
+  
+  utter_default:
+    - text: "Xin lỗi, tôi không hiểu ý bạn. Bạn có thể hỏi lại được không?"
 
+# === Actions ===
 actions:
+  # Action chính để truy vấn knowledge base
   - action_query_knowledge_base
-  - utter_out_of_scope  # ✅ Đã thêm: Khai báo action `utter_out_of_scope`
+  # Action fallback mặc định
+  - action_default_fallback
 
-# Ánh xạ synonyms cho entities (tích hợp với EntitySynonymMapper)
-entity_synonyms:
-  # ... (Phần này giữ nguyên)
-  kinh_bac: bac_ninh
-  bac_giang: bac_ninh
-  vinh_phuc: bac_ninh
-  yen_bai: lao_cai
-  bac_kan: thai_nguyen
-  hoa_binh: phu_tho
-  thai_binh: hung_yen
-  hai_duong: hai_phong
-  ha_nam: ninh_binh
-  nam_dinh: ninh_binh
-  quang_binh: quang_tri
-  quang_nam: da_nang
-  kon_tum: quang_ngai
-  binh_dinh: gia_lai
-  ninh_thuan: khanh_hoa
-  dak_nong: lam_dong
-  binh_thuan: lam_dong
-  phu_yen: dak_lak
-  ba_ria_vung_tau: ho_chi_minh
-  binh_duong: ho_chi_minh
-  binh_phuoc: dong_nai
-  long_an: tay_ninh
-  soc_trang: can_tho
-  hau_giang: can_tho
-  ben_tre: vinh_long
-  tra_vinh: vinh_long
-  tien_giang: dong_thap
-  bac_lieu: ca_mau
-  kien_giang: an_giang
-  # Các synonym phổ biến khác
-  phu_quoc: an_giang
-  chau_doc: an_giang
-  saigon: ho_chi_minh
-  hue: hue
-  # Thêm nếu cần cho các tỉnh khác
+# === Session Config ===
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

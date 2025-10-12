@@ -1,43 +1,64 @@
+# FILE: config.yml (GIẢI PHÁP CHO TIẾNG VIỆT)
 recipe: default.v1
 language: vi
+assistant_id: 20251012-061720-cruel-inlay
 
 pipeline:
-- name: WhitespaceTokenizer
-- name: custom_components.phobert_featurizer.PhoBERTFeaturizer
-  model_name: "vinai/phobert-base"
-  cache_dir: ".cache"
-- name: RegexFeaturizer
-- name: LexicalSyntacticFeaturizer
-- name: CountVectorsFeaturizer
-  analyzer: char_wb
-  min_ngram: 2
-  max_ngram: 5
-- name: DIETClassifier
-  epochs: 100
-  entity_recognition: true
-  constrain_similarities: true
-  model_confidence: "softmax"
-  embedding_dimension: 768
-  number_of_transformer_layers: 2
-  transformer_size: 256
-- name: EntitySynonymMapper
-- name: ResponseSelector
-  epochs: 100
-  constrain_similarities: true
-  embedding_dimension: 768
-- name: FallbackClassifier
-  threshold: 0.6
-  ambiguity_threshold: 0.1
+  # 1. Tokenizer
+  - name: WhitespaceTokenizer
+  
+  # 2. SỬ DỤNG ROBERTA + model_weights của PhoBERT
+  # Rasa 3.6.0 chỉ hỗ trợ model_name cố định, NHƯNG có thể dùng model_weights tùy chỉnh
+  - name: LanguageModelFeaturizer
+    model_name: "roberta"  # Bắt buộc phải là "roberta" cho PhoBERT
+    model_weights: "vinai/phobert-large"  # Đây mới là model thật
+    cache_dir: null
+  
+  # 3. Các featurizer bổ sung
+  - name: RegexFeaturizer
+  
+  - name: LexicalSyntacticFeaturizer
+  
+  - name: CountVectorsFeaturizer
+    analyzer: "word"
+    min_ngram: 1
+    max_ngram: 2
+  
+  - name: CountVectorsFeaturizer
+    analyzer: char_wb
+    min_ngram: 1
+    max_ngram: 4
+  
+  # 4. Phân loại Intent và Entity
+  - name: DIETClassifier
+    epochs: 100
+    entity_recognition: true
+    constrain_similarities: true
+  
+  # 5. Xử lý từ đồng nghĩa
+  - name: EntitySynonymMapper
+  
+  # 6. Bộ chọn câu trả lời
+  - name: ResponseSelector
+    epochs: 100
+    retrieval_intent: chitchat
+  
+  # 7. Phân loại Fallback
+  - name: FallbackClassifier
+    threshold: 0.6
+    ambiguity_threshold: 0.1
 
 policies:
-- name: MemoizationPolicy
-- name: RulePolicy
-  core_fallback_action_name: "action_default_fallback"
-- name: UnexpecTEDIntentPolicy
-  max_history: 5
-  epochs: 100
-- name: TEDPolicy
-  max_history: 5
-  epochs: 100
-  constrain_similarities: true
-assistant_id: 20251011-123747-chamfered-similarity
+  - name: MemoizationPolicy
+  
+  - name: RulePolicy
+    core_fallback_action_name: "action_default_fallback"
+  
+  - name: UnexpecTEDIntentPolicy
+    max_history: 5
+    epochs: 100
+  
+  - name: TEDPolicy
+    max_history: 5
+    epochs: 100
+    constrain_similarities: true

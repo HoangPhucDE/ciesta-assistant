@@ -1,298 +1,356 @@
 version: "3.1"
 
 nlu:
-- intent: greet
-  examples: |
-    - xin chào
-    - chào bot
-    - hello
-    - hi
-    - chào bạn
-    - hey
-    - chào buổi sáng
-    - chào buổi tối
-    - chào nhé
+  - intent: greet
+    examples: |
+      - xin chào
+      - chào bot
+      - hello
+      - hi
+      - chào bạn
+      - hey
+      - chào buổi sáng
+      - chào buổi tối
+      - chào nhé
+      - good morning
+      - hế nhô
+      - alo
 
-- intent: goodbye
-  examples: |
-    - tạm biệt
-    - bye bye
-    - hẹn gặp lại
-    - cảm ơn nhé
-    - thôi vậy
-    - goodbye
-    - chúc ngủ ngon
-    - hẹn gặp sau
+  - intent: goodbye
+    examples: |
+      - tạm biệt
+      - bye bye
+      - hẹn gặp lại
+      - cảm ơn nhé
+      - thôi vậy
+      - goodbye
+      - chúc ngủ ngon
+      - hẹn gặp sau
+      - bye
+      - see you
 
-- intent: deny
-  examples: |
-    - không
-    - không phải
-    - sai rồi
-    - chưa
-    - không muốn
-    - dừng lại
-    - bỏ qua
-    - không cần
+  - intent: affirm
+    examples: |
+      - đúng
+      - phải
+      - có
+      - vâng
+      - chính xác
+      - đồng ý
+      - ok
+      - tiếp tục
+      - ừ
+      - oke
+      - okie
+      - được
 
-- intent: mood_great
-  examples: |
-    - tôi ổn
-    - rất tốt
-    - tôi cảm thấy tuyệt
-    - vui vẻ
-    - hạnh phúc
-    - khá tốt
-    - tôi đang vui
+  - intent: deny
+    examples: |
+      - không
+      - không phải
+      - sai rồi
+      - chưa
+      - không muốn
+      - dừng lại
+      - bỏ qua
+      - không cần
+      - thôi
+      - khỏi
 
-- intent: mood_unhappy
-  examples: |
-    - tôi buồn
-    - không vui
-    - hơi tệ
-    - tôi không ổn
-    - chán quá
-    - mệt mỏi
-    - có gì đó không đúng
+  - intent: mood_great
+    examples: |
+      - tôi ổn
+      - rất tốt
+      - tôi cảm thấy tuyệt
+      - vui vẻ
+      - hạnh phúc
+      - khá tốt
+      - tôi đang vui
+      - tuyệt vời
+      - tốt lắm
 
-- intent: bot_challenge
-  examples: |
-    - bạn là ai
-    - bạn là người hay bot
-    - bạn có phải là người không
-    - ai đã tạo ra bạn
-    - bot
+  - intent: mood_unhappy
+    examples: |
+      - tôi buồn
+      - không vui
+      - hơi tệ
+      - tôi không ổn
+      - chán quá
+      - mệt mỏi
+      - có gì đó không đúng
+      - tệ lắm
+      - không được
 
-- intent: affirm
-  examples: |
-    - đúng
-    - phải
-    - có
-    - vâng
-    - chính xác
-    - đồng ý
-    - ok
-    - tiếp tục
+  - intent: bot_challenge
+    examples: |
+      - bạn là ai
+      - bạn là người hay bot
+      - bạn có phải là người không
+      - ai đã tạo ra bạn
+      - bot
+      - bạn là gì
+      - tên bạn là gì
 
-- intent: ask_culture
-  examples: |
-    - cho tôi biết về [Hà Nội](location)
-    - giới thiệu [Đà Nẵng](location)
-    - [Cà Mau](location) có gì đặc biệt
-    - [Bạc Liêu](location) nổi tiếng gì
-    - tôi muốn biết về [Hồ Chí Minh](location)
-    - [Huế](location) có gì hay
-    - kể cho tôi nghe về [Sapa](location)
-    - thông tin về [Phú Quốc](location)
-    - [Đà Lạt](location) có gì đặc sắc
-    - tìm hiểu về văn hóa [Nghệ An](location)
-    - [Cần Thơ](location) như thế nào
-    - [Vũng Tàu](location) có điểm gì nổi bật
-    - nói cho tôi về [Phan Thiết](location)
-    - văn hóa [Hội An](location) ra sao
-    - [Quy Nhơn](location) thế nào
-    - [Ninh Bình](location) có gì đặc trưng
-    - [Thái Nguyên](location) nổi tiếng về cái gì
-    - văn hóa [Bắc Ninh](location) mới ra sao
-    - giới thiệu về [An Giang](location) sau sáp nhập
-    - [Lào Cai](location) có đặc sản văn hóa gì
-    - tìm hiểu [Gia Lai](location) mới
-    - [Khánh Hòa](location) có gì độc đáo
-    - văn hóa dân gian ở [Đắk Lắk](location)
-    - [Lâm Đồng](location) có phong tục gì hay
-    - giới thiệu [Quảng Ngãi](location) mới
+  - intent: ask_culture
+    examples: |
+      - cho tôi biết về [Hà Nội](location)
+      - giới thiệu [Đà Nẵng](location)
+      - [Cà Mau](location) có gì đặc biệt
+      - [Bạc Liêu](location) nổi tiếng gì
+      - tôi muốn biết về [Hồ Chí Minh](location)
+      - [Huế](location) có gì hay
+      - kể cho tôi nghe về [Sapa](location)
+      - thông tin về [Phú Quốc](location)
+      - [Đà Lạt](location) có gì đặc sắc
+      - tìm hiểu về văn hóa [Nghệ An](location)
+      - [Cần Thơ](location) như thế nào
+      - [Vũng Tàu](location) có điểm gì nổi bật
+      - nói cho tôi về [Phan Thiết](location)
+      - văn hóa [Hội An](location) ra sao
+      - [Quy Nhơn](location) thế nào
+      - [Ninh Bình](location) có gì đặc trưng
+      - [Thái Nguyên](location) nổi tiếng về cái gì
+      - văn hóa [Bắc Ninh](location) mới ra sao
+      - giới thiệu về [An Giang](location) sau sáp nhập
+      - [Lào Cai](location) có đặc sản văn hóa gì
+      - tìm hiểu [Gia Lai](location) mới
+      - [Khánh Hòa](location) có gì độc đáo
+      - văn hóa dân gian ở [Đắk Lắk](location)
+      - [Lâm Đồng](location) có phong tục gì hay
+      - giới thiệu [Quảng Ngãi](location) mới
+      - văn hóa [Hạ Long](location)
+      - [Nha Trang](location) có gì đặc biệt
 
-- intent: ask_attractions
-  examples: |
-    - [Hà Nội](location) có địa điểm nào đẹp
-    - địa điểm tham quan ở [Đà Nẵng](location)
-    - đi [Cà Mau](location) nên đi đâu
-    - [Bạc Liêu](location) có nơi nào đáng tham quan
-    - nơi check in đẹp ở [Hội An](location)
-    - điểm du lịch hot ở [Nha Trang](location)
-    - [Sapa](location) có những điểm đến nào
-    - gợi ý địa điểm ở [Phú Quốc](location)
-    - nên đi đâu khi đến [Đà Lạt](location)
-    - danh lam thắng cảnh [Hạ Long](location)
-    - những nơi không thể bỏ lỡ ở [Huế](location)
-    - địa điểm [lịch sử](category) ở [Ninh Bình](location)
-    - [Bắc Ninh](location) có điểm [tâm linh](category) nào
-    - gợi ý địa điểm [biển](category) ở [An Giang](location)
-    - [Lào Cai](location) có địa điểm [sinh thái](category) gì hay
-    - tham quan [Gia Lai](location) nên đến đâu
-    - địa điểm đẹp ở [Khánh Hòa](location)
-    - [Đắk Lắk](location) có điểm [du lịch](category) nào nổi bật
-    - gợi ý nơi chơi ở [Lâm Đồng](location)
-    - [Quảng Ngãi](location) có địa điểm [lịch sử](category) nào
+  - intent: ask_attractions
+    examples: |
+      - [Hà Nội](location) có địa điểm nào đẹp
+      - địa điểm tham quan ở [Đà Nẵng](location)
+      - đi [Cà Mau](location) nên đi đâu
+      - [Bạc Liêu](location) có nơi nào đáng tham quan
+      - nơi check in đẹp ở [Hội An](location)
+      - điểm du lịch hot ở [Nha Trang](location)
+      - [Sapa](location) có những điểm đến nào
+      - gợi ý địa điểm ở [Phú Quốc](location)
+      - nên đi đâu khi đến [Đà Lạt](location)
+      - danh lam thắng cảnh [Hạ Long](location)
+      - những nơi không thể bỏ lỡ ở [Huế](location)
+      - địa điểm [lịch sử](category) ở [Ninh Bình](location)
+      - [Bắc Ninh](location) có điểm [tâm linh](category) nào
+      - gợi ý địa điểm [biển](category) ở [An Giang](location)
+      - [Lào Cai](location) có địa điểm [sinh thái](category) gì hay
+      - tham quan [Gia Lai](location) nên đến đâu
+      - địa điểm đẹp ở [Khánh Hòa](location)
+      - [Đắk Lắk](location) có điểm [du lịch](category) nào nổi bật
+      - gợi ý nơi chơi ở [Lâm Đồng](location)
+      - [Quảng Ngãi](location) có địa điểm [lịch sử](category) nào
+      - du lịch [Vũng Tàu](location) đi đâu
+      - [Phan Thiết](location) có bãi biển nào đẹp
+      - địa điểm sống ảo [Quy Nhơn](location)
+      - chỗ nào đẹp ở [Nghệ An](location)
 
-- intent: ask_cuisine
-  examples: |
-    - đặc sản [Hà Nội](location) là gì
-    - ăn gì ở [Đà Nẵng](location)
-    - món ngon [Cà Mau](location)
-    - [Bạc Liêu](location) có món gì đặc trưng
-    - đi [Hội An](location) ăn gì
-    - ẩm thực [Huế](location)
-    - món ăn nổi tiếng ở [Nha Trang](location)
-    - [Phú Quốc](location) có hải sản gì ngon
-    - đặc sản nên mua ở [Đà Lạt](location)
-    - quà vặt [Sapa](location)
-    - thử món gì ở [Nghệ An](location)
-    - đặc sản [đặc sản](category) ở [Bắc Ninh](location)
-    - món ăn [món chính](category) ở [An Giang](location)
-    - ẩm thực [hải sản](category) ở [Lào Cai](location)
-    - đặc sản [Gia Lai](location) có gì
-    - món ngon ở [Khánh Hòa](location)
-    - thử món [đặc sản](category) ở [Đắk Lắk](location)
-    - ẩm thực đường phố [Lâm Đồng](location)
-    - đặc sản mang về ở [Quảng Ngãi](location)
-    - món ăn dân dã [Ninh Bình](location)
+  - intent: ask_cuisine
+    examples: |
+      - đặc sản [Hà Nội](location) là gì
+      - ăn gì ở [Đà Nẵng](location)
+      - món ngon [Cà Mau](location)
+      - [Bạc Liêu](location) có món gì đặc trưng
+      - đi [Hội An](location) ăn gì
+      - ẩm thực [Huế](location)
+      - món ăn nổi tiếng ở [Nha Trang](location)
+      - [Phú Quốc](location) có hải sản gì ngon
+      - đặc sản nên mua ở [Đà Lạt](location)
+      - quà vặt [Sapa](location)
+      - thử món gì ở [Nghệ An](location)
+      - đặc sản [đặc sản](category) ở [Bắc Ninh](location)
+      - món ăn [món chính](category) ở [An Giang](location)
+      - ẩm thực [hải sản](category) ở [Lào Cai](location)
+      - đặc sản [Gia Lai](location) có gì
+      - món ngon ở [Khánh Hòa](location)
+      - thử món [đặc sản](category) ở [Đắk Lắk](location)
+      - ẩm thực đường phố [Lâm Đồng](location)
+      - đặc sản mang về ở [Quảng Ngãi](location)
+      - món ăn dân dã [Ninh Bình](location)
+      - quán ăn ngon [Vũng Tàu](location)
+      - [Phan Thiết](location) có món gì ngon
+      - đồ ăn vặt [Quy Nhơn](location)
+      - ẩm thực [Cần Thơ](location)
 
-- intent: ask_festival
-  examples: |
-    - lễ hội ở [Hà Nội](location)
-    - [Huế](location) có lễ hội gì
-    - sự kiện văn hóa [Cà Mau](location)
-    - lễ hội truyền thống [Bạc Liêu](location)
-    - [Đà Nẵng](location) tổ chức lễ hội nào
-    - các dịp lễ ở [Nghệ An](location)
-    - [Hội An](location) có lễ hội đèn lồng không
-    - sự kiện nào ở [Nha Trang](location)
-    - festival tại [Đà Lạt](location)
-    - lễ hội ở [Bắc Ninh](location) [tháng Giêng](time)
-    - [An Giang](location) có lễ hội gì [tháng 4 âm lịch](time)
-    - sự kiện văn hóa [Lào Cai](location) [mùa xuân](time)
-    - lễ hội [Gia Lai](location) diễn ra khi nào
-    - [Khánh Hòa](location) có lễ hội [tháng 3 âm lịch](time)
-    - festival ở [Đắk Lắk](location) [mùa thu](time)
-    - lễ hội truyền thống [Lâm Đồng](location) [tháng 12](time)
-    - sự kiện [Quảng Ngãi](location) [tháng 7 âm lịch](time)
-    - lễ hội ở [Ninh Bình](location) [tháng 3 âm lịch](time)
-    - [Thái Nguyên](location) có lễ hội gì [mùa hè](time)
+  - intent: ask_festival
+    examples: |
+      - lễ hội ở [Hà Nội](location)
+      - [Huế](location) có lễ hội gì
+      - sự kiện văn hóa [Cà Mau](location)
+      - lễ hội truyền thống [Bạc Liêu](location)
+      - [Đà Nẵng](location) tổ chức lễ hội nào
+      - các dịp lễ ở [Nghệ An](location)
+      - [Hội An](location) có lễ hội đèn lồng không
+      - sự kiện nào ở [Nha Trang](location)
+      - festival tại [Đà Lạt](location)
+      - lễ hội ở [Bắc Ninh](location) tháng Giêng
+      - [An Giang](location) có lễ hội gì tháng 4 âm lịch
+      - sự kiện văn hóa [Lào Cai](location) mùa xuân
+      - lễ hội [Gia Lai](location) diễn ra khi nào
+      - [Khánh Hòa](location) có lễ hội tháng 3 âm lịch
+      - festival ở [Đắk Lắk](location) mùa thu
+      - lễ hội truyền thống [Lâm Đồng](location) tháng 12
+      - sự kiện [Quảng Ngãi](location) tháng 7 âm lịch
+      - lễ hội ở [Ninh Bình](location) tháng 3 âm lịch
+      - [Thái Nguyên](location) có lễ hội gì mùa hè
+      - [Vũng Tàu](location) có sự kiện gì
+      - lễ hội [Phan Thiết](location)
+      - [Quy Nhơn](location) tổ chức festival nào
+      - sự kiện [Cần Thơ](location)
 
-- intent: ask_new_province
-  examples: |
-    - [Bắc Ninh mới](location) gồm những tỉnh nào
-    - tỉnh [An Giang](location) sáp nhập với đâu
-    - [Bắc Giang](sub_region) giờ thuộc tỉnh nào
-    - [Phú Quốc](sub_region) thuộc tỉnh nào sau sáp nhập
-    - cấu trúc tỉnh [Lào Cai](location) mới ra sao
-    - [Yên Bái](sub_region) thuộc tỉnh nào
-    - tỉnh [Thái Nguyên](location) gộp những gì
-    - [Bắc Kạn](sub_region) sáp nhập vào đâu
-    - tỉnh [Phú Thọ](location) mới gồm tỉnh cũ nào
-    - [Hòa Bình](sub_region) giờ là phần của tỉnh nào
-    - sáp nhập của [Hưng Yên](location) thế nào
-    - [Thái Bình](sub_region) thuộc tỉnh nào mới
-    - [Hải Phòng mới](location) gồm gì
-    - [Hải Dương](sub_region) sáp nhập vào đâu
-    - tỉnh [Ninh Bình](location) gộp những tỉnh nào
-    - [Hà Nam](sub_region) giờ thuộc đâu
-    - [Nam Định](sub_region) sáp nhập tỉnh nào
-    - [Quảng Trị mới](location) gồm tỉnh cũ gì
-    - [Quảng Bình](sub_region) thuộc tỉnh nào
-    - [Đà Nẵng mới](location) sáp nhập với đâu
-    - [Quảng Nam](sub_region) giờ là gì
-    - tỉnh [Quảng Ngãi](location) gộp Kon Tum
-    - [Kon Tum](sub_region) thuộc tỉnh nào mới
-    - [Gia Lai mới](location) gồm Bình Định
-    - [Bình Định](sub_region) sáp nhập vào đâu
-    - tỉnh [Khánh Hòa](location) gộp Ninh Thuận
-    - [Ninh Thuận](sub_region) thuộc đâu
-    - [Lâm Đồng mới](location) gồm những gì
-    - [Đắk Nông](sub_region) sáp nhập tỉnh nào
-    - [Bình Thuận](sub_region) giờ thuộc Lâm Đồng
-    - tỉnh [Đắk Lắk](location) gộp Phú Yên
-    - [Phú Yên](sub_region) thuộc tỉnh nào
-    - [Hồ Chí Minh mới](location) gồm tỉnh nào
-    - [Bà Rịa Vũng Tàu](sub_region) sáp nhập vào đâu
-    - [Bình Dương](sub_region) thuộc HCM
-    - tỉnh [Đồng Nai](location) gộp Bình Phước
-    - [Bình Phước](sub_region) thuộc tỉnh nào
-    - [Tây Ninh mới](location) gồm Long An
-    - [Long An](sub_region) sáp nhập vào đâu
-    - [Cần Thơ mới](location) gộp tỉnh nào
-    - [Sóc Trăng](sub_region) thuộc Cần Thơ
-    - [Hậu Giang](sub_region) giờ là gì
-    - tỉnh [Vĩnh Long](location) gồm Bến Tre, Trà Vinh
-    - [Bến Tre](sub_region) sáp nhập tỉnh nào
-    - [Trà Vinh](sub_region) thuộc Vĩnh Long
-    - [Đồng Tháp mới](location) gộp Tiền Giang
-    - [Tiền Giang](sub_region) thuộc tỉnh nào
-    - tỉnh [Cà Mau](location) gộp Bạc Liêu
-    - [Bạc Liêu](sub_region) sáp nhập vào đâu
-    - [An Giang mới](location) gồm Kiên Giang
-    - [Kiên Giang](sub_region) thuộc An Giang
+  - intent: ask_new_province
+    examples: |
+      - [Bắc Ninh](location) mới gồm những tỉnh nào
+      - tỉnh [An Giang](location) sáp nhập với đâu
+      - [Bắc Giang](location) giờ thuộc tỉnh nào
+      - [Phú Quốc](location) thuộc tỉnh nào sau sáp nhập
+      - cấu trúc tỉnh [Lào Cai](location) mới ra sao
+      - [Yên Bái](location) thuộc tỉnh nào
+      - tỉnh [Thái Nguyên](location) gộp những gì
+      - [Bắc Kạn](location) sáp nhập vào đâu
+      - tỉnh [Phú Thọ](location) mới gồm tỉnh cũ nào
+      - [Hòa Bình](location) giờ là phần của tỉnh nào
+      - sáp nhập của [Hưng Yên](location) thế nào
+      - [Thái Bình](location) thuộc tỉnh nào mới
+      - [Hải Phòng](location) mới gồm gì
+      - [Hải Dương](location) sáp nhập vào đâu
+      - tỉnh [Ninh Bình](location) gộp những tỉnh nào
+      - [Hà Nam](location) giờ thuộc đâu
+      - [Nam Định](location) sáp nhập tỉnh nào
+      - [Quảng Trị](location) mới gồm tỉnh cũ gì
+      - [Quảng Bình](location) thuộc tỉnh nào
+      - [Đà Nẵng](location) mới sáp nhập với đâu
+      - [Quảng Nam](location) giờ là gì
+      - tỉnh [Quảng Ngãi](location) gộp Kon Tum
+      - [Kon Tum](location) thuộc tỉnh nào mới
+      - [Gia Lai](location) mới gồm Bình Định
+      - [Bình Định](location) sáp nhập vào đâu
+      - tỉnh [Khánh Hòa](location) gộp Ninh Thuận
+      - [Ninh Thuận](location) thuộc đâu
+      - [Lâm Đồng](location) mới gồm những gì
+      - [Đắk Nông](location) sáp nhập tỉnh nào
+      - [Bình Thuận](location) giờ thuộc Lâm Đồng
+      - tỉnh [Đắk Lắk](location) gộp Phú Yên
+      - [Phú Yên](location) thuộc tỉnh nào
+      - [Hồ Chí Minh](location) mới gồm tỉnh nào
+      - [Bà Rịa Vũng Tàu](location) sáp nhập vào đâu
+      - [Bình Dương](location) thuộc HCM
+      - tỉnh [Đồng Nai](location) gộp Bình Phước
+      - [Bình Phước](location) thuộc tỉnh nào
+      - [Tây Ninh](location) mới gồm Long An
+      - [Long An](location) sáp nhập vào đâu
+      - [Cần Thơ](location) mới gộp tỉnh nào
+      - [Sóc Trăng](location) thuộc Cần Thơ
+      - [Hậu Giang](location) giờ là gì
+      - tỉnh [Vĩnh Long](location) gồm Bến Tre, Trà Vinh
+      - [Bến Tre](location) sáp nhập tỉnh nào
+      - [Trà Vinh](location) thuộc Vĩnh Long
+      - [Đồng Tháp](location) mới gộp Tiền Giang
+      - [Tiền Giang](location) thuộc tỉnh nào
+      - tỉnh [Cà Mau](location) gộp Bạc Liêu
+      - [Bạc Liêu](location) sáp nhập vào đâu
+      - [An Giang](location) mới gồm Kiên Giang
+      - [Kiên Giang](location) thuộc An Giang
 
-- intent: ask_travel_tips
-  examples: |
-    - đi [Hà Nội](location) cần chuẩn bị gì
-    - mẹo du lịch [Đà Nẵng](location)
-    - lưu ý khi đến [Cà Mau](location)
-    - [Bạc Liêu](location) nên mang theo gì
-    - du lịch [Hội An](location) có lưu ý gì
-    - tip đi [Huế](location)
-    - [Nha Trang](location) nên tránh gì
-    - mẹo tiết kiệm khi đến [Phú Quốc](sub_region)
-    - du lịch [Đà Lạt](location) mùa nào đẹp
-    - lưu ý an toàn ở [Sapa](location)
-    - [Nghệ An](location) nên mặc gì
-    - tip mua sắm ở [Vũng Tàu](location)
-    - du lịch [Phan Thiết](location) cần biết gì
-    - mẹo ăn uống [Hội An](location)
-    - [Quy Nhơn](location) nên ở đâu
-    - lưu ý thời tiết [Ninh Bình](location)
-    - tip đi [Thái Nguyên](location)
-    - du lịch [Bắc Ninh](location) nên tránh mùa nào
-    - mẹo khám phá [An Giang](location)
-    - lưu ý văn hóa [Lào Cai](location)
-    - tip tiết kiệm [Gia Lai](location)
-    - du lịch [Khánh Hòa](location) cần mang gì
-    - mẹo di chuyển [Đắk Lắk](location)
-    - lưu ý sức khỏe [Lâm Đồng](location)
-    - tip mua quà [Quảng Ngãi](location)
+  - intent: ask_travel_tips
+    examples: |
+      - đi [Hà Nội](location) cần chuẩn bị gì
+      - mẹo du lịch [Đà Nẵng](location)
+      - lưu ý khi đến [Cà Mau](location)
+      - [Bạc Liêu](location) nên mang theo gì
+      - du lịch [Hội An](location) có lưu ý gì
+      - tip đi [Huế](location)
+      - [Nha Trang](location) nên tránh gì
+      - mẹo tiết kiệm khi đến [Phú Quốc](location)
+      - du lịch [Đà Lạt](location) mùa nào đẹp
+      - lưu ý an toàn ở [Sapa](location)
+      - [Nghệ An](location) nên mặc gì
+      - tip mua sắm ở [Vũng Tàu](location)
+      - du lịch [Phan Thiết](location) cần biết gì
+      - mẹo ăn uống [Hội An](location)
+      - [Quy Nhơn](location) nên ở đâu
+      - lưu ý thời tiết [Ninh Bình](location)
+      - tip đi [Thái Nguyên](location)
+      - du lịch [Bắc Ninh](location) nên tránh mùa nào
+      - mẹo khám phá [An Giang](location)
+      - lưu ý văn hóa [Lào Cai](location)
+      - tip tiết kiệm [Gia Lai](location)
+      - du lịch [Khánh Hòa](location) cần mang gì
+      - mẹo di chuyển [Đắk Lắk](location)
+      - lưu ý sức khỏe [Lâm Đồng](location)
+      - tip mua quà [Quảng Ngãi](location)
+      - thời điểm tốt nhất đến [Cần Thơ](location)
+      - kinh nghiệm du lịch [Hạ Long](location)
 
-- intent: ask_transportation
-  examples: |
-    - làm sao đến [Hà Nội](location) từ Sài Gòn
-    - phương tiện đi [Đà Nẵng](location)
-    - đi [Cà Mau](location) bằng gì
-    - [Bạc Liêu](location) có sân bay không
-    - từ [Hội An](location) đến [Huế](location) mất bao lâu
-    - xe buýt đến [Nha Trang](location)
-    - tàu hỏa đi [Phú Quốc](sub_region)
-    - máy bay đến [Đà Lạt](location) giá bao nhiêu
-    - di chuyển ở [Sapa](location)
-    - từ [Nghệ An](location) đến [Hà Nội](location)
-    - đi [Vũng Tàu](location) từ TP.HCM
-    - phương tiện đến [Phan Thiết](location)
-    - xe khách [Hội An](location)
-    - [Quy Nhơn](location) có cảng không
-    - di chuyển [Ninh Bình](location) từ Hà Nội
-    - tàu đến [Thái Nguyên](location)
-    - từ [Bắc Ninh](location) đến [Hà Nội](location)
-    - phương tiện đến [An Giang](location) từ Cần Thơ
-    - đi [Lào Cai](location) bằng tàu
-    - xe buýt [Gia Lai](location)
-    - máy bay đến [Khánh Hòa](location)
-    - di chuyển [Đắk Lắk](location) từ Sài Gòn
-    - tàu đến [Lâm Đồng](location)
-    - xe khách [Quảng Ngãi](location)
+  - intent: ask_transportation
+    examples: |
+      - làm sao đến [Hà Nội](location) từ Sài Gòn
+      - phương tiện đi [Đà Nẵng](location)
+      - đi [Cà Mau](location) bằng gì
+      - [Bạc Liêu](location) có sân bay không
+      - từ [Hội An](location) đến [Huế](location) mất bao lâu
+      - xe buýt đến [Nha Trang](location)
+      - tàu hỏa đi [Phú Quốc](location)
+      - máy bay đến [Đà Lạt](location) giá bao nhiêu
+      - di chuyển ở [Sapa](location)
+      - từ [Nghệ An](location) đến [Hà Nội](location)
+      - đi [Vũng Tàu](location) từ TP.HCM
+      - phương tiện đến [Phan Thiết](location)
+      - xe khách [Hội An](location)
+      - [Quy Nhơn](location) có cảng không
+      - di chuyển [Ninh Bình](location) từ Hà Nội
+      - tàu đến [Thái Nguyên](location)
+      - từ [Bắc Ninh](location) đến [Hà Nội](location)
+      - phương tiện đến [An Giang](location) từ Cần Thơ
+      - đi [Lào Cai](location) bằng tàu
+      - xe buýt [Gia Lai](location)
+      - máy bay đến [Khánh Hòa](location)
+      - di chuyển [Đắk Lắk](location) từ Sài Gòn
+      - tàu đến [Lâm Đồng](location)
+      - xe khách [Quảng Ngãi](location)
+      - cách đi [Cần Thơ](location)
+      - [Hạ Long](location) có sân bay không
 
-- intent: inform_location
-  examples: |
-    - tôi muốn đi [Hà Nội](location)
-    - [Đà Nẵng](location)
-    - [Cà Mau](location) nè
-    - ở [Bạc Liêu](location)
-    - về [Hồ Chí Minh](location)
-    - [Phú Quốc](sub_region) đây
-    - tỉnh [Nghệ An](location)
-    - [Bắc Ninh](location)
-    - đến [An Giang](location)
-    - [Lào Cai](location) đi
-    - về [Gia Lai](location)
-    - [Khánh Hòa](location) nha
-    - đến [Đắk Lắk](location)
-    - [Lâm Đồng](location) đây
-    - tỉnh [Quảng Ngãi](location)
+  - intent: inform_location
+    examples: |
+      - tôi muốn đi [Hà Nội](location)
+      - [Đà Nẵng](location)
+      - [Cà Mau](location) nè
+      - ở [Bạc Liêu](location)
+      - về [Hồ Chí Minh](location)
+      - [Phú Quốc](location) đây
+      - tỉnh [Nghệ An](location)
+      - [Bắc Ninh](location)
+      - đến [An Giang](location)
+      - [Lào Cai](location) đi
+      - về [Gia Lai](location)
+      - [Khánh Hòa](location) nha
+      - đến [Đắk Lắk](location)
+      - [Lâm Đồng](location) đây
+      - tỉnh [Quảng Ngãi](location)
+      - [Huế](location)
+      - [Nha Trang](location)
+      - [Vũng Tàu](location)
+      - [Cần Thơ](location)
+      - [Hạ Long](location)
+
+  - intent: out_of_scope
+    examples: |
+      - làm thế nào để nấu phở
+      - giá vàng hôm nay
+      - tỷ giá USD
+      - thời tiết mai
+      - bạn có yêu tôi không
+      - kể chuyện cười đi
+      - bóng đá hôm nay
+      - ca sĩ nào đẹp nhất
+      - mua vé máy bay ở đâu
+      - đặt phòng khách sạn
+      - thuê xe máy
+      - chơi game gì vui
+      - phim hay gì
+      - học tiếng Anh
+      - cách kiếm tiền online
