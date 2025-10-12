@@ -25,6 +25,9 @@ env/
 pip-wheel-metadata/
 *.lock
 
+# === PhoBERT artifacts ===
+models_hub/
+
 # === Rasa artifacts ===
 models/
 results/

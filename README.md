@@ -332,7 +332,7 @@ MIT License
 
 ## 👥 Liên hệ
 
-- Email: your-email@example.com
+- Email: phuchn0305@gmail.com
 - Issues: [GitHub Issues](your-repo-url/issues)
 
 ## 🙏 Credits

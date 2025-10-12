@@ -1,0 +1,37 @@
+# FILE: config.yml (PHIÊN BẢN HOÀN CHỈNH CUỐI CÙNG)
+language: vi
+recipe: default.v1
+
+pipeline:
+# 1. Component trung tâm: Sử dụng PhoBERT-large
+# Tự động xử lý cả Tách từ và Hiểu ngữ nghĩa.
+# Sử dụng model đã tải về offline.
+- name: HFTransformersNLP
+  model_name: "vinai/phobert-large"
+  model_weights: "./models_hub/phobert-large"
+
+# 2. Mô hình chính để nhận diện Intent và Entity
+- name: DIETClassifier
+  epochs: 100
+  constrain_similarities: true
+
+# 3. Xử lý từ đồng nghĩa
+- name: EntitySynonymMapper
+
+# 4. Phân loại Fallback khi bot không chắc chắn
+- name: FallbackClassifier
+  threshold: 0.6
+  ambiguity_threshold: 0.1
+
+policies:
+- name: MemoizationPolicy
+- name: RulePolicy
+  core_fallback_action_name: "action_default_fallback"
+- name: UnexpecTEDIntentPolicy
+  max_history: 5
+  epochs: 100
+- name: TEDPolicy
+  max_history: 5
+  epochs: 100
+  constrain_similarities: true
+assistant_id: 20251012-133334-swift-solvent
