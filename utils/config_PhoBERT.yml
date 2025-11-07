@@ -3,12 +3,11 @@ language: vi
 recipe: default.v1
 
 pipeline:
-# 1. Component trung tâm: Sử dụng PhoBERT-large
-# Tự động xử lý cả Tách từ và Hiểu ngữ nghĩa.
-# Sử dụng model đã tải về offline.
-- name: HFTransformersNLP
-  model_name: "vinai/phobert-large"
-  model_weights: "./models_hub/phobert-large"
+# 1. Component trung tâm: PhoBERT-base (khuyến nghị RAM thấp hơn)
+# Nếu muốn dùng offline, trỏ vào thư mục đã tải local.
+- name: custom_components.phobert_featurizer.PhoBERTFeaturizer
+  model_name: "vinai/phobert-base"   # hoặc "models_hub/phobert-base" nếu đã tải local
+  cache_dir: null
 
 # 2. Mô hình chính để nhận diện Intent và Entity
 - name: DIETClassifier

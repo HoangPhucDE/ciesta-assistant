@@ -16,6 +16,12 @@ transformers==4.35.2
 torch==2.1.2
 tokenizers==0.15.0
 sentencepiece==0.1.99
+huggingface_hub==0.25.2
+PySide6==6.7.2
+faiss-cpu==1.8.0.post1
+openai==1.48.0
+groq==0.9.0
+google-generativeai==0.8.3
 
 # Data processing - downgrade pandas
 pandas==1.5.3
@@ -54,4 +60,7 @@ gunicorn==23.0.0
 sqlalchemy==1.4.52
 
 # JSON schema validation
-fastjsonschema==2.20.0  
+fastjsonschema==2.20.0
+
+# Text preprocessing for Vietnamese
+regex==2024.5.15

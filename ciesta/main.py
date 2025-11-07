@@ -16,7 +16,9 @@ class MainApp(QMainWindow):  # Window chính
 
         config = load_config()  # Load config
         self.setStyleSheet(load_stylesheet(config.get('theme', 'Tối')))  # Áp theme
-        self.api = APIClient('http://localhost:5005')  # Khởi tạo API
+        # Khởi tạo API với URL từ config
+        server_url = config.get('server_url', 'http://localhost:5005')
+        self.api = APIClient(server_url)
 
         # Views
         self.login_view = LoginView()
@@ -42,7 +44,7 @@ class MainApp(QMainWindow):  # Window chính
             self.chat_view.add_bot_message("Chào mừng! Tôi sẵn sàng chat.")
         else:
             self.login_view.error_label.setText("Sai! Dùng admin/123")
-
+            
     def handle_register(self):
         pass  # Placeholder
 
@@ -67,7 +69,16 @@ class MainApp(QMainWindow):  # Window chính
         self.settings_view.save_config()
         config = load_config()
         self.setStyleSheet(load_stylesheet(config['theme']))  # Reload theme
-        self.api.update_server_url(config['server_url'])
+        # Cập nhật API với URL mới
+        server_url = config.get('server_url', 'http://localhost:5005')
+        self.api.update_server_url(server_url)
+        # Hiển thị thông tin kết nối
+        conn_info = self.api.get_connection_info()
+        self.chat_view.add_bot_message(
+            f"✅ Đã cập nhật cấu hình!\n"
+            f"📍 Kết nối: {conn_info['type']}\n"
+            f"🔗 URL: {conn_info['url']}"
+        )
         self.show_chat()
 
     def show_chat(self):

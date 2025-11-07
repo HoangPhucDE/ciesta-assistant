@@ -3,9 +3,9 @@
 from huggingface_hub import snapshot_download
 
 # Tên model trên Hugging Face Hub
-repo_id = "vinai/phobert-large"
+repo_id = "vinai/phobert-base"
 # Thư mục trên máy bạn để lưu model
-local_dir = "models_hub/phobert-large"
+local_dir = "models_hub/phobert-base"
 
 print(f"Bắt đầu tải về mô hình '{repo_id}'...")
 print(f"Lưu vào thư mục: '{local_dir}'")
@@ -19,4 +19,4 @@ snapshot_download(
     resume_download=True # Tự động tải tiếp nếu bị ngắt kết nối
 )
 
-print("\n🎉 Tải về hoàn tất! Thư mục 'models_hub/phobert-large' đã sẵn sàng.")
+print("\n🎉 Tải về hoàn tất! Thư mục 'models_hub/phobert-base' đã sẵn sàng.")

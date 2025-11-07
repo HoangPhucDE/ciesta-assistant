@@ -4,18 +4,16 @@ Bot chatbot thông minh giới thiệu văn hóa và du lịch **34 tỉnh thàn
 
 ## 🚀 Tính năng
 
-- ✅ **Giới thiệu văn hóa** 34 tỉnh thành sau sáp nhập
-- ✅ **Gợi ý địa điểm** tham quan, check-in
-- ✅ **Ẩm thực đặc sản** và quà lưu niệm
-- ✅ **Lễ hội truyền thống** và sự kiện văn hóa
-- ✅ **Mẹo du lịch** và thông tin di chuyển
-- ✅ Sử dụng **PhoBERT Large** cho tiếng Việt
-- ✅ Hỗ trợ nhiều cách gọi tên địa điểm
+- ✅ Giới thiệu văn hóa, lễ hội, ẩm thực, địa điểm, mẹo du lịch theo từng tỉnh
+- ✅ Hỗ trợ cách gọi tên linh hoạt (Sài Gòn → Hồ Chí Minh, Hội An → Đà Nẵng, ...)
+- ✅ PhoBERT Base mặc định (tối ưu RAM); có thể nâng lên Large nếu đủ tài nguyên
+- ✅ RAG Fallback (FAISS + tùy chọn LLM) khi out_of_scope/nlu_fallback
+- ✅ REST API và giao diện desktop (PySide6)
 
 ## 📋 Yêu cầu hệ thống
 
-- Python 3.8+
-- RAM: Tối thiểu 8GB (khuyến nghị 16GB cho PhoBERT Large)
+- Python 3.10
+- RAM: 6–8GB (khuyến nghị 12GB+ cho PhoBERT Large)
 - Disk: ~5GB cho model và dependencies
 
 ## 🛠️ Cài đặt
@@ -24,7 +22,7 @@ Bot chatbot thông minh giới thiệu văn hóa và du lịch **34 tỉnh thàn
 
 ```bash
 git clone <your-repo-url>
-cd ciesta-assistant
+cd ciesta-asisstant
 ```
 
 ### Bước 2: Tạo virtual environment
@@ -39,30 +37,40 @@ source .venv/bin/activate  # Linux/Mac
 ### Bước 3: Cài đặt dependencies
 
 ```bash
-pip install rasa==3.6.0
-pip install transformers torch
-pip install rasa-sdk
+pip install -r requirements.txt
 ```
+
+Tùy chọn tải PhoBERT Base offline (để cố định thư mục local):
+
+```bash
+python download_model.py
+```
+
+Sau đó có thể đặt `model_name: "models_hub/phobert-base"` trong `config.yml`.
 
 ### Bước 4: Cấu trúc thư mục
 
 ```
-ciesta-assistant/
+ciesta-asisstant/
 ├── config.yml                    # Cấu hình pipeline (PhoBERT)
 ├── domain.yml                    # Domain với intents, entities, actions
 ├── endpoints.yml                 # Cấu hình endpoints
 ├── credentials.yml               # Cấu hình channels
-├── actions.py                    # Custom actions
+├── actions/                      # Custom actions server
+│   └── actions.py
 ├── validate_knowledge_base.py    # Script kiểm tra KB
 ├── data/
 │   ├── nlu.yml                  # Training data cho NLU
 │   ├── rules.yml                # Rules cho bot
 │   ├── stories.yml              # Stories cho training
-│   └── knowledge_base/          # 34 file JSON
+│   └── knowledge_base/
+│       └── provinces/           # 34 file JSON theo từng tỉnh
 │       ├── ha_noi.json
 │       ├── bac_ninh.json
 │       ├── an_giang.json
 │       └── ... (31 files khác)
+├── rag/
+│   └── retriever.py             # FAISS + PhoBERT cho RAG fallback
 └── models/                      # Models sau khi train
 ```
 
@@ -90,7 +98,7 @@ Sau đó điền thông tin vào các file JSON được tạo.
 rasa train
 ```
 
-**Lưu ý:** Lần train đầu tiên sẽ tải PhoBERT Large (~1.3GB), có thể mất 10-30 phút.
+Lần đầu sẽ tải PhoBERT Base (~600–800MB) nếu chưa có cache.
 
 ### Train chỉ NLU
 
@@ -139,6 +147,28 @@ curl -X POST http://localhost:5005/webhooks/rest/webhook \
   }'
 ```
 
+### Chạy với Ngrok (Kết nối từ xa)
+
+Xem hướng dẫn chi tiết: [docs/NGROK_SETUP.md](docs/NGROK_SETUP.md)
+
+**Quick start:**
+```bash
+# Terminal 1: Rasa action server
+rasa run actions
+
+# Terminal 2: Rasa server
+rasa run --enable-api --cors "*"
+
+# Terminal 3: Ngrok tunnel
+ngrok http 5005
+```
+
+Sau đó trong frontend:
+1. Vào Settings → Connection Type: Ngrok
+2. Click "🔍 Auto-detect Ngrok" (tự động lấy URL)
+3. Hoặc nhập URL từ ngrok terminal
+4. Test và Save
+
 ## 💬 Ví dụ sử dụng
 
 ### Hỏi về văn hóa
@@ -171,16 +201,26 @@ User: Bắc Giang giờ thuộc tỉnh nào?
 Bot: [Thông tin về sáp nhập vào Bắc Ninh]
 ```
 
-## 🔧 Cấu hình
+## ⚙️ Cấu hình PhoBERT & RAG
 
-### Thay đổi model
-
-Trong `config.yml`, có thể đổi sang PhoBERT Base để giảm RAM:
+### PhoBERT Base trong `config.yml`
 
 ```yaml
-- name: LanguageModelFeaturizer
-  model_name: "vinai/phobert-base"  # Thay vì phobert-large
-  model_weights: "vinai/phobert-base"
+- name: custom_components.phobert_featurizer.PhoBERTFeaturizer
+  model_name: "vinai/phobert-base"   # hoặc "models_hub/phobert-base" nếu đã tải offline
+  cache_dir: null
+```
+
+### RAG fallback
+- `out_of_scope` và `nlu_fallback` → `action_rag_fallback`
+- FAISS index build khi action server khởi tạo, dùng embedding PhoBERT Base
+- Tùy chọn tổng hợp câu trả lời bằng OpenAI (nếu set API key)
+
+Thiết lập LLM (tùy chọn):
+
+```bash
+export OPENAI_API_KEY=sk-...
+export OPENAI_MODEL=gpt-4o-mini
 ```
 
 ### Giảm batch size nếu thiếu RAM
@@ -188,7 +228,7 @@ Trong `config.yml`, có thể đổi sang PhoBERT Base để giảm RAM:
 ```yaml
 - name: DIETClassifier
   epochs: 100
-  batch_size: [32, 64]  # Giảm từ [64, 256]
+  batch_size: [16, 32]  # Giảm nếu máy yếu RAM
 ```
 
 ### Thêm channels
@@ -226,7 +266,7 @@ telegram:
 ### Lỗi: `Can't load class for name 'HFTransformersNLP'`
 
 **Nguyên nhân:** Component cũ đã bị loại bỏ  
-**Giải pháp:** Sử dụng `LanguageModelFeaturizer` như trong config.yml mẫu
+**Giải pháp:** ĐÃ thay bằng featurizer tùy chỉnh `custom_components.phobert_featurizer.PhoBERTFeaturizer`.
 
 ### Lỗi: Out of Memory
 

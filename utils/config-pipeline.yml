@@ -1,0 +1,43 @@
+# FILE: config.yml (PHIÊN BẢN CƠ BẢN - ỔN ĐỊNH)
+language: vi
+recipe: default.v1
+
+pipeline:
+# 1. Tách từ theo khoảng trắng (cơ bản)
+- name: WhitespaceTokenizer
+
+# 2. Các bộ trích xuất đặc trưng không phụ thuộc thư viện ngoài
+- name: RegexFeaturizer
+- name: LexicalSyntacticFeaturizer
+- name: CountVectorsFeaturizer
+- name: CountVectorsFeaturizer
+  analyzer: "char_wb"
+  min_ngram: 1
+  max_ngram: 4
+
+# 3. Mô hình chính để nhận diện Intent và Entity
+# DIET sẽ học từ các đặc trưng được tạo ra ở trên
+- name: DIETClassifier
+  epochs: 100
+  constrain_similarities: true
+
+# 4. Xử lý từ đồng nghĩa
+- name: EntitySynonymMapper
+
+# 5. Fallback Classifier
+- name: FallbackClassifier
+  threshold: 0.6
+  ambiguity_threshold: 0.1
+
+policies:
+- name: MemoizationPolicy
+- name: RulePolicy
+  core_fallback_action_name: "action_default_fallback"
+- name: UnexpecTEDIntentPolicy
+  max_history: 5
+  epochs: 100
+- name: TEDPolicy
+  max_history: 5
+  epochs: 100
+  constrain_similarities: true
+assistant_id: 20251012-133536-blistering-ship

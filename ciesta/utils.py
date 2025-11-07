@@ -6,10 +6,21 @@ CONFIG_FILE = "config.json"
 def load_config():
     if os.path.exists(CONFIG_FILE):
         with open(CONFIG_FILE, "r", encoding="utf-8") as f:
-            return json.load(f)
+            config = json.load(f)
+            # Backward compatibility: nếu không có connection_type, tự detect
+            if 'connection_type' not in config:
+                server_url = config.get('server_url', 'http://localhost:5005')
+                if 'ngrok' in server_url.lower():
+                    config['connection_type'] = 'Ngrok'
+                elif 'localhost' in server_url or '127.0.0.1' in server_url:
+                    config['connection_type'] = 'Local'
+                else:
+                    config['connection_type'] = 'LAN'
+            return config
     return {
         "theme": "Tối",
         "language": "Tiếng Việt",
+        "connection_type": "Local",
         "server_url": "http://localhost:5005"
     }
 

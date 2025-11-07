@@ -1,6 +1,14 @@
 version: "3.1"
 
 rules:
+  # Rule 0: Nếu message chứa tên tỉnh/thành (alias) thì ưu tiên trả từ knowledge base
+  - rule: Quick KB lookup when message contains location alias
+    condition:
+      - active_loop: null
+    steps:
+      - intent: inform_location
+      - action: action_query_knowledge_base
+
   # Rule 1: Chào hỏi
   - rule: Chào người dùng
     steps:
@@ -19,11 +27,11 @@ rules:
       - intent: bot_challenge
       - action: utter_bot_challenge
 
-  # Rule 4: Xử lý out of scope
+  # Rule 4: Xử lý out of scope bằng RAG
   - rule: Xử lý câu hỏi ngoài phạm vi
     steps:
       - intent: out_of_scope
-      - action: utter_out_of_scope
+      - action: action_rag_fallback
 
   # Rule 5: Khi người dùng vui
   - rule: Phản hồi khi người dùng vui
@@ -97,8 +105,8 @@ rules:
       - intent: inform_location
       - action: action_query_knowledge_base
 
-  # Rule 17: Fallback khi bot không chắc chắn
+  # Rule 17: Fallback khi bot không chắc chắn -> dùng RAG
   - rule: Xử lý fallback
     steps:
       - intent: nlu_fallback
-      - action: action_default_fallback
+      - action: action_rag_fallback

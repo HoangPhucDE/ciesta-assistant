@@ -27,6 +27,8 @@ pip-wheel-metadata/
 
 # === PhoBERT artifacts ===
 models_hub/
+**/rag/*.index
+**/*.faiss
 
 # === Rasa artifacts ===
 models/
@@ -42,6 +44,18 @@ rasa/events.db
 # === Datasets / temporary data ===
 tmp/
 logs/
+config.json
+.env.local
+.env.development
+.env.production
+.env
+.env.*
+!.env.example
+
+# === Project data/code to ignore ===
+data/knowledge_base/
+actions/actions.py
+rag/
 *.db
 *.sqlite3
 

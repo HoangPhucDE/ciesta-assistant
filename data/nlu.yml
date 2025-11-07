@@ -1,6 +1,10 @@
 version: "3.1"
 
 nlu:
+  - lookup: location
+    examples: |
+      - lookup: data/lookup/locations.yml
+
   - intent: greet
     examples: |
       - xin chào
@@ -15,6 +19,18 @@ nlu:
       - good morning
       - hế nhô
       - alo
+      - chào
+      - xin chào bạn
+      - chào ciesta
+      - chào anh
+      - chào em
+      - chào chị
+      - xin chào ciesta
+      - hello bạn
+      - hi bạn
+      - chào mừng
+      - xin chào bot
+      - chào bạn bot
 
   - intent: goodbye
     examples: |
@@ -28,6 +44,38 @@ nlu:
       - hẹn gặp sau
       - bye
       - see you
+      - tạm biệt bạn
+      - tạm biệt nhé
+      - tạm biệt ciesta
+      - bye bạn
+      - bye nhé
+      - hẹn gặp lại bạn
+      - hẹn gặp lại nhé
+      - cảm ơn
+      - cảm ơn bạn
+      - cảm ơn bot
+      - thôi
+      - thôi nhé
+      - dừng lại
+      - dừng lại nhé
+      - kết thúc
+      - kết thúc nhé
+      - chào tạm biệt
+      - chào tạm biệt bạn
+      - chào tạm biệt nhé
+      - goodbye bạn
+      - goodbye nhé
+      - goodbye ciesta
+      - bye bye bạn
+      - bye bye nhé
+      - tạm biệt và hẹn gặp lại
+      - hẹn gặp lại sau
+      - hẹn gặp lại lần sau
+      - chúc bạn ngủ ngon
+      - chúc ngủ ngon nhé
+      - see you later
+      - see you again
+      - goodbye for now
 
   - intent: affirm
     examples: |
@@ -90,36 +138,78 @@ nlu:
       - bot
       - bạn là gì
       - tên bạn là gì
+      - bạn là gì vậy
+      - bạn là ai vậy
+      - bạn là bot à
+      - bạn có phải bot không
+      - bạn là ai thế
+      - bạn là gì thế
+      - ai là bạn
+      - bạn tên gì
+      - bạn tên là gì
+      - giới thiệu về bạn
+      - bạn là ai đó
+      - bạn là ai vậy
+      - bạn là gì vậy
+      - bạn là ai nhỉ
+      - bạn là gì nhỉ
 
   - intent: ask_culture
     examples: |
-      - cho tôi biết về [Hà Nội](location)
-      - giới thiệu [Đà Nẵng](location)
-      - [Cà Mau](location) có gì đặc biệt
-      - [Bạc Liêu](location) nổi tiếng gì
-      - tôi muốn biết về [Hồ Chí Minh](location)
-      - [Huế](location) có gì hay
-      - kể cho tôi nghe về [Sapa](location)
-      - thông tin về [Phú Quốc](location)
-      - [Đà Lạt](location) có gì đặc sắc
-      - tìm hiểu về văn hóa [Nghệ An](location)
-      - [Cần Thơ](location) như thế nào
-      - [Vũng Tàu](location) có điểm gì nổi bật
-      - nói cho tôi về [Phan Thiết](location)
-      - văn hóa [Hội An](location) ra sao
-      - [Quy Nhơn](location) thế nào
-      - [Ninh Bình](location) có gì đặc trưng
-      - [Thái Nguyên](location) nổi tiếng về cái gì
-      - văn hóa [Bắc Ninh](location) mới ra sao
-      - giới thiệu về [An Giang](location) sau sáp nhập
-      - [Lào Cai](location) có đặc sản văn hóa gì
-      - tìm hiểu [Gia Lai](location) mới
-      - [Khánh Hòa](location) có gì độc đáo
-      - văn hóa dân gian ở [Đắk Lắk](location)
-      - [Lâm Đồng](location) có phong tục gì hay
-      - giới thiệu [Quảng Ngãi](location) mới
-      - văn hóa [Hạ Long](location)
-      - [Nha Trang](location) có gì đặc biệt
+      - cho tôi biết về văn hóa [Hà Nội](location)
+      - giới thiệu văn hóa [Hà Nội](location)
+      - văn hóa ở [Đà Nẵng](location) như thế nào
+      - văn hóa [TP.HCM](location) có gì đặc sắc
+      - hãy kể về văn hóa [Sài Gòn](location)
+      - nét văn hóa của [Huế](location)
+      - văn hóa truyền thống [Hà Nội](location)
+      - đặc trưng văn hóa của người [Sài Gòn](location)
+      - nói về văn hóa [Đà Nẵng](location)
+      - tìm hiểu văn hóa [Huế](location)
+      - giới thiệu về văn hóa [TP.HCM](location)
+      - cho biết nét văn hóa [Hà Nội](location)
+      - văn hóa truyền thống của [Huế](location)
+      - mình muốn biết về văn hóa [Sài Gòn](location)
+      - bạn có thể kể về văn hóa [Đà Nẵng](location) không
+      - kể cho mình nghe về văn hóa [Hà Nội](location)
+      - giới thiệu văn hóa truyền thống [Đà Nẵng](location)
+      - [Cà Mau](location) có phong tục tập quán gì đặc biệt
+      - di sản văn hóa [Bạc Liêu](location) nổi tiếng những gì
+      - tôi muốn tìm hiểu về văn hóa [Hồ Chí Minh](location)
+      - [Huế](location) có những nét văn hóa gì đặc trưng
+      - kể cho tôi nghe về văn hóa dân gian [Sapa](location)
+      - thông tin về di sản văn hóa [Phú Quốc](location)
+      - [Đà Lạt](location) có những giá trị văn hóa gì đặc sắc
+      - tìm hiểu về văn hóa lễ hội [Nghệ An](location)
+      - [Cần Thơ](location) có những nét văn hóa như thế nào
+      - [Vũng Tàu](location) có điểm gì nổi bật về văn hóa
+      - nói cho tôi về văn hóa ẩm thực [Phan Thiết](location)
+      - văn hóa kiến trúc [Hội An](location) có gì đặc biệt
+      - [Quy Nhơn](location) có những làng nghề truyền thống nào
+      - [Ninh Bình](location) có những di sản văn hóa gì đặc trưng
+      - [Thái Nguyên](location) nổi tiếng về văn hóa trà như thế nào
+      - văn hóa tín ngưỡng [Bắc Ninh](location) có gì đặc sắc
+      - giới thiệu về bản sắc văn hóa [An Giang](location)
+      - [Lào Cai](location) có những nét văn hóa dân tộc gì đặc biệt
+      - tìm hiểu về văn hóa các dân tộc ở [Gia Lai](location)
+      - [Khánh Hòa](location) có những lễ hội truyền thống nào độc đáo
+      - văn hóa dân gian của người dân [Đắk Lắk](location)
+      - [Lâm Đồng](location) có những phong tục tập quán gì đặc sắc
+      - giới thiệu về di sản văn hóa [Quảng Ngãi](location)
+      - văn hóa cộng đồng ở [Hạ Long](location)
+      - [Nha Trang](location) có những giá trị văn hóa gì đặc biệt
+      - Cho mình tìm hiểu về văn hóa [Sài Gòn](location)
+      - Kể về văn hóa người [Sai Gon](location)
+      - Muốn biết thêm về văn hóa [TP.HCM](location)
+      - Văn hóa truyền thống [HCM](location) có gì đặc sắc
+      - Di sản văn hóa ở [Đà Lạt](location) là gì
+      - Giới thiệu nét văn hóa độc đáo [Quảng Ninh](location)
+      - Tôi muốn tìm hiểu văn hóa cộng đồng [Hạ Long](location)
+      - Kể về lễ hội truyền thống ở [Thái Nguyên](location)
+      - Ciesta, giới thiệu văn hóa [Sài Gòn](location) cho mình
+      - Mình muốn tìm hiểu bản sắc văn hóa [TP.HCM](location)
+      - Cho mình biết về di sản văn hóa [Hà Nội](location)
+      - Em muốn tìm hiểu phong tục ở [Huế](location)
 
   - intent: ask_attractions
     examples: |
@@ -147,6 +237,23 @@ nlu:
       - [Phan Thiết](location) có bãi biển nào đẹp
       - địa điểm sống ảo [Quy Nhơn](location)
       - chỗ nào đẹp ở [Nghệ An](location)
+      - Địa điểm du lịch nổi bật ở [Đà Lạt](location)
+      - Top địa điểm ở [Đà Nẵng](location)
+      - Điểm du lịch nổi tiếng [Hội An](location)
+      - Gợi ý lịch trình 1 ngày ở [Nha Trang](location)
+      - Những nơi check-in ở [Hạ Long](location)
+      - Địa điểm an toàn cho gia đình ở [Đà Lạt](location)
+      - Địa điểm ưa thích ở [Quy Nhơn](location)
+      - Ciesta recommend chỗ chơi ở Đà Lạt đi
+      - Mình chỉ có 1 ngày ở [Đà Nẵng](location), nên đi đâu
+      - Điểm check-in chill ở [Hội An](location) là đâu
+      - Có tour tham quan nửa ngày ở [Đà Nẵng](location) không?
+      - Muốn đi trekking gần [Sapa](location), gợi ý cho mình
+      - Gợi ý 3 điểm phù hợp chụp hình ở [Đà Lạt](location)
+      - Những hang động ở [Quảng Bình](location) đáng tới
+      - Các khu du lịch sinh thái gần [Lâm Đồng](location)
+      - Nên book vé trước cho thắng cảnh ở [Hạ Long](location) chứ?
+      - Điểm tham quan miễn phí ở [Hà Nội](location) có chỗ nào
 
   - intent: ask_cuisine
     examples: |
@@ -156,24 +263,71 @@ nlu:
       - [Bạc Liêu](location) có món gì đặc trưng
       - đi [Hội An](location) ăn gì
       - ẩm thực [Huế](location)
+      - ẩm thực [Đà Nẵng](location)
+      - ẩm thực [Hà Nội](location)
+      - ẩm thực [Sài Gòn](location)
+      - ẩm thực [Hồ Chí Minh](location)
+      - ẩm thực [TP.HCM](location)
+      - ẩm thực [TPHCM](location)
+      - ẩm thực [Cần Thơ](location)
+      - ẩm thực [Hải Phòng](location)
+      - ẩm thực [Nha Trang](location)
+      - ẩm thực [Đà Lạt](location)
+      - ẩm thực [Vũng Tàu](location)
+      - ẩm thực [Bắc Ninh](location)
+      - ẩm thực [An Giang](location)
+      - ẩm thực [Quảng Ninh](location)
+      - ẩm thực [Lâm Đồng](location)
+      - ẩm thực [Khánh Hòa](location)
+      - ẩm thực [Gia Lai](location)
+      - ẩm thực [Đắk Lắk](location)
+      - ẩm thực [Quảng Ngãi](location)
+      - ẩm thực [Nghệ An](location)
+      - ẩm thực [Thanh Hóa](location)
+      - ẩm thực [Thái Nguyên](location)
+      - ẩm thực [Lào Cai](location)
+      - ẩm thực [Phú Thọ](location)
+      - ẩm thực [Hưng Yên](location)
+      - ẩm thực [Ninh Bình](location)
+      - ẩm thực [Hà Tĩnh](location)
+      - ẩm thực [Quảng Trị](location)
+      - ẩm thực [Đồng Nai](location)
+      - ẩm thực [Tây Ninh](location)
+      - ẩm thực [Vĩnh Long](location)
+      - ẩm thực [Đồng Tháp](location)
+      - ẩm thực [Cà Mau](location)
       - món ăn nổi tiếng ở [Nha Trang](location)
       - [Phú Quốc](location) có hải sản gì ngon
       - đặc sản nên mua ở [Đà Lạt](location)
       - quà vặt [Sapa](location)
       - thử món gì ở [Nghệ An](location)
-      - đặc sản [đặc sản](category) ở [Bắc Ninh](location)
-      - món ăn [món chính](category) ở [An Giang](location)
-      - ẩm thực [hải sản](category) ở [Lào Cai](location)
-      - đặc sản [Gia Lai](location) có gì
-      - món ngon ở [Khánh Hòa](location)
-      - thử món [đặc sản](category) ở [Đắk Lắk](location)
-      - ẩm thực đường phố [Lâm Đồng](location)
-      - đặc sản mang về ở [Quảng Ngãi](location)
-      - món ăn dân dã [Ninh Bình](location)
-      - quán ăn ngon [Vũng Tàu](location)
-      - [Phan Thiết](location) có món gì ngon
-      - đồ ăn vặt [Quy Nhơn](location)
-      - ẩm thực [Cần Thơ](location)
+      - Ẩm thực ở [Sài Gòn](location) có gì nổi bật
+      - Ở [TPHCM](location) nên ăn món gì
+      - Món hải sản ngon ở [Nha Trang](location) là gì
+      - Gợi ý quán ăn đường phố tại [Hội An](location)
+      - Gợi ý quán ăn ở [Hồ Chí Minh](location)
+      - Mua đặc sản ở [Đà Lạt](location) thì nên mua gì
+      - Ăn vặt ở [Sapa](location) có gì hấp dẫn
+      - Chỗ ăn sáng ở [Hà Nội](location) ngon
+      - Quán phở ngon ở gần [Hà Nội](location) gợi ý nhé
+      - ẩm thực [Đà Nẵng](location) có gì ngon
+      - món ăn đường phố ở [TP.HCM](location)
+      - đặc sản [Sài Gòn](location) là gì
+      - quán ăn ngon ở [Huế](location)
+      - món đặc trưng của [Hà Nội](location)
+      - khám phá ẩm thực [Đà Nẵng](location)
+      - tôi muốn tìm quán ăn ở [Sài Gòn](location)
+      - giới thiệu đặc sản [TP.HCM](location)
+      - nhà hàng ngon ở [Huế](location)
+      - món nổi tiếng của [Hà Nội](location)
+      - ăn uống ở [Đà Nẵng](location) thế nào
+      - Món đặc sản [Hội An](location) nên thử là gì
+      - Ở [TP.HCM](location) có quán bún bò nào nổi tiếng?
+      - Tôi muốn món chay ở [Đà Lạt](location), giới thiệu
+      - Quán hải sản ngon ở [Nha Trang](location) cho gia đình
+      - Địa chỉ quán ăn đêm ở [Sài Gòn](location) uy tín
+      - Món địa phương [Quảng Nam](location) thường bán ở đâu
+      - Ciesta, ăn gì ở Sài Gòn hôm nay
 
   - intent: ask_festival
     examples: |
@@ -182,9 +336,6 @@ nlu:
       - sự kiện văn hóa [Cà Mau](location)
       - lễ hội truyền thống [Bạc Liêu](location)
       - [Đà Nẵng](location) tổ chức lễ hội nào
-      - các dịp lễ ở [Nghệ An](location)
-      - [Hội An](location) có lễ hội đèn lồng không
-      - sự kiện nào ở [Nha Trang](location)
       - festival tại [Đà Lạt](location)
       - lễ hội ở [Bắc Ninh](location) tháng Giêng
       - [An Giang](location) có lễ hội gì tháng 4 âm lịch
@@ -194,12 +345,16 @@ nlu:
       - festival ở [Đắk Lắk](location) mùa thu
       - lễ hội truyền thống [Lâm Đồng](location) tháng 12
       - sự kiện [Quảng Ngãi](location) tháng 7 âm lịch
-      - lễ hội ở [Ninh Bình](location) tháng 3 âm lịch
-      - [Thái Nguyên](location) có lễ hội gì mùa hè
-      - [Vũng Tàu](location) có sự kiện gì
-      - lễ hội [Phan Thiết](location)
-      - [Quy Nhơn](location) tổ chức festival nào
-      - sự kiện [Cần Thơ](location)
+      - Lễ hội âm nhạc ở [Hà Nội](location) khi nào diễn ra
+      - [Huế](location) có những lễ hội dân gian nào
+      - Festival ẩm thực ở [Đà Nẵng](location) có gì
+      - Lễ hội hoa ở [Đà Lạt](location) tổ chức vào tháng mấy
+      - Lễ hội thuyền rồng ở [Hạ Long](location)
+      - Ciesta cho mình biết lễ hội ở [Huế](location)
+      - Lễ hội trăng rằm ở [Hội An](location) diễn ra lúc nào?
+      - Có festival văn hóa nước ngoài ở [Đà Nẵng](location) không?
+      - Thời gian tốt nhất để tham gia lễ hội ở [Bắc Ninh](location) là khi nào
+      - Lễ hội truyền thống ở [Quảng Ngãi](location) có hoạt động gì chính
 
   - intent: ask_new_province
     examples: |
@@ -284,6 +439,16 @@ nlu:
       - tip mua quà [Quảng Ngãi](location)
       - thời điểm tốt nhất đến [Cần Thơ](location)
       - kinh nghiệm du lịch [Hạ Long](location)
+      - Mẹo du lịch khi đi [Sài Gòn](location)
+      - Lịch trình 2 ngày ở [Đà Nẵng](location) hợp lý là gì?
+      - Có lưu ý y tế khi đến [Phú Quốc](location) không?
+      - Thời điểm ít mưa để đến [Đà Lạt](location) là tháng mấy?
+      - Bảo hiểm du lịch cho chuyến đi [Nha Trang](location) nên mua loại nào?
+      - Gợi ý phương tiện rẻ nhất từ [Hà Nội](location) tới [Hạ Long](location)
+      - Lưu ý an toàn khi đi [Đà Nẵng](location)
+      - Chuẩn bị gì khi đến [Đà Lạt](location)
+      - Tip tiết kiệm cho chuyến đi [Phú Quốc](location)
+      - Mẹo săn vé rẻ đến [Hồ Chí Minh](location)
 
   - intent: ask_transportation
     examples: |
@@ -317,14 +482,18 @@ nlu:
   - intent: inform_location
     examples: |
       - tôi muốn đi [Hà Nội](location)
-      - [Đà Nẵng](location)
-      - [Cà Mau](location) nè
-      - ở [Bạc Liêu](location)
-      - về [Hồ Chí Minh](location)
-      - [Phú Quốc](location) đây
-      - tỉnh [Nghệ An](location)
-      - [Bắc Ninh](location)
-      - đến [An Giang](location)
+      - chọn [Đà Nẵng](location)
+      - địa điểm [Cà Mau](location)
+      - tôi đang ở [Bạc Liêu](location)
+      - tôi sẽ về [Hồ Chí Minh](location)
+      - tôi chọn [Phú Quốc](location)
+      - tôi ở tỉnh [Nghệ An](location)
+      - tôi sống ở [Bắc Ninh](location)
+      - tôi đến từ [An Giang](location)
+      - hiện tôi ở [Đà Nẵng](location)
+      - quê tôi ở [Hà Nội](location)
+      - tôi là người [Sài Gòn](location)
+      - tôi muốn chọn [TP.HCM](location)
       - [Lào Cai](location) đi
       - về [Gia Lai](location)
       - [Khánh Hòa](location) nha
@@ -336,6 +505,15 @@ nlu:
       - [Vũng Tàu](location)
       - [Cần Thơ](location)
       - [Hạ Long](location)
+      - Tôi đang ở [Sài Gòn](location)
+      - Tôi có mặt tại [TP.HCM](location) hôm nay
+      - Đã tới [Đà Lạt](location), cần gợi ý chơi
+      - Ở [Hạ Long](location) trong 3 ngày
+      - Mình đang ở [Phú Quốc](location) và muốn khám phá hải sản
+      - Ở [TP.HCM](location) bây giờ
+      - Đang ở [Đà Lạt](location)
+      - [Hạ Long](location)
+      - [Phú Quốc](location) ngay đây
 
   - intent: out_of_scope
     examples: |
@@ -354,3 +532,54 @@ nlu:
       - phim hay gì
       - học tiếng Anh
       - cách kiếm tiền online
+      - Giới thiệu về dự án mới
+      - Ẩm thực đường phố Việt Nam
+      - Hãy kể cho tôi nghe
+      - Xin một lời khuyên
+      - Giới tính là gì
+      - Ẩm ương quá
+      - Hãy nhanh lên
+      - Xin lỗi nhé
+      - Giới hạn của bạn là gì
+      - Ẩm ướt quá
+      - Hãy giúp tôi một việc
+      - Xin phép được hỏi
+      - Giới thiệu qua về công việc
+      - Ẩm thực đường phố
+      - Hãy cho tôi biết thêm
+      - Xin được tư vấn
+      - Giới thiệu sơ lược
+      - Ẩm thực truyền thống
+      - Hãy nói rõ hơn
+      - Xin được giải thích
+      - Giới vài điều về dự án
+      - Ẩm thực hôm nay ngon không
+      - Hãy kể một câu chuyện
+      - Xin hãy giúp tôi
+      - Xin chào, tôi có một câu hỏi
+      - Hãy cho tôi biết thời tiết
+      - Giới xin hỏi về dự án
+      - Ẩm ương hôm nay trời mưa không
+      - Hãy để tôi biết khi xong
+      - Xin lỗi, tôi bận
+      - Xin hãy chờ trong giây lát
+      - Hãy thử lại sau
+      - Giới thiệu sản phẩm mới cho tôi
+      - Ẩm thực hôm nay không phải vấn đề
+      - Hãy gửi email cho tôi
+      - Xin ghi chú lại giúp tôi
+      - Giới thiệu dịch vụ mới của công ty
+      - Ẩm ương hôm nay trời mưa không
+      - Hãy gửi email cho tôi
+      - Xin ghi chú lại giúp tôi
+      - Giới đang test bot
+      - Xin thử chức năng chat
+      - Hãy trả lời ngắn gọn
+      - Xin chào Ciesta
+      - Chào Ciesta, bạn khỏe không
+      - Xin chào Ciesta, test chức năng nè
+      - Hỏi vớ vẩn: hôm nay nên mặc gì
+      - Tôi muốn biết giờ chiếu phim
+      - Gửi link tới bài viết bạn vừa nói
+      - Thử gọi tên Ciesta xem phản hồi
+      - Hỏi random: có biết bài hát X không?

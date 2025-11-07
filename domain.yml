@@ -96,6 +96,8 @@ actions:
   - action_query_knowledge_base
   # Action fallback mặc định
   - action_default_fallback
+  # RAG fallback
+  - action_rag_fallback
 
 # === Session Config ===
 session_config:
