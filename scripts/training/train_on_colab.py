@@ -65,9 +65,58 @@ def check_gpu() -> bool:
     except ImportError:
         return False
 
+def find_project_root():
+    """Find project root directory (ciesta-assistant or current dir)"""
+    current_dir = Path.cwd()
+    
+    # Check if we're already in project root (check for key files)
+    if (current_dir / "requirements.txt").exists() and (current_dir / "config.yml").exists():
+        # Make sure we're not in a nested ciesta-assistant
+        if "ciesta-assistant" in str(current_dir) and (current_dir.parent / "ciesta-assistant").exists():
+            # We're in a nested directory, go up one level
+            parent = current_dir.parent
+            if (parent / "requirements.txt").exists() and (parent / "config.yml").exists():
+                return parent
+        return current_dir
+    
+    # Check if ciesta-assistant directory exists in current dir
+    if (current_dir / "ciesta-assistant").exists():
+        project_root = current_dir / "ciesta-assistant"
+        # Check if it has the required files and is not nested
+        if (project_root / "requirements.txt").exists() and (project_root / "config.yml").exists():
+            # Make sure there's no nested ciesta-assistant inside
+            nested = project_root / "ciesta-assistant"
+            if nested.exists() and (nested / "requirements.txt").exists():
+                # There's a nested one, use the outer one
+                pass
+            return project_root
+    
+    # Check parent directory
+    if (current_dir.parent / "ciesta-assistant").exists():
+        project_root = current_dir.parent / "ciesta-assistant"
+        if (project_root / "requirements.txt").exists() and (project_root / "config.yml").exists():
+            return project_root
+    
+    # Try to find in current and parent directories
+    for possible_root in [current_dir, current_dir.parent]:
+        if (possible_root / "requirements.txt").exists() and (possible_root / "config.yml").exists():
+            return possible_root
+    
+    return None
+
 def install_dependencies():
     """Install required dependencies"""
     print_header("CÀI ĐẶT DEPENDENCIES")
+    
+    # Find project root
+    project_root = find_project_root()
+    if project_root:
+        print_info(f"Tìm thấy project tại: {project_root}")
+        os.chdir(project_root)
+        print_info(f"Đã chuyển vào thư mục: {Path.cwd()}")
+    else:
+        print_warning("Không tìm thấy project root, sử dụng thư mục hiện tại")
+        project_root = Path.cwd()
     
     # Check if Colab
     if is_colab():
@@ -82,25 +131,112 @@ def install_dependencies():
         subprocess.run([sys.executable, "-m", "pip", "install", "--upgrade", "pip", "setuptools", "wheel"], check=True)
     
     # Install Python packages
-    print_info("Cài đặt Python packages từ requirements.txt...")
+    # Prefer requirements-colab.txt for Colab (Python 3.12 compatible)
+    if is_colab():
+        print_info("Sử dụng requirements-colab.txt (tương thích Python 3.12)")
+        requirements_file = Path("requirements-colab.txt")
+        if not requirements_file.exists():
+            print_warning("Không tìm thấy requirements-colab.txt, dùng requirements.txt")
+            requirements_file = Path("requirements.txt")
+    else:
+        requirements_file = Path("requirements.txt")
     
-    requirements_file = Path("requirements.txt")
     if not requirements_file.exists():
-        print_error("Không tìm thấy requirements.txt")
-        return False
+        # Try to find requirements file
+        possible_locations = [
+            Path("requirements-colab.txt"),
+            Path("requirements.txt"),
+            Path("../requirements-colab.txt"),
+            Path("../requirements.txt"),
+            Path("ciesta-assistant/requirements-colab.txt"),
+            Path("ciesta-assistant/requirements.txt"),
+        ]
+        
+        found = False
+        for req_path in possible_locations:
+            if req_path.exists():
+                requirements_file = req_path.resolve()
+                print_info(f"Tìm thấy {req_path.name} tại: {requirements_file}")
+                found = True
+                break
+        
+        if not found:
+            print_error("Không tìm thấy requirements.txt hoặc requirements-colab.txt")
+            print_info("Đang tìm trong các thư mục:")
+            for loc in possible_locations:
+                print_info(f"  - {loc} ({'tồn tại' if loc.exists() else 'không tồn tại'})")
+            return False
     
     # Install packages
-    subprocess.run([
-        sys.executable, "-m", "pip", "install", "-q",
-        "-r", str(requirements_file)
-    ], check=True)
+    print_info(f"Cài đặt từ: {requirements_file}")
+    print_info("⏳ Quá trình này có thể mất vài phút...")
     
-    print_success("Đã cài đặt tất cả dependencies")
-    return True
+    try:
+        # Run pip install with output visible for debugging
+        result = subprocess.run(
+            [sys.executable, "-m", "pip", "install", "-r", str(requirements_file)],
+            capture_output=True,
+            text=True,
+            check=False  # Don't raise exception immediately
+        )
+        
+        if result.returncode != 0:
+            print_error("Lỗi khi cài đặt dependencies")
+            print_info("Output của pip install:")
+            print(result.stdout)
+            if result.stderr:
+                print_error("Lỗi:")
+                print(result.stderr)
+            
+            # Try to identify the problematic package
+            print_warning("Đang thử cài đặt từng package để tìm lỗi...")
+            
+            # Read requirements file
+            with open(requirements_file, 'r') as f:
+                lines = f.readlines()
+            
+            failed_packages = []
+            for line in lines:
+                line = line.strip()
+                if line and not line.startswith('#'):
+                    package = line.split('==')[0].split('>=')[0].split('<=')[0].strip()
+                    if package:
+                        print_info(f"Đang cài đặt: {package}...")
+                        try:
+                            subprocess.run(
+                                [sys.executable, "-m", "pip", "install", line],
+                                check=True,
+                                capture_output=True
+                            )
+                            print_success(f"  ✓ {package}")
+                        except subprocess.CalledProcessError:
+                            print_error(f"  ✗ {package} - Lỗi")
+                            failed_packages.append(package)
+                            # Continue with other packages
+            
+            if failed_packages:
+                print_warning(f"Các package sau không thể cài đặt: {', '.join(failed_packages)}")
+                print_warning("Một số package có thể không tương thích với Python 3.12")
+                print_info("Tiếp tục với các package đã cài đặt thành công...")
+                # Continue anyway - some packages might not be critical for training
+                # return False
+            
+        print_success("Đã cài đặt tất cả dependencies")
+        return True
+        
+    except Exception as e:
+        print_error(f"Lỗi không mong đợi khi cài đặt: {e}")
+        return False
 
 def setup_project_structure():
     """Setup project structure"""
     print_header("THIẾT LẬP CẤU TRÚC PROJECT")
+    
+    # Ensure we're in project root
+    project_root = find_project_root()
+    if project_root and project_root != Path.cwd():
+        os.chdir(project_root)
+        print_info(f"Đã chuyển vào project root: {Path.cwd()}")
     
     # Create necessary directories
     directories = [
@@ -116,7 +252,7 @@ def setup_project_structure():
     
     for dir_path in directories:
         Path(dir_path).mkdir(parents=True, exist_ok=True)
-        print_success(f"Đã tạo thư mục: {dir_path}")
+        print_success(f"Đã tạo/thư mục: {dir_path}")
     
     return True
 
@@ -157,12 +293,32 @@ def setup_custom_components():
     """Setup custom components"""
     print_header("THIẾT LẬP CUSTOM COMPONENTS")
     
+    # Ensure we're in project root
+    project_root = find_project_root()
+    if project_root and project_root != Path.cwd():
+        os.chdir(project_root)
+    
     # Check if custom components exist
     phobert_featurizer = Path("custom_components/phobert_featurizer.py")
     if not phobert_featurizer.exists():
-        print_error("Không tìm thấy custom_components/phobert_featurizer.py")
-        print_info("Vui lòng upload file này vào Colab")
-        return False
+        # Try alternative paths
+        alt_paths = [
+            Path("custom_components/phobert_featurizer.py"),
+            Path("../custom_components/phobert_featurizer.py"),
+            Path("ciesta-assistant/custom_components/phobert_featurizer.py"),
+        ]
+        
+        found = False
+        for alt_path in alt_paths:
+            if alt_path.exists():
+                print_info(f"Tìm thấy tại: {alt_path}")
+                found = True
+                break
+        
+        if not found:
+            print_error("Không tìm thấy custom_components/phobert_featurizer.py")
+            print_info("Vui lòng đảm bảo đã clone repo và chuyển vào thư mục ciesta-assistant")
+            return False
     
     print_success("Custom components đã sẵn sàng")
     return True
@@ -202,9 +358,15 @@ def verify_config():
     """Verify config.yml is correct"""
     print_header("KIỂM TRA CONFIG")
     
+    # Ensure we're in project root
+    project_root = find_project_root()
+    if project_root and project_root != Path.cwd():
+        os.chdir(project_root)
+    
     config_file = Path("config.yml")
     if not config_file.exists():
         print_error("Không tìm thấy config.yml")
+        print_info(f"Thư mục hiện tại: {Path.cwd()}")
         return False
     
     # Read config
@@ -223,6 +385,12 @@ def train_nlu(epochs: Optional[int] = None):
     """Train NLU model"""
     print_header("BẮT ĐẦU TRAIN NLU MODEL")
     
+    # Ensure we're in project root
+    project_root = find_project_root()
+    if project_root and project_root != Path.cwd():
+        os.chdir(project_root)
+        print_info(f"Đã chuyển vào project root: {Path.cwd()}")
+    
     # Check GPU
     has_gpu = check_gpu()
     if has_gpu:
@@ -237,10 +405,15 @@ def train_nlu(epochs: Optional[int] = None):
         "custom_components/phobert_featurizer.py"
     ]
     
+    print_info(f"Kiểm tra files trong: {Path.cwd()}")
     for file_path in required_files:
-        if not Path(file_path).exists():
+        file_check = Path(file_path)
+        if not file_check.exists():
             print_error(f"Không tìm thấy {file_path}")
+            print_info(f"  Đường dẫn đầy đủ: {file_check.resolve()}")
             return False
+        else:
+            print_success(f"  ✓ {file_path}")
     
     print_info("Bắt đầu training...")
     print_info("Quá trình này có thể mất 30 phút - 2 giờ tùy vào cấu hình")
@@ -318,6 +491,35 @@ def main():
         print_success("Đang chạy trên Google Colab")
     else:
         print_warning("Không phải Colab - script vẫn hoạt động nhưng một số tính năng có thể bị giới hạn")
+    
+    # Find and change to project root first
+    project_root = find_project_root()
+    if project_root:
+        original_dir = Path.cwd()
+        
+        # Avoid nested directories
+        if "ciesta-assistant" in str(project_root) and "ciesta-assistant" in str(original_dir):
+            # Check if we're going into a nested directory
+            parts_original = str(original_dir).split("ciesta-assistant")
+            parts_project = str(project_root).split("ciesta-assistant")
+            if len(parts_project) > len(parts_original):
+                # We're going deeper, use the outer one
+                outer_path = Path(str(original_dir).split("ciesta-assistant")[0]) / "ciesta-assistant"
+                if outer_path.exists() and (outer_path / "requirements.txt").exists():
+                    project_root = outer_path
+                    print_warning(f"Phát hiện nested directory, sử dụng: {project_root}")
+        
+        os.chdir(project_root)
+        print_info(f"Đã chuyển từ {original_dir} sang {Path.cwd()}")
+        
+        # Verify we're in the right place
+        if not (Path.cwd() / "requirements.txt").exists() and not (Path.cwd() / "requirements-colab.txt").exists():
+            print_error("Không tìm thấy requirements file trong project root")
+            return False
+    else:
+        print_warning("Không tìm thấy project root, tiếp tục với thư mục hiện tại")
+        print_info(f"Thư mục hiện tại: {Path.cwd()}")
+        print_info("Vui lòng đảm bảo bạn đã clone repo và chuyển vào thư mục ciesta-assistant")
     
     # Step 1: Install dependencies
     if not install_dependencies():

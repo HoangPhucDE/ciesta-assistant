@@ -1,0 +1,50 @@
+# ========================================
+# RASA + PHOBERT - COLAB COMPATIBLE
+# Python 3.12 compatible (Colab default)
+# ========================================
+
+# Core Rasa Framework
+rasa==3.6.20
+rasa-sdk==3.6.2
+
+# NumPy - Updated for Python 3.12
+numpy>=1.23.5,<2.0
+
+# Transformers ecosystem for PhoBERT
+transformers==4.35.2
+torch==2.1.2
+tokenizers==0.15.0
+sentencepiece==0.1.99
+huggingface_hub==0.25.2
+
+# FAISS for RAG
+faiss-cpu==1.8.0.post1
+
+# LLM APIs
+openai==1.48.0
+groq==0.9.0
+google-generativeai==0.8.3
+
+# Web framework
+flask==3.0.3
+flask-cors==5.0.0
+requests==2.32.3
+
+# Data processing
+pandas>=1.5.3
+
+# Utilities
+python-dotenv==1.0.1
+rich==13.8.1
+tqdm==4.66.5
+
+# Text preprocessing
+regex==2024.5.15
+
+# JSON schema validation
+fastjsonschema==2.20.0
+
+# Note: GUI packages (PySide6) và development tools không cần trên Colab
+# Note: Visualization packages (matplotlib, seaborn, plotly) không cần cho training
+# Note: Production server (gunicorn) không cần trên Colab
+
