@@ -10,6 +10,8 @@ from rasa.shared.nlu.training_data.features import Features
 from transformers import AutoTokenizer, AutoModel
 import numpy as np
 import torch
+import os
+from pathlib import Path
 
 @DefaultV1Recipe.register(
     DefaultV1Recipe.ComponentType.MESSAGE_FEATURIZER, is_trainable=False
@@ -42,18 +44,53 @@ class PhoBERTFeaturizer(GraphComponent):
 
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
 
+        # Resolve local model path if it's a relative path
+        # Check if model_name is a local path (not a HuggingFace model ID)
+        is_local_path = False
+        if not self.model_name.startswith(("http://", "https://")) and "/" in self.model_name:
+            model_path = Path(self.model_name)
+            
+            # Try to resolve the path
+            if model_path.is_absolute():
+                # Absolute path - check if exists
+                if model_path.exists():
+                    self.model_name = str(model_path.resolve())
+                    is_local_path = True
+            else:
+                # Relative path - try multiple locations
+                # 1. Try relative to current working directory
+                abs_path = Path.cwd() / model_path
+                if abs_path.exists():
+                    self.model_name = str(abs_path.resolve())
+                    is_local_path = True
+                else:
+                    # 2. Try relative to workspace root (where config.yml is)
+                    workspace_root = Path(__file__).parent.parent
+                    abs_path = workspace_root / model_path
+                    if abs_path.exists():
+                        self.model_name = str(abs_path.resolve())
+                        is_local_path = True
+
         print(f"[PhoBERTFeaturizer] 🔹 Loading model from: {self.model_name}")
+        print(f"[PhoBERTFeaturizer] 🔹 Using device: {self.device}")
+        print(f"[PhoBERTFeaturizer] 🔹 Local model: {is_local_path}")
+        
+        # For local paths, don't use cache_dir
+        load_cache_dir = None if is_local_path else self.cache_dir
+        
         self.tokenizer = AutoTokenizer.from_pretrained(
             self.model_name, 
-            cache_dir=self.cache_dir,
-            use_fast=True  # Use fast tokenizer
+            cache_dir=load_cache_dir,
+            use_fast=True,  # Use fast tokenizer
+            local_files_only=is_local_path  # Use local files only if path exists
         )
         self.model = AutoModel.from_pretrained(
             self.model_name,
-            cache_dir=self.cache_dir,
+            cache_dir=load_cache_dir,
             output_hidden_states=True,  # Get all hidden states
             output_attentions=True,     # Get attention weights
-            return_dict=True
+            return_dict=True,
+            local_files_only=is_local_path  # Use local files only if path exists
         ).to(self.device)
         self.model.eval()
         

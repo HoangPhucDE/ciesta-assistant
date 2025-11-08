@@ -54,11 +54,19 @@ nlu:
       - cảm ơn
       - cảm ơn bạn
       - cảm ơn bot
-      - thôi
-      - thôi nhé
-      - dừng lại
-      - dừng lại nhé
+      - thôi, tạm biệt
+      - thôi nhé, tạm biệt
+      - dừng lại, tạm biệt
+      - dừng lại nhé, tạm biệt
       - kết thúc
+      - thôi, mình đi đây
+      - dừng lại, mình về đây
+      - thôi nhé, chào bạn
+      - dừng lại, hẹn gặp lại
+      - thôi, mình tạm biệt nhé
+      - dừng, cảm ơn bạn nhiều
+      - thôi, chúc bạn vui vẻ
+      - dừng lại, bye bạn nhé
       - kết thúc nhé
       - chào tạm biệt
       - chào tạm biệt bạn
@@ -99,11 +107,18 @@ nlu:
       - sai rồi
       - chưa
       - không muốn
-      - dừng lại
+      - dừng lại, không cần
       - bỏ qua
       - không cần
-      - thôi
+      - thôi, không cần
       - khỏi
+      - thôi, bỏ đi
+      - dừng lại, đừng làm nữa
+      - thôi đi, đừng nói nữa
+      - dừng, tôi không muốn nghe
+      - thôi, không muốn biết
+      - dừng lại, không quan tâm
+      - thôi, không cần thiết
 
   - intent: mood_great
     examples: |
@@ -149,8 +164,6 @@ nlu:
       - bạn tên là gì
       - giới thiệu về bạn
       - bạn là ai đó
-      - bạn là ai vậy
-      - bạn là gì vậy
       - bạn là ai nhỉ
       - bạn là gì nhỉ
 
@@ -210,6 +223,260 @@ nlu:
       - Mình muốn tìm hiểu bản sắc văn hóa [TP.HCM](location)
       - Cho mình biết về di sản văn hóa [Hà Nội](location)
       - Em muốn tìm hiểu phong tục ở [Huế](location)
+      - văn hóa [Bắc Ninh](location)
+      - văn hoá [Bắc Ninh](location)
+      - văn hóa của [Bắc Ninh](location)
+      - văn hóa ở [Bắc Ninh](location)
+      - văn hóa tại [Bắc Ninh](location)
+      - bản sắc văn hóa [Bắc Ninh](location)
+      - đặc trưng văn hóa [Bắc Ninh](location)
+      - phong tục tập quán [Bắc Ninh](location)
+      - truyền thống văn hóa [Bắc Ninh](location)
+      - di sản văn hóa [Bắc Ninh](location)
+      - nét văn hóa đặc sắc [Bắc Ninh](location)
+      - giá trị văn hóa [Bắc Ninh](location)
+      - văn hóa dân gian [Bắc Ninh](location)
+      - văn hóa tín ngưỡng [Bắc Ninh](location)
+      - văn hóa cộng đồng [Bắc Ninh](location)
+      - văn hóa [An Giang](location)
+      - văn hóa [Cà Mau](location)
+      - văn hóa [Cần Thơ](location)
+      - văn hóa [Cao Bằng](location)
+      - văn hóa [Đà Nẵng](location)
+      - văn hóa [Đắk Lắk](location)
+      - văn hóa [Điện Biên](location)
+      - văn hóa [Đồng Nai](location)
+      - văn hóa [Đồng Tháp](location)
+      - văn hóa [Gia Lai](location)
+      - văn hóa [Hà Tĩnh](location)
+      - văn hóa [Hải Phòng](location)
+      - văn hóa [Hưng Yên](location)
+      - văn hóa [Khánh Hòa](location)
+      - văn hóa [Lai Châu](location)
+      - văn hóa [Lâm Đồng](location)
+      - văn hóa [Lạng Sơn](location)
+      - văn hóa [Nghệ An](location)
+      - văn hóa [Ninh Bình](location)
+      - văn hóa [Phú Thọ](location)
+      - văn hóa [Quảng Ninh](location)
+      - văn hóa [Quảng Ngãi](location)
+      - văn hóa [Quảng Trị](location)
+      - văn hóa [Sơn La](location)
+      - văn hóa [Tây Ninh](location)
+      - văn hóa [Thái Nguyên](location)
+      - văn hóa [Thanh Hóa](location)
+      - văn hóa [Tuyên Quang](location)
+      - văn hóa [Vĩnh Long](location)
+      - bản sắc văn hóa [An Giang](location)
+      - bản sắc văn hóa [Cần Thơ](location)
+      - bản sắc văn hóa [Đà Nẵng](location)
+      - bản sắc văn hóa [Huế](location)
+      - bản sắc văn hóa [Hồ Chí Minh](location)
+      - đặc trưng văn hóa [An Giang](location)
+      - đặc trưng văn hóa [Cần Thơ](location)
+      - đặc trưng văn hóa [Đà Nẵng](location)
+      - đặc trưng văn hóa [Huế](location)
+      - đặc trưng văn hóa [Hồ Chí Minh](location)
+      - phong tục tập quán [An Giang](location)
+      - phong tục tập quán [Cần Thơ](location)
+      - phong tục tập quán [Đà Nẵng](location)
+      - phong tục tập quán [Huế](location)
+      - phong tục tập quán [Hồ Chí Minh](location)
+      - di sản văn hóa [An Giang](location)
+      - di sản văn hóa [Cần Thơ](location)
+      - di sản văn hóa [Đà Nẵng](location)
+      - di sản văn hóa [Huế](location)
+      - di sản văn hóa [Hồ Chí Minh](location)
+      - truyền thống văn hóa [An Giang](location)
+      - truyền thống văn hóa [Cần Thơ](location)
+      - truyền thống văn hóa [Đà Nẵng](location)
+      - truyền thống văn hóa [Huế](location)
+      - truyền thống văn hóa [Hồ Chí Minh](location)
+      - giới thiệu [Hải Phòng](location)
+      - giới thiệu [Hà Nội](location)
+      - giới thiệu [Đà Nẵng](location)
+      - giới thiệu [Huế](location)
+      - giới thiệu [Hồ Chí Minh](location)
+      - [Hải Phòng](location) có gì
+      - [Hà Nội](location) có gì
+      - [Đà Nẵng](location) có gì
+      - [Huế](location) có gì
+      - [Hồ Chí Minh](location) có gì
+      - thông tin [Hải Phòng](location)
+      - thông tin [Hà Nội](location)
+      - thông tin [Đà Nẵng](location)
+      - thông tin [Huế](location)
+      - thông tin [Hồ Chí Minh](location)
+      - [Hải Phòng](location) như thế nào
+      - [Hà Nội](location) như thế nào
+      - [Đà Nẵng](location) như thế nào
+      - [Huế](location) như thế nào
+      - [Hồ Chí Minh](location) như thế nào
+      - kể về [Hải Phòng](location)
+      - kể về [Hà Nội](location)
+      - kể về [Đà Nẵng](location)
+      - kể về [Huế](location)
+      - kể về [Hồ Chí Minh](location)
+      - nói về [Hải Phòng](location)
+      - nói về [Hà Nội](location)
+      - nói về [Đà Nẵng](location)
+      - nói về [Huế](location)
+      - nói về [Hồ Chí Minh](location)
+      - tìm hiểu [Hải Phòng](location)
+      - tìm hiểu [Hà Nội](location)
+      - tìm hiểu [Đà Nẵng](location)
+      - tìm hiểu [Huế](location)
+      - tìm hiểu [Hồ Chí Minh](location)
+      - cho biết về [Hải Phòng](location)
+      - cho biết về [Hà Nội](location)
+      - cho biết về [Đà Nẵng](location)
+      - cho biết về [Huế](location)
+      - cho biết về [Hồ Chí Minh](location)
+      - [Hải Phòng](location) là gì
+      - [Hà Nội](location) là gì
+      - [Đà Nẵng](location) là gì
+      - [Huế](location) là gì
+      - [Hồ Chí Minh](location) là gì
+      - [Hải Phòng](location) nổi tiếng về gì
+      - [Hà Nội](location) nổi tiếng về gì
+      - [Đà Nẵng](location) nổi tiếng về gì
+      - [Huế](location) nổi tiếng về gì
+      - [Hồ Chí Minh](location) nổi tiếng về gì
+      - đặc điểm [Hải Phòng](location)
+      - đặc điểm [Hà Nội](location)
+      - đặc điểm [Đà Nẵng](location)
+      - đặc điểm [Huế](location)
+      - đặc điểm [Hồ Chí Minh](location)
+      - [Hải Phòng](location) có đặc sắc gì
+      - [Hà Nội](location) có đặc sắc gì
+      - [Đà Nẵng](location) có đặc sắc gì
+      - [Huế](location) có đặc sắc gì
+      - [Hồ Chí Minh](location) có đặc sắc gì
+      - giới thiệu [Bắc Ninh](location)
+      - giới thiệu [An Giang](location)
+      - giới thiệu [Cần Thơ](location)
+      - giới thiệu [Quảng Ninh](location)
+      - giới thiệu [Ninh Bình](location)
+      - giới thiệu [Lào Cai](location)
+      - giới thiệu [Lạng Sơn](location)
+      - [Bắc Ninh](location) có gì
+      - [An Giang](location) có gì
+      - [Cần Thơ](location) có gì
+      - [Quảng Ninh](location) có gì
+      - [Ninh Bình](location) có gì
+      - [Lào Cai](location) có gì
+      - [Lạng Sơn](location) có gì
+      - [Bắc Ninh](location) như thế nào
+      - [An Giang](location) như thế nào
+      - [Cần Thơ](location) như thế nào
+      - [Quảng Ninh](location) như thế nào
+      - [Ninh Bình](location) như thế nào
+      - [Lào Cai](location) như thế nào
+      - [Lạng Sơn](location) như thế nào
+      - kể về [Bắc Ninh](location)
+      - kể về [An Giang](location)
+      - kể về [Cần Thơ](location)
+      - kể về [Quảng Ninh](location)
+      - kể về [Ninh Bình](location)
+      - kể về [Lào Cai](location)
+      - kể về [Lạng Sơn](location)
+      - [Bắc Ninh](location) nổi tiếng về gì
+      - [An Giang](location) nổi tiếng về gì
+      - [Cần Thơ](location) nổi tiếng về gì
+      - [Quảng Ninh](location) nổi tiếng về gì
+      - [Ninh Bình](location) nổi tiếng về gì
+      - [Lào Cai](location) nổi tiếng về gì
+      - [Lạng Sơn](location) nổi tiếng về gì
+      - giới thiệu [Cao Bằng](location)
+      - giới thiệu [Điện Biên](location)
+      - giới thiệu [Lai Châu](location)
+      - giới thiệu [Sơn La](location)
+      - giới thiệu [Tuyên Quang](location)
+      - giới thiệu [Hà Tĩnh](location)
+      - giới thiệu [Quảng Trị](location)
+      - giới thiệu [Đồng Nai](location)
+      - giới thiệu [Tây Ninh](location)
+      - giới thiệu [Đồng Tháp](location)
+      - giới thiệu [Cà Mau](location)
+      - giới thiệu [Gia Lai](location)
+      - giới thiệu [Đắk Lắk](location)
+      - giới thiệu [Lâm Đồng](location)
+      - giới thiệu [Quảng Ngãi](location)
+      - giới thiệu [Nghệ An](location)
+      - giới thiệu [Thanh Hóa](location)
+      - giới thiệu [Phú Thọ](location)
+      - giới thiệu [Hưng Yên](location)
+      - giới thiệu [Thái Nguyên](location)
+      - [Cao Bằng](location) có gì
+      - [Điện Biên](location) có gì
+      - [Lai Châu](location) có gì
+      - [Sơn La](location) có gì
+      - [Tuyên Quang](location) có gì
+      - [Hà Tĩnh](location) có gì
+      - [Quảng Trị](location) có gì
+      - [Đồng Nai](location) có gì
+      - [Tây Ninh](location) có gì
+      - [Đồng Tháp](location) có gì
+      - [Cà Mau](location) có gì
+      - [Gia Lai](location) có gì
+      - [Đắk Lắk](location) có gì
+      - [Lâm Đồng](location) có gì
+      - [Quảng Ngãi](location) có gì
+      - [Nghệ An](location) có gì
+      - [Thanh Hóa](location) có gì
+      - [Phú Thọ](location) có gì
+      - [Hưng Yên](location) có gì
+      - [Thái Nguyên](location) có gì
+      - cho tôi hỏi về [Hải Phòng](location)
+      - cho tôi hỏi về [Hà Nội](location)
+      - cho tôi hỏi về [Đà Nẵng](location)
+      - cho tôi hỏi về [Huế](location)
+      - cho tôi hỏi về [Hồ Chí Minh](location)
+      - xin hỏi về [Hải Phòng](location)
+      - xin hỏi về [Hà Nội](location)
+      - xin hỏi về [Đà Nẵng](location)
+      - xin hỏi về [Huế](location)
+      - xin hỏi về [Hồ Chí Minh](location)
+      - làm ơn giới thiệu [Hải Phòng](location)
+      - làm ơn giới thiệu [Hà Nội](location)
+      - làm ơn giới thiệu [Đà Nẵng](location)
+      - làm ơn giới thiệu [Huế](location)
+      - làm ơn giới thiệu [Hồ Chí Minh](location)
+      - hãy cho tôi biết về [Hải Phòng](location)
+      - hãy cho tôi biết về [Hà Nội](location)
+      - hãy cho tôi biết về [Đà Nẵng](location)
+      - hãy cho tôi biết về [Huế](location)
+      - hãy cho tôi biết về [Hồ Chí Minh](location)
+      - bạn có thể giới thiệu [Hải Phòng](location) không
+      - bạn có thể giới thiệu [Hà Nội](location) không
+      - bạn có thể giới thiệu [Đà Nẵng](location) không
+      - bạn có thể giới thiệu [Huế](location) không
+      - bạn có thể giới thiệu [Hồ Chí Minh](location) không
+      - cho mình hỏi về [Hải Phòng](location)
+      - cho mình hỏi về [Hà Nội](location)
+      - cho mình hỏi về [Đà Nẵng](location)
+      - cho mình hỏi về [Huế](location)
+      - cho mình hỏi về [Hồ Chí Minh](location)
+      - mình muốn biết về [Hải Phòng](location)
+      - mình muốn biết về [Hà Nội](location)
+      - mình muốn biết về [Đà Nẵng](location)
+      - mình muốn biết về [Huế](location)
+      - mình muốn biết về [Hồ Chí Minh](location)
+      - em muốn hỏi về [Hải Phòng](location)
+      - em muốn hỏi về [Hà Nội](location)
+      - em muốn hỏi về [Đà Nẵng](location)
+      - em muốn hỏi về [Huế](location)
+      - em muốn hỏi về [Hồ Chí Minh](location)
+      - anh có thể kể về [Hải Phòng](location) không
+      - anh có thể kể về [Hà Nội](location) không
+      - anh có thể kể về [Đà Nẵng](location) không
+      - anh có thể kể về [Huế](location) không
+      - anh có thể kể về [Hồ Chí Minh](location) không
+      - chị có thể kể về [Hải Phòng](location) không
+      - chị có thể kể về [Hà Nội](location) không
+      - chị có thể kể về [Đà Nẵng](location) không
+      - chị có thể kể về [Huế](location) không
+      - chị có thể kể về [Hồ Chí Minh](location) không
 
   - intent: ask_attractions
     examples: |
@@ -254,6 +521,197 @@ nlu:
       - Các khu du lịch sinh thái gần [Lâm Đồng](location)
       - Nên book vé trước cho thắng cảnh ở [Hạ Long](location) chứ?
       - Điểm tham quan miễn phí ở [Hà Nội](location) có chỗ nào
+      - địa điểm tham quan [Hải Phòng](location)
+      - địa điểm tham quan [Hà Nội](location)
+      - địa điểm tham quan [Đà Nẵng](location)
+      - địa điểm tham quan [Huế](location)
+      - địa điểm tham quan [Hồ Chí Minh](location)
+      - địa điểm tham quan [Sài Gòn](location)
+      - địa điểm tham quan [TP.HCM](location)
+      - địa điểm tham quan [TPHCM](location)
+      - địa điểm tham quan [HCM](location)
+      - địa điểm tham quan [Bắc Ninh](location)
+      - địa điểm tham quan [An Giang](location)
+      - địa điểm tham quan [Cần Thơ](location)
+      - địa điểm tham quan [Quảng Ninh](location)
+      - địa điểm tham quan [Ninh Bình](location)
+      - địa điểm tham quan [Lào Cai](location)
+      - địa điểm tham quan [Lạng Sơn](location)
+      - địa điểm tham quan [Hà Giang](location)
+      - địa điểm du lịch [Hải Phòng](location)
+      - địa điểm du lịch [Hà Nội](location)
+      - địa điểm du lịch [Đà Nẵng](location)
+      - địa điểm du lịch [Huế](location)
+      - địa điểm du lịch [Hồ Chí Minh](location)
+      - địa điểm du lịch [Bắc Ninh](location)
+      - địa điểm du lịch [An Giang](location)
+      - địa điểm du lịch [Cần Thơ](location)
+      - địa điểm du lịch [Quảng Ninh](location)
+      - địa điểm du lịch [Ninh Bình](location)
+      - địa điểm du lịch [Lào Cai](location)
+      - địa điểm du lịch [Lạng Sơn](location)
+      - địa điểm du lịch [Hà Giang](location)
+      - du lịch [Hải Phòng](location)
+      - du lịch [Hà Nội](location)
+      - du lịch [Đà Nẵng](location)
+      - du lịch [Huế](location)
+      - du lịch [Hồ Chí Minh](location)
+      - du lịch [Bắc Ninh](location)
+      - du lịch [An Giang](location)
+      - du lịch [Cần Thơ](location)
+      - du lịch [Quảng Ninh](location)
+      - du lịch [Ninh Bình](location)
+      - du lịch [Lào Cai](location)
+      - du lịch [Lạng Sơn](location)
+      - du lịch [Hà Giang](location)
+      - ở [Hải Phòng](location) có gì chơi
+      - ở [Hà Nội](location) có gì chơi
+      - ở [Đà Nẵng](location) có gì chơi
+      - ở [Huế](location) có gì chơi
+      - ở [Hồ Chí Minh](location) có gì chơi
+      - đi [Hải Phòng](location) thì đi đâu
+      - đi [Hà Nội](location) thì đi đâu
+      - đi [Đà Nẵng](location) thì đi đâu
+      - đi [Huế](location) thì đi đâu
+      - đi [Hồ Chí Minh](location) thì đi đâu
+      - chỗ nào đẹp ở [Hải Phòng](location)
+      - chỗ nào đẹp ở [Hà Nội](location)
+      - chỗ nào đẹp ở [Đà Nẵng](location)
+      - chỗ nào đẹp ở [Huế](location)
+      - chỗ nào đẹp ở [Hồ Chí Minh](location)
+      - điểm đến nổi tiếng [Hải Phòng](location)
+      - điểm đến nổi tiếng [Hà Nội](location)
+      - điểm đến nổi tiếng [Đà Nẵng](location)
+      - điểm đến nổi tiếng [Huế](location)
+      - điểm đến nổi tiếng [Hồ Chí Minh](location)
+      - tham quan [Hải Phòng](location) đi đâu
+      - tham quan [Hà Nội](location) đi đâu
+      - tham quan [Đà Nẵng](location) đi đâu
+      - tham quan [Huế](location) đi đâu
+      - tham quan [Hồ Chí Minh](location) đi đâu
+      - check-in [Hải Phòng](location) ở đâu
+      - check-in [Hà Nội](location) ở đâu
+      - check-in [Đà Nẵng](location) ở đâu
+      - check-in [Huế](location) ở đâu
+      - check-in [Hồ Chí Minh](location) ở đâu
+      - địa điểm hot [Hải Phòng](location)
+      - địa điểm hot [Hà Nội](location)
+      - địa điểm hot [Đà Nẵng](location)
+      - địa điểm hot [Huế](location)
+      - địa điểm hot [Hồ Chí Minh](location)
+      - nơi nào đáng đi ở [Hải Phòng](location)
+      - nơi nào đáng đi ở [Hà Nội](location)
+      - nơi nào đáng đi ở [Đà Nẵng](location)
+      - nơi nào đáng đi ở [Huế](location)
+      - nơi nào đáng đi ở [Hồ Chí Minh](location)
+      - [Hải Phòng](location) có gì tham quan
+      - [Hà Nội](location) có gì tham quan
+      - [Đà Nẵng](location) có gì tham quan
+      - [Huế](location) có gì tham quan
+      - [Hồ Chí Minh](location) có gì tham quan
+      - [Hải Phòng](location) có điểm nào đẹp
+      - [Hà Nội](location) có điểm nào đẹp
+      - [Đà Nẵng](location) có điểm nào đẹp
+      - [Huế](location) có điểm nào đẹp
+      - [Hồ Chí Minh](location) có điểm nào đẹp
+      - đến [Hải Phòng](location) nên đi đâu
+      - đến [Hà Nội](location) nên đi đâu
+      - đến [Đà Nẵng](location) nên đi đâu
+      - đến [Huế](location) nên đi đâu
+      - đến [Hồ Chí Minh](location) nên đi đâu
+      - gợi ý chỗ chơi [Hải Phòng](location)
+      - gợi ý chỗ chơi [Hà Nội](location)
+      - gợi ý chỗ chơi [Đà Nẵng](location)
+      - gợi ý chỗ chơi [Huế](location)
+      - gợi ý chỗ chơi [Hồ Chí Minh](location)
+      - danh thắng [Hải Phòng](location)
+      - danh thắng [Hà Nội](location)
+      - danh thắng [Đà Nẵng](location)
+      - danh thắng [Huế](location)
+      - danh thắng [Hồ Chí Minh](location)
+      - cảnh đẹp [Hải Phòng](location)
+      - cảnh đẹp [Hà Nội](location)
+      - cảnh đẹp [Đà Nẵng](location)
+      - cảnh đẹp [Huế](location)
+      - cảnh đẹp [Hồ Chí Minh](location)
+      - ở [Bắc Ninh](location) có gì chơi
+      - ở [An Giang](location) có gì chơi
+      - ở [Cần Thơ](location) có gì chơi
+      - ở [Quảng Ninh](location) có gì chơi
+      - ở [Ninh Bình](location) có gì chơi
+      - ở [Lào Cai](location) có gì chơi
+      - ở [Lạng Sơn](location) có gì chơi
+      - đi [Bắc Ninh](location) thì đi đâu
+      - đi [An Giang](location) thì đi đâu
+      - đi [Cần Thơ](location) thì đi đâu
+      - đi [Quảng Ninh](location) thì đi đâu
+      - đi [Ninh Bình](location) thì đi đâu
+      - đi [Lào Cai](location) thì đi đâu
+      - đi [Lạng Sơn](location) thì đi đâu
+      - chỗ nào đẹp ở [Bắc Ninh](location)
+      - chỗ nào đẹp ở [An Giang](location)
+      - chỗ nào đẹp ở [Cần Thơ](location)
+      - chỗ nào đẹp ở [Quảng Ninh](location)
+      - chỗ nào đẹp ở [Ninh Bình](location)
+      - chỗ nào đẹp ở [Lào Cai](location)
+      - chỗ nào đẹp ở [Lạng Sơn](location)
+      - [Bắc Ninh](location) có gì tham quan
+      - [An Giang](location) có gì tham quan
+      - [Cần Thơ](location) có gì tham quan
+      - [Quảng Ninh](location) có gì tham quan
+      - [Ninh Bình](location) có gì tham quan
+      - [Lào Cai](location) có gì tham quan
+      - [Lạng Sơn](location) có gì tham quan
+      - đến [Bắc Ninh](location) nên đi đâu
+      - đến [An Giang](location) nên đi đâu
+      - đến [Cần Thơ](location) nên đi đâu
+      - đến [Quảng Ninh](location) nên đi đâu
+      - đến [Ninh Bình](location) nên đi đâu
+      - đến [Lào Cai](location) nên đi đâu
+      - đến [Lạng Sơn](location) nên đi đâu
+      - cho tôi hỏi địa điểm tham quan [Hải Phòng](location)
+      - cho tôi hỏi địa điểm tham quan [Hà Nội](location)
+      - cho tôi hỏi địa điểm tham quan [Đà Nẵng](location)
+      - cho tôi hỏi địa điểm tham quan [Huế](location)
+      - cho tôi hỏi địa điểm tham quan [Hồ Chí Minh](location)
+      - xin hỏi địa điểm du lịch [Hải Phòng](location)
+      - xin hỏi địa điểm du lịch [Hà Nội](location)
+      - xin hỏi địa điểm du lịch [Đà Nẵng](location)
+      - xin hỏi địa điểm du lịch [Huế](location)
+      - xin hỏi địa điểm du lịch [Hồ Chí Minh](location)
+      - bạn có thể gợi ý địa điểm [Hải Phòng](location) không
+      - bạn có thể gợi ý địa điểm [Hà Nội](location) không
+      - bạn có thể gợi ý địa điểm [Đà Nẵng](location) không
+      - bạn có thể gợi ý địa điểm [Huế](location) không
+      - bạn có thể gợi ý địa điểm [Hồ Chí Minh](location) không
+      - cho mình hỏi đi [Hải Phòng](location) nên đi đâu
+      - cho mình hỏi đi [Hà Nội](location) nên đi đâu
+      - cho mình hỏi đi [Đà Nẵng](location) nên đi đâu
+      - cho mình hỏi đi [Huế](location) nên đi đâu
+      - cho mình hỏi đi [Hồ Chí Minh](location) nên đi đâu
+      - mình muốn biết địa điểm đẹp ở [Hải Phòng](location)
+      - mình muốn biết địa điểm đẹp ở [Hà Nội](location)
+      - mình muốn biết địa điểm đẹp ở [Đà Nẵng](location)
+      - mình muốn biết địa điểm đẹp ở [Huế](location)
+      - mình muốn biết địa điểm đẹp ở [Hồ Chí Minh](location)
+      - em muốn hỏi [Hải Phòng](location) có gì chơi
+      - em muốn hỏi [Hà Nội](location) có gì chơi
+      - em muốn hỏi [Đà Nẵng](location) có gì chơi
+      - em muốn hỏi [Huế](location) có gì chơi
+      - em muốn hỏi [Hồ Chí Minh](location) có gì chơi
+      - địa điểm tham quan nổi tiếng ở [Hà Nội](location)
+      - địa điểm du lịch đẹp ở [Đà Nẵng](location)
+      - địa điểm check-in hot ở [Huế](location)
+      - địa điểm tham quan lịch sử ở [Hồ Chí Minh](location)
+      - địa điểm vui chơi giải trí ở [Đà Lạt](location)
+      - địa điểm tham quan tự nhiên ở [Sapa](location)
+      - địa điểm du lịch sinh thái ở [Phú Quốc](location)
+      - Tôi đang lên kế hoạch du lịch [Hà Nội](location), bạn có thể gợi ý địa điểm không
+      - Mình sắp đến [Đà Nẵng](location) tuần sau, nên đi đâu tham quan
+      - Cho tôi hỏi, nếu đi [Huế](location) thì nên tham quan những địa điểm nào
+      - Tôi và gia đình sẽ đi [Nha Trang](location) vào tháng 7, có địa điểm nào phù hợp cho trẻ em không
+      - Mình đang tìm kiếm địa điểm chụp ảnh đẹp ở [Đà Lạt](location), bạn có gợi ý gì không
+      - Tôi có 2 ngày ở [Hội An](location), bạn có thể gợi ý lịch trình tham quan không
 
   - intent: ask_cuisine
     examples: |
@@ -269,8 +727,26 @@ nlu:
       - ẩm thực [Hồ Chí Minh](location)
       - ẩm thực [TP.HCM](location)
       - ẩm thực [TPHCM](location)
+      - ẩm thực [HCM](location)
+      - ẩm thực [TP HCM](location)
+      - ẩm thực [Sai Gon](location)
+      - ẩm thực [TP Hồ Chí Minh](location)
+      - ẩm thực thành phố [Hồ Chí Minh](location)
+      - ẩm thực [Hanoi](location)
+      - ẩm thực [Ha Noi](location)
+      - ẩm thực thành phố [Hà Nội](location)
+      - ẩm thực [Da Nang](location)
+      - ẩm thực [Danang](location)
+      - ẩm thực thành phố [Đà Nẵng](location)
+      - ẩm thực [Hue](location)
+      - ẩm thực [Thừa Thiên Huế](location)
+      - ẩm thực [Thua Thien Hue](location)
+      - ẩm thực [Hai Phong](location)
+      - ẩm thực thành phố [Hải Phòng](location)
       - ẩm thực [Cần Thơ](location)
-      - ẩm thực [Hải Phòng](location)
+      - ẩm thực [Can Tho](location)
+      - ẩm thực [Cantho](location)
+      - ẩm thực thành phố [Cần Thơ](location)
       - ẩm thực [Nha Trang](location)
       - ẩm thực [Đà Lạt](location)
       - ẩm thực [Vũng Tàu](location)
@@ -328,6 +804,142 @@ nlu:
       - Địa chỉ quán ăn đêm ở [Sài Gòn](location) uy tín
       - Món địa phương [Quảng Nam](location) thường bán ở đâu
       - Ciesta, ăn gì ở Sài Gòn hôm nay
+      - ở [Hải Phòng](location) ăn gì
+      - ở [Hà Nội](location) ăn gì
+      - ở [Đà Nẵng](location) ăn gì
+      - ở [Huế](location) ăn gì
+      - ở [Hồ Chí Minh](location) ăn gì
+      - món gì ngon ở [Hải Phòng](location)
+      - món gì ngon ở [Hà Nội](location)
+      - món gì ngon ở [Đà Nẵng](location)
+      - món gì ngon ở [Huế](location)
+      - món gì ngon ở [Hồ Chí Minh](location)
+      - đặc sản [Hải Phòng](location) có gì
+      - đặc sản [Hà Nội](location) có gì
+      - đặc sản [Đà Nẵng](location) có gì
+      - đặc sản [Huế](location) có gì
+      - đặc sản [Hồ Chí Minh](location) có gì
+      - quán ăn ngon [Hải Phòng](location)
+      - quán ăn ngon [Hà Nội](location)
+      - quán ăn ngon [Đà Nẵng](location)
+      - quán ăn ngon [Huế](location)
+      - quán ăn ngon [Hồ Chí Minh](location)
+      - nhà hàng [Hải Phòng](location)
+      - nhà hàng [Hà Nội](location)
+      - nhà hàng [Đà Nẵng](location)
+      - nhà hàng [Huế](location)
+      - nhà hàng [Hồ Chí Minh](location)
+      - mua quà [Hải Phòng](location) gì
+      - mua quà [Hà Nội](location) gì
+      - mua quà [Đà Nẵng](location) gì
+      - mua quà [Huế](location) gì
+      - mua quà [Hồ Chí Minh](location) gì
+      - [Hải Phòng](location) có món gì ngon
+      - [Hà Nội](location) có món gì ngon
+      - [Đà Nẵng](location) có món gì ngon
+      - [Huế](location) có món gì ngon
+      - [Hồ Chí Minh](location) có món gì ngon
+      - [Hải Phòng](location) nên ăn gì
+      - [Hà Nội](location) nên ăn gì
+      - [Đà Nẵng](location) nên ăn gì
+      - [Huế](location) nên ăn gì
+      - [Hồ Chí Minh](location) nên ăn gì
+      - đến [Hải Phòng](location) ăn gì
+      - đến [Hà Nội](location) ăn gì
+      - đến [Đà Nẵng](location) ăn gì
+      - đến [Huế](location) ăn gì
+      - đến [Hồ Chí Minh](location) ăn gì
+      - gợi ý món ăn [Hải Phòng](location)
+      - gợi ý món ăn [Hà Nội](location)
+      - gợi ý món ăn [Đà Nẵng](location)
+      - gợi ý món ăn [Huế](location)
+      - gợi ý món ăn [Hồ Chí Minh](location)
+      - món đặc sản [Hải Phòng](location)
+      - món đặc sản [Hà Nội](location)
+      - món đặc sản [Đà Nẵng](location)
+      - món đặc sản [Huế](location)
+      - món đặc sản [Hồ Chí Minh](location)
+      - quà [Hải Phòng](location)
+      - quà [Hà Nội](location)
+      - quà [Đà Nẵng](location)
+      - quà [Huế](location)
+      - quà [Hồ Chí Minh](location)
+      - mua đặc sản [Hải Phòng](location)
+      - mua đặc sản [Hà Nội](location)
+      - mua đặc sản [Đà Nẵng](location)
+      - mua đặc sản [Huế](location)
+      - mua đặc sản [Hồ Chí Minh](location)
+      - ở [Bắc Ninh](location) ăn gì
+      - ở [An Giang](location) ăn gì
+      - ở [Cần Thơ](location) ăn gì
+      - ở [Quảng Ninh](location) ăn gì
+      - ở [Ninh Bình](location) ăn gì
+      - ở [Lào Cai](location) ăn gì
+      - ở [Lạng Sơn](location) ăn gì
+      - món gì ngon ở [Bắc Ninh](location)
+      - món gì ngon ở [An Giang](location)
+      - món gì ngon ở [Cần Thơ](location)
+      - món gì ngon ở [Quảng Ninh](location)
+      - món gì ngon ở [Ninh Bình](location)
+      - món gì ngon ở [Lào Cai](location)
+      - món gì ngon ở [Lạng Sơn](location)
+      - [Bắc Ninh](location) có món gì ngon
+      - [An Giang](location) có món gì ngon
+      - [Cần Thơ](location) có món gì ngon
+      - [Quảng Ninh](location) có món gì ngon
+      - [Ninh Bình](location) có món gì ngon
+      - [Lào Cai](location) có món gì ngon
+      - [Lạng Sơn](location) có món gì ngon
+      - [Bắc Ninh](location) nên ăn gì
+      - [An Giang](location) nên ăn gì
+      - [Cần Thơ](location) nên ăn gì
+      - [Quảng Ninh](location) nên ăn gì
+      - [Ninh Bình](location) nên ăn gì
+      - [Lào Cai](location) nên ăn gì
+      - [Lạng Sơn](location) nên ăn gì
+      - đến [Bắc Ninh](location) ăn gì
+      - đến [An Giang](location) ăn gì
+      - đến [Cần Thơ](location) ăn gì
+      - đến [Quảng Ninh](location) ăn gì
+      - đến [Ninh Bình](location) ăn gì
+      - đến [Lào Cai](location) ăn gì
+      - đến [Lạng Sơn](location) ăn gì
+      - cho tôi hỏi ẩm thực [Hải Phòng](location)
+      - cho tôi hỏi ẩm thực [Hà Nội](location)
+      - cho tôi hỏi ẩm thực [Đà Nẵng](location)
+      - cho tôi hỏi ẩm thực [Huế](location)
+      - cho tôi hỏi ẩm thực [Hồ Chí Minh](location)
+      - xin hỏi đặc sản [Hải Phòng](location)
+      - xin hỏi đặc sản [Hà Nội](location)
+      - xin hỏi đặc sản [Đà Nẵng](location)
+      - xin hỏi đặc sản [Huế](location)
+      - xin hỏi đặc sản [Hồ Chí Minh](location)
+      - bạn có thể gợi ý món ăn [Hải Phòng](location) không
+      - bạn có thể gợi ý món ăn [Hà Nội](location) không
+      - bạn có thể gợi ý món ăn [Đà Nẵng](location) không
+      - bạn có thể gợi ý món ăn [Huế](location) không
+      - bạn có thể gợi ý món ăn [Hồ Chí Minh](location) không
+      - cho mình hỏi ăn gì ở [Hải Phòng](location)
+      - cho mình hỏi ăn gì ở [Hà Nội](location)
+      - cho mình hỏi ăn gì ở [Đà Nẵng](location)
+      - cho mình hỏi ăn gì ở [Huế](location)
+      - cho mình hỏi ăn gì ở [Hồ Chí Minh](location)
+      - mình muốn biết món ngon ở [Hải Phòng](location)
+      - mình muốn biết món ngon ở [Hà Nội](location)
+      - mình muốn biết món ngon ở [Đà Nẵng](location)
+      - mình muốn biết món ngon ở [Huế](location)
+      - mình muốn biết món ngon ở [Hồ Chí Minh](location)
+      - em muốn hỏi [Hải Phòng](location) có món gì ngon
+      - em muốn hỏi [Hà Nội](location) có món gì ngon
+      - em muốn hỏi [Đà Nẵng](location) có món gì ngon
+      - em muốn hỏi [Huế](location) có món gì ngon
+      - em muốn hỏi [Hồ Chí Minh](location) có món gì ngon
+      - Cho tôi hỏi, nếu đi [Huế](location) thì nên ăn món gì và đi đâu
+      - Mình sắp đi [Đà Nẵng](location) vào tháng 6, ẩm thực ở đó có gì đặc biệt không
+      - Tôi đang lên kế hoạch du lịch [Hà Nội](location), bạn có thể gợi ý món ăn địa phương không
+      - Mình muốn thử đặc sản [Sài Gòn](location), bạn có thể giới thiệu một số món ngon không
+      - Tôi và bạn bè sẽ đi [Phú Quốc](location) vào cuối tuần, nên ăn hải sản ở đâu ngon
+      - Cho tôi hỏi, ở [Đà Lạt](location) có quán ăn nào ngon và giá cả hợp lý không
 
   - intent: ask_festival
     examples: |
@@ -355,6 +967,189 @@ nlu:
       - Có festival văn hóa nước ngoài ở [Đà Nẵng](location) không?
       - Thời gian tốt nhất để tham gia lễ hội ở [Bắc Ninh](location) là khi nào
       - Lễ hội truyền thống ở [Quảng Ngãi](location) có hoạt động gì chính
+      - lễ hội [Hải Phòng](location) khi nào
+      - lễ hội [Hà Nội](location) khi nào
+      - lễ hội [Đà Nẵng](location) khi nào
+      - lễ hội [Huế](location) khi nào
+      - lễ hội [Hồ Chí Minh](location) khi nào
+      - festival [Hải Phòng](location)
+      - festival [Hà Nội](location)
+      - festival [Đà Nẵng](location)
+      - festival [Huế](location)
+      - festival [Hồ Chí Minh](location)
+      - sự kiện [Hải Phòng](location)
+      - sự kiện [Hà Nội](location)
+      - sự kiện [Đà Nẵng](location)
+      - sự kiện [Huế](location)
+      - sự kiện [Hồ Chí Minh](location)
+      - lễ hội nào ở [Hải Phòng](location)
+      - lễ hội nào ở [Hà Nội](location)
+      - lễ hội nào ở [Đà Nẵng](location)
+      - lễ hội nào ở [Huế](location)
+      - lễ hội nào ở [Hồ Chí Minh](location)
+      - [Hải Phòng](location) có lễ hội gì
+      - [Hà Nội](location) có lễ hội gì
+      - [Đà Nẵng](location) có lễ hội gì
+      - [Hồ Chí Minh](location) có lễ hội gì
+      - lễ hội diễn ra khi nào ở [Hải Phòng](location)
+      - lễ hội diễn ra khi nào ở [Hà Nội](location)
+      - lễ hội diễn ra khi nào ở [Đà Nẵng](location)
+      - lễ hội diễn ra khi nào ở [Huế](location)
+      - lễ hội diễn ra khi nào ở [Hồ Chí Minh](location)
+      - lễ hội tổ chức khi nào [Hải Phòng](location)
+      - lễ hội tổ chức khi nào [Hà Nội](location)
+      - lễ hội tổ chức khi nào [Đà Nẵng](location)
+      - lễ hội tổ chức khi nào [Huế](location)
+      - lễ hội tổ chức khi nào [Hồ Chí Minh](location)
+      - lễ hội [Bắc Ninh](location) khi nào
+      - lễ hội [An Giang](location) khi nào
+      - lễ hội [Cần Thơ](location) khi nào
+      - lễ hội [Quảng Ninh](location) khi nào
+      - lễ hội [Ninh Bình](location) khi nào
+      - lễ hội [Lào Cai](location) khi nào
+      - lễ hội [Lạng Sơn](location) khi nào
+      - [Bắc Ninh](location) có lễ hội gì
+      - [An Giang](location) có lễ hội gì
+      - [Cần Thơ](location) có lễ hội gì
+      - [Quảng Ninh](location) có lễ hội gì
+      - [Ninh Bình](location) có lễ hội gì
+      - [Lào Cai](location) có lễ hội gì
+      - [Lạng Sơn](location) có lễ hội gì
+      - lễ hội nào ở [Bắc Ninh](location)
+      - lễ hội nào ở [An Giang](location)
+      - lễ hội nào ở [Cần Thơ](location)
+      - lễ hội nào ở [Quảng Ninh](location)
+      - lễ hội nào ở [Ninh Bình](location)
+      - lễ hội nào ở [Lào Cai](location)
+      - lễ hội nào ở [Lạng Sơn](location)
+      - cho tôi hỏi lễ hội [Hải Phòng](location)
+      - cho tôi hỏi lễ hội [Hà Nội](location)
+      - cho tôi hỏi lễ hội [Đà Nẵng](location)
+      - cho tôi hỏi lễ hội [Huế](location)
+      - cho tôi hỏi lễ hội [Hồ Chí Minh](location)
+      - xin hỏi lễ hội ở [Hải Phòng](location)
+      - xin hỏi lễ hội ở [Hà Nội](location)
+      - xin hỏi lễ hội ở [Đà Nẵng](location)
+      - xin hỏi lễ hội ở [Huế](location)
+      - xin hỏi lễ hội ở [Hồ Chí Minh](location)
+      - bạn có thể kể về lễ hội [Hải Phòng](location) không
+      - bạn có thể kể về lễ hội [Hà Nội](location) không
+      - bạn có thể kể về lễ hội [Đà Nẵng](location) không
+      - bạn có thể kể về lễ hội [Huế](location) không
+      - bạn có thể kể về lễ hội [Hồ Chí Minh](location) không
+      - cho mình hỏi [Hải Phòng](location) có lễ hội gì
+      - cho mình hỏi [Hà Nội](location) có lễ hội gì
+      - cho mình hỏi [Đà Nẵng](location) có lễ hội gì
+      - cho mình hỏi [Huế](location) có lễ hội gì
+      - cho mình hỏi [Hồ Chí Minh](location) có lễ hội gì
+      - mình muốn biết lễ hội ở [Hải Phòng](location)
+      - mình muốn biết lễ hội ở [Hà Nội](location)
+      - mình muốn biết lễ hội ở [Đà Nẵng](location)
+      - mình muốn biết lễ hội ở [Huế](location)
+      - mình muốn biết lễ hội ở [Hồ Chí Minh](location)
+      - lễ hội [Bắc Ninh](location) diễn ra khi nào
+      - lễ hội [An Giang](location) diễn ra khi nào
+      - lễ hội [Cần Thơ](location) diễn ra khi nào
+      - lễ hội [Quảng Ninh](location) diễn ra khi nào
+      - lễ hội [Ninh Bình](location) diễn ra khi nào
+      - lễ hội [Lào Cai](location) diễn ra khi nào
+      - lễ hội [Lạng Sơn](location) diễn ra khi nào
+      - lễ hội [Cao Bằng](location) diễn ra khi nào
+      - lễ hội [Điện Biên](location) diễn ra khi nào
+      - lễ hội [Lai Châu](location) diễn ra khi nào
+      - lễ hội [Sơn La](location) diễn ra khi nào
+      - lễ hội [Tuyên Quang](location) diễn ra khi nào
+      - lễ hội [Hà Tĩnh](location) diễn ra khi nào
+      - lễ hội [Quảng Trị](location) diễn ra khi nào
+      - lễ hội [Đồng Nai](location) diễn ra khi nào
+      - lễ hội [Tây Ninh](location) diễn ra khi nào
+      - lễ hội [Đồng Tháp](location) diễn ra khi nào
+      - lễ hội [Cà Mau](location) diễn ra khi nào
+      - lễ hội [Đắk Lắk](location) diễn ra khi nào
+      - lễ hội [Lâm Đồng](location) diễn ra khi nào
+      - lễ hội [Quảng Ngãi](location) diễn ra khi nào
+      - lễ hội [Nghệ An](location) diễn ra khi nào
+      - lễ hội [Thanh Hóa](location) diễn ra khi nào
+      - lễ hội [Phú Thọ](location) diễn ra khi nào
+      - lễ hội [Hưng Yên](location) diễn ra khi nào
+      - lễ hội [Thái Nguyên](location) diễn ra khi nào
+      - [Bắc Ninh](location) tổ chức lễ hội gì
+      - [An Giang](location) tổ chức lễ hội gì
+      - [Cần Thơ](location) tổ chức lễ hội gì
+      - [Quảng Ninh](location) tổ chức lễ hội gì
+      - [Ninh Bình](location) tổ chức lễ hội gì
+      - [Lào Cai](location) tổ chức lễ hội gì
+      - [Lạng Sơn](location) tổ chức lễ hội gì
+      - [Cao Bằng](location) tổ chức lễ hội gì
+      - [Điện Biên](location) tổ chức lễ hội gì
+      - [Lai Châu](location) tổ chức lễ hội gì
+      - [Sơn La](location) tổ chức lễ hội gì
+      - [Tuyên Quang](location) tổ chức lễ hội gì
+      - [Hà Tĩnh](location) tổ chức lễ hội gì
+      - [Quảng Trị](location) tổ chức lễ hội gì
+      - [Đồng Nai](location) tổ chức lễ hội gì
+      - [Tây Ninh](location) tổ chức lễ hội gì
+      - [Đồng Tháp](location) tổ chức lễ hội gì
+      - [Cà Mau](location) tổ chức lễ hội gì
+      - [Gia Lai](location) tổ chức lễ hội gì
+      - [Đắk Lắk](location) tổ chức lễ hội gì
+      - [Lâm Đồng](location) tổ chức lễ hội gì
+      - [Quảng Ngãi](location) tổ chức lễ hội gì
+      - [Nghệ An](location) tổ chức lễ hội gì
+      - [Thanh Hóa](location) tổ chức lễ hội gì
+      - [Phú Thọ](location) tổ chức lễ hội gì
+      - [Hưng Yên](location) tổ chức lễ hội gì
+      - [Thái Nguyên](location) tổ chức lễ hội gì
+      - lễ hội truyền thống ở [Hà Nội](location) diễn ra vào tháng mấy
+      - festival nào nổi tiếng ở [Đà Nẵng](location)
+      - lễ hội hoa ở [Đà Lạt](location) khi nào diễn ra
+      - [Huế](location) có những lễ hội nào quan trọng
+      - lễ hội đền Hùng ở [Phú Thọ](location) tổ chức khi nào
+      - lễ hội chùa Hương ở [Hà Nội](location) vào tháng mấy
+      - festival pháo hoa quốc tế [Đà Nẵng](location) khi nào
+      - lễ hội Ok Om Bok ở [An Giang](location) là gì
+      - lễ hội Katê ở [Ninh Thuận](location) diễn ra khi nào
+      - [Bắc Ninh](location) có lễ hội quan họ vào tháng mấy
+      - lễ hội đua thuyền rồng ở [Hạ Long](location)
+      - festival nhạc cụ dân tộc ở [Hà Nội](location)
+      - lễ hội cốm làng Vòng ở [Hà Nội](location)
+      - lễ hội đền Trần ở [Nam Định](location) khi nào
+      - lễ hội chùa Bái Đính ở [Ninh Bình](location)
+      - festival bánh chưng ở [Hà Nội](location)
+      - lễ hội đua voi ở [Đắk Lắk](location) diễn ra khi nào
+      - lễ hội cồng chiêng Tây Nguyên ở [Gia Lai](location)
+      - lễ hội hoa ban ở [Điện Biên](location) vào tháng mấy
+      - festival cà phê ở [Buôn Ma Thuột](location)
+      - lễ hội đâm trâu ở [Kon Tum](location) khi nào
+      - lễ hội đền Gióng ở [Hà Nội](location)
+      - lễ hội Yên Tử ở [Quảng Ninh](location) diễn ra tháng mấy
+      - festival bánh dân gian ở [Hội An](location)
+      - lễ hội đua thuyền ở [Cần Thơ](location) khi nào
+      - lễ hội khinh khí cầu ở [Đà Lạt](location)
+      - festival hoa anh đào ở [Lào Cai](location)
+      - lễ hội chọi trâu ở [Hải Phòng](location) diễn ra khi nào
+      - lễ hội đền Kiếp Bạc ở [Hải Dương](location)
+      - lễ hội Côn Sơn ở [Hải Dương](location) khi nào
+      - festival ẩm thực đường phố ở [TP.HCM](location)
+      - lễ hội chùa Tam Chúc ở [Hà Nam](location)
+      - lễ hội đền Sòng ở [Thanh Hóa](location) diễn ra khi nào
+      - festival biển ở [Nha Trang](location) có gì đặc biệt
+      - lễ hội đua thuyền trên sông Hương ở [Huế](location)
+      - lễ hội hoa đăng ở [Hội An](location) vào tháng mấy
+      - lễ hội rước kiệu ở [Bắc Ninh](location)
+      - festival nhạc rock ở [Hà Nội](location) khi nào
+      - lễ hội đền Đô ở [Bắc Ninh](location) diễn ra tháng mấy
+      - lễ hội chùa Thiên Mụ ở [Huế](location)
+      - festival trái cây miền Tây ở [Cần Thơ](location)
+      - lễ hội đua ngựa ở [Bình Thuận](location) khi nào
+      - lễ hội đền Bà Chúa Kho ở [Bắc Ninh](location)
+      - lễ hội chùa Dâu ở [Bắc Ninh](location) diễn ra tháng mấy
+      - festival văn hóa dân tộc ở [Lào Cai](location)
+      - Mình sắp đi [Đà Nẵng](location) vào tháng 6, mùa đó có lễ hội gì đặc biệt không
+      - Tôi đang lên kế hoạch du lịch [Huế](location) vào mùa thu, có lễ hội nào diễn ra vào thời điểm đó không
+      - Cho tôi hỏi, nếu đến [Hà Nội](location) vào tháng 3, có lễ hội truyền thống nào đáng tham gia không
+      - Mình muốn trải nghiệm lễ hội văn hóa ở [Bắc Ninh](location), bạn có thể tư vấn thời gian tốt nhất không
+      - Tôi và gia đình sẽ đi [Đà Lạt](location) vào tháng 12, có lễ hội hoa nào diễn ra không
 
   - intent: ask_new_province
     examples: |
@@ -409,6 +1204,197 @@ nlu:
       - [Bạc Liêu](location) sáp nhập vào đâu
       - [An Giang](location) mới gồm Kiên Giang
       - [Kiên Giang](location) thuộc An Giang
+      - [Bắc Ninh](location) sau sáp nhập gồm gì
+      - tỉnh [Bắc Ninh](location) mới bao gồm
+      - [Bắc Ninh](location) hợp nhất với tỉnh nào
+      - thông tin sáp nhập [Bắc Ninh](location)
+      - [Bắc Ninh](location) gộp những tỉnh nào
+      - nghị quyết sáp nhập [Bắc Ninh](location)
+      - [Bắc Ninh](location) theo nghị quyết mới
+      - [Bắc Ninh](location) mới gồm những gì
+      - cấu trúc [Bắc Ninh](location) sau sáp nhập
+      - [Bắc Ninh](location) sau nghị quyết 12/6/2025
+      - tỉnh [Bắc Ninh](location) mới gồm tỉnh cũ nào
+      - [Bắc Ninh](location) sáp nhập với tỉnh nào
+      - [Bắc Ninh](location) gộp với đâu
+      - [Bắc Ninh](location) hợp nhất với đâu
+      - thông tin về sáp nhập [Bắc Ninh](location)
+      - [Bắc Ninh](location) theo nghị quyết sáp nhập
+      - [Bắc Ninh](location) mới bao gồm những tỉnh nào
+      - [An Giang](location) mới gồm những tỉnh nào
+      - [Cà Mau](location) mới gồm những tỉnh nào
+      - [Cần Thơ](location) mới gồm những tỉnh nào
+      - [Đà Nẵng](location) mới gồm những tỉnh nào
+      - [Đắk Lắk](location) mới gồm những tỉnh nào
+      - [Đồng Nai](location) mới gồm những tỉnh nào
+      - [Đồng Tháp](location) mới gồm những tỉnh nào
+      - [Gia Lai](location) mới gồm những tỉnh nào
+      - [Hà Nội](location) mới gồm những tỉnh nào
+      - [Hải Phòng](location) mới gồm những tỉnh nào
+      - [Huế](location) mới gồm những tỉnh nào
+      - [Hưng Yên](location) mới gồm những tỉnh nào
+      - [Khánh Hòa](location) mới gồm những tỉnh nào
+      - [Lâm Đồng](location) mới gồm những tỉnh nào
+      - [Lào Cai](location) mới gồm những tỉnh nào
+      - [Nghệ An](location) mới gồm những tỉnh nào
+      - [Ninh Bình](location) mới gồm những tỉnh nào
+      - [Phú Thọ](location) mới gồm những tỉnh nào
+      - [Quảng Ninh](location) mới gồm những tỉnh nào
+      - [Quảng Ngãi](location) mới gồm những tỉnh nào
+      - [Quảng Trị](location) mới gồm những tỉnh nào
+      - [Tây Ninh](location) mới gồm những tỉnh nào
+      - [Thái Nguyên](location) mới gồm những tỉnh nào
+      - [Thanh Hóa](location) mới gồm những tỉnh nào
+      - [Vĩnh Long](location) mới gồm những tỉnh nào
+      - tỉnh [Cà Mau](location) sáp nhập với đâu
+      - tỉnh [Cần Thơ](location) sáp nhập với đâu
+      - tỉnh [Đà Nẵng](location) sáp nhập với đâu
+      - tỉnh [Đắk Lắk](location) sáp nhập với đâu
+      - tỉnh [Đồng Nai](location) sáp nhập với đâu
+      - tỉnh [Đồng Tháp](location) sáp nhập với đâu
+      - tỉnh [Gia Lai](location) sáp nhập với đâu
+      - tỉnh [Hà Nội](location) sáp nhập với đâu
+      - tỉnh [Hải Phòng](location) sáp nhập với đâu
+      - tỉnh [Huế](location) sáp nhập với đâu
+      - tỉnh [Hưng Yên](location) sáp nhập với đâu
+      - tỉnh [Khánh Hòa](location) sáp nhập với đâu
+      - tỉnh [Lâm Đồng](location) sáp nhập với đâu
+      - tỉnh [Lào Cai](location) sáp nhập với đâu
+      - tỉnh [Nghệ An](location) sáp nhập với đâu
+      - tỉnh [Ninh Bình](location) sáp nhập với đâu
+      - tỉnh [Phú Thọ](location) sáp nhập với đâu
+      - tỉnh [Quảng Ninh](location) sáp nhập với đâu
+      - tỉnh [Quảng Ngãi](location) sáp nhập với đâu
+      - tỉnh [Quảng Trị](location) sáp nhập với đâu
+      - tỉnh [Tây Ninh](location) sáp nhập với đâu
+      - tỉnh [Thái Nguyên](location) sáp nhập với đâu
+      - tỉnh [Thanh Hóa](location) sáp nhập với đâu
+      - tỉnh [Vĩnh Long](location) sáp nhập với đâu
+      - [An Giang](location) sau sáp nhập gồm gì
+      - [Cà Mau](location) sau sáp nhập gồm gì
+      - [Cần Thơ](location) sau sáp nhập gồm gì
+      - [Đà Nẵng](location) sau sáp nhập gồm gì
+      - [Đắk Lắk](location) sau sáp nhập gồm gì
+      - [Đồng Nai](location) sau sáp nhập gồm gì
+      - [Đồng Tháp](location) sau sáp nhập gồm gì
+      - [Gia Lai](location) sau sáp nhập gồm gì
+      - [Hà Nội](location) sau sáp nhập gồm gì
+      - [Hải Phòng](location) sau sáp nhập gồm gì
+      - [Huế](location) sau sáp nhập gồm gì
+      - [Hưng Yên](location) sau sáp nhập gồm gì
+      - [Khánh Hòa](location) sau sáp nhập gồm gì
+      - [Lâm Đồng](location) sau sáp nhập gồm gì
+      - [Lào Cai](location) sau sáp nhập gồm gì
+      - [Nghệ An](location) sau sáp nhập gồm gì
+      - [Ninh Bình](location) sau sáp nhập gồm gì
+      - [Phú Thọ](location) sau sáp nhập gồm gì
+      - [Quảng Ninh](location) sau sáp nhập gồm gì
+      - [Quảng Ngãi](location) sau sáp nhập gồm gì
+      - [Quảng Trị](location) sau sáp nhập gồm gì
+      - [Tây Ninh](location) sau sáp nhập gồm gì
+      - [Thái Nguyên](location) sau sáp nhập gồm gì
+      - [Thanh Hóa](location) sau sáp nhập gồm gì
+      - [Vĩnh Long](location) sau sáp nhập gồm gì
+      - thông tin sáp nhập [An Giang](location)
+      - thông tin sáp nhập [Cà Mau](location)
+      - thông tin sáp nhập [Cần Thơ](location)
+      - thông tin sáp nhập [Đà Nẵng](location)
+      - thông tin sáp nhập [Đắk Lắk](location)
+      - thông tin sáp nhập [Đồng Nai](location)
+      - thông tin sáp nhập [Đồng Tháp](location)
+      - thông tin sáp nhập [Gia Lai](location)
+      - thông tin sáp nhập [Hà Nội](location)
+      - thông tin sáp nhập [Hải Phòng](location)
+      - thông tin sáp nhập [Huế](location)
+      - thông tin sáp nhập [Hưng Yên](location)
+      - thông tin sáp nhập [Khánh Hòa](location)
+      - thông tin sáp nhập [Lâm Đồng](location)
+      - thông tin sáp nhập [Lào Cai](location)
+      - thông tin sáp nhập [Nghệ An](location)
+      - thông tin sáp nhập [Ninh Bình](location)
+      - thông tin sáp nhập [Phú Thọ](location)
+      - thông tin sáp nhập [Quảng Ninh](location)
+      - thông tin sáp nhập [Quảng Ngãi](location)
+      - thông tin sáp nhập [Quảng Trị](location)
+      - thông tin sáp nhập [Tây Ninh](location)
+      - thông tin sáp nhập [Thái Nguyên](location)
+      - thông tin sáp nhập [Thanh Hóa](location)
+      - thông tin sáp nhập [Vĩnh Long](location)
+      - [An Giang](location) gộp những tỉnh nào
+      - [Cà Mau](location) gộp những tỉnh nào
+      - [Cần Thơ](location) gộp những tỉnh nào
+      - [Đà Nẵng](location) gộp những tỉnh nào
+      - [Đắk Lắk](location) gộp những tỉnh nào
+      - [Đồng Nai](location) gộp những tỉnh nào
+      - [Đồng Tháp](location) gộp những tỉnh nào
+      - [Gia Lai](location) gộp những tỉnh nào
+      - [Hà Nội](location) gộp những tỉnh nào
+      - [Hải Phòng](location) gộp những tỉnh nào
+      - [Huế](location) gộp những tỉnh nào
+      - [Hưng Yên](location) gộp những tỉnh nào
+      - [Khánh Hòa](location) gộp những tỉnh nào
+      - [Lâm Đồng](location) gộp những tỉnh nào
+      - [Lào Cai](location) gộp những tỉnh nào
+      - [Nghệ An](location) gộp những tỉnh nào
+      - [Ninh Bình](location) gộp những tỉnh nào
+      - [Phú Thọ](location) gộp những tỉnh nào
+      - [Quảng Ninh](location) gộp những tỉnh nào
+      - [Quảng Ngãi](location) gộp những tỉnh nào
+      - [Quảng Trị](location) gộp những tỉnh nào
+      - [Tây Ninh](location) gộp những tỉnh nào
+      - [Thái Nguyên](location) gộp những tỉnh nào
+      - [Thanh Hóa](location) gộp những tỉnh nào
+      - [Vĩnh Long](location) gộp những tỉnh nào
+      - cấu trúc [An Giang](location) sau sáp nhập
+      - cấu trúc [Cà Mau](location) sau sáp nhập
+      - cấu trúc [Cần Thơ](location) sau sáp nhập
+      - cấu trúc [Đà Nẵng](location) sau sáp nhập
+      - cấu trúc [Đắk Lắk](location) sau sáp nhập
+      - cấu trúc [Đồng Nai](location) sau sáp nhập
+      - cấu trúc [Đồng Tháp](location) sau sáp nhập
+      - cấu trúc [Gia Lai](location) sau sáp nhập
+      - cấu trúc [Hà Nội](location) sau sáp nhập
+      - cấu trúc [Hải Phòng](location) sau sáp nhập
+      - cấu trúc [Huế](location) sau sáp nhập
+      - cấu trúc [Hưng Yên](location) sau sáp nhập
+      - cấu trúc [Khánh Hòa](location) sau sáp nhập
+      - cấu trúc [Lâm Đồng](location) sau sáp nhập
+      - cấu trúc [Lào Cai](location) sau sáp nhập
+      - cấu trúc [Nghệ An](location) sau sáp nhập
+      - cấu trúc [Ninh Bình](location) sau sáp nhập
+      - cấu trúc [Phú Thọ](location) sau sáp nhập
+      - cấu trúc [Quảng Ninh](location) sau sáp nhập
+      - cấu trúc [Quảng Ngãi](location) sau sáp nhập
+      - cấu trúc [Quảng Trị](location) sau sáp nhập
+      - cấu trúc [Tây Ninh](location) sau sáp nhập
+      - cấu trúc [Thái Nguyên](location) sau sáp nhập
+      - cấu trúc [Thanh Hóa](location) sau sáp nhập
+      - cấu trúc [Vĩnh Long](location) sau sáp nhập
+      - [An Giang](location) sau nghị quyết 12/6/2025
+      - [Cà Mau](location) sau nghị quyết 12/6/2025
+      - [Cần Thơ](location) sau nghị quyết 12/6/2025
+      - [Đà Nẵng](location) sau nghị quyết 12/6/2025
+      - [Đắk Lắk](location) sau nghị quyết 12/6/2025
+      - [Đồng Nai](location) sau nghị quyết 12/6/2025
+      - [Đồng Tháp](location) sau nghị quyết 12/6/2025
+      - [Gia Lai](location) sau nghị quyết 12/6/2025
+      - [Hà Nội](location) sau nghị quyết 12/6/2025
+      - [Hải Phòng](location) sau nghị quyết 12/6/2025
+      - [Huế](location) sau nghị quyết 12/6/2025
+      - [Hưng Yên](location) sau nghị quyết 12/6/2025
+      - [Khánh Hòa](location) sau nghị quyết 12/6/2025
+      - [Lâm Đồng](location) sau nghị quyết 12/6/2025
+      - [Lào Cai](location) sau nghị quyết 12/6/2025
+      - [Nghệ An](location) sau nghị quyết 12/6/2025
+      - [Ninh Bình](location) sau nghị quyết 12/6/2025
+      - [Phú Thọ](location) sau nghị quyết 12/6/2025
+      - [Quảng Ninh](location) sau nghị quyết 12/6/2025
+      - [Quảng Ngãi](location) sau nghị quyết 12/6/2025
+      - [Quảng Trị](location) sau nghị quyết 12/6/2025
+      - [Tây Ninh](location) sau nghị quyết 12/6/2025
+      - [Thái Nguyên](location) sau nghị quyết 12/6/2025
+      - [Thanh Hóa](location) sau nghị quyết 12/6/2025
+      - [Vĩnh Long](location) sau nghị quyết 12/6/2025
 
   - intent: ask_travel_tips
     examples: |
@@ -449,6 +1435,197 @@ nlu:
       - Chuẩn bị gì khi đến [Đà Lạt](location)
       - Tip tiết kiệm cho chuyến đi [Phú Quốc](location)
       - Mẹo săn vé rẻ đến [Hồ Chí Minh](location)
+      - mẹo du lịch [Bắc Ninh](location)
+      - lưu ý khi đến [Bắc Ninh](location)
+      - chuẩn bị gì khi đến [Bắc Ninh](location)
+      - kinh nghiệm du lịch [Bắc Ninh](location)
+      - tip du lịch [Bắc Ninh](location)
+      - gợi ý du lịch [Bắc Ninh](location)
+      - cần biết gì khi đến [Bắc Ninh](location)
+      - nên mang theo gì khi đến [Bắc Ninh](location)
+      - lưu ý an toàn khi đến [Bắc Ninh](location)
+      - lưu ý sức khỏe khi đến [Bắc Ninh](location)
+      - mẹo tiết kiệm khi đến [Bắc Ninh](location)
+      - mẹo khám phá [Bắc Ninh](location)
+      - mẹo ăn uống [Bắc Ninh](location)
+      - mẹo di chuyển [Bắc Ninh](location)
+      - mẹo mua sắm [Bắc Ninh](location)
+      - mẹo mua quà [Bắc Ninh](location)
+      - nên tránh gì khi đến [Bắc Ninh](location)
+      - cần chuẩn bị gì khi đến [Bắc Ninh](location)
+      - mẹo du lịch [An Giang](location)
+      - mẹo du lịch [Cà Mau](location)
+      - mẹo du lịch [Cần Thơ](location)
+      - mẹo du lịch [Đắk Lắk](location)
+      - mẹo du lịch [Đồng Nai](location)
+      - mẹo du lịch [Đồng Tháp](location)
+      - mẹo du lịch [Gia Lai](location)
+      - mẹo du lịch [Hà Nội](location)
+      - mẹo du lịch [Hải Phòng](location)
+      - mẹo du lịch [Huế](location)
+      - mẹo du lịch [Hưng Yên](location)
+      - mẹo du lịch [Khánh Hòa](location)
+      - mẹo du lịch [Lâm Đồng](location)
+      - mẹo du lịch [Lào Cai](location)
+      - mẹo du lịch [Nghệ An](location)
+      - mẹo du lịch [Ninh Bình](location)
+      - mẹo du lịch [Phú Thọ](location)
+      - mẹo du lịch [Quảng Ninh](location)
+      - mẹo du lịch [Quảng Ngãi](location)
+      - mẹo du lịch [Quảng Trị](location)
+      - mẹo du lịch [Tây Ninh](location)
+      - mẹo du lịch [Thái Nguyên](location)
+      - mẹo du lịch [Thanh Hóa](location)
+      - mẹo du lịch [Vĩnh Long](location)
+      - lưu ý khi đến [An Giang](location)
+      - lưu ý khi đến [Cần Thơ](location)
+      - lưu ý khi đến [Đà Nẵng](location)
+      - lưu ý khi đến [Huế](location)
+      - lưu ý khi đến [Hồ Chí Minh](location)
+      - chuẩn bị gì khi đến [An Giang](location)
+      - chuẩn bị gì khi đến [Cần Thơ](location)
+      - chuẩn bị gì khi đến [Đà Nẵng](location)
+      - chuẩn bị gì khi đến [Huế](location)
+      - chuẩn bị gì khi đến [Hồ Chí Minh](location)
+      - kinh nghiệm du lịch [An Giang](location)
+      - kinh nghiệm du lịch [Cần Thơ](location)
+      - kinh nghiệm du lịch [Đà Nẵng](location)
+      - kinh nghiệm du lịch [Huế](location)
+      - kinh nghiệm du lịch [Hồ Chí Minh](location)
+      - tip du lịch [An Giang](location)
+      - tip du lịch [Cần Thơ](location)
+      - tip du lịch [Đà Nẵng](location)
+      - tip du lịch [Huế](location)
+      - tip du lịch [Hồ Chí Minh](location)
+      - gợi ý du lịch [An Giang](location)
+      - gợi ý du lịch [Cần Thơ](location)
+      - gợi ý du lịch [Đà Nẵng](location)
+      - gợi ý du lịch [Huế](location)
+      - gợi ý du lịch [Hồ Chí Minh](location)
+      - cần biết gì khi đến [An Giang](location)
+      - cần biết gì khi đến [Cần Thơ](location)
+      - cần biết gì khi đến [Đà Nẵng](location)
+      - cần biết gì khi đến [Huế](location)
+      - cần biết gì khi đến [Hồ Chí Minh](location)
+      - nên mang theo gì khi đến [An Giang](location)
+      - nên mang theo gì khi đến [Cần Thơ](location)
+      - nên mang theo gì khi đến [Đà Nẵng](location)
+      - nên mang theo gì khi đến [Huế](location)
+      - nên mang theo gì khi đến [Hồ Chí Minh](location)
+      - lưu ý an toàn khi đến [An Giang](location)
+      - lưu ý an toàn khi đến [Cần Thơ](location)
+      - lưu ý an toàn khi đến [Đà Nẵng](location)
+      - lưu ý an toàn khi đến [Huế](location)
+      - lưu ý an toàn khi đến [Hồ Chí Minh](location)
+      - mẹo tiết kiệm khi đến [An Giang](location)
+      - mẹo tiết kiệm khi đến [Cần Thơ](location)
+      - mẹo tiết kiệm khi đến [Đà Nẵng](location)
+      - mẹo tiết kiệm khi đến [Huế](location)
+      - mẹo tiết kiệm khi đến [Hồ Chí Minh](location)
+      - đi [Hải Phòng](location) cần gì
+      - đi [Hà Nội](location) cần gì
+      - đi [Đà Nẵng](location) cần gì
+      - đi [Huế](location) cần gì
+      - đi [Hồ Chí Minh](location) cần gì
+      - kinh nghiệm [Hải Phòng](location)
+      - kinh nghiệm [Hà Nội](location)
+      - kinh nghiệm [Đà Nẵng](location)
+      - kinh nghiệm [Huế](location)
+      - kinh nghiệm [Hồ Chí Minh](location)
+      - mùa nào đẹp [Hải Phòng](location)
+      - mùa nào đẹp [Hà Nội](location)
+      - mùa nào đẹp [Đà Nẵng](location)
+      - mùa nào đẹp [Huế](location)
+      - mùa nào đẹp [Hồ Chí Minh](location)
+      - thời điểm tốt [Hải Phòng](location)
+      - thời điểm tốt [Hà Nội](location)
+      - thời điểm tốt [Đà Nẵng](location)
+      - thời điểm tốt [Huế](location)
+      - thời điểm tốt [Hồ Chí Minh](location)
+      - [Hải Phòng](location) mùa nào đẹp
+      - [Hà Nội](location) mùa nào đẹp
+      - [Đà Nẵng](location) mùa nào đẹp
+      - [Huế](location) mùa nào đẹp
+      - [Hồ Chí Minh](location) mùa nào đẹp
+      - nên đi [Hải Phòng](location) mùa nào
+      - nên đi [Hà Nội](location) mùa nào
+      - nên đi [Đà Nẵng](location) mùa nào
+      - nên đi [Huế](location) mùa nào
+      - nên đi [Hồ Chí Minh](location) mùa nào
+      - thời gian tốt nhất [Hải Phòng](location)
+      - thời gian tốt nhất [Hà Nội](location)
+      - thời gian tốt nhất [Đà Nẵng](location)
+      - thời gian tốt nhất [Huế](location)
+      - thời gian tốt nhất [Hồ Chí Minh](location)
+      - đi [Hải Phòng](location) nên mang gì
+      - đi [Hà Nội](location) nên mang gì
+      - đi [Đà Nẵng](location) nên mang gì
+      - đi [Huế](location) nên mang gì
+      - đi [Hồ Chí Minh](location) nên mang gì
+      - cần biết gì về [Hải Phòng](location)
+      - cần biết gì về [Hà Nội](location)
+      - cần biết gì về [Đà Nẵng](location)
+      - cần biết gì về [Huế](location)
+      - cần biết gì về [Hồ Chí Minh](location)
+      - đi [Bắc Ninh](location) cần gì
+      - đi [An Giang](location) cần gì
+      - đi [Cần Thơ](location) cần gì
+      - đi [Quảng Ninh](location) cần gì
+      - đi [Ninh Bình](location) cần gì
+      - đi [Lào Cai](location) cần gì
+      - đi [Lạng Sơn](location) cần gì
+      - mùa nào đẹp [Bắc Ninh](location)
+      - mùa nào đẹp [An Giang](location)
+      - mùa nào đẹp [Cần Thơ](location)
+      - mùa nào đẹp [Quảng Ninh](location)
+      - mùa nào đẹp [Ninh Bình](location)
+      - mùa nào đẹp [Lào Cai](location)
+      - mùa nào đẹp [Lạng Sơn](location)
+      - [Bắc Ninh](location) mùa nào đẹp
+      - [An Giang](location) mùa nào đẹp
+      - [Cần Thơ](location) mùa nào đẹp
+      - [Quảng Ninh](location) mùa nào đẹp
+      - [Ninh Bình](location) mùa nào đẹp
+      - [Lào Cai](location) mùa nào đẹp
+      - [Lạng Sơn](location) mùa nào đẹp
+      - nên đi [Bắc Ninh](location) mùa nào
+      - nên đi [An Giang](location) mùa nào
+      - nên đi [Cần Thơ](location) mùa nào
+      - nên đi [Quảng Ninh](location) mùa nào
+      - nên đi [Ninh Bình](location) mùa nào
+      - nên đi [Lào Cai](location) mùa nào
+      - nên đi [Lạng Sơn](location) mùa nào
+      - cho tôi hỏi mẹo du lịch [Hải Phòng](location)
+      - cho tôi hỏi mẹo du lịch [Hà Nội](location)
+      - cho tôi hỏi mẹo du lịch [Đà Nẵng](location)
+      - cho tôi hỏi mẹo du lịch [Huế](location)
+      - cho tôi hỏi mẹo du lịch [Hồ Chí Minh](location)
+      - xin hỏi kinh nghiệm du lịch [Hải Phòng](location)
+      - xin hỏi kinh nghiệm du lịch [Hà Nội](location)
+      - xin hỏi kinh nghiệm du lịch [Đà Nẵng](location)
+      - xin hỏi kinh nghiệm du lịch [Huế](location)
+      - xin hỏi kinh nghiệm du lịch [Hồ Chí Minh](location)
+      - bạn có thể cho biết mùa nào đẹp ở [Hải Phòng](location) không
+      - bạn có thể cho biết mùa nào đẹp ở [Hà Nội](location) không
+      - bạn có thể cho biết mùa nào đẹp ở [Đà Nẵng](location) không
+      - bạn có thể cho biết mùa nào đẹp ở [Huế](location) không
+      - bạn có thể cho biết mùa nào đẹp ở [Hồ Chí Minh](location) không
+      - cho mình hỏi đi [Hải Phòng](location) cần gì
+      - cho mình hỏi đi [Hà Nội](location) cần gì
+      - cho mình hỏi đi [Đà Nẵng](location) cần gì
+      - cho mình hỏi đi [Huế](location) cần gì
+      - cho mình hỏi đi [Hồ Chí Minh](location) cần gì
+      - mình muốn biết mùa nào đẹp ở [Hải Phòng](location)
+      - mình muốn biết mùa nào đẹp ở [Hà Nội](location)
+      - mình muốn biết mùa nào đẹp ở [Đà Nẵng](location)
+      - mình muốn biết mùa nào đẹp ở [Huế](location)
+      - mình muốn biết mùa nào đẹp ở [Hồ Chí Minh](location)
+      - Mình sắp đi [Đà Nẵng](location) vào tháng 6, mùa đó có gì đặc biệt không
+      - Tôi đang lên kế hoạch du lịch [Hà Nội](location) vào mùa thu, thời tiết và cảnh sắc như thế nào
+      - Cho tôi hỏi, nếu đi [Huế](location) vào tháng 4, có lưu ý gì về thời tiết và cách chuẩn bị không
+      - Mình muốn đi [Sapa](location) vào cuối năm, bạn có thể cho biết cần chuẩn bị gì không
+      - Tôi và bạn bè sẽ đi [Phú Quốc](location) vào tháng 7, có lưu ý gì về an toàn và thời tiết không
+      - Cho tôi hỏi, nếu đi [Đà Lạt](location) vào mùa mưa, có ảnh hưởng gì đến chuyến du lịch không
 
   - intent: ask_transportation
     examples: |
@@ -478,6 +1655,220 @@ nlu:
       - xe khách [Quảng Ngãi](location)
       - cách đi [Cần Thơ](location)
       - [Hạ Long](location) có sân bay không
+      - đi [Hải Phòng](location) như thế nào
+      - đi [Hà Nội](location) như thế nào
+      - đi [Đà Nẵng](location) như thế nào
+      - đi [Huế](location) như thế nào
+      - đi [Hồ Chí Minh](location) như thế nào
+      - cách đến [Hải Phòng](location)
+      - cách đến [Hà Nội](location)
+      - cách đến [Đà Nẵng](location)
+      - cách đến [Huế](location)
+      - cách đến [Hồ Chí Minh](location)
+      - từ [Hà Nội](location) đến [Hải Phòng](location)
+      - từ [Hà Nội](location) đến [Đà Nẵng](location)
+      - từ [Hà Nội](location) đến [Huế](location)
+      - từ [Hà Nội](location) đến [Hồ Chí Minh](location)
+      - từ [Hồ Chí Minh](location) đến [Hải Phòng](location)
+      - từ [Hồ Chí Minh](location) đến [Đà Nẵng](location)
+      - từ [Hồ Chí Minh](location) đến [Huế](location)
+      - từ [Hồ Chí Minh](location) đến [Hà Nội](location)
+      - xe đi [Hải Phòng](location)
+      - xe đi [Hà Nội](location)
+      - xe đi [Đà Nẵng](location)
+      - xe đi [Huế](location)
+      - xe đi [Hồ Chí Minh](location)
+      - [Hải Phòng](location) có sân bay không
+      - [Hà Nội](location) có sân bay không
+      - [Đà Nẵng](location) có sân bay không
+      - [Huế](location) có sân bay không
+      - [Hồ Chí Minh](location) có sân bay không
+      - [Hải Phòng](location) có ga tàu không
+      - [Hà Nội](location) có ga tàu không
+      - [Đà Nẵng](location) có ga tàu không
+      - [Huế](location) có ga tàu không
+      - [Hồ Chí Minh](location) có ga tàu không
+      - đi [Hải Phòng](location) bằng gì
+      - đi [Hà Nội](location) bằng gì
+      - đi [Đà Nẵng](location) bằng gì
+      - đi [Huế](location) bằng gì
+      - đi [Hồ Chí Minh](location) bằng gì
+      - phương tiện đến [Hải Phòng](location)
+      - phương tiện đến [Hà Nội](location)
+      - phương tiện đến [Đà Nẵng](location)
+      - phương tiện đến [Huế](location)
+      - phương tiện đến [Hồ Chí Minh](location)
+      - từ [Hà Nội](location) đến [Hải Phòng](location) mất bao lâu
+      - từ [Hà Nội](location) đến [Đà Nẵng](location) mất bao lâu
+      - từ [Hà Nội](location) đến [Huế](location) mất bao lâu
+      - từ [Hà Nội](location) đến [Hồ Chí Minh](location) mất bao lâu
+      - từ [Hồ Chí Minh](location) đến [Hải Phòng](location) mất bao lâu
+      - từ [Hồ Chí Minh](location) đến [Đà Nẵng](location) mất bao lâu
+      - từ [Hồ Chí Minh](location) đến [Huế](location) mất bao lâu
+      - từ [Hồ Chí Minh](location) đến [Hà Nội](location) mất bao lâu
+      - máy bay đến [Hải Phòng](location) giá bao nhiêu
+      - máy bay đến [Hà Nội](location) giá bao nhiêu
+      - máy bay đến [Đà Nẵng](location) giá bao nhiêu
+      - máy bay đến [Huế](location) giá bao nhiêu
+      - máy bay đến [Hồ Chí Minh](location) giá bao nhiêu
+      - tàu hỏa đến [Hải Phòng](location)
+      - tàu hỏa đến [Hà Nội](location)
+      - tàu hỏa đến [Đà Nẵng](location)
+      - tàu hỏa đến [Huế](location)
+      - tàu hỏa đến [Hồ Chí Minh](location)
+      - xe khách đến [Hải Phòng](location)
+      - xe khách đến [Hà Nội](location)
+      - xe khách đến [Đà Nẵng](location)
+      - xe khách đến [Huế](location)
+      - xe khách đến [Hồ Chí Minh](location)
+      - đi [Bắc Ninh](location) như thế nào
+      - đi [An Giang](location) như thế nào
+      - đi [Cần Thơ](location) như thế nào
+      - đi [Quảng Ninh](location) như thế nào
+      - đi [Ninh Bình](location) như thế nào
+      - đi [Lào Cai](location) như thế nào
+      - đi [Lạng Sơn](location) như thế nào
+      - cách đến [Bắc Ninh](location)
+      - cách đến [An Giang](location)
+      - cách đến [Cần Thơ](location)
+      - cách đến [Quảng Ninh](location)
+      - cách đến [Ninh Bình](location)
+      - cách đến [Lào Cai](location)
+      - cách đến [Lạng Sơn](location)
+      - đi [Bắc Ninh](location) bằng gì
+      - đi [An Giang](location) bằng gì
+      - đi [Cần Thơ](location) bằng gì
+      - đi [Quảng Ninh](location) bằng gì
+      - đi [Ninh Bình](location) bằng gì
+      - đi [Lào Cai](location) bằng gì
+      - đi [Lạng Sơn](location) bằng gì
+      - [Bắc Ninh](location) có sân bay không
+      - [An Giang](location) có sân bay không
+      - [Cần Thơ](location) có sân bay không
+      - [Quảng Ninh](location) có sân bay không
+      - [Ninh Bình](location) có sân bay không
+      - [Lào Cai](location) có sân bay không
+      - [Lạng Sơn](location) có sân bay không
+      - cho tôi hỏi cách đi [Hải Phòng](location)
+      - cho tôi hỏi cách đi [Hà Nội](location)
+      - cho tôi hỏi cách đi [Đà Nẵng](location)
+      - cho tôi hỏi cách đi [Huế](location)
+      - cho tôi hỏi cách đi [Hồ Chí Minh](location)
+      - xin hỏi phương tiện đến [Hải Phòng](location)
+      - xin hỏi phương tiện đến [Hà Nội](location)
+      - xin hỏi phương tiện đến [Đà Nẵng](location)
+      - xin hỏi phương tiện đến [Huế](location)
+      - xin hỏi phương tiện đến [Hồ Chí Minh](location)
+      - bạn có thể cho biết cách đến [Hải Phòng](location) không
+      - bạn có thể cho biết cách đến [Hà Nội](location) không
+      - bạn có thể cho biết cách đến [Đà Nẵng](location) không
+      - bạn có thể cho biết cách đến [Huế](location) không
+      - bạn có thể cho biết cách đến [Hồ Chí Minh](location) không
+      - cho mình hỏi đi [Hải Phòng](location) bằng gì
+      - cho mình hỏi đi [Hà Nội](location) bằng gì
+      - cho mình hỏi đi [Đà Nẵng](location) bằng gì
+      - cho mình hỏi đi [Huế](location) bằng gì
+      - cho mình hỏi đi [Hồ Chí Minh](location) bằng gì
+      - mình muốn biết [Hải Phòng](location) có sân bay không
+      - mình muốn biết [Hà Nội](location) có sân bay không
+      - mình muốn biết [Đà Nẵng](location) có sân bay không
+      - mình muốn biết [Huế](location) có sân bay không
+      - mình muốn biết [Hồ Chí Minh](location) có sân bay không
+      - [Bắc Ninh](location) có ga tàu không
+      - [An Giang](location) có ga tàu không
+      - [Cần Thơ](location) có ga tàu không
+      - [Quảng Ninh](location) có ga tàu không
+      - [Ninh Bình](location) có ga tàu không
+      - [Lào Cai](location) có ga tàu không
+      - [Lạng Sơn](location) có ga tàu không
+      - xe khách đến [Bắc Ninh](location)
+      - xe khách đến [An Giang](location)
+      - xe khách đến [Cần Thơ](location)
+      - xe khách đến [Quảng Ninh](location)
+      - xe khách đến [Ninh Bình](location)
+      - xe khách đến [Lào Cai](location)
+      - xe khách đến [Lạng Sơn](location)
+      - tàu hỏa đến [Bắc Ninh](location)
+      - tàu hỏa đến [An Giang](location)
+      - tàu hỏa đến [Cần Thơ](location)
+      - tàu hỏa đến [Quảng Ninh](location)
+      - tàu hỏa đến [Ninh Bình](location)
+      - tàu hỏa đến [Lào Cai](location)
+      - tàu hỏa đến [Lạng Sơn](location)
+      - máy bay đến [Bắc Ninh](location)
+      - máy bay đến [An Giang](location)
+      - máy bay đến [Cần Thơ](location)
+      - máy bay đến [Quảng Ninh](location)
+      - máy bay đến [Ninh Bình](location)
+      - máy bay đến [Lào Cai](location)
+      - máy bay đến [Lạng Sơn](location)
+      - từ [Hà Nội](location) đến [Bắc Ninh](location)
+      - từ [Hà Nội](location) đến [An Giang](location)
+      - từ [Hà Nội](location) đến [Cần Thơ](location)
+      - từ [Hà Nội](location) đến [Quảng Ninh](location)
+      - từ [Hà Nội](location) đến [Ninh Bình](location)
+      - từ [Hà Nội](location) đến [Lào Cai](location)
+      - từ [Hà Nội](location) đến [Lạng Sơn](location)
+      - từ [Hồ Chí Minh](location) đến [Bắc Ninh](location)
+      - từ [Hồ Chí Minh](location) đến [An Giang](location)
+      - từ [Hồ Chí Minh](location) đến [Cần Thơ](location)
+      - từ [Hồ Chí Minh](location) đến [Quảng Ninh](location)
+      - từ [Hồ Chí Minh](location) đến [Ninh Bình](location)
+      - từ [Hồ Chí Minh](location) đến [Lào Cai](location)
+      - từ [Hồ Chí Minh](location) đến [Lạng Sơn](location)
+      - từ [Hà Nội](location) đến [Bắc Ninh](location) mất bao lâu
+      - từ [Hà Nội](location) đến [An Giang](location) mất bao lâu
+      - từ [Hà Nội](location) đến [Cần Thơ](location) mất bao lâu
+      - từ [Hà Nội](location) đến [Quảng Ninh](location) mất bao lâu
+      - từ [Hà Nội](location) đến [Ninh Bình](location) mất bao lâu
+      - từ [Hà Nội](location) đến [Lào Cai](location) mất bao lâu
+      - từ [Hà Nội](location) đến [Lạng Sơn](location) mất bao lâu
+      - từ [Hồ Chí Minh](location) đến [Bắc Ninh](location) mất bao lâu
+      - từ [Hồ Chí Minh](location) đến [An Giang](location) mất bao lâu
+      - từ [Hồ Chí Minh](location) đến [Cần Thơ](location) mất bao lâu
+      - từ [Hồ Chí Minh](location) đến [Quảng Ninh](location) mất bao lâu
+      - từ [Hồ Chí Minh](location) đến [Ninh Bình](location) mất bao lâu
+      - từ [Hồ Chí Minh](location) đến [Lào Cai](location) mất bao lâu
+      - từ [Hồ Chí Minh](location) đến [Lạng Sơn](location) mất bao lâu
+      - phương tiện nào rẻ nhất để đi [Đà Nẵng](location) từ Hà Nội
+      - đi [Huế](location) bằng tàu hỏa mất bao nhiêu tiền
+      - có chuyến bay thẳng đến [Phú Quốc](location) không
+      - từ [Hà Nội](location) đến [Sapa](location) nên đi bằng gì
+      - xe khách đi [Đà Lạt](location) từ TP.HCM giá bao nhiêu
+      - tàu hỏa từ [Hà Nội](location) đến [Nha Trang](location) mất mấy tiếng
+      - có thể đi [Hội An](location) bằng xe máy từ Đà Nẵng không
+      - phương tiện công cộng ở [Đà Nẵng](location) có tiện không
+      - đặt vé máy bay đi [Cần Thơ](location) ở đâu
+      - từ [Hồ Chí Minh](location) đến [Mũi Né](location) đi xe mất bao lâu
+      - tàu cao tốc đi [Quảng Ninh](location) từ Hà Nội
+      - xe limousine đi [Nha Trang](location) từ Sài Gòn
+      - có sân bay quốc tế ở [Đà Nẵng](location) không
+      - đi [Đà Lạt](location) bằng xe máy có an toàn không
+      - tàu hỏa từ [Hà Nội](location) đến [Vinh](location) mất bao lâu
+      - xe buýt đêm đi [Hà Nội](location) từ TP.HCM
+      - từ [Huế](location) đến [Đà Nẵng](location) nên đi bằng gì
+      - phương tiện di chuyển trong thành phố [Hà Nội](location)
+      - thuê xe máy ở [Đà Lạt](location) giá bao nhiêu
+      - có tàu biển đi [Phú Quốc](location) không
+      - từ [Hà Nội](location) đến [Hạ Long](location) đi xe khách mất bao lâu
+      - grab/xe công nghệ có sẵn ở [Đà Nẵng](location) không
+      - đi [Sapa](location) bằng tàu hỏa rồi đi xe lên núi
+      - từ [TP.HCM](location) đến [Cà Mau](location) đi bằng gì nhanh nhất
+      - tàu hỏa từ [Hà Nội](location) đến [Lào Cai](location) có ghế nằm không
+      - phương tiện đi [Mai Châu](location) từ Hà Nội
+      - từ [Đà Nẵng](location) đến [Hội An](location) đi taxi mất bao nhiêu
+      - có chuyến bay nội địa đến [Pleiku](location) không
+      - đi [Bắc Ninh](location) từ Hà Nội bằng xe buýt
+      - từ [Hồ Chí Minh](location) đến [Vũng Tàu](location) đi xe máy mất bao lâu
+      - phương tiện công cộng ở [Hà Nội](location) có những gì
+      - tàu hỏa từ [Hà Nội](location) đến [Thanh Hóa](location)
+      - xe khách giường nằm đi [Đà Nẵng](location) từ Hà Nội
+      - từ [Hồ Chí Minh](location) đến [Cần Thơ](location) có đường thủy không
+      - Tôi đang ở [Hà Nội](location) và muốn đến [Đà Nẵng](location), phương tiện nào thuận tiện nhất
+      - Mình sắp đi [Huế](location) từ [TP.HCM](location), bạn có thể gợi ý cách di chuyển tiết kiệm nhất không
+      - Cho tôi hỏi, nếu đi từ [Hà Nội](location) đến [Sapa](location) bằng tàu hỏa, sau đó đi xe lên núi mất bao lâu
+      - Tôi và gia đình sẽ đi [Phú Quốc](location) từ [Hồ Chí Minh](location), nên đi máy bay hay tàu biển
+      - Mình muốn đi [Đà Lạt](location) từ [TP.HCM](location) bằng xe khách, có nhà xe nào uy tín không
 
   - intent: inform_location
     examples: |
@@ -512,8 +1903,12 @@ nlu:
       - Mình đang ở [Phú Quốc](location) và muốn khám phá hải sản
       - Ở [TP.HCM](location) bây giờ
       - Đang ở [Đà Lạt](location)
-      - [Hạ Long](location)
       - [Phú Quốc](location) ngay đây
+      - Tôi đang ở [Sài Gòn](location) và muốn tìm hiểu về ẩm thực ở đây
+      - Mình hiện tại đang ở [Đà Lạt](location), bạn có thể gợi ý địa điểm tham quan gần đây không
+      - Tôi vừa đến [Hà Nội](location) và muốn hỏi về văn hóa nơi đây
+      - Mình đang có mặt tại [Huế](location), có lễ hội nào đang diễn ra không
+      - Tôi đang ở [Nha Trang](location) và muốn biết cách đi đến [Đà Lạt](location)
 
   - intent: out_of_scope
     examples: |
@@ -569,9 +1964,6 @@ nlu:
       - Hãy gửi email cho tôi
       - Xin ghi chú lại giúp tôi
       - Giới thiệu dịch vụ mới của công ty
-      - Ẩm ương hôm nay trời mưa không
-      - Hãy gửi email cho tôi
-      - Xin ghi chú lại giúp tôi
       - Giới đang test bot
       - Xin thử chức năng chat
       - Hãy trả lời ngắn gọn

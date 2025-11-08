@@ -1,0 +1,105 @@
+# FILE: domain.yml (PHIÊN BẢN TỐI ƯU HÓA)
+version: "3.1"
+
+# === Intents ===
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - ask_culture          # Hỏi về văn hóa chung
+  - ask_attractions      # Hỏi về địa điểm tham quan
+  - ask_festival         # Hỏi về lễ hội
+  - ask_cuisine          # Hỏi về ẩm thực
+  - ask_travel_tips      # Hỏi về mẹo du lịch
+  - ask_transportation   # Hỏi về phương tiện di chuyển
+  - ask_new_province     # Hỏi về tỉnh thành mới
+  - inform_location      # Người dùng cung cấp tên địa điểm
+  - out_of_scope         # Câu hỏi ngoài phạm vi
+
+# === Entities ===
+entities:
+  - location
+  - category
+
+# === Slots ===
+slots:
+  location:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: location
+  
+  # Slot "thông minh" để biết người dùng muốn hỏi thông tin gì
+  requested_info:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_intent
+        intent: ask_attractions
+        value: "places_to_visit"
+      - type: from_intent
+        intent: ask_cuisine
+        value: "what_to_eat"
+      - type: from_intent
+        intent: ask_festival
+        value: "festivals"
+      - type: from_intent
+        intent: ask_travel_tips
+        value: "best_time_to_visit"
+      - type: from_intent
+        intent: ask_culture
+        value: "general"
+      - type: from_intent
+        intent: ask_transportation
+        value: "transportation"
+
+# === Responses ===
+responses:
+  utter_greet:
+    - text: "Xin chào! Tôi là Ciesta, bot giới thiệu văn hóa và du lịch các tỉnh thành Việt Nam. Bạn muốn biết gì hôm nay?"
+  
+  utter_goodbye:
+    - text: "Tạm biệt! Hẹn gặp lại bạn trong hành trình khám phá Việt Nam."
+  
+  utter_affirm:
+    - text: "Được thôi, tiếp tục nào!"
+  
+  utter_deny:
+    - text: "Không sao! Bạn muốn hỏi gì khác không?"
+  
+  utter_mood_great:
+    - text: "Tuyệt vời! Hôm nay bạn muốn khám phá tỉnh thành nào?"
+  
+  utter_mood_unhappy:
+    - text: "Đừng buồn! Tôi sẽ gợi ý một điểm du lịch thú vị ở Việt Nam nhé!"
+  
+  utter_bot_challenge:
+    - text: "Tôi là Ciesta, bot du lịch được xây dựng bằng Rasa để giúp bạn khám phá văn hóa và du lịch các tỉnh thành Việt Nam!"
+  
+  utter_ask_for_location:
+    - text: "Bạn muốn biết thông tin về tỉnh/thành phố nào? Ví dụ: Bắc Ninh, An Giang..."
+  
+  utter_out_of_scope:
+    - text: "Xin lỗi, tôi chưa biết trả lời câu hỏi này. Bạn có muốn hỏi về chủ đề khác không?"
+  
+  utter_default:
+    - text: "Xin lỗi, tôi không hiểu ý bạn. Bạn có thể hỏi lại được không?"
+
+# === Actions ===
+actions:
+  # Action chính để truy vấn knowledge base
+  - action_query_knowledge_base
+  # Action fallback mặc định
+  - action_default_fallback
+  # RAG fallback
+  - action_rag_fallback
+
+# === Session Config ===
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
