@@ -270,3 +270,4 @@ print(f"\n📦 Model: {latest_model.name}")
 print(f"📊 Kích thước: {size_mb:.2f} MB")
 print(f"📁 Vị trí: {latest_model}\n")
 
+
