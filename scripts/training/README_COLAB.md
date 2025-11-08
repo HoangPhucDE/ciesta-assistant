@@ -27,9 +27,11 @@ Hướng dẫn chi tiết để train Rasa NLU model với PhoBERT-large trên G
 
 ```python
 # Chạy trong cell đầu tiên
-!git clone YOUR_REPO_URL
-%cd ciesta-asisstant
+!git clone https://github.com/HoangPhucDE/ciesta-assistant.git
+%cd ciesta-assistant
 ```
+
+**Lưu ý:** Tên thư mục sau khi clone là `ciesta-assistant` (không phải `ciesta-asisstant`)
 
 **Cách B: Upload thủ công**
 

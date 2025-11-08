@@ -8,9 +8,11 @@ Hướng dẫn nhanh để train Rasa NLU model trên Google Colab trong 5 phút
 
 ```python
 # Chạy cell này trong Colab
-!git clone YOUR_REPO_URL
-%cd ciesta-asisstant
+!git clone https://github.com/HoangPhucDE/ciesta-assistant.git
+%cd ciesta-assistant
 ```
+
+**Lưu ý:** Tên thư mục là `ciesta-assistant` (không phải `ciesta-asisstant`)
 
 ### Bước 2: Chạy Script Tự Động
 
