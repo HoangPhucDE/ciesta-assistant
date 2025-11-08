@@ -41,8 +41,17 @@ class PhoBERTFeaturizer(GraphComponent):
         self.cache_dir = config.get("cache_dir", None)
         self.max_length = config.get("max_length", 256)
         self.pooling_strategy = config.get("pooling_strategy", "mean_max")  # "mean", "max", "mean_max"
+        self.batch_size = config.get("batch_size", 32)  # Batch size for processing multiple texts
 
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
+        
+        # Log device info for debugging
+        if torch.cuda.is_available():
+            print(f"[PhoBERTFeaturizer] ✅ GPU detected: {torch.cuda.get_device_name(0)}")
+            print(f"[PhoBERTFeaturizer] ✅ GPU Memory: {torch.cuda.get_device_properties(0).total_memory / 1024**3:.2f} GB")
+        else:
+            print(f"[PhoBERTFeaturizer] ⚠️  No GPU detected - Using CPU (training will be slower)")
+            print(f"[PhoBERTFeaturizer] 💡 Tip: Install CUDA and PyTorch with GPU support for faster training")
 
         # Resolve local model path if it's a relative path
         # Check if model_name is a local path (not a HuggingFace model ID)
@@ -115,12 +124,32 @@ class PhoBERTFeaturizer(GraphComponent):
         return cls(config, cls.__name__, model_storage, resource, execution_context)
 
     def _get_text_embeddings(self, text: Text) -> np.ndarray:
+        """Process a single text (kept for backward compatibility)."""
         if not text:
-            # Trả về vector zeros đúng kích thước ẩn của model
             return np.zeros((1, self.hidden_size))
-
+        embeddings = self._get_batch_embeddings([text])
+        return embeddings[0:1]  # Return first embedding as (1, hidden_size)
+    
+    def _get_batch_embeddings(self, texts: List[Text]) -> np.ndarray:
+        """Process a batch of texts efficiently."""
+        if not texts:
+            return np.zeros((0, self.hidden_size))
+        
+        # Filter out empty texts and keep track of indices
+        valid_texts = []
+        valid_indices = []
+        for i, text in enumerate(texts):
+            if text and text.strip():
+                valid_texts.append(text)
+                valid_indices.append(i)
+        
+        if not valid_texts:
+            # All texts are empty
+            return np.zeros((len(texts), self.hidden_size))
+        
+        # Tokenize all texts at once (much faster)
         inputs = self.tokenizer(
-            text,
+            valid_texts,
             return_tensors="pt",
             padding=True,
             truncation=True,
@@ -137,7 +166,7 @@ class PhoBERTFeaturizer(GraphComponent):
             attention_mask = inputs['attention_mask']
             
             # Get last hidden state
-            last_hidden = outputs[0]
+            last_hidden = outputs[0]  # Shape: (batch_size, seq_len, hidden_size)
             
             # Apply attention mask
             mask = attention_mask.unsqueeze(-1).expand(last_hidden.size()).float()
@@ -165,23 +194,51 @@ class PhoBERTFeaturizer(GraphComponent):
                 pooled = torch.cat([mean_pooled, max_pooled], dim=-1)
             
             # Convert to numpy
-            embeddings = pooled.cpu().numpy()
-
-        return embeddings
+            valid_embeddings = pooled.cpu().numpy()
+        
+        # Create output array for all texts (including empty ones)
+        if len(valid_texts) == len(texts):
+            return valid_embeddings
+        else:
+            # Some texts were empty, need to fill in zeros
+            embeddings = np.zeros((len(texts), self.hidden_size))
+            for idx, valid_idx in enumerate(valid_indices):
+                embeddings[valid_idx] = valid_embeddings[idx]
+            return embeddings
 
     def process(self, messages: List[Message]) -> List[Message]:
-        for message in messages:
-            text = message.get("text")
-            if text:
-                emb = self._get_text_embeddings(text)
-                message.add_features(
-                    Features(
-                        emb,
-                        attribute="text",
-                        feature_type="dense",
-                        origin=self.__class__.__name__,
-                    )
+        """Process messages in batches for better performance."""
+        if not messages:
+            return messages
+        
+        # Extract all texts
+        texts = [message.get("text") or "" for message in messages]
+        
+        # Process in batches to avoid memory issues
+        all_embeddings = []
+        for i in range(0, len(texts), self.batch_size):
+            batch_texts = texts[i:i + self.batch_size]
+            batch_embeddings = self._get_batch_embeddings(batch_texts)
+            all_embeddings.append(batch_embeddings)
+        
+        # Concatenate all batches
+        if all_embeddings:
+            embeddings = np.vstack(all_embeddings)
+        else:
+            embeddings = np.zeros((len(messages), self.hidden_size))
+        
+        # Add features to messages
+        for message, emb in zip(messages, embeddings):
+            # Reshape to (1, hidden_size) for Rasa
+            message.add_features(
+                Features(
+                    emb.reshape(1, -1),
+                    attribute="text",
+                    feature_type="dense",
+                    origin=self.__class__.__name__,
                 )
+            )
+        
         return messages
 
     def process_training_data(self, training_data: TrainingData) -> TrainingData:
