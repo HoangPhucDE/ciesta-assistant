@@ -119,7 +119,8 @@ class ActionQueryKnowledgeBase(Action):
                     response += f"{i}. **{place['name']}** ({category})\n"
                     response += f"   {place['details']}\n\n"
             else:
-                response += "Không có thông tin địa điểm tham quan."
+                response += "Hiện chưa có thông tin địa điểm tham quan cụ thể.\n"
+                response += f"💡 *Gợi ý: Bạn có thể hỏi về văn hóa, ẩm thực hoặc lễ hội của {province_name}.*\n"
             
             return response
         
@@ -149,31 +150,53 @@ class ActionQueryKnowledgeBase(Action):
                     response += f"⏰ Thời gian: {fest['time']}\n"
                     response += f"{fest['details']}\n\n"
             else:
-                response += "Không có thông tin lễ hội."
+                response += "Hiện chưa có thông tin lễ hội cụ thể.\n"
+                response += f"💡 *Gợi ý: Bạn có thể hỏi về văn hóa, địa điểm tham quan hoặc ẩm thực của {province_name}.*\n"
             
             return response
         
         elif intent == "ask_travel_tips":
             response = f"💡 **Mẹo du lịch {province_name}**\n\n"
             
-            if 'best_time_to_visit' in data:
+            # Ưu tiên travel_tips, không phải best_time_to_visit
+            if 'travel_tips' in data and data['travel_tips']:
+                response += f"**Lưu ý và mẹo:**\n{data['travel_tips']}\n\n"
+                # Vẫn hiển thị best_time_to_visit nếu có, nhưng ở cuối
+                if 'best_time_to_visit' in data and data['best_time_to_visit']:
+                    response += f"**Thời điểm đẹp nhất:**\n{data['best_time_to_visit']}\n"
+            elif 'best_time_to_visit' in data and data['best_time_to_visit']:
+                # Chỉ hiển thị best_time_to_visit nếu không có travel_tips
                 response += f"**Thời điểm đẹp nhất:**\n{data['best_time_to_visit']}\n\n"
-            
-            if 'travel_tips' in data:
-                response += f"**Lưu ý:**\n{data['travel_tips']}\n"
+                response += "💡 *Lưu ý: Để biết thêm mẹo du lịch cụ thể, vui lòng hỏi về địa điểm, ẩm thực hoặc phương tiện di chuyển.*\n"
+            else:
+                response += "Không có thông tin mẹo du lịch cụ thể.\n"
+                response += f"💡 *Gợi ý: Bạn có thể hỏi về địa điểm tham quan, ẩm thực hoặc phương tiện di chuyển của {province_name}.*\n"
             
             return response
         
         elif intent == "ask_new_province":
-            response = f"📋 **Cấu trúc tỉnh {province_name} sau sáp nhập**\n\n"
+            response = f"📋 **Cấu trúc tỉnh {province_name} sau sáp nhập (Nghị quyết 12/6/2025)**\n\n"
             
             if 'sub_regions' in data and data['sub_regions']:
-                response += f"{province_name} bao gồm:\n"
+                response += f"**{province_name} mới** bao gồm các khu vực sau:\n\n"
                 for region in data['sub_regions']:
-                    response += f"• {region['name']}\n"
-                response += f"\n{data.get('culture_details', '')}"
+                    # Extract tên tỉnh cũ từ tên khu vực
+                    region_name = region['name']
+                    if 'cũ' in region_name.lower():
+                        # Khu vực tỉnh cũ
+                        old_province = region_name.replace('Khu vực', '').replace('(cũ)', '').strip()
+                        response += f"• **{old_province}** (tỉnh cũ)\n"
+                    else:
+                        # Tỉnh được sáp nhập vào
+                        merged_province = region_name.replace('Khu vực', '').strip()
+                        response += f"• **{merged_province}** (sáp nhập vào {province_name})\n"
+                    response += f"  {region['highlights']}\n\n"
+                
+                if data.get('culture_details'):
+                    response += f"\n**Tổng quan:**\n{data['culture_details']}"
             else:
-                response += "Không có thông tin sáp nhập."
+                response += "Không có thông tin sáp nhập.\n"
+                response += "💡 *Lưu ý: Thông tin sáp nhập dựa trên Nghị quyết 12/6/2025.*\n"
             
             return response
         
@@ -230,29 +253,83 @@ class ActionQueryKnowledgeBase(Action):
                 break
         
         if not province_data:
-            dispatcher.utter_message(
-                text=f"Xin lỗi, tôi chưa có thông tin về '{location}'. "
-                     f"Hiện tôi có dữ liệu về {len(self.knowledge_base)} tỉnh thành. "
-                     f"Bạn có thể hỏi về: {', '.join(list(self.knowledge_base.keys())[:5])}..."
-            )
-            return []
+            # Kiểm tra xem có phải là alias của tỉnh khác không
+            normalized = self._normalize_location(location)
+            if normalized != location:
+                # Đã được normalize, thử tìm lại với tên đã normalize
+                for province_name, data in self.knowledge_base.items():
+                    if province_name.lower() == normalized.lower():
+                        province_data = {province_name: data}
+                        break
+            
+            if not province_data:
+                # Tạo danh sách các tỉnh gần giống (fuzzy match)
+                similar_provinces = []
+                location_lower = location.lower()
+                for province_name in self.knowledge_base.keys():
+                    if location_lower in province_name.lower() or province_name.lower() in location_lower:
+                        similar_provinces.append(province_name)
+                    # Kiểm tra alias trong location_map
+                    for alias, mapped_province in self.location_map.items():
+                        if location_lower == alias.lower() and mapped_province in self.knowledge_base:
+                            if mapped_province not in similar_provinces:
+                                similar_provinces.append(mapped_province)
+                
+                if similar_provinces:
+                    dispatcher.utter_message(
+                        text=f"Xin lỗi, tôi chưa có thông tin trực tiếp về '{location}'. "
+                             f"Bạn có muốn hỏi về: {', '.join(similar_provinces[:3])} không? "
+                             f"Hoặc bạn có thể hỏi về một trong {len(self.knowledge_base)} tỉnh thành mà tôi có dữ liệu."
+                    )
+                else:
+                    dispatcher.utter_message(
+                        text=f"Xin lỗi, tôi chưa có thông tin về '{location}'. "
+                             f"Hiện tôi có dữ liệu về {len(self.knowledge_base)} tỉnh thành theo Nghị quyết sáp nhập 12/6/2025. "
+                             f"Bạn có thể hỏi về: {', '.join(list(self.knowledge_base.keys())[:5])}... "
+                             f"Hoặc hỏi cụ thể hơn, ví dụ: 'Địa điểm du lịch Hải Phòng', 'Ẩm thực Bắc Ninh', 'Lễ hội ở Huế'..."
+                    )
+                return []
         
         # Lấy intent
         intent = tracker.latest_message.get('intent', {}).get('name', 'ask_culture')
         
         # Fallback: Detect intent từ message text nếu intent bị nhầm
         user_msg = (tracker.latest_message.get("text", "") or "").lower()
-        if intent == "ask_transportation" and any(keyword in user_msg for keyword in ["ẩm thực", "ăn", "món", "đặc sản", "quán", "nhà hàng"]):
-            # Nếu intent là transportation nhưng message có từ khóa ẩm thực, chuyển sang cuisine
-            intent = "ask_cuisine"
-        elif intent == "ask_cuisine" and any(keyword in user_msg for keyword in ["phương tiện", "đi bằng", "xe", "máy bay", "tàu", "di chuyển"]):
-            # Nếu intent là cuisine nhưng message có từ khóa phương tiện, chuyển sang transportation
-            intent = "ask_transportation"
-        elif intent == "ask_transportation" and any(keyword in user_msg for keyword in ["địa điểm", "tham quan", "du lịch", "đi đâu", "check in"]):
-            # Nếu intent là transportation nhưng message có từ khóa địa điểm, chuyển sang attractions
+        
+        # Sửa ask_culture nếu nhầm với ask_travel_tips
+        if intent == "ask_travel_tips" and any(keyword in user_msg for keyword in ["văn hóa", "văn hoá", "di sản", "phong tục", "truyền thống", "bản sắc", "đặc trưng"]):
+            intent = "ask_culture"
+        
+        # Sửa ask_travel_tips nếu nhầm với ask_culture
+        if intent == "ask_culture" and any(keyword in user_msg for keyword in ["mẹo", "lưu ý", "chuẩn bị", "kinh nghiệm", "tip", "gợi ý"]):
+            intent = "ask_travel_tips"
+        
+        # Sửa ask_festival nếu nhầm với ask_culture
+        if intent == "ask_culture" and any(keyword in user_msg for keyword in ["lễ hội", "festival", "sự kiện", "lễ"]):
+            intent = "ask_festival"
+        
+        # Sửa ask_culture nếu nhầm với ask_festival
+        if intent == "ask_festival" and not any(keyword in user_msg for keyword in ["lễ hội", "festival", "sự kiện", "lễ"]) and any(keyword in user_msg for keyword in ["văn hóa", "văn hoá", "di sản", "phong tục"]):
+            intent = "ask_culture"
+        
+        # Sửa ask_attractions nếu nhầm với ask_culture
+        if intent == "ask_culture" and any(keyword in user_msg for keyword in ["địa điểm", "điểm", "tham quan", "du lịch", "đi đâu", "check in", "nơi", "chỗ"]):
             intent = "ask_attractions"
-        elif intent == "ask_attractions" and any(keyword in user_msg for keyword in ["phương tiện", "đi bằng", "xe", "máy bay", "tàu", "di chuyển"]):
-            # Nếu intent là attractions nhưng message có từ khóa phương tiện, chuyển sang transportation
+        
+        # Sửa ask_transportation nếu nhầm với ask_cuisine
+        if intent == "ask_transportation" and any(keyword in user_msg for keyword in ["ẩm thực", "ăn", "món", "đặc sản", "quán", "nhà hàng"]):
+            intent = "ask_cuisine"
+        
+        # Sửa ask_cuisine nếu nhầm với ask_transportation
+        if intent == "ask_cuisine" and any(keyword in user_msg for keyword in ["phương tiện", "đi bằng", "xe", "máy bay", "tàu", "di chuyển"]):
+            intent = "ask_transportation"
+        
+        # Sửa ask_transportation nếu nhầm với ask_attractions
+        if intent == "ask_transportation" and any(keyword in user_msg for keyword in ["địa điểm", "tham quan", "du lịch", "đi đâu", "check in"]):
+            intent = "ask_attractions"
+        
+        # Sửa ask_attractions nếu nhầm với ask_transportation
+        if intent == "ask_attractions" and any(keyword in user_msg for keyword in ["phương tiện", "đi bằng", "xe", "máy bay", "tàu", "di chuyển"]):
             intent = "ask_transportation"
         
         # Format và gửi phản hồi

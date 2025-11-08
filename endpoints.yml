@@ -1,8 +1,1 @@
-# FILE: endpoints.yml
-action_endpoint:
-  url: "http://localhost:5055/webhook"
-  # Linh hoạt với action server
-
-# tracker_store:
-#   type: redis
-#   url: ${REDIS_URL:redis://localhost:6379/0}  # Redis cho local, linh hoạt khi deploy
+/ciesta-asisstant/config/rasa/endpoints.yml

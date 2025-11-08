@@ -1,0 +1,128 @@
+MIT License
+
+Copyright (c) 2025 Ciesta - Vietnam Tourism Bot
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## Third-Party Licenses
+
+This project uses the following open-source software and models:
+
+### Rasa Framework
+- **License**: Apache License 2.0
+- **Copyright**: Rasa Technologies GmbH
+- **Repository**: https://github.com/RasaHQ/rasa
+- **License URL**: https://github.com/RasaHQ/rasa/blob/main/LICENSE
+
+### PhoBERT
+- **Model**: PhoBERT (vinai/phobert-base, vinai/phobert-large)
+- **License**: Apache License 2.0
+- **Copyright**: VinAI Research
+- **Repository**: https://github.com/VinAIResearch/PhoBERT
+- **License URL**: https://github.com/VinAIResearch/PhoBERT/blob/main/LICENSE
+
+### PyTorch
+- **License**: BSD-style License
+- **Copyright**: Facebook, Inc.
+- **Repository**: https://github.com/pytorch/pytorch
+- **License URL**: https://github.com/pytorch/pytorch/blob/main/LICENSE
+
+### Transformers (Hugging Face)
+- **License**: Apache License 2.0
+- **Copyright**: Hugging Face, Inc.
+- **Repository**: https://github.com/huggingface/transformers
+- **License URL**: https://github.com/huggingface/transformers/blob/main/LICENSE
+
+### PySide6 (Qt for Python)
+- **License**: LGPL v3.0 / Commercial License
+- **Copyright**: The Qt Company
+- **Repository**: https://code.qt.io/cgit/pyside/pyside-setup.git/
+- **License URL**: https://www.qt.io/licensing/
+
+### FAISS
+- **License**: MIT License
+- **Copyright**: Facebook, Inc.
+- **Repository**: https://github.com/facebookresearch/faiss
+- **License URL**: https://github.com/facebookresearch/faiss/blob/main/LICENSE
+
+### Other Dependencies
+All other dependencies listed in `requirements.txt` are subject to their
+respective licenses. Please refer to each package's documentation for license
+details.
+
+---
+
+## Data and Content
+
+### Knowledge Base Data
+The knowledge base data (JSON files in `data/knowledge_base/provinces/`)
+containing information about Vietnamese provinces, cities, attractions,
+cuisine, festivals, and travel tips is compiled from publicly available
+sources and is provided for educational and informational purposes.
+
+### Administrative Data
+Administrative information is based on the National Assembly Resolution
+regarding administrative unit reorganization (Resolution 12/6/2025).
+
+### Travel Tips
+Travel tips and recommendations are compiled from various public sources
+and personal experiences. While efforts have been made to ensure accuracy,
+users should verify information independently before making travel decisions.
+
+---
+
+## Disclaimer
+
+This software is provided for informational and educational purposes only.
+The authors and contributors are not responsible for:
+- Accuracy of travel information, recommendations, or tips
+- Changes in administrative boundaries or place names
+- Availability of services, attractions, or businesses mentioned
+- Any decisions made based on information provided by this bot
+- Any damages or losses resulting from the use of this software
+
+Users are advised to:
+- Verify information independently before making travel plans
+- Check current conditions and availability of services
+- Follow local laws and regulations
+- Exercise caution and common sense when traveling
+
+---
+
+## Attribution
+
+If you use this software in your project, please include:
+- A link to the original repository
+- Attribution to the original authors
+- A notice that this software uses third-party components (Rasa, PhoBERT, etc.)
+
+---
+
+## Contact
+
+For questions about licensing or usage, please contact:
+- Email: phuchn0305@gmail.com
+- GitHub Issues: [Your Repository URL]/issues
+
+---
+
+**Made with ❤️ for Vietnam Tourism**
+

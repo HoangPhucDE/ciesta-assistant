@@ -49,7 +49,7 @@ Trên máy backend, chạy Rasa server:
 rasa run actions
 
 # Terminal 2: Rasa server
-rasa run --enable-api --cors "*"
+rasa run --enable-api --cors "*" --port 5005 --debug
 ```
 
 Rasa sẽ chạy tại: `http://localhost:5005`
