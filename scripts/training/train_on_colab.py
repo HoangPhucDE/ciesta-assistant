@@ -104,19 +104,62 @@ def find_project_root():
     
     return None
 
+def check_python_version():
+    """Check Python version and warn if incompatible"""
+    import sys
+    version = sys.version_info
+    version_str = f"{version.major}.{version.minor}.{version.micro}"
+    
+    print_info(f"Python version: {version_str}")
+    
+    # Rasa 3.6.20 requires Python 3.8-3.10
+    if version.major == 3 and version.minor > 10:
+        print_warning(f"Python {version_str} có thể không tương thích với Rasa 3.6.20")
+        print_warning("Rasa 3.6.20 yêu cầu Python 3.8-3.10")
+        print_info("Đang kiểm tra Rasa version tương thích...")
+        return False
+    return True
+
 def install_dependencies():
     """Install required dependencies"""
     print_header("CÀI ĐẶT DEPENDENCIES")
     
-    # Find project root
-    project_root = find_project_root()
-    if project_root:
-        print_info(f"Tìm thấy project tại: {project_root}")
-        os.chdir(project_root)
-        print_info(f"Đã chuyển vào thư mục: {Path.cwd()}")
+    # Check Python version first
+    python_ok = check_python_version()
+    
+    # Find project root - but avoid nested directories
+    current_dir = Path.cwd()
+    project_root = None
+    
+    # Count how many times "ciesta-assistant" appears in path
+    path_str = str(current_dir)
+    ciesta_count = path_str.count("ciesta-assistant")
+    
+    if ciesta_count > 1:
+        print_warning(f"Phát hiện nested directory (ciesta-assistant xuất hiện {ciesta_count} lần)")
+        # Find the first occurrence
+        first_ciesta = path_str.find("ciesta-assistant")
+        base_path = path_str[:first_ciesta + len("ciesta-assistant")]
+        project_root = Path(base_path)
+        if project_root.exists() and (project_root / "requirements.txt").exists():
+            print_info(f"Sử dụng thư mục ngoài cùng: {project_root}")
+            os.chdir(project_root)
+        else:
+            # Try to find in /content
+            content_ciesta = Path("/content/ciesta-assistant")
+            if content_ciesta.exists() and (content_ciesta / "requirements.txt").exists():
+                project_root = content_ciesta
+                print_info(f"Sử dụng: {project_root}")
+                os.chdir(project_root)
     else:
-        print_warning("Không tìm thấy project root, sử dụng thư mục hiện tại")
-        project_root = Path.cwd()
+        project_root = find_project_root()
+        if project_root:
+            print_info(f"Tìm thấy project tại: {project_root}")
+            os.chdir(project_root)
+            print_info(f"Đã chuyển vào thư mục: {Path.cwd()}")
+        else:
+            print_warning("Không tìm thấy project root, sử dụng thư mục hiện tại")
+            project_root = Path.cwd()
     
     # Check if Colab
     if is_colab():
@@ -129,15 +172,28 @@ def install_dependencies():
         # Upgrade pip
         print_info("Upgrade pip...")
         subprocess.run([sys.executable, "-m", "pip", "install", "--upgrade", "pip", "setuptools", "wheel"], check=True)
+        
+        # Check if we need to install Python 3.10
+        if not python_ok:
+            print_warning("Cần Python 3.10 để chạy Rasa 3.6.20")
+            print_info("Đang kiểm tra xem có thể cài đặt Python 3.10 không...")
+            # Note: Colab doesn't easily allow Python version changes
+            # We'll need to work around this
     
     # Install Python packages
-    # Prefer requirements-colab.txt for Colab (Python 3.12 compatible)
+    # Prefer requirements-colab.txt for Colab
     if is_colab():
-        print_info("Sử dụng requirements-colab.txt (tương thích Python 3.12)")
-        requirements_file = Path("requirements-colab.txt")
-        if not requirements_file.exists():
-            print_warning("Không tìm thấy requirements-colab.txt, dùng requirements.txt")
-            requirements_file = Path("requirements.txt")
+        # For Python 3.12, we might need a different approach
+        if not python_ok:
+            print_warning("Python 3.12 không tương thích với Rasa 3.6.20")
+            print_info("Đang thử cài đặt Rasa version mới hơn hoặc dùng workaround...")
+            # Try to install Rasa without version constraint first
+            requirements_file = None
+        else:
+            requirements_file = Path("requirements-colab.txt")
+            if not requirements_file.exists():
+                print_warning("Không tìm thấy requirements-colab.txt, dùng requirements.txt")
+                requirements_file = Path("requirements.txt")
     else:
         requirements_file = Path("requirements.txt")
     
