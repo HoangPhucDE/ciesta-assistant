@@ -1,10 +1,24 @@
 #!/usr/bin/env python3
 """
 Script tự động train Rasa NLU model trên Google Colab
+- Tự động cleanup và clone repo mới từ git (Colab only)
 - Tự động setup môi trường
 - Download PhoBERT-large model
 - Train NLU model
 - Download model về máy local
+
+Workflow (Colab):
+1. Script tự động xóa repo cũ và clone repo mới từ git
+2. (Khuyến nghị) Chạy sync_location_names.py trước để đồng bộ location names
+3. Chạy script này để train model
+4. Model sẽ được lưu trong models/ và có thể download về máy local
+
+Lưu ý:
+- Trên Colab: Script tự động cleanup và clone repo mới mỗi lần chạy
+- Có thể set CIESTA_GIT_URL và CIESTA_GIT_BRANCH để clone branch khác
+- Script này chỉ phục vụ training, không fix entity alignments
+- Entity alignments nên được fix trước bằng sync_location_names.py
+- Xem docs/README_SYNC_LOCATIONS.md để biết thêm chi tiết
 """
 
 import os
@@ -162,6 +176,9 @@ def install_dependencies():
             print_warning("Không tìm thấy project root, sử dụng thư mục hiện tại")
             project_root = Path.cwd()
     
+    # Initialize python_cmd - will be used throughout the function
+    python_cmd = None
+    
     # Check if Colab
     if is_colab():
         print_info("Phát hiện Google Colab environment")
@@ -171,57 +188,104 @@ def install_dependencies():
         subprocess.run(["apt-get", "update", "-qq"], check=False)
         subprocess.run(["apt-get", "install", "-qq", "-y", "git", "software-properties-common"], check=False)
         
+        # Determine which Python to use
+        # After cloning new repo, sys.executable might point to non-existent venv
+        # So we need to check if it exists, otherwise use system Python
+        if sys.executable and Path(sys.executable).exists():
+            python_cmd = sys.executable
+            print_info(f"Sử dụng Python từ sys.executable: {python_cmd}")
+        else:
+            # Try to find system Python
+            for py_cmd in ["python3", "python"]:
+                try:
+                    result = subprocess.run(["which", py_cmd], capture_output=True, text=True, check=False)
+                    if result.returncode == 0 and result.stdout.strip():
+                        python_cmd = result.stdout.strip()
+                        print_info(f"Sử dụng system Python: {python_cmd}")
+                        break
+                except Exception:
+                    continue
+            
+            if not python_cmd:
+                # Fallback to sys.executable (even if path doesn't exist, it might work)
+                python_cmd = sys.executable
+                print_warning(f"Sử dụng sys.executable (có thể không tồn tại): {python_cmd}")
+        
         # Upgrade pip
         print_info("Upgrade pip...")
-        subprocess.run([sys.executable, "-m", "pip", "install", "--upgrade", "pip", "setuptools", "wheel"], check=False)
-        
-        # Check if we need to install Python 3.10
-        if not python_ok:
-            print_warning("Cần Python 3.10 để chạy Rasa 3.6.20")
-            print_info("Đang cài đặt Python 3.10 trên Colab...")
-            
-            # Install Python 3.10 (method from colab_setup_train.py - đã test thành công)
+        try:
+            subprocess.run([python_cmd, "-m", "pip", "install", "--upgrade", "pip", "setuptools", "wheel"], 
+                         check=False, timeout=300)
+        except Exception as e:
+            print_warning(f"Không thể upgrade pip với {python_cmd}: {e}")
+            # Try with python3 directly
             try:
-                # Install Python 3.10 from apt
-                print_info("Đang cài đặt Python 3.10 và các package cần thiết...")
-                subprocess.run([
-                    "apt-get", "install", "-y", "-qq",
-                    "python3.10", "python3.10-venv", "python3.10-dev"
-                ], check=False)
+                subprocess.run(["python3", "-m", "pip", "install", "--upgrade", "pip", "setuptools", "wheel"], 
+                             check=False, timeout=300)
+                python_cmd = "python3"
+            except Exception as e2:
+                print_error(f"Không thể upgrade pip: {e2}")
+    else:
+        # Not Colab - use sys.executable
+        python_cmd = sys.executable
+    
+    # Check if we need to install Python 3.10 (only on Colab)
+    if is_colab() and not python_ok:
+        print_warning("Cần Python 3.10 để chạy Rasa 3.6.20")
+        print_info("Đang cài đặt Python 3.10 trên Colab...")
+        
+        # Install Python 3.10
+        try:
+            # Install Python 3.10 from apt
+            print_info("Đang cài đặt Python 3.10 và các package cần thiết...")
+            subprocess.run([
+                "apt-get", "install", "-y", "-qq",
+                "python3.10", "python3.10-venv", "python3.10-dev"
+            ], check=False)
+            
+            # Create virtual environment with Python 3.10
+            print_info("Đang tạo virtual environment với Python 3.10...")
+            venv_path = Path("venv_py310")
+            
+            # Remove old venv if exists
+            if venv_path.exists():
+                shutil.rmtree(venv_path)
+            
+            # Create new venv
+            result = subprocess.run([
+                "python3.10", "-m", "venv", str(venv_path)
+            ], check=False, capture_output=True, text=True)
+            
+            if result.returncode == 0:
+                # Get Python path from venv
+                python310_path = venv_path / "bin" / "python"
                 
-                # Create virtual environment with Python 3.10
-                print_info("Đang tạo virtual environment với Python 3.10...")
-                venv_path = Path("venv_py310")
-                
-                # Remove old venv if exists
-                if venv_path.exists():
-                    shutil.rmtree(venv_path)
-                
-                # Create new venv
-                result = subprocess.run([
-                    "python3.10", "-m", "venv", str(venv_path)
-                ], check=False, capture_output=True, text=True)
-                
-                if result.returncode == 0:
-                    # Get Python path from venv
-                    python310_path = venv_path / "bin" / "python"
+                if python310_path.exists():
+                    print_success(f"Đã tạo virtual environment với Python 3.10 tại: {python310_path}")
+                    sys.executable = str(python310_path)
+                    # Update python_cmd for subsequent operations
+                    python_cmd = str(python310_path)
+                    # Update PATH to include venv
+                    venv_bin = str(venv_path / "bin")
+                    os.environ["PATH"] = venv_bin + ":" + os.environ.get("PATH", "")
+                    python_ok = True
                     
-                    if python310_path.exists():
-                        print_success(f"Đã tạo virtual environment với Python 3.10 tại: {python310_path}")
-                        sys.executable = str(python310_path)
-                        # Update PATH to include venv
-                        venv_bin = str(venv_path / "bin")
-                        os.environ["PATH"] = venv_bin + ":" + os.environ.get("PATH", "")
-                        python_ok = True
-                    else:
-                        raise Exception("Không tìm thấy Python trong venv")
+                    # Upgrade pip in the new venv
+                    print_info("Upgrade pip trong venv mới...")
+                    subprocess.run([python_cmd, "-m", "pip", "install", "--upgrade", "pip", "setuptools", "wheel"], 
+                                 check=False, timeout=300)
                 else:
-                    raise Exception(f"Không thể tạo venv: {result.stderr}")
-                    
-            except Exception as e:
-                print_warning(f"Không thể cài Python 3.10: {e}")
-                print_info("Sẽ sử dụng Python 3.12 với Rasa version mới hơn...")
-                print_info("💡 Lưu ý: Một số tính năng có thể không hoạt động với Python 3.12")
+                    raise Exception("Không tìm thấy Python trong venv")
+            else:
+                raise Exception(f"Không thể tạo venv: {result.stderr}")
+                
+        except Exception as e:
+            print_warning(f"Không thể cài Python 3.10: {e}")
+            print_info("Sẽ sử dụng Python 3.12 với Rasa version mới hơn...")
+            print_info("💡 Lưu ý: Một số tính năng có thể không hoạt động với Python 3.12")
+            # Ensure python_cmd is set even if venv creation failed
+            if not python_cmd:
+                python_cmd = "python3"
     
     # Find requirements file
     requirements_file = None
@@ -377,7 +441,7 @@ def install_dependencies():
         print_error(f"Requirements file không tồn tại: {requirements_file}")
         return False
     
-    # Install packages (method from colab_setup_train.py)
+    # Install packages
     print_info(f"Cài đặt từ: {requirements_file}")
     print_info(f"   Đường dẫn đầy đủ: {requirements_file.resolve()}")
     print_info("⏳ Quá trình này có thể mất 10-20 phút, KHÔNG interrupt!")
@@ -397,10 +461,14 @@ def install_dependencies():
     
     print_info(f"   Kích thước file: {file_size} bytes")
     
+    # Ensure python_cmd is set (fallback to sys.executable if not set)
+    if not python_cmd:
+        python_cmd = sys.executable
+    
     # Upgrade pip first
     print_info("Đang upgrade pip...")
     pip_upgrade_result = subprocess.run(
-        [sys.executable, "-m", "pip", "install", "--upgrade", "pip", "setuptools", "wheel"],
+        [python_cmd, "-m", "pip", "install", "--upgrade", "pip", "setuptools", "wheel"],
         check=False,
         capture_output=True,
         text=True
@@ -414,13 +482,13 @@ def install_dependencies():
         print_success("Đã upgrade pip thành công")
     
     try:
-        # Run pip install with real-time output (method from colab_setup_train.py)
+        # Run pip install with real-time output
         print_info(f"Đang cài đặt packages từ {requirements_file.name}...")
         print_info("   (Quá trình này có thể mất 10-20 phút, vui lòng đợi...)")
         
         # Run pip install with output captured for error analysis
         pip_process = subprocess.run(
-            [sys.executable, "-m", "pip", "install", "-r", str(requirements_file)],
+            [python_cmd, "-m", "pip", "install", "-r", str(requirements_file)],
             capture_output=True,  # Capture output để phân tích lỗi
             text=True,
             check=False,
@@ -445,7 +513,7 @@ def install_dependencies():
                         print_error(f"  {line}")
             
             print_warning("Vui lòng chạy lại script từ đầu")
-            print_warning(f"Hoặc cài đặt thủ công: {sys.executable} -m pip install -r {requirements_file}")
+            print_warning(f"Hoặc cài đặt thủ công: {python_cmd} -m pip install -r {requirements_file}")
             
             # Thử cài đặt từng package để tìm package lỗi
             print_info("Đang thử cài đặt từng package để tìm lỗi...")
@@ -461,7 +529,7 @@ def install_dependencies():
                         if package:
                             print_info(f"Đang thử cài: {package}...")
                             result = subprocess.run(
-                                [sys.executable, "-m", "pip", "install", line],
+                                [python_cmd, "-m", "pip", "install", line],
                                 capture_output=True,
                                 text=True,
                                 timeout=300
@@ -480,7 +548,7 @@ def install_dependencies():
         
         print_success("Đã cài đặt dependencies thành công!")
         
-        # Kiểm tra các packages quan trọng (method from colab_setup_train.py)
+        # Kiểm tra các packages quan trọng
         print_info("Kiểm tra packages quan trọng...")
         check_packages_script = """
 import sys
@@ -505,8 +573,12 @@ if missing:
         with open(check_file, "w") as f:
             f.write(check_packages_script)
         
+        # python_cmd should already be set, but ensure it's set just in case
+        if not python_cmd:
+            python_cmd = sys.executable
+        
         result = subprocess.run(
-            [sys.executable, str(check_file)],
+            [python_cmd, str(check_file)],
             capture_output=True,
             text=True,
             cwd=str(Path.cwd())
@@ -591,6 +663,124 @@ def download_phobert_model(model_name: str = "vinai/phobert-large",
         print_error(f"Lỗi khi tải model: {e}")
         return False
 
+def cleanup_and_clone_repo(git_url: str = "https://github.com/HoangPhucDE/ciesta-assistant.git", 
+                           branch: str = "main",
+                           target_dir: str = "ciesta-assistant"):
+    """
+    Cleanup old repo and clone fresh from git (Colab only)
+    
+    Args:
+        git_url: Git repository URL
+        branch: Branch to clone (default: main)
+        target_dir: Target directory name
+    """
+    if not is_colab():
+        print_info("Không phải Colab - bỏ qua cleanup và clone")
+        return False
+    
+    # Check if git is available
+    git_check = subprocess.run(["which", "git"], capture_output=True, text=True)
+    if git_check.returncode != 0:
+        print_warning("Git chưa được cài đặt, đang cài đặt...")
+        subprocess.run(["apt-get", "update", "-qq"], check=False)
+        subprocess.run(["apt-get", "install", "-y", "-qq", "git"], check=False)
+        print_success("Đã cài đặt git")
+    
+    print_header("CLEANUP VÀ CLONE REPO MỚI")
+    
+    current_dir = Path.cwd()
+    target_path = current_dir / target_dir
+    
+    # Step 1: Remove old directory if exists
+    if target_path.exists():
+        print_info(f"Đang xóa thư mục cũ: {target_path}")
+        try:
+            shutil.rmtree(target_path)
+            print_success(f"Đã xóa thư mục cũ: {target_path}")
+        except Exception as e:
+            print_error(f"Không thể xóa thư mục cũ: {e}")
+            print_warning("Sẽ thử clone vào thư mục khác...")
+            target_path = current_dir / f"{target_dir}-new"
+            if target_path.exists():
+                try:
+                    shutil.rmtree(target_path)
+                except Exception:
+                    pass
+    
+    # Step 2: Clone fresh repo
+    print_info(f"Đang clone repo từ: {git_url}")
+    print_info(f"   Branch: {branch}")
+    print_info(f"   Target: {target_path}")
+    print_warning("⚠️ Quá trình này có thể mất 1-2 phút...")
+    
+    try:
+        # Clone repository với shallow clone (chỉ lấy commit mới nhất)
+        clone_cmd = ["git", "clone", "--depth", "1", "--branch", branch, git_url, str(target_path)]
+        result = subprocess.run(
+            clone_cmd,
+            capture_output=True,
+            text=True,
+            timeout=300  # 5 minutes timeout
+        )
+        
+        if result.returncode != 0:
+            print_warning(f"Không thể clone branch {branch}: {result.stderr}")
+            # Try without branch specification (clone default branch)
+            print_info("Thử clone branch mặc định...")
+            clone_cmd = ["git", "clone", "--depth", "1", git_url, str(target_path)]
+            result = subprocess.run(
+                clone_cmd,
+                capture_output=True,
+                text=True,
+                timeout=300
+            )
+            if result.returncode != 0:
+                print_error(f"Lỗi khi clone repo: {result.stderr}")
+                if result.stdout:
+                    print_error(f"Output: {result.stdout}")
+                return False
+            else:
+                print_info("Đã clone branch mặc định thành công")
+        else:
+            print_success(f"Đã clone branch {branch} thành công")
+        
+        print_success(f"Đã clone repo thành công vào: {target_path}")
+        
+        # Step 3: Change to cloned directory
+        if target_path.exists():
+            # Check if it's a valid repo
+            if (target_path / "requirements.txt").exists() or (target_path / "requirements-colab.txt").exists():
+                os.chdir(target_path)
+                print_success(f"Đã chuyển vào thư mục: {Path.cwd()}")
+                return True
+            else:
+                # Maybe it's a nested directory
+                nested_paths = [
+                    target_path / "ciesta-assistant",
+                    target_path / "ciesta-asisstant",  # Typo variant
+                ]
+                for nested_path in nested_paths:
+                    if nested_path.exists() and ((nested_path / "requirements.txt").exists() or (nested_path / "requirements-colab.txt").exists()):
+                        os.chdir(nested_path)
+                        print_success(f"Đã chuyển vào thư mục: {Path.cwd()}")
+                        return True
+                
+                print_error(f"Thư mục clone không hợp lệ (không tìm thấy requirements.txt): {target_path}")
+                print_info(f"Các file trong thư mục: {list(target_path.iterdir())[:10]}")
+                return False
+        else:
+            print_error(f"Thư mục clone không tồn tại: {target_path}")
+            return False
+            
+    except subprocess.TimeoutExpired:
+        print_error("Timeout khi clone repo (quá 5 phút)")
+        return False
+    except Exception as e:
+        print_error(f"Lỗi không mong đợi khi clone: {e}")
+        import traceback
+        traceback.print_exc()
+        return False
+
 def setup_custom_components():
     """Setup custom components"""
     print_header("THIẾT LẬP CUSTOM COMPONENTS")
@@ -657,7 +847,7 @@ def create_symlink():
         return True
 
 def get_gpu_info():
-    """Get GPU information including name and memory (method from colab_setup_train.py)"""
+    """Get GPU information including name and memory"""
     # First check with nvidia-smi
     nvidia_result = None
     try:
@@ -696,8 +886,8 @@ def get_gpu_info():
     return {'available': False, 'name': None, 'memory_gb': 0}
 
 def optimize_config_for_gpu(config_file: Path, gpu_info: dict):
-    """Optimize config.yml for maximum speed on GPU while avoiding OOM (method from colab_setup_train.py)"""
-    # Get GPU memory from PyTorch (method from colab_setup_train.py)
+    """Optimize config.yml for maximum speed on GPU while avoiding OOM"""
+    # Get GPU memory from PyTorch
     gpu_memory_gb = None
     gpu_name = None
     
@@ -768,7 +958,7 @@ except Exception as e:
     original_content = config_content
     optimized = False
     
-    # Tối ưu batch size dựa trên GPU memory (method from colab_setup_train.py)
+    # Tối ưu batch size dựa trên GPU memory
     # Lưu ý: T4 thường có ~15GB nhưng có thể hiển thị 14.7-14.9 GB, nên coi >=14.5 GB là GPU lớn
     if gpu_memory_gb >= 14.5:  # T4 (~15GB), V100, A100
         print_success(f"🚀 GPU lớn phát hiện ({gpu_name}) - Tăng batch size để tận dụng GPU")
@@ -1082,7 +1272,7 @@ def train_nlu(epochs: Optional[int] = None):
     total_epochs = None
     progress_data = None
     
-    # Check Rasa đã được cài đặt trước khi train (method from colab_setup_train.py)
+    # Check Rasa đã được cài đặt trước khi train
     print_info("Kiểm tra Rasa trước khi train...")
     check_rasa_script = """
 import sys
@@ -1321,37 +1511,75 @@ def main():
     # Check environment
     if is_colab():
         print_success("Đang chạy trên Google Colab")
+        
+        # Step 0: Cleanup and clone fresh repo (Colab only)
+        print_header("CLEANUP VÀ CLONE REPO MỚI")
+        print_info("🔄 Đang xóa repo cũ và clone repo mới từ git...")
+        
+        # Get git URL and branch from environment or use defaults
+        git_url = os.environ.get("CIESTA_GIT_URL", "https://github.com/HoangPhucDE/ciesta-assistant.git")
+        git_branch = os.environ.get("CIESTA_GIT_BRANCH", "main")
+        
+        print_info(f"   Git URL: {git_url}")
+        print_info(f"   Branch: {git_branch}")
+        
+        # Go to /content (Colab's default directory)
+        content_dir = Path("/content")
+        if content_dir.exists():
+            os.chdir(content_dir)
+            print_info(f"Đã chuyển vào: {Path.cwd()}")
+        
+        # Cleanup and clone
+        if cleanup_and_clone_repo(git_url=git_url, branch=git_branch, target_dir="ciesta-assistant"):
+            print_success("✅ Đã clone repo mới thành công")
+            # Now we're in the cloned directory
+            project_root = Path.cwd()
+        else:
+            print_warning("⚠️ Không thể clone repo mới, sẽ tìm project root hiện có...")
+            project_root = find_project_root()
+            if project_root:
+                os.chdir(project_root)
+                print_info(f"Đã chuyển vào project root: {Path.cwd()}")
+            else:
+                print_error("Không tìm thấy project root")
+                return False
     else:
         print_warning("Không phải Colab - script vẫn hoạt động nhưng một số tính năng có thể bị giới hạn")
+        
+        # Find and change to project root first
+        project_root = find_project_root()
+        if project_root:
+            original_dir = Path.cwd()
+            
+            # Avoid nested directories
+            if "ciesta-assistant" in str(project_root) and "ciesta-assistant" in str(original_dir):
+                # Check if we're going into a nested directory
+                parts_original = str(original_dir).split("ciesta-assistant")
+                parts_project = str(project_root).split("ciesta-assistant")
+                if len(parts_project) > len(parts_original):
+                    # We're going deeper, use the outer one
+                    outer_path = Path(str(original_dir).split("ciesta-assistant")[0]) / "ciesta-assistant"
+                    if outer_path.exists() and (outer_path / "requirements.txt").exists():
+                        project_root = outer_path
+                        print_warning(f"Phát hiện nested directory, sử dụng: {project_root}")
+            
+            os.chdir(project_root)
+            print_info(f"Đã chuyển từ {original_dir} sang {Path.cwd()}")
+            
+            # Verify we're in the right place
+            if not (Path.cwd() / "requirements.txt").exists() and not (Path.cwd() / "requirements-colab.txt").exists():
+                print_error("Không tìm thấy requirements file trong project root")
+                return False
+        else:
+            print_warning("Không tìm thấy project root, tiếp tục với thư mục hiện tại")
+            print_info(f"Thư mục hiện tại: {Path.cwd()}")
+            print_info("Vui lòng đảm bảo bạn đã clone repo và chuyển vào thư mục ciesta-assistant")
     
-    # Find and change to project root first
-    project_root = find_project_root()
-    if project_root:
-        original_dir = Path.cwd()
-        
-        # Avoid nested directories
-        if "ciesta-assistant" in str(project_root) and "ciesta-assistant" in str(original_dir):
-            # Check if we're going into a nested directory
-            parts_original = str(original_dir).split("ciesta-assistant")
-            parts_project = str(project_root).split("ciesta-assistant")
-            if len(parts_project) > len(parts_original):
-                # We're going deeper, use the outer one
-                outer_path = Path(str(original_dir).split("ciesta-assistant")[0]) / "ciesta-assistant"
-                if outer_path.exists() and (outer_path / "requirements.txt").exists():
-                    project_root = outer_path
-                    print_warning(f"Phát hiện nested directory, sử dụng: {project_root}")
-        
-        os.chdir(project_root)
-        print_info(f"Đã chuyển từ {original_dir} sang {Path.cwd()}")
-        
-        # Verify we're in the right place
-        if not (Path.cwd() / "requirements.txt").exists() and not (Path.cwd() / "requirements-colab.txt").exists():
-            print_error("Không tìm thấy requirements file trong project root")
-            return False
-    else:
-        print_warning("Không tìm thấy project root, tiếp tục với thư mục hiện tại")
+    # Verify we're in the right place
+    if not (Path.cwd() / "requirements.txt").exists() and not (Path.cwd() / "requirements-colab.txt").exists():
+        print_error("Không tìm thấy requirements file trong project root")
         print_info(f"Thư mục hiện tại: {Path.cwd()}")
-        print_info("Vui lòng đảm bảo bạn đã clone repo và chuyển vào thư mục ciesta-assistant")
+        return False
     
     # Step 1: Install dependencies
     if not install_dependencies():
@@ -1378,7 +1606,7 @@ def main():
         print_error("Thiết lập custom components thất bại")
         return False
     
-    # Step 5.5: Cập nhật config để dùng model online (method from colab_setup_train.py)
+    # Step 5.5: Cập nhật config để dùng model online
     print_header("CẬP NHẬT CONFIG")
     current_dir = Path.cwd()
     
@@ -1487,8 +1715,12 @@ def main():
     if not verify_config():
         print_warning("Config có thể chưa đúng - vui lòng kiểm tra")
     
-    # Step 6.5: Entity alignments đã được fix trước bằng script sync_location_names.py
+    # Step 6.5: Entity alignments
+    # Lưu ý: Entity alignments nên được fix trước bằng script sync_location_names.py
     # Script này chỉ phục vụ training, không fix entities
+    # Xem docs/README_SYNC_LOCATIONS.md để biết thêm chi tiết
+    print_info("💡 Lưu ý: Nếu có entity alignment warnings, chạy sync_location_names.py trước khi train")
+    print_info("   Xem: scripts/training/sync_location_names.py hoặc docs/README_SYNC_LOCATIONS.md")
     
     # Step 7: Optimize config for GPU
     print_header("TỐI ƯU HÓA CONFIG CHO GPU")
