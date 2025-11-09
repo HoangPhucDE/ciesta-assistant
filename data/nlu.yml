@@ -172,17 +172,17 @@ nlu:
       - cho tôi biết về văn hóa [Hà Nội](location)
       - giới thiệu văn hóa [Hà Nội](location)
       - văn hóa ở [Đà Nẵng](location) như thế nào
-      - - văn hóa [Hồ Chí Minh](location) có gì đặc sắc
-      - - hãy kể về văn hóa [Hồ Chí Minh](location)
+      - văn hóa [TP.HCM](location) có gì đặc sắc
+      - hãy kể về văn hóa [Sài Gòn](location)
       - nét văn hóa của [Huế](location)
       - văn hóa truyền thống [Hà Nội](location)
-      - - đặc trưng văn hóa của người [Hồ Chí Minh](location)
+      - đặc trưng văn hóa của người [Sài Gòn](location)
       - nói về văn hóa [Đà Nẵng](location)
       - tìm hiểu văn hóa [Huế](location)
-      - - giới thiệu về văn hóa [Hồ Chí Minh](location)
+      - giới thiệu về văn hóa [TP.HCM](location)
       - cho biết nét văn hóa [Hà Nội](location)
       - văn hóa truyền thống của [Huế](location)
-      - - mình muốn biết về văn hóa [Hồ Chí Minh](location)
+      - mình muốn biết về văn hóa [Sài Gòn](location)
       - bạn có thể kể về văn hóa [Đà Nẵng](location) không
       - kể cho mình nghe về văn hóa [Hà Nội](location)
       - giới thiệu văn hóa truyền thống [Đà Nẵng](location)
@@ -211,16 +211,16 @@ nlu:
       - giới thiệu về di sản văn hóa [Quảng Ngãi](location)
       - văn hóa cộng đồng ở [Hạ Long](location)
       - [Nha Trang](location) có những giá trị văn hóa gì đặc biệt
-      - - Cho mình tìm hiểu về văn hóa [Hồ Chí Minh](location)
-      - - Kể về văn hóa người [Hồ Chí Minh](location)
-      - - Muốn biết thêm về văn hóa [Hồ Chí Minh](location)
-      - - Văn hóa truyền thống [Hồ Chí Minh](location) có gì đặc sắc
+      - Cho mình tìm hiểu về văn hóa [Sài Gòn](location)
+      - Kể về văn hóa người [Sai Gon](location)
+      - Muốn biết thêm về văn hóa [TP.HCM](location)
+      - Văn hóa truyền thống [HCM](location) có gì đặc sắc
       - Di sản văn hóa ở [Đà Lạt](location) là gì
       - Giới thiệu nét văn hóa độc đáo [Quảng Ninh](location)
       - Tôi muốn tìm hiểu văn hóa cộng đồng [Hạ Long](location)
       - Kể về lễ hội truyền thống ở [Thái Nguyên](location)
-      - - Ciesta, giới thiệu văn hóa [Hồ Chí Minh](location) cho mình
-      - - Mình muốn tìm hiểu bản sắc văn hóa [Hồ Chí Minh](location)
+      - Ciesta, giới thiệu văn hóa [Sài Gòn](location) cho mình
+      - Mình muốn tìm hiểu bản sắc văn hóa [TP.HCM](location)
       - Cho mình biết về di sản văn hóa [Hà Nội](location)
       - Em muốn tìm hiểu phong tục ở [Huế](location)
       - văn hóa [Bắc Ninh](location)
@@ -526,10 +526,10 @@ nlu:
       - địa điểm tham quan [Đà Nẵng](location)
       - địa điểm tham quan [Huế](location)
       - địa điểm tham quan [Hồ Chí Minh](location)
-      - - địa điểm tham quan [Hồ Chí Minh](location)
-      - - địa điểm tham quan [Hồ Chí Minh](location)
-      - - địa điểm tham quan [Hồ Chí Minh](location)
-      - - địa điểm tham quan [Hồ Chí Minh](location)
+      - địa điểm tham quan [Sài Gòn](location)
+      - địa điểm tham quan [TP.HCM](location)
+      - địa điểm tham quan [TPHCM](location)
+      - địa điểm tham quan [HCM](location)
       - địa điểm tham quan [Bắc Ninh](location)
       - địa điểm tham quan [An Giang](location)
       - địa điểm tham quan [Cần Thơ](location)
@@ -723,28 +723,29 @@ nlu:
       - ẩm thực [Huế](location)
       - ẩm thực [Đà Nẵng](location)
       - ẩm thực [Hà Nội](location)
-      - - ẩm thực [Hồ Chí Minh](location)
+      - ẩm thực [Sài Gòn](location)
       - ẩm thực [Hồ Chí Minh](location)
-      - - ẩm thực [Hồ Chí Minh](location)
-      - - ẩm thực [Hồ Chí Minh](location)
-      - - ẩm thực [Hồ Chí Minh](location)
-      - - ẩm thực [Hồ Chí Minh](location)
-      - - ẩm thực [Hồ Chí Minh](location)
+      - ẩm thực [TP.HCM](location)
+      - ẩm thực [TPHCM](location)
+      - ẩm thực [HCM](location)
+      - ẩm thực [TP HCM](location)
+      - ẩm thực [Sai Gon](location)
+      - ẩm thực [TP Hồ Chí Minh](location)
       - ẩm thực thành phố [Hồ Chí Minh](location)
-      - - ẩm thực [Hà Nội](location)
-      - - ẩm thực [Hà Nội](location)
+      - ẩm thực [Hanoi](location)
+      - ẩm thực [Ha Noi](location)
       - ẩm thực thành phố [Hà Nội](location)
-      - - ẩm thực [Đà Nẵng](location)
-      - - ẩm thực [Đà Nẵng](location)
+      - ẩm thực [Da Nang](location)
+      - ẩm thực [Danang](location)
       - ẩm thực thành phố [Đà Nẵng](location)
-      - - ẩm thực [Huế](location)
+      - ẩm thực [Hue](location)
       - ẩm thực [Thừa Thiên Huế](location)
-      - - ẩm thực [Thừa Thiên Huế](location)
-      - - ẩm thực [Hải Phòng](location)
+      - ẩm thực [Thua Thien Hue](location)
+      - ẩm thực [Hai Phong](location)
       - ẩm thực thành phố [Hải Phòng](location)
       - ẩm thực [Cần Thơ](location)
-      - - ẩm thực [Cần Thơ](location)
-      - - ẩm thực [Cần Thơ](location)
+      - ẩm thực [Can Tho](location)
+      - ẩm thực [Cantho](location)
       - ẩm thực thành phố [Cần Thơ](location)
       - ẩm thực [Nha Trang](location)
       - ẩm thực [Đà Lạt](location)
@@ -776,8 +777,8 @@ nlu:
       - đặc sản nên mua ở [Đà Lạt](location)
       - quà vặt [Sapa](location)
       - thử món gì ở [Nghệ An](location)
-      - - Ẩm thực ở [Hồ Chí Minh](location) có gì nổi bật
-      - - Ở [Hồ Chí Minh](location) nên ăn món gì
+      - Ẩm thực ở [Sài Gòn](location) có gì nổi bật
+      - Ở [TPHCM](location) nên ăn món gì
       - Món hải sản ngon ở [Nha Trang](location) là gì
       - Gợi ý quán ăn đường phố tại [Hội An](location)
       - Gợi ý quán ăn ở [Hồ Chí Minh](location)
@@ -786,21 +787,21 @@ nlu:
       - Chỗ ăn sáng ở [Hà Nội](location) ngon
       - Quán phở ngon ở gần [Hà Nội](location) gợi ý nhé
       - ẩm thực [Đà Nẵng](location) có gì ngon
-      - - món ăn đường phố ở [Hồ Chí Minh](location)
-      - - đặc sản [Hồ Chí Minh](location) là gì
+      - món ăn đường phố ở [TP.HCM](location)
+      - đặc sản [Sài Gòn](location) là gì
       - quán ăn ngon ở [Huế](location)
       - món đặc trưng của [Hà Nội](location)
       - khám phá ẩm thực [Đà Nẵng](location)
-      - - tôi muốn tìm quán ăn ở [Hồ Chí Minh](location)
-      - - giới thiệu đặc sản [Hồ Chí Minh](location)
+      - tôi muốn tìm quán ăn ở [Sài Gòn](location)
+      - giới thiệu đặc sản [TP.HCM](location)
       - nhà hàng ngon ở [Huế](location)
       - món nổi tiếng của [Hà Nội](location)
       - ăn uống ở [Đà Nẵng](location) thế nào
       - Món đặc sản [Hội An](location) nên thử là gì
-      - - Ở [Hồ Chí Minh](location) có quán bún bò nào nổi tiếng?
+      - Ở [TP.HCM](location) có quán bún bò nào nổi tiếng?
       - Tôi muốn món chay ở [Đà Lạt](location), giới thiệu
       - Quán hải sản ngon ở [Nha Trang](location) cho gia đình
-      - - Địa chỉ quán ăn đêm ở [Hồ Chí Minh](location) uy tín
+      - Địa chỉ quán ăn đêm ở [Sài Gòn](location) uy tín
       - Món địa phương [Quảng Nam](location) thường bán ở đâu
       - Ciesta, ăn gì ở Sài Gòn hôm nay
       - ở [Hải Phòng](location) ăn gì
@@ -936,7 +937,7 @@ nlu:
       - Cho tôi hỏi, nếu đi [Huế](location) thì nên ăn món gì và đi đâu
       - Mình sắp đi [Đà Nẵng](location) vào tháng 6, ẩm thực ở đó có gì đặc biệt không
       - Tôi đang lên kế hoạch du lịch [Hà Nội](location), bạn có thể gợi ý món ăn địa phương không
-      - - Mình muốn thử đặc sản [Hồ Chí Minh](location), bạn có thể giới thiệu một số món ngon không
+      - Mình muốn thử đặc sản [Sài Gòn](location), bạn có thể giới thiệu một số món ngon không
       - Tôi và bạn bè sẽ đi [Phú Quốc](location) vào cuối tuần, nên ăn hải sản ở đâu ngon
       - Cho tôi hỏi, ở [Đà Lạt](location) có quán ăn nào ngon và giá cả hợp lý không
 
@@ -1129,7 +1130,7 @@ nlu:
       - lễ hội chọi trâu ở [Hải Phòng](location) diễn ra khi nào
       - lễ hội đền Kiếp Bạc ở [Hải Dương](location)
       - lễ hội Côn Sơn ở [Hải Dương](location) khi nào
-      - - festival ẩm thực đường phố ở [Hồ Chí Minh](location)
+      - festival ẩm thực đường phố ở [TP.HCM](location)
       - lễ hội chùa Tam Chúc ở [Hà Nam](location)
       - lễ hội đền Sòng ở [Thanh Hóa](location) diễn ra khi nào
       - festival biển ở [Nha Trang](location) có gì đặc biệt
@@ -1424,7 +1425,7 @@ nlu:
       - tip mua quà [Quảng Ngãi](location)
       - thời điểm tốt nhất đến [Cần Thơ](location)
       - kinh nghiệm du lịch [Hạ Long](location)
-      - - Mẹo du lịch khi đi [Hồ Chí Minh](location)
+      - Mẹo du lịch khi đi [Sài Gòn](location)
       - Lịch trình 2 ngày ở [Đà Nẵng](location) hợp lý là gì?
       - Có lưu ý y tế khi đến [Phú Quốc](location) không?
       - Thời điểm ít mưa để đến [Đà Lạt](location) là tháng mấy?
@@ -1852,7 +1853,7 @@ nlu:
       - từ [Hà Nội](location) đến [Hạ Long](location) đi xe khách mất bao lâu
       - grab/xe công nghệ có sẵn ở [Đà Nẵng](location) không
       - đi [Sapa](location) bằng tàu hỏa rồi đi xe lên núi
-      - - từ [Hồ Chí Minh](location) đến [Cà Mau](location) đi bằng gì nhanh nhất
+      - từ [TP.HCM](location) đến [Cà Mau](location) đi bằng gì nhanh nhất
       - tàu hỏa từ [Hà Nội](location) đến [Lào Cai](location) có ghế nằm không
       - phương tiện đi [Mai Châu](location) từ Hà Nội
       - từ [Đà Nẵng](location) đến [Hội An](location) đi taxi mất bao nhiêu
@@ -1864,10 +1865,10 @@ nlu:
       - xe khách giường nằm đi [Đà Nẵng](location) từ Hà Nội
       - từ [Hồ Chí Minh](location) đến [Cần Thơ](location) có đường thủy không
       - Tôi đang ở [Hà Nội](location) và muốn đến [Đà Nẵng](location), phương tiện nào thuận tiện nhất
-      - - Mình sắp đi [Huế](location) từ [Hồ Chí Minh](location), bạn có thể gợi ý cách di chuyển tiết kiệm nhất không
+      - Mình sắp đi [Huế](location) từ [TP.HCM](location), bạn có thể gợi ý cách di chuyển tiết kiệm nhất không
       - Cho tôi hỏi, nếu đi từ [Hà Nội](location) đến [Sapa](location) bằng tàu hỏa, sau đó đi xe lên núi mất bao lâu
       - Tôi và gia đình sẽ đi [Phú Quốc](location) từ [Hồ Chí Minh](location), nên đi máy bay hay tàu biển
-      - - Mình muốn đi [Đà Lạt](location) từ [Hồ Chí Minh](location) bằng xe khách, có nhà xe nào uy tín không
+      - Mình muốn đi [Đà Lạt](location) từ [TP.HCM](location) bằng xe khách, có nhà xe nào uy tín không
 
   - intent: inform_location
     examples: |
@@ -1882,8 +1883,8 @@ nlu:
       - tôi đến từ [An Giang](location)
       - hiện tôi ở [Đà Nẵng](location)
       - quê tôi ở [Hà Nội](location)
-      - - tôi là người [Hồ Chí Minh](location)
-      - - tôi muốn chọn [Hồ Chí Minh](location)
+      - tôi là người [Sài Gòn](location)
+      - tôi muốn chọn [TP.HCM](location)
       - [Lào Cai](location) đi
       - về [Gia Lai](location)
       - [Khánh Hòa](location) nha
@@ -1895,15 +1896,15 @@ nlu:
       - [Vũng Tàu](location)
       - [Cần Thơ](location)
       - [Hạ Long](location)
-      - - Tôi đang ở [Hồ Chí Minh](location)
-      - - Tôi có mặt tại [Hồ Chí Minh](location) hôm nay
+      - Tôi đang ở [Sài Gòn](location)
+      - Tôi có mặt tại [TP.HCM](location) hôm nay
       - Đã tới [Đà Lạt](location), cần gợi ý chơi
       - Ở [Hạ Long](location) trong 3 ngày
       - Mình đang ở [Phú Quốc](location) và muốn khám phá hải sản
-      - - Ở [Hồ Chí Minh](location) bây giờ
+      - Ở [TP.HCM](location) bây giờ
       - Đang ở [Đà Lạt](location)
       - [Phú Quốc](location) ngay đây
-      - - Tôi đang ở [Hồ Chí Minh](location) và muốn tìm hiểu về ẩm thực ở đây
+      - Tôi đang ở [Sài Gòn](location) và muốn tìm hiểu về ẩm thực ở đây
       - Mình hiện tại đang ở [Đà Lạt](location), bạn có thể gợi ý địa điểm tham quan gần đây không
       - Tôi vừa đến [Hà Nội](location) và muốn hỏi về văn hóa nơi đây
       - Mình đang có mặt tại [Huế](location), có lễ hội nào đang diễn ra không
@@ -1974,5 +1975,3 @@ nlu:
       - Gửi link tới bài viết bạn vừa nói
       - Thử gọi tên Ciesta xem phản hồi
       - Hỏi random: có biết bài hát X không?
-
-
