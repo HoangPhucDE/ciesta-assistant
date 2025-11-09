@@ -663,11 +663,88 @@ def download_phobert_model(model_name: str = "vinai/phobert-large",
         print_error(f"Lỗi khi tải model: {e}")
         return False
 
+def cleanup_all_data(current_dir: Path):
+    """
+    Xóa toàn bộ dữ liệu cũ trước khi clone repo mới
+    
+    Args:
+        current_dir: Thư mục hiện tại (thường là /content trên Colab)
+    """
+    print_header("XÓA TOÀN BỘ DỮ LIỆU CŨ")
+    
+    # Danh sách các thư mục/file cần xóa
+    # Lưu ý: Chỉ liệt kê thư mục/file gốc, không cần liệt kê thư mục con
+    # vì shutil.rmtree sẽ xóa cả thư mục và nội dung bên trong
+    items_to_remove = [
+        # Repo directories
+        current_dir / "ciesta-assistant",
+        current_dir / "ciesta-asisstant",  # Typo variant
+        # Models and cache (xóa thư mục cha sẽ xóa cả nội dung bên trong)
+        current_dir / "models",
+        current_dir / "models_hub",
+        # Virtual environment
+        current_dir / "venv_py310",
+        # Temporary files
+        current_dir / "requirements-colab-fixed.txt",
+        current_dir / "requirements-colab-py312.txt",
+        # Config files (sẽ được clone lại từ repo)
+        current_dir / "config.yml",
+        current_dir / "domain.yml",
+        current_dir / "endpoints.yml",
+        current_dir / "credentials.yml",
+    ]
+    
+    removed_count = 0
+    failed_count = 0
+    
+    for item_path in items_to_remove:
+        if item_path.exists():
+            try:
+                if item_path.is_dir():
+                    print_info(f"Đang xóa thư mục: {item_path}")
+                    shutil.rmtree(item_path)
+                else:
+                    print_info(f"Đang xóa file: {item_path}")
+                    item_path.unlink()
+                print_success(f"  ✓ Đã xóa: {item_path.name}")
+                removed_count += 1
+            except Exception as e:
+                print_warning(f"  ⚠ Không thể xóa {item_path.name}: {e}")
+                failed_count += 1
+    
+    # Xóa các thư mục con có thể chứa dữ liệu cũ
+    # Kiểm tra các thư mục có pattern ciesta* (trừ những thư mục đã được xóa ở trên)
+    already_removed_names = {"ciesta-assistant", "ciesta-asisstant"}
+    for item in current_dir.iterdir():
+        if item.is_dir() and "ciesta" in item.name.lower():
+            # Chỉ xóa nếu chưa được xóa ở bước trước
+            if item.name not in already_removed_names:
+                try:
+                    print_info(f"Đang xóa thư mục: {item}")
+                    shutil.rmtree(item)
+                    print_success(f"  ✓ Đã xóa: {item.name}")
+                    removed_count += 1
+                except Exception as e:
+                    print_warning(f"  ⚠ Không thể xóa {item.name}: {e}")
+                    failed_count += 1
+    
+    if removed_count > 0:
+        print_success(f"✅ Đã xóa {removed_count} item(s)")
+    else:
+        print_info("ℹ Không có dữ liệu cũ để xóa")
+    
+    if failed_count > 0:
+        print_warning(f"⚠ Không thể xóa {failed_count} item(s)")
+    
+    return removed_count > 0
+
 def cleanup_and_clone_repo(git_url: str = "https://github.com/HoangPhucDE/ciesta-assistant.git", 
                            branch: str = "main",
                            target_dir: str = "ciesta-assistant"):
     """
     Cleanup old repo and clone fresh from git (Colab only)
+    - Xóa toàn bộ dữ liệu cũ trước khi clone
+    - Clone repo mới từ git
     
     Args:
         git_url: Git repository URL
@@ -689,16 +766,20 @@ def cleanup_and_clone_repo(git_url: str = "https://github.com/HoangPhucDE/ciesta
     print_header("CLEANUP VÀ CLONE REPO MỚI")
     
     current_dir = Path.cwd()
-    target_path = current_dir / target_dir
     
-    # Step 1: Remove old directory if exists
+    # Step 1: Xóa toàn bộ dữ liệu cũ
+    print_info("🔄 Đang xóa toàn bộ dữ liệu cũ...")
+    cleanup_all_data(current_dir)
+    
+    # Step 2: Xóa thư mục target cụ thể (nếu còn tồn tại sau khi cleanup_all_data)
+    target_path = current_dir / target_dir
     if target_path.exists():
-        print_info(f"Đang xóa thư mục cũ: {target_path}")
+        print_info(f"Đang xóa thư mục target còn lại: {target_path}")
         try:
             shutil.rmtree(target_path)
-            print_success(f"Đã xóa thư mục cũ: {target_path}")
+            print_success(f"Đã xóa thư mục target: {target_path}")
         except Exception as e:
-            print_error(f"Không thể xóa thư mục cũ: {e}")
+            print_error(f"Không thể xóa thư mục target: {e}")
             print_warning("Sẽ thử clone vào thư mục khác...")
             target_path = current_dir / f"{target_dir}-new"
             if target_path.exists():
@@ -707,7 +788,7 @@ def cleanup_and_clone_repo(git_url: str = "https://github.com/HoangPhucDE/ciesta
                 except Exception:
                     pass
     
-    # Step 2: Clone fresh repo
+    # Step 3: Clone fresh repo
     print_info(f"Đang clone repo từ: {git_url}")
     print_info(f"   Branch: {branch}")
     print_info(f"   Target: {target_path}")
@@ -746,7 +827,7 @@ def cleanup_and_clone_repo(git_url: str = "https://github.com/HoangPhucDE/ciesta
         
         print_success(f"Đã clone repo thành công vào: {target_path}")
         
-        # Step 3: Change to cloned directory
+        # Step 4: Change to cloned directory
         if target_path.exists():
             # Check if it's a valid repo
             if (target_path / "requirements.txt").exists() or (target_path / "requirements-colab.txt").exists():

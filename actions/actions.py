@@ -89,10 +89,29 @@ class ActionQueryKnowledgeBase(Action):
     
     def _normalize_location(self, location: str) -> str:
         """Chuẩn hóa tên địa điểm theo 34 tỉnh thành mới (Nghị quyết 12/6/2025)"""
-        # Preserve original spacing, perform case-insensitive lookup
-        location = location.strip()
-        key = location.lower()
-        return self.location_map.get(key, location)
+        # Loại bỏ dấu phẩy cuối nếu có
+        location_clean = location.strip().rstrip(', ')
+        
+        # Thử exact match trước (case-sensitive)
+        if location_clean in self.location_map_raw:
+            return self.location_map_raw[location_clean]
+        
+        # Thử case-insensitive match với location đã clean
+        key = location_clean.lower()
+        if key in self.location_map:
+            return self.location_map[key]
+        
+        # Thử với location gốc (có thể có dấu phẩy) - case-insensitive
+        key_original = location.strip().lower()
+        if key_original in self.location_map:
+            return self.location_map[key_original]
+        
+        # Thử với location gốc - exact match (case-sensitive)
+        if location.strip() in self.location_map_raw:
+            return self.location_map_raw[location.strip()]
+        
+        # Nếu không tìm thấy, giữ nguyên location đã clean
+        return location_clean
     
     def _format_response(self, province_data: Dict, intent: str) -> str:
         """Format phản hồi dựa trên intent"""
