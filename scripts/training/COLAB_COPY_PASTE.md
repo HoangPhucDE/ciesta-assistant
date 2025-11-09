@@ -104,12 +104,15 @@ print("\n🎉 Hoàn tất!")
 - **Sử dụng file `colab_setup_train.py`** (Cách 1) - đảm bảo không có lỗi
 - Hoặc chỉ copy phần code giữa 2 dấu ```, KHÔNG copy dấu ``` vào cell Python
 
-### Lỗi: ERROR: Cannot install regex==2024.5.15 - conflicting dependencies
+### Lỗi: ERROR: Cannot install regex - conflicting dependencies
 **Nguyên nhân**: `regex==2024.5.15` không tương thích với `rasa 3.6.20` (rasa yêu cầu `regex<2022.11`).
 
 **Giải pháp**: 
-- File `requirements.txt` đã được cập nhật với `regex==2022.10.27` (tương thích với rasa 3.6.20)
-- Pull code mới nhất từ repo hoặc cập nhật requirements.txt thủ công
+- File `requirements.txt` đã được cập nhật với `regex==2022.9.13` (tương thích với rasa 3.6.20)
+- Pull code mới nhất từ repo hoặc cập nhật requirements.txt thủ công:
+  ```bash
+  regex==2022.9.13
+  ```
 
 ### Lỗi: FileNotFoundError: config.yml
 **Nguyên nhân**: File config không ở root, mà nằm trong `config/rasa/config.yml`.

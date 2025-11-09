@@ -3,16 +3,21 @@
 # ============================================
 
 import os
-from pathlib import Path
+import shutil
 import re
+from pathlib import Path
 
 # Bước 1: Cleanup và Clone
+print("🧹 Dọn dẹp thư mục cũ...")
+# Xóa cả nested directory nếu có
 if Path("ciesta-assistant").exists():
-    !rm -rf ciesta-assistant
+    shutil.rmtree("ciesta-assistant", ignore_errors=True)
+    print("   ✅ Đã xóa ciesta-assistant")
 
 !git clone https://github.com/HoangPhucDE/ciesta-assistant.git
 %cd ciesta-assistant
-print(f"✅ Thư mục: {os.getcwd()}")
+current_dir = Path.cwd()
+print(f"✅ Thư mục: {current_dir}")
 
 # Bước 2: Cài đặt Python 3.10 (QUAN TRỌNG!)
 print("\n🐍 Cài đặt Python 3.10...")
@@ -31,51 +36,98 @@ print("\n📦 Cài đặt dependencies...")
 # Bước 5: Cập nhật config để dùng model online
 print("\n⚙️ Cập nhật config...")
 
+# Đảm bảo đang ở đúng thư mục root của project
+current_dir = Path.cwd()
+print(f"   Thư mục hiện tại: {current_dir}")
+
 # Tìm file config (có thể ở root hoặc trong config/rasa/)
-config_paths = ["config.yml", "config/rasa/config.yml"]
+config_paths = [
+    current_dir / "config.yml",
+    current_dir / "config/rasa/config.yml",
+]
+
 config_file = None
+config_path_used = None
 
 for path in config_paths:
-    if Path(path).exists():
-        config_file = path
+    if path.exists():
+        config_file = str(path)
+        config_path_used = path
+        print(f"   ✅ Tìm thấy config tại: {path}")
         break
 
 if not config_file:
     print("❌ Không tìm thấy config.yml")
     print("   Đang tìm trong:")
     for path in config_paths:
-        print(f"   - {path} ({'tồn tại' if Path(path).exists() else 'không tồn tại'})")
+        exists = path.exists()
+        print(f"   - {path} ({'tồn tại' if exists else 'không tồn tại'})")
+        if exists:
+            print(f"     Absolute: {path.resolve()}")
     raise FileNotFoundError("Không tìm thấy config.yml")
 
 # Nếu config ở trong config/rasa/, tạo symlink ở root để Rasa tìm thấy
-if config_file == "config/rasa/config.yml" and not Path("config.yml").exists():
-    print("   Tạo symlink từ config/rasa/config.yml -> config.yml")
-    try:
-        os.symlink("config/rasa/config.yml", "config.yml")
-    except FileExistsError:
-        pass  # File đã tồn tại
-    config_file = "config.yml"
+root_config = current_dir / "config.yml"
+rasa_config = current_dir / "config/rasa/config.yml"
 
-# Tạo symlink cho các file config khác nếu cần
+if config_path_used == rasa_config and not root_config.exists():
+    print(f"   Tạo symlink/copy từ {rasa_config} -> {root_config}")
+    try:
+        # Thử tạo symlink trước
+        os.symlink("config/rasa/config.yml", "config.yml")
+        config_file = "config.yml"
+        print("   ✅ Đã tạo symlink config.yml")
+    except (FileExistsError, OSError) as e:
+        print(f"   ⚠️ Không thể tạo symlink (có thể do Colab filesystem): {e}")
+        # Nếu không tạo được symlink, copy file (đảm bảo hoạt động)
+        shutil.copy(rasa_config, root_config)
+        config_file = "config.yml"
+        print("   ✅ Đã copy config.yml")
+
+# Tạo symlink hoặc copy cho các file config khác nếu cần
 rasa_config_files = ["domain.yml", "endpoints.yml", "credentials.yml"]
 for filename in rasa_config_files:
-    rasa_path = f"config/rasa/{filename}"
-    if Path(rasa_path).exists() and not Path(filename).exists():
-        print(f"   Tạo symlink từ {rasa_path} -> {filename}")
+    rasa_path = current_dir / "config/rasa" / filename
+    root_path = current_dir / filename
+    
+    if rasa_path.exists() and not root_path.exists():
+        print(f"   Tạo symlink từ config/rasa/{filename} -> {filename}")
         try:
-            os.symlink(rasa_path, filename)
-        except FileExistsError:
-            pass
+            os.symlink(f"config/rasa/{filename}", filename)
+            print(f"   ✅ Đã tạo symlink {filename}")
+        except (FileExistsError, OSError) as e:
+            # Nếu không tạo được symlink, copy file (đảm bảo hoạt động)
+            shutil.copy(rasa_path, root_path)
+            print(f"   ✅ Đã copy {filename}")
 
-# Đọc và cập nhật config
-with open(config_file, "r") as f:
+# Đọc và cập nhật config (đảm bảo dùng file ở root)
+config_to_update = current_dir / "config.yml"
+if not config_to_update.exists():
+    # Nếu không có ở root, dùng file gốc
+    config_to_update = config_path_used
+    print(f"   ⚠️ Không tìm thấy config.yml ở root, dùng: {config_to_update}")
+
+print(f"   Đang cập nhật: {config_to_update}")
+
+# Đọc config
+with open(config_to_update, "r", encoding="utf-8") as f:
     config = f.read()
 
+# Cập nhật config
 config = re.sub(r'model_name:\s*"models/phobert-large"', 'model_name: "vinai/phobert-large"', config)
 config = re.sub(r'cache_dir:\s*null', 'cache_dir: "models_hub/phobert_cache"', config)
 
-with open(config_file, "w") as f:
+# Ghi lại config
+with open(config_to_update, "w", encoding="utf-8") as f:
     f.write(config)
+
+# Nếu đã copy/symlink từ config/rasa/, cũng cập nhật file gốc
+if config_path_used == rasa_config and config_to_update == root_config:
+    # Cũng cập nhật file gốc trong config/rasa/
+    with open(rasa_config, "w", encoding="utf-8") as f:
+        f.write(config)
+    print("   ✅ Đã cập nhật cả file gốc trong config/rasa/")
+
 print("✅ Đã cập nhật config để dùng model online")
 
 # Bước 6: Train NLU
@@ -86,7 +138,6 @@ print("💡 Quá trình này có thể mất 30 phút - 2 giờ")
 # Bước 7: Download model
 print("\n📥 Tải model về máy...")
 from google.colab import files
-from pathlib import Path
 
 models = list(Path("models").glob("*.tar.gz"))
 if models:

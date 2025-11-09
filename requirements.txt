@@ -64,4 +64,5 @@ fastjsonschema==2.20.0
 
 # Text preprocessing for Vietnamese
 # CRITICAL: Must be < 2022.11 for rasa 3.6.20 compatibility
-regex==2022.10.27
+# Using 2022.9.13 (last stable version before 2022.10.x series)
+regex==2022.9.13
