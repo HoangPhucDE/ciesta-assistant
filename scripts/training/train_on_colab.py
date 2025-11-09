@@ -14,6 +14,7 @@ import shutil
 from pathlib import Path
 from typing import Optional
 import time
+import re
 
 # Colors for output
 class Colors:
@@ -410,6 +411,140 @@ def create_symlink():
         print_success(f"Đã copy model vào {target}")
         return True
 
+def get_gpu_info():
+    """Get GPU information including name and memory"""
+    try:
+        import torch
+        if torch.cuda.is_available():
+            gpu_name = torch.cuda.get_device_name(0)
+            gpu_memory_bytes = torch.cuda.get_device_properties(0).total_memory
+            gpu_memory_gb = gpu_memory_bytes / (1024**3)
+            return {
+                'name': gpu_name,
+                'memory_gb': gpu_memory_gb,
+                'available': True
+            }
+    except Exception:
+        pass
+    
+    return {'available': False, 'name': None, 'memory_gb': 0}
+
+def optimize_config_for_gpu(config_file: Path, gpu_info: dict):
+    """Optimize config.yml for maximum speed on GPU while avoiding OOM"""
+    print_header("TỐI ƯU HÓA CONFIG CHO GPU")
+    
+    if not gpu_info['available']:
+        print_warning("Không có GPU - Giữ cấu hình mặc định")
+        return False
+    
+    gpu_name = gpu_info['name']
+    gpu_memory_gb = gpu_info['memory_gb']
+    
+    print_info(f"GPU: {gpu_name} ({gpu_memory_gb:.1f} GB)")
+    
+    # Read config
+    with open(config_file, "r", encoding="utf-8") as f:
+        config_content = f.read()
+    
+    original_content = config_content
+    optimized = False
+    
+    # Tối ưu cho T4 (14.5-16GB) - tận dụng tối đa nhưng tránh OOM
+    if gpu_memory_gb >= 14.5:  # T4, V100, A100
+        print_success(f"🚀 GPU lớn phát hiện ({gpu_name}) - Tối ưu hóa cho tốc độ tối đa")
+        print_info(f"   Memory: {gpu_memory_gb:.1f} GB - Batch size sẽ được tăng tối đa (an toàn)")
+        
+        # PhoBERTFeaturizer: T4 có thể handle 128-192 batch size an toàn
+        # 256 có thể gây OOM với một số trường hợp, nên dùng 192 để an toàn hơn
+        phobert_batch = 192
+        config_content = re.sub(
+            r'(pooling_strategy:\s*"mean_max"\s*\n\s*batch_size:)\s*\d+(\s*#.*)?',
+            rf'\1 {phobert_batch}  # Tối ưu cho {gpu_name} ({gpu_memory_gb:.1f}GB) - tốc độ tối đa',
+            config_content
+        )
+        print_success(f"   ✅ PhoBERTFeaturizer batch_size: {phobert_batch}")
+        optimized = True
+        
+        # DIETClassifier: [128, 256] là an toàn cho T4, [256, 512] có thể gây OOM
+        # Dùng [128, 256] để đảm bảo không OOM nhưng vẫn nhanh
+        diet_batch = [128, 256]
+        config_content = re.sub(
+            r'(batch_size:\s*)\[\d+,\s*\d+\](\s*#.*)?',
+            rf'\1{diet_batch}  # Tối ưu cho {gpu_name} ({gpu_memory_gb:.1f}GB) - tốc độ tối đa, tránh OOM',
+            config_content
+        )
+        print_success(f"   ✅ DIETClassifier batch_size: {diet_batch}")
+        
+        # Giảm evaluate frequency để tăng tốc (evaluate ít hơn = train nhanh hơn)
+        config_content = re.sub(
+            r'(evaluate_every_number_of_epochs:)\s*\d+',
+            r'\1 10  # Giảm frequency để tăng tốc training',
+            config_content
+        )
+        print_success("   ✅ Evaluate frequency: 10 (giảm từ 5 để tăng tốc)")
+        
+        # Giảm số examples để evaluate (ít hơn = nhanh hơn)
+        config_content = re.sub(
+            r'(evaluate_on_number_of_examples:)\s*\d+',
+            r'\1 200  # Giảm để tăng tốc evaluation',
+            config_content
+        )
+        print_success("   ✅ Evaluate examples: 200 (giảm từ 300 để tăng tốc)")
+        
+    elif gpu_memory_gb >= 8:  # P100, K80
+        print_info(f"⚡ GPU trung bình phát hiện ({gpu_name}) - Tối ưu hóa vừa phải")
+        phobert_batch = 96
+        config_content = re.sub(
+            r'(pooling_strategy:\s*"mean_max"\s*\n\s*batch_size:)\s*\d+(\s*#.*)?',
+            rf'\1 {phobert_batch}  # Tối ưu cho {gpu_name} ({gpu_memory_gb:.1f}GB)',
+            config_content
+        )
+        diet_batch = [64, 128]
+        config_content = re.sub(
+            r'(batch_size:\s*)\[\d+,\s*\d+\](\s*#.*)?',
+            rf'\1{diet_batch}  # Tối ưu cho {gpu_name} ({gpu_memory_gb:.1f}GB)',
+            config_content
+        )
+        print_success(f"   ✅ PhoBERTFeaturizer batch_size: {phobert_batch}")
+        print_success(f"   ✅ DIETClassifier batch_size: {diet_batch}")
+        optimized = True
+        
+    elif gpu_memory_gb >= 4:  # GPU nhỏ
+        print_info(f"📊 GPU nhỏ phát hiện ({gpu_name}) - Tối ưu hóa nhẹ")
+        phobert_batch = 48
+        config_content = re.sub(
+            r'(pooling_strategy:\s*"mean_max"\s*\n\s*batch_size:)\s*\d+(\s*#.*)?',
+            rf'\1 {phobert_batch}  # Tối ưu cho {gpu_name} ({gpu_memory_gb:.1f}GB)',
+            config_content
+        )
+        diet_batch = [32, 64]
+        config_content = re.sub(
+            r'(batch_size:\s*)\[\d+,\s*\d+\](\s*#.*)?',
+            rf'\1{diet_batch}  # Tối ưu cho {gpu_name} ({gpu_memory_gb:.1f}GB)',
+            config_content
+        )
+        print_success(f"   ✅ PhoBERTFeaturizer batch_size: {phobert_batch}")
+        print_success(f"   ✅ DIETClassifier batch_size: {diet_batch}")
+        optimized = True
+    
+    if optimized and config_content != original_content:
+        # Backup original config
+        backup_file = config_file.with_suffix('.yml.bak')
+        if not backup_file.exists():
+            shutil.copy(config_file, backup_file)
+            print_info(f"   💾 Backup config gốc: {backup_file.name}")
+        
+        # Write optimized config
+        with open(config_file, "w", encoding="utf-8") as f:
+            f.write(config_content)
+        
+        print_success("✅ Đã tối ưu hóa config cho GPU")
+        print_info("   💡 Config đã được tối ưu để tận dụng tối đa GPU memory")
+        print_info("   💡 Batch size được set để tránh OOM nhưng vẫn nhanh nhất có thể")
+        return True
+    
+    return False
+
 def verify_config():
     """Verify config.yml is correct"""
     print_header("KIỂM TRA CONFIG")
@@ -437,8 +572,48 @@ def verify_config():
     
     return True
 
+def parse_rasa_progress(line: str):
+    """Parse Rasa training progress line"""
+    # Pattern: Epochs: 10% 60/600 [02:46<27:40:43, 166.35s/it, t_loss=32.3, m_acc=0.228, i_acc=0.186, e_f1=0.0868]
+    pattern = r'Epochs:\s*(\d+)%\s*(\d+)/(\d+)\s*\[([\d:]+)<([\d:]+),\s*([\d.]+)s/it(?:,\s*t_loss=([\d.]+))?(?:,\s*m_acc=([\d.]+))?(?:,\s*i_acc=([\d.]+))?(?:,\s*e_f1=([\d.]+))?\]'
+    match = re.search(pattern, line)
+    
+    if match:
+        return {
+            'percent': int(match.group(1)),
+            'current': int(match.group(2)),
+            'total': int(match.group(3)),
+            'elapsed': match.group(4),
+            'remaining': match.group(5),
+            'time_per_epoch': float(match.group(6)),
+            't_loss': float(match.group(7)) if match.group(7) else None,
+            'm_acc': float(match.group(8)) if match.group(8) else None,
+            'i_acc': float(match.group(9)) if match.group(9) else None,
+            'e_f1': float(match.group(10)) if match.group(10) else None,
+        }
+    return None
+
+def format_time(seconds: float) -> str:
+    """Format seconds to human readable time"""
+    if seconds < 60:
+        return f"{seconds:.1f}s"
+    elif seconds < 3600:
+        minutes = int(seconds // 60)
+        secs = int(seconds % 60)
+        return f"{minutes}m {secs}s"
+    else:
+        hours = int(seconds // 3600)
+        minutes = int((seconds % 3600) // 60)
+        return f"{hours}h {minutes}m"
+
+def print_progress_bar(percent: int, width: int = 40):
+    """Print progress bar"""
+    filled = int(width * percent / 100)
+    bar = '█' * filled + '░' * (width - filled)
+    return f"[{bar}] {percent}%"
+
 def train_nlu(epochs: Optional[int] = None):
-    """Train NLU model"""
+    """Train NLU model with real-time progress display"""
     print_header("BẮT ĐẦU TRAIN NLU MODEL")
     
     # Ensure we're in project root
@@ -448,9 +623,12 @@ def train_nlu(epochs: Optional[int] = None):
         print_info(f"Đã chuyển vào project root: {Path.cwd()}")
     
     # Check GPU
-    has_gpu = check_gpu()
-    if has_gpu:
-        print_success("GPU đã sẵn sàng - Training sẽ nhanh hơn")
+    gpu_info = get_gpu_info()
+    
+    if gpu_info['available']:
+        gpu_name = gpu_info['name']
+        gpu_memory_gb = gpu_info['memory_gb']
+        print_success(f"GPU đã sẵn sàng: {gpu_name} ({gpu_memory_gb:.1f} GB)")
     else:
         print_warning("Không có GPU - Training sẽ chậm hơn (có thể mất 1-2 giờ)")
     
@@ -471,32 +649,170 @@ def train_nlu(epochs: Optional[int] = None):
         else:
             print_success(f"  ✓ {file_path}")
     
-    print_info("Bắt đầu training...")
-    print_info("Quá trình này có thể mất 30 phút - 2 giờ tùy vào cấu hình")
+    # Show expected training time based on GPU
+    if gpu_info['available']:
+        if gpu_info['memory_gb'] >= 14.5:
+            print_info("⚡ Training với GPU lớn (T4/V100/A100) - Ước tính: 15-30 phút")
+        elif gpu_info['memory_gb'] >= 8:
+            print_info("⚡ Training với GPU trung bình - Ước tính: 30-60 phút")
+        else:
+            print_info("⚡ Training với GPU nhỏ - Ước tính: 45-90 phút")
+    else:
+        print_info("⏳ Training với CPU - Ước tính: 1-2 giờ")
+    
+    print()
     
     start_time = time.time()
+    last_update_time = start_time
+    last_epoch = 0
+    total_epochs = None
+    progress_data = None
     
     try:
-        # Train NLU
+        # Train NLU with real-time output
         cmd = [sys.executable, "-m", "rasa", "train", "nlu"]
         if epochs:
-            # Note: epochs is set in config.yml, but we can override if needed
             print_warning("Epochs được cấu hình trong config.yml")
         
-        result = subprocess.run(cmd, check=True)
+        # Start process with real-time output
+        process = subprocess.Popen(
+            cmd,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            universal_newlines=True,
+            bufsize=1
+        )
+        
+        print(f"{Colors.OKCYAN}{'='*80}{Colors.ENDC}")
+        print(f"{Colors.BOLD}{Colors.HEADER}📊 TIẾN ĐỘ TRAINING{Colors.ENDC}")
+        print(f"{Colors.OKCYAN}{'='*80}{Colors.ENDC}\n")
+        
+        # Read output line by line
+        for line in process.stdout:
+            line = line.rstrip()
+            
+            # Parse progress line
+            progress = parse_rasa_progress(line)
+            if progress:
+                progress_data = progress
+                total_epochs = progress['total']
+                current_epoch = progress['current']
+                
+                # Calculate speed
+                current_time = time.time()
+                if current_epoch > last_epoch:
+                    time_diff = current_time - last_update_time
+                    epochs_diff = current_epoch - last_epoch
+                    if time_diff > 0:
+                        epochs_per_sec = epochs_diff / time_diff
+                        time_per_epoch = time_diff / epochs_diff
+                    else:
+                        epochs_per_sec = 0
+                        time_per_epoch = 0
+                    
+                    last_update_time = current_time
+                    last_epoch = current_epoch
+                else:
+                    epochs_per_sec = 0
+                    time_per_epoch = progress.get('time_per_epoch', 0)
+                
+                # Calculate ETA
+                remaining_epochs = total_epochs - current_epoch
+                if epochs_per_sec > 0:
+                    eta_seconds = remaining_epochs / epochs_per_sec
+                elif time_per_epoch > 0:
+                    eta_seconds = remaining_epochs * time_per_epoch
+                else:
+                    eta_seconds = 0
+                
+                # Calculate elapsed time
+                elapsed_seconds = current_time - start_time
+                
+                # Print progress block (simple scrolling output for Colab compatibility)
+                print(f"\n{Colors.OKCYAN}{'─'*80}{Colors.ENDC}")
+                print(f"{Colors.BOLD}Epoch: {Colors.OKGREEN}{current_epoch}/{total_epochs}{Colors.ENDC} {Colors.BOLD}({progress['percent']}%){Colors.ENDC}")
+                print(f"{Colors.OKCYAN}{print_progress_bar(progress['percent'])}{Colors.ENDC}")
+                
+                # Metrics
+                metrics_line = []
+                if progress['t_loss'] is not None:
+                    metrics_line.append(f"{Colors.BOLD}Loss:{Colors.ENDC} {Colors.WARNING}{progress['t_loss']:.4f}{Colors.ENDC}")
+                if progress['i_acc'] is not None:
+                    metrics_line.append(f"{Colors.BOLD}Intent Acc:{Colors.ENDC} {Colors.OKGREEN}{progress['i_acc']:.4f}{Colors.ENDC}")
+                if progress['e_f1'] is not None:
+                    metrics_line.append(f"{Colors.BOLD}Entity F1:{Colors.ENDC} {Colors.OKGREEN}{progress['e_f1']:.4f}{Colors.ENDC}")
+                if progress['m_acc'] is not None:
+                    metrics_line.append(f"{Colors.BOLD}Memory Acc:{Colors.ENDC} {Colors.OKGREEN}{progress['m_acc']:.4f}{Colors.ENDC}")
+                
+                if metrics_line:
+                    print(f"  {' | '.join(metrics_line)}")
+                
+                # Speed and time info
+                speed_line = []
+                if epochs_per_sec > 0:
+                    speed_line.append(f"{Colors.BOLD}Tốc độ:{Colors.ENDC} {Colors.OKCYAN}{epochs_per_sec:.3f} epochs/s{Colors.ENDC}")
+                if time_per_epoch > 0:
+                    speed_line.append(f"{Colors.BOLD}Thời gian/epoch:{Colors.ENDC} {Colors.OKCYAN}{format_time(time_per_epoch)}{Colors.ENDC}")
+                speed_line.append(f"{Colors.BOLD}Đã trôi qua:{Colors.ENDC} {Colors.OKCYAN}{format_time(elapsed_seconds)}{Colors.ENDC}")
+                if eta_seconds > 0:
+                    speed_line.append(f"{Colors.BOLD}ETA:{Colors.ENDC} {Colors.WARNING}{format_time(eta_seconds)}{Colors.ENDC}")
+                
+                if speed_line:
+                    print(f"  {' | '.join(speed_line)}")
+                print(f"{Colors.OKCYAN}{'─'*80}{Colors.ENDC}", flush=True)
+            else:
+                # Print other important lines (warnings, errors, etc.)
+                if any(keyword in line.lower() for keyword in ['warning', 'error', 'exception', 'traceback']):
+                    print(f"\n{Colors.WARNING}{line}{Colors.ENDC}")
+                elif any(keyword in line.lower() for keyword in ['success', 'complete', 'finished', 'done']):
+                    print(f"\n{Colors.OKGREEN}{line}{Colors.ENDC}")
+                elif line.strip() and not line.startswith('Epochs:'):
+                    # Print other non-empty lines (but not progress lines)
+                    if 'Processing' in line or 'Training' in line or 'Validating' in line:
+                        print(f"\n{Colors.OKCYAN}{line}{Colors.ENDC}")
+        
+        # Wait for process to complete
+        return_code = process.wait()
+        
+        print(f"\n{Colors.OKCYAN}{'='*80}{Colors.ENDC}\n")
+        
+        if return_code != 0:
+            print_error(f"Training thất bại với exit code: {return_code}")
+            return False
         
         elapsed_time = time.time() - start_time
         hours = int(elapsed_time // 3600)
         minutes = int((elapsed_time % 3600) // 60)
+        seconds = int(elapsed_time % 60)
         
-        print_success(f"Training hoàn tất! Thời gian: {hours}h {minutes}m")
+        print_success(f"Training hoàn tất! Thời gian: {hours}h {minutes}m {seconds}s")
+        
+        # Print final metrics if available
+        if progress_data:
+            print(f"\n{Colors.BOLD}📊 Kết quả cuối cùng:{Colors.ENDC}")
+            if progress_data['t_loss'] is not None:
+                print(f"  {Colors.BOLD}Training Loss:{Colors.ENDC} {progress_data['t_loss']:.4f}")
+            if progress_data['i_acc'] is not None:
+                print(f"  {Colors.BOLD}Intent Accuracy:{Colors.ENDC} {progress_data['i_acc']:.4f}")
+            if progress_data['e_f1'] is not None:
+                print(f"  {Colors.BOLD}Entity F1 Score:{Colors.ENDC} {progress_data['e_f1']:.4f}")
+            if progress_data['m_acc'] is not None:
+                print(f"  {Colors.BOLD}Memory Accuracy:{Colors.ENDC} {progress_data['m_acc']:.4f}")
+        
         return True
         
     except subprocess.CalledProcessError as e:
         print_error(f"Lỗi khi train: {e}")
         return False
     except KeyboardInterrupt:
-        print_warning("Training bị dừng bởi người dùng")
+        print_warning("\nTraining bị dừng bởi người dùng")
+        if 'process' in locals():
+            process.terminate()
+        return False
+    except Exception as e:
+        print_error(f"Lỗi không mong đợi: {e}")
+        import traceback
+        traceback.print_exc()
         return False
 
 def get_latest_model():
@@ -605,6 +921,13 @@ def main():
     # Step 6: Verify config
     if not verify_config():
         print_warning("Config có thể chưa đúng - vui lòng kiểm tra")
+    
+    # Step 6.5: Optimize config for GPU (if available)
+    config_file = Path("config.yml")
+    if config_file.exists():
+        gpu_info = get_gpu_info()
+        if gpu_info['available']:
+            optimize_config_for_gpu(config_file, gpu_info)
     
     # Step 7: Train NLU
     if not train_nlu():
