@@ -53,9 +53,9 @@ def print_info(text: str):
 def is_colab() -> bool:
     """Check if running on Google Colab"""
     try:
-        import google.colab
-        return True
-    except ImportError:
+        import importlib.util
+        return importlib.util.find_spec('google.colab') is not None
+    except (ImportError, AttributeError):
         return False
 
 def check_gpu() -> bool:
@@ -168,121 +168,366 @@ def install_dependencies():
         
         # Install system dependencies
         print_info("Cài đặt system dependencies...")
-        subprocess.run(["apt-get", "install", "-qq", "-y", "git"], check=True)
+        subprocess.run(["apt-get", "update", "-qq"], check=False)
+        subprocess.run(["apt-get", "install", "-qq", "-y", "git", "software-properties-common"], check=False)
         
         # Upgrade pip
         print_info("Upgrade pip...")
-        subprocess.run([sys.executable, "-m", "pip", "install", "--upgrade", "pip", "setuptools", "wheel"], check=True)
+        subprocess.run([sys.executable, "-m", "pip", "install", "--upgrade", "pip", "setuptools", "wheel"], check=False)
         
         # Check if we need to install Python 3.10
         if not python_ok:
             print_warning("Cần Python 3.10 để chạy Rasa 3.6.20")
-            print_info("Đang kiểm tra xem có thể cài đặt Python 3.10 không...")
-            # Note: Colab doesn't easily allow Python version changes
-            # We'll need to work around this
+            print_info("Đang cài đặt Python 3.10 trên Colab...")
+            
+            # Install Python 3.10 (method from colab_setup_train.py - đã test thành công)
+            try:
+                # Install Python 3.10 from apt
+                print_info("Đang cài đặt Python 3.10 và các package cần thiết...")
+                subprocess.run([
+                    "apt-get", "install", "-y", "-qq",
+                    "python3.10", "python3.10-venv", "python3.10-dev"
+                ], check=False)
+                
+                # Create virtual environment with Python 3.10
+                print_info("Đang tạo virtual environment với Python 3.10...")
+                venv_path = Path("venv_py310")
+                
+                # Remove old venv if exists
+                if venv_path.exists():
+                    shutil.rmtree(venv_path)
+                
+                # Create new venv
+                result = subprocess.run([
+                    "python3.10", "-m", "venv", str(venv_path)
+                ], check=False, capture_output=True, text=True)
+                
+                if result.returncode == 0:
+                    # Get Python path from venv
+                    python310_path = venv_path / "bin" / "python"
+                    
+                    if python310_path.exists():
+                        print_success(f"Đã tạo virtual environment với Python 3.10 tại: {python310_path}")
+                        sys.executable = str(python310_path)
+                        # Update PATH to include venv
+                        venv_bin = str(venv_path / "bin")
+                        os.environ["PATH"] = venv_bin + ":" + os.environ.get("PATH", "")
+                        python_ok = True
+                    else:
+                        raise Exception("Không tìm thấy Python trong venv")
+                else:
+                    raise Exception(f"Không thể tạo venv: {result.stderr}")
+                    
+            except Exception as e:
+                print_warning(f"Không thể cài Python 3.10: {e}")
+                print_info("Sẽ sử dụng Python 3.12 với Rasa version mới hơn...")
+                print_info("💡 Lưu ý: Một số tính năng có thể không hoạt động với Python 3.12")
     
-    # Install Python packages
-    # Prefer requirements-colab.txt for Colab
-    if is_colab():
-        # For Python 3.12, we might need a different approach
-        if not python_ok:
+    # Find requirements file
+    requirements_file = None
+    possible_locations = [
+        Path("requirements-colab.txt"),
+        Path("requirements.txt"),
+        Path("../requirements-colab.txt"),
+        Path("../requirements.txt"),
+        Path("ciesta-assistant/requirements-colab.txt"),
+        Path("ciesta-assistant/requirements.txt"),
+    ]
+    
+    # Try to find requirements file
+    original_requirements_file = None
+    for req_path in possible_locations:
+        if req_path.exists():
+            original_requirements_file = req_path.resolve()
+            print_info(f"Tìm thấy {req_path.name} tại: {original_requirements_file}")
+            break
+    
+    # Fix requirements file for compatibility (for Python 3.10 with Rasa 3.6.20)
+    if python_ok and original_requirements_file:
+        # Rasa 3.6.20 requires regex<2022.11, but requirements-colab.txt might have newer version
+        # Create a fixed requirements file
+        print_info("Đang kiểm tra và sửa conflicts trong requirements file...")
+        temp_requirements = Path("requirements-colab-fixed.txt")
+        try:
+            # Read original requirements
+            with open(original_requirements_file, 'r') as f:
+                original_req = f.read()
+            
+            updated_req = original_req
+            
+            # Fix regex version conflict: Rasa 3.6.20 requires regex<2022.11
+            # Replace any regex version >= 2022.11 with compatible version
+            regex_patterns = [
+                r'regex\s*==\s*(\d{4})\.(\d+)\.(\d+)',  # regex==2024.5.15
+                r'regex\s*==\s*(\d{4})\.(\d+)',  # regex==2024.5
+                r'regex\s*>=\s*(\d{4})',  # regex>=2024
+            ]
+            
+            regex_found = False
+            for pattern in regex_patterns:
+                regex_match = re.search(pattern, updated_req)
+                if regex_match:
+                    regex_found = True
+                    # Extract year and month if available
+                    year = int(regex_match.group(1))
+                    month = int(regex_match.group(2)) if len(regex_match.groups()) >= 2 else 0
+                    
+                    # Check if version is incompatible (year > 2022 or year == 2022 and month >= 11)
+                    if year > 2022 or (year == 2022 and month >= 11):
+                        # Replace with last compatible version: regex==2022.9.13
+                        updated_req = re.sub(
+                            r'regex\s*==\s*[\d.]+',
+                            'regex==2022.9.13  # Fixed: Rasa 3.6.20 requires regex<2022.11',
+                            updated_req
+                        )
+                        # Also replace >= patterns
+                        updated_req = re.sub(
+                            r'regex\s*>=\s*[\d.]+',
+                            'regex==2022.9.13  # Fixed: Rasa 3.6.20 requires regex<2022.11',
+                            updated_req
+                        )
+                        print_success("   ✅ Đã sửa regex version để tương thích với Rasa 3.6.20")
+                        print_info("      regex==2024.5.15 -> regex==2022.9.13")
+                        break
+            
+            # If no regex found, add it with compatible version
+            if not regex_found and 'rasa' in updated_req.lower():
+                # Add regex with compatible version
+                updated_req += "\n# Text preprocessing for Vietnamese - Fixed for Rasa 3.6.20 compatibility\nregex==2022.9.13\n"
+                print_info("   ✅ Đã thêm regex version tương thích")
+            
+            # Also ensure numpy version is compatible
+            if 'numpy' in updated_req:
+                # Rasa 3.6.20 works with numpy 1.23.5 or 1.24.x (but not 2.x)
+                updated_req = re.sub(
+                    r'numpy\s*==\s*2\.\d+',
+                    'numpy==1.26.4  # Fixed: Rasa 3.6.20 requires numpy<2.0',
+                    updated_req
+                )
+            
+            # Write fixed requirements file
+            with open(temp_requirements, 'w') as f:
+                f.write(updated_req)
+            
+            requirements_file = temp_requirements
+            print_info(f"✅ Đã tạo requirements file đã sửa: {temp_requirements}")
+            print_info("💡 File này đã được điều chỉnh để tương thích với Rasa 3.6.20")
+            
+        except Exception as e:
+            print_warning(f"Không thể tạo requirements file đã sửa: {e}")
+            print_info("Sẽ sử dụng requirements file gốc...")
+            requirements_file = original_requirements_file
+    elif not python_ok and is_colab():
+        # Python 3.12 - create requirements with newer Rasa version
+        if original_requirements_file:
             print_warning("Python 3.12 không tương thích với Rasa 3.6.20")
-            print_info("Đang thử cài đặt Rasa version mới hơn hoặc dùng workaround...")
-            # Try to install Rasa without version constraint first
-            requirements_file = None
+            print_info("Tạo requirements file tạm thời với Rasa version mới hơn (>=3.7.0)...")
+            
+            temp_requirements = Path("requirements-colab-py312.txt")
+            try:
+                with open(original_requirements_file, 'r') as f:
+                    original_req = f.read()
+                
+                # Replace Rasa version with newer one that supports Python 3.12
+                updated_req = re.sub(
+                    r'rasa==[\d.]+',
+                    'rasa>=3.7.0',
+                    original_req
+                )
+                updated_req = re.sub(
+                    r'rasa-sdk==[\d.]+',
+                    'rasa-sdk>=3.7.0',
+                    updated_req
+                )
+                
+                # Update numpy to a version compatible with Python 3.12
+                updated_req = re.sub(
+                    r'numpy\s*==\s*1\.23\.5',
+                    'numpy>=1.24.0',
+                    updated_req
+                )
+                
+                with open(temp_requirements, 'w') as f:
+                    f.write(updated_req)
+                
+                requirements_file = temp_requirements
+                print_info(f"✅ Đã tạo requirements file tạm thời: {temp_requirements}")
+                print_info("💡 File này sử dụng Rasa >=3.7.0 (hỗ trợ Python 3.12)")
+            except Exception as e:
+                print_error(f"Không thể tạo requirements file tạm thời: {e}")
+                print_warning("Sẽ sử dụng requirements file gốc - có thể gặp lỗi với Python 3.12")
+                requirements_file = original_requirements_file
         else:
-            requirements_file = Path("requirements-colab.txt")
-            if not requirements_file.exists():
-                print_warning("Không tìm thấy requirements-colab.txt, dùng requirements.txt")
-                requirements_file = Path("requirements.txt")
+            print_error("Không tìm thấy requirements.txt và Python 3.12 không tương thích")
+            print_info("Vui lòng cài Python 3.10 hoặc tạo requirements.txt")
+            return False
     else:
-        requirements_file = Path("requirements.txt")
+        # Python is OK or not Colab, use original requirements file
+        requirements_file = original_requirements_file
+    
+    if not requirements_file:
+        print_error("Không tìm thấy requirements.txt hoặc requirements-colab.txt")
+        print_info("Đang tìm trong các thư mục:")
+        for loc in possible_locations:
+            exists = loc.exists()
+            print_info(f"  - {loc} ({'tồn tại' if exists else 'không tồn tại'})")
+        return False
     
     if not requirements_file.exists():
-        # Try to find requirements file
-        possible_locations = [
-            Path("requirements-colab.txt"),
-            Path("requirements.txt"),
-            Path("../requirements-colab.txt"),
-            Path("../requirements.txt"),
-            Path("ciesta-assistant/requirements-colab.txt"),
-            Path("ciesta-assistant/requirements.txt"),
-        ]
-        
-        found = False
-        for req_path in possible_locations:
-            if req_path.exists():
-                requirements_file = req_path.resolve()
-                print_info(f"Tìm thấy {req_path.name} tại: {requirements_file}")
-                found = True
-                break
-        
-        if not found:
-            print_error("Không tìm thấy requirements.txt hoặc requirements-colab.txt")
-            print_info("Đang tìm trong các thư mục:")
-            for loc in possible_locations:
-                print_info(f"  - {loc} ({'tồn tại' if loc.exists() else 'không tồn tại'})")
-            return False
+        print_error(f"Requirements file không tồn tại: {requirements_file}")
+        return False
     
-    # Install packages
+    # Install packages (method from colab_setup_train.py)
     print_info(f"Cài đặt từ: {requirements_file}")
-    print_info("⏳ Quá trình này có thể mất vài phút...")
+    print_info(f"   Đường dẫn đầy đủ: {requirements_file.resolve()}")
+    print_info("⏳ Quá trình này có thể mất 10-20 phút, KHÔNG interrupt!")
+    print_warning("⚠️ QUAN TRỌNG: Quá trình này có thể mất 10-20 phút, KHÔNG interrupt!")
+    print_info("   Để cài đặt chạy đến khi hoàn tất...")
+    
+    # Verify requirements file exists and is readable
+    if not requirements_file.exists():
+        print_error(f"Requirements file không tồn tại: {requirements_file}")
+        return False
+    
+    # Check file size
+    file_size = requirements_file.stat().st_size
+    if file_size == 0:
+        print_error(f"Requirements file rỗng: {requirements_file}")
+        return False
+    
+    print_info(f"   Kích thước file: {file_size} bytes")
+    
+    # Upgrade pip first
+    print_info("Đang upgrade pip...")
+    pip_upgrade_result = subprocess.run(
+        [sys.executable, "-m", "pip", "install", "--upgrade", "pip", "setuptools", "wheel"],
+        check=False,
+        capture_output=True,
+        text=True
+    )
+    
+    if pip_upgrade_result.returncode != 0:
+        print_warning("Có lỗi khi upgrade pip, nhưng sẽ tiếp tục...")
+        if pip_upgrade_result.stderr:
+            print_warning(f"  {pip_upgrade_result.stderr[:200]}")
+    else:
+        print_success("Đã upgrade pip thành công")
     
     try:
-        # Run pip install with output visible for debugging
-        result = subprocess.run(
+        # Run pip install with real-time output (method from colab_setup_train.py)
+        print_info(f"Đang cài đặt packages từ {requirements_file.name}...")
+        print_info("   (Quá trình này có thể mất 10-20 phút, vui lòng đợi...)")
+        
+        # Run pip install with output captured for error analysis
+        pip_process = subprocess.run(
             [sys.executable, "-m", "pip", "install", "-r", str(requirements_file)],
+            capture_output=True,  # Capture output để phân tích lỗi
+            text=True,
+            check=False,
+            timeout=1800  # 30 phút timeout
+        )
+        
+        # Print output
+        if pip_process.stdout:
+            print(pip_process.stdout)
+        if pip_process.stderr:
+            print(pip_process.stderr)
+        
+        if pip_process.returncode != 0:
+            print_error("Lỗi khi cài đặt dependencies!")
+            print_info("Chi tiết lỗi:")
+            if pip_process.stderr:
+                print_error(pip_process.stderr)
+            if pip_process.stdout:
+                # Tìm dòng lỗi trong output
+                for line in pip_process.stdout.split('\n'):
+                    if 'error' in line.lower() or 'failed' in line.lower() or 'ERROR' in line:
+                        print_error(f"  {line}")
+            
+            print_warning("Vui lòng chạy lại script từ đầu")
+            print_warning(f"Hoặc cài đặt thủ công: {sys.executable} -m pip install -r {requirements_file}")
+            
+            # Thử cài đặt từng package để tìm package lỗi
+            print_info("Đang thử cài đặt từng package để tìm lỗi...")
+            try:
+                with open(requirements_file, 'r') as f:
+                    lines = f.readlines()
+                
+                failed_packages = []
+                for line in lines:
+                    line = line.strip()
+                    if line and not line.startswith('#'):
+                        package = line.split('==')[0].split('>=')[0].split('<=')[0].strip()
+                        if package:
+                            print_info(f"Đang thử cài: {package}...")
+                            result = subprocess.run(
+                                [sys.executable, "-m", "pip", "install", line],
+                                capture_output=True,
+                                text=True,
+                                timeout=300
+                            )
+                            if result.returncode == 0:
+                                print_success(f"  ✓ {package}")
+                            else:
+                                print_error(f"  ✗ {package} - Lỗi")
+                                if result.stderr:
+                                    print_error(f"    {result.stderr[:200]}")
+                                failed_packages.append(package)
+            except Exception as e:
+                print_warning(f"Không thể phân tích lỗi chi tiết: {e}")
+            
+            return False
+        
+        print_success("Đã cài đặt dependencies thành công!")
+        
+        # Kiểm tra các packages quan trọng (method from colab_setup_train.py)
+        print_info("Kiểm tra packages quan trọng...")
+        check_packages_script = """
+import sys
+import os
+venv_path = os.path.join(os.getcwd(), 'venv_py310', 'lib', 'python3.10', 'site-packages')
+if os.path.exists(venv_path):
+    sys.path.insert(0, venv_path)
+packages = ['rasa', 'torch', 'transformers']
+missing = []
+for pkg in packages:
+    try:
+        __import__(pkg)
+        print(f"✅ {pkg}")
+    except ImportError:
+        print(f"❌ {pkg} - CHƯA CÀI ĐẶT")
+        missing.append(pkg)
+
+if missing:
+    sys.exit(1)
+"""
+        check_file = Path("/tmp/check_packages.py")
+        with open(check_file, "w") as f:
+            f.write(check_packages_script)
+        
+        result = subprocess.run(
+            [sys.executable, str(check_file)],
             capture_output=True,
             text=True,
-            check=False  # Don't raise exception immediately
+            cwd=str(Path.cwd())
         )
         
         if result.returncode != 0:
-            print_error("Lỗi khi cài đặt dependencies")
-            print_info("Output của pip install:")
             print(result.stdout)
-            if result.stderr:
-                print_error("Lỗi:")
-                print(result.stderr)
-            
-            # Try to identify the problematic package
-            print_warning("Đang thử cài đặt từng package để tìm lỗi...")
-            
-            # Read requirements file
-            with open(requirements_file, 'r') as f:
-                lines = f.readlines()
-            
-            failed_packages = []
-            for line in lines:
-                line = line.strip()
-                if line and not line.startswith('#'):
-                    package = line.split('==')[0].split('>=')[0].split('<=')[0].strip()
-                    if package:
-                        print_info(f"Đang cài đặt: {package}...")
-                        try:
-                            subprocess.run(
-                                [sys.executable, "-m", "pip", "install", line],
-                                check=True,
-                                capture_output=True
-                            )
-                            print_success(f"  ✓ {package}")
-                        except subprocess.CalledProcessError:
-                            print_error(f"  ✗ {package} - Lỗi")
-                            failed_packages.append(package)
-                            # Continue with other packages
-            
-            if failed_packages:
-                print_warning(f"Các package sau không thể cài đặt: {', '.join(failed_packages)}")
-                print_warning("Một số package có thể không tương thích với Python 3.12")
-                print_info("Tiếp tục với các package đã cài đặt thành công...")
-                # Continue anyway - some packages might not be critical for training
-                # return False
-            
-        print_success("Đã cài đặt tất cả dependencies")
+            print_error("Một số packages quan trọng chưa được cài đặt!")
+            print_warning("⚠️ Vui lòng chạy lại script từ đầu và đợi cài đặt hoàn tất")
+            print_warning("⚠️ KHÔNG interrupt quá trình cài đặt (có thể mất 10-20 phút)")
+            return False
+        else:
+            print(result.stdout)
+            print_success("Tất cả packages quan trọng đã được cài đặt")
+        
         return True
         
     except Exception as e:
         print_error(f"Lỗi không mong đợi khi cài đặt: {e}")
+        import traceback
+        traceback.print_exc()
         return False
 
 def setup_project_structure():
@@ -412,8 +657,26 @@ def create_symlink():
         return True
 
 def get_gpu_info():
-    """Get GPU information including name and memory"""
+    """Get GPU information including name and memory (method from colab_setup_train.py)"""
+    # First check with nvidia-smi
+    nvidia_result = None
     try:
+        nvidia_result = subprocess.run(['nvidia-smi'], capture_output=True, text=True)
+        if nvidia_result.returncode != 0:
+            return {'available': False, 'name': None, 'memory_gb': 0}
+    except Exception:
+        return {'available': False, 'name': None, 'memory_gb': 0}
+    
+    # Then check with PyTorch (from venv if available)
+    try:
+        # Try to import torch from venv
+        venv_path = Path("venv_py310")
+        if venv_path.exists():
+            venv_site_packages = venv_path / "lib" / "python3.10" / "site-packages"
+            if venv_site_packages.exists():
+                import sys
+                sys.path.insert(0, str(venv_site_packages))
+        
         import torch
         if torch.cuda.is_available():
             gpu_name = torch.cuda.get_device_name(0)
@@ -425,22 +688,78 @@ def get_gpu_info():
                 'available': True
             }
     except Exception:
+        # If torch not available, still return True if nvidia-smi works
+        if nvidia_result and nvidia_result.returncode == 0:
+            return {'available': True, 'name': 'GPU (detected by nvidia-smi)', 'memory_gb': 0}
         pass
     
     return {'available': False, 'name': None, 'memory_gb': 0}
 
 def optimize_config_for_gpu(config_file: Path, gpu_info: dict):
-    """Optimize config.yml for maximum speed on GPU while avoiding OOM"""
-    print_header("TỐI ƯU HÓA CONFIG CHO GPU")
+    """Optimize config.yml for maximum speed on GPU while avoiding OOM (method from colab_setup_train.py)"""
+    # Get GPU memory from PyTorch (method from colab_setup_train.py)
+    gpu_memory_gb = None
+    gpu_name = None
     
-    if not gpu_info['available']:
+    try:
+        # Try to import torch from venv
+        venv_path = Path("venv_py310")
+        if venv_path.exists():
+            venv_site_packages = venv_path / "lib" / "python3.10" / "site-packages"
+            if venv_site_packages.exists():
+                import sys
+                sys.path.insert(0, str(venv_site_packages))
+        
+        check_gpu_memory_script = """
+import sys
+import os
+venv_path = os.path.join(os.getcwd(), 'venv_py310', 'lib', 'python3.10', 'site-packages')
+if os.path.exists(venv_path):
+    sys.path.insert(0, venv_path)
+
+try:
+    import torch
+    if torch.cuda.is_available():
+        gpu_memory = torch.cuda.get_device_properties(0).total_memory / (1024**3)
+        gpu_name = torch.cuda.get_device_name(0)
+        print(f"{gpu_memory:.1f}|{gpu_name}")
+    else:
+        print("0|No GPU")
+except ImportError as e:
+    print(f"0|PyTorch not installed: {e}")
+except Exception as e:
+    print(f"0|Error: {e}")
+"""
+        check_file = Path("/tmp/check_gpu_memory.py")
+        with open(check_file, "w") as f:
+            f.write(check_gpu_memory_script)
+        
+        result = subprocess.run(
+            [sys.executable, str(check_file)],
+            capture_output=True,
+            text=True,
+            cwd=str(Path.cwd()),
+            timeout=30
+        )
+        
+        if result.returncode == 0 and result.stdout.strip():
+            output = result.stdout.strip()
+            if "|" in output:
+                parts = output.split("|")
+                gpu_memory_gb = float(parts[0])
+                gpu_name = parts[1] if len(parts) > 1 else "Unknown"
+    except Exception as e:
+        print_warning(f"Không thể kiểm tra GPU memory: {e}")
+    
+    if not gpu_info['available'] or (gpu_memory_gb and gpu_memory_gb == 0):
         print_warning("Không có GPU - Giữ cấu hình mặc định")
         return False
     
-    gpu_name = gpu_info['name']
-    gpu_memory_gb = gpu_info['memory_gb']
-    
-    print_info(f"GPU: {gpu_name} ({gpu_memory_gb:.1f} GB)")
+    if gpu_memory_gb:
+        print_info(f"GPU: {gpu_name} ({gpu_memory_gb:.1f} GB)")
+    else:
+        print_info(f"GPU: {gpu_info.get('name', 'Unknown')}")
+        gpu_memory_gb = 0  # Fallback
     
     # Read config
     with open(config_file, "r", encoding="utf-8") as f:
@@ -449,60 +768,56 @@ def optimize_config_for_gpu(config_file: Path, gpu_info: dict):
     original_content = config_content
     optimized = False
     
-    # Tối ưu cho T4 (14.5-16GB) - tận dụng tối đa nhưng tránh OOM
-    if gpu_memory_gb >= 14.5:  # T4, V100, A100
-        print_success(f"🚀 GPU lớn phát hiện ({gpu_name}) - Tối ưu hóa cho tốc độ tối đa")
-        print_info(f"   Memory: {gpu_memory_gb:.1f} GB - Batch size sẽ được tăng tối đa (an toàn)")
+    # Tối ưu batch size dựa trên GPU memory (method from colab_setup_train.py)
+    # Lưu ý: T4 thường có ~15GB nhưng có thể hiển thị 14.7-14.9 GB, nên coi >=14.5 GB là GPU lớn
+    if gpu_memory_gb >= 14.5:  # T4 (~15GB), V100, A100
+        print_success(f"🚀 GPU lớn phát hiện ({gpu_name}) - Tăng batch size để tận dụng GPU")
+        print_info(f"   💡 GPU Memory: {gpu_memory_gb:.1f} GB - Có thể tăng batch size cao hơn")
         
-        # PhoBERTFeaturizer: T4 có thể handle 128-192 batch size an toàn
-        # 256 có thể gây OOM với một số trường hợp, nên dùng 192 để an toàn hơn
-        phobert_batch = 192
+        # Tối ưu PhoBERTFeaturizer batch_size (sau pooling_strategy)
+        # Ultra optimization: Với T4 15GB, tăng lên 256 để sử dụng 80%+ GPU memory
+        phobert_batch = 256
         config_content = re.sub(
             r'(pooling_strategy:\s*"mean_max"\s*\n\s*batch_size:)\s*\d+(\s*#.*)?',
-            rf'\1 {phobert_batch}  # Tối ưu cho {gpu_name} ({gpu_memory_gb:.1f}GB) - tốc độ tối đa',
+            rf'\1 {phobert_batch}  # Ultra optimization cho GPU lớn (T4/V100/A100) - tận dụng tối đa GPU memory',
             config_content
         )
         print_success(f"   ✅ PhoBERTFeaturizer batch_size: {phobert_batch}")
-        optimized = True
         
-        # DIETClassifier: [128, 256] là an toàn cho T4, [256, 512] có thể gây OOM
-        # Dùng [128, 256] để đảm bảo không OOM nhưng vẫn nhanh
-        diet_batch = [128, 256]
+        # Ultra optimization: DIETClassifier batch_size - tăng cao [192, 384] để training nhanh hơn 2-3x
+        # T4 15GB có thể chịu được batch size này
+        diet_batch = [192, 384]
         config_content = re.sub(
-            r'(batch_size:\s*)\[\d+,\s*\d+\](\s*#.*)?',
-            rf'\1{diet_batch}  # Tối ưu cho {gpu_name} ({gpu_memory_gb:.1f}GB) - tốc độ tối đa, tránh OOM',
+            r'(batch_size:\s*)\[16,\s*32\](\s*#.*)?',
+            rf'\1{diet_batch}  # Ultra optimization cho GPU lớn - training nhanh hơn 2-3x',
+            config_content
+        )
+        # Nếu có pattern khác từ lần tối ưu trước, cũng cập nhật
+        config_content = re.sub(
+            r'(batch_size:\s*)\[64,\s*128\](\s*#.*)?',
+            rf'\1{diet_batch}  # Ultra optimization cho GPU lớn - training nhanh hơn 2-3x',
+            config_content
+        )
+        config_content = re.sub(
+            r'(batch_size:\s*)\[128,\s*256\](\s*#.*)?',
+            rf'\1{diet_batch}  # Ultra optimization cho GPU lớn - training nhanh hơn 2-3x',
             config_content
         )
         print_success(f"   ✅ DIETClassifier batch_size: {diet_batch}")
+        optimized = True
         
-        # Giảm evaluate frequency để tăng tốc (evaluate ít hơn = train nhanh hơn)
-        config_content = re.sub(
-            r'(evaluate_every_number_of_epochs:)\s*\d+',
-            r'\1 10  # Giảm frequency để tăng tốc training',
-            config_content
-        )
-        print_success("   ✅ Evaluate frequency: 10 (giảm từ 5 để tăng tốc)")
-        
-        # Giảm số examples để evaluate (ít hơn = nhanh hơn)
-        config_content = re.sub(
-            r'(evaluate_on_number_of_examples:)\s*\d+',
-            r'\1 200  # Giảm để tăng tốc evaluation',
-            config_content
-        )
-        print_success("   ✅ Evaluate examples: 200 (giảm từ 300 để tăng tốc)")
-        
-    elif gpu_memory_gb >= 8:  # P100, K80
-        print_info(f"⚡ GPU trung bình phát hiện ({gpu_name}) - Tối ưu hóa vừa phải")
+    elif gpu_memory_gb >= 8:  # P100, K80, hoặc GPU trung bình
+        print_info(f"⚡ GPU trung bình phát hiện ({gpu_name}) - Tăng batch size vừa phải")
         phobert_batch = 96
         config_content = re.sub(
             r'(pooling_strategy:\s*"mean_max"\s*\n\s*batch_size:)\s*\d+(\s*#.*)?',
-            rf'\1 {phobert_batch}  # Tối ưu cho {gpu_name} ({gpu_memory_gb:.1f}GB)',
+            rf'\1 {phobert_batch}  # Tối ưu cho GPU trung bình',
             config_content
         )
         diet_batch = [64, 128]
         config_content = re.sub(
-            r'(batch_size:\s*)\[\d+,\s*\d+\](\s*#.*)?',
-            rf'\1{diet_batch}  # Tối ưu cho {gpu_name} ({gpu_memory_gb:.1f}GB)',
+            r'(batch_size:\s*)\[16,\s*32\](\s*#.*)?',
+            rf'\1{diet_batch}  # Tối ưu cho GPU trung bình',
             config_content
         )
         print_success(f"   ✅ PhoBERTFeaturizer batch_size: {phobert_batch}")
@@ -510,40 +825,112 @@ def optimize_config_for_gpu(config_file: Path, gpu_info: dict):
         optimized = True
         
     elif gpu_memory_gb >= 4:  # GPU nhỏ
-        print_info(f"📊 GPU nhỏ phát hiện ({gpu_name}) - Tối ưu hóa nhẹ")
+        print_info(f"📊 GPU nhỏ phát hiện ({gpu_name}) - Tăng batch size nhẹ")
         phobert_batch = 48
         config_content = re.sub(
             r'(pooling_strategy:\s*"mean_max"\s*\n\s*batch_size:)\s*\d+(\s*#.*)?',
-            rf'\1 {phobert_batch}  # Tối ưu cho {gpu_name} ({gpu_memory_gb:.1f}GB)',
+            rf'\1 {phobert_batch}  # Tối ưu cho GPU nhỏ',
             config_content
         )
         diet_batch = [32, 64]
         config_content = re.sub(
-            r'(batch_size:\s*)\[\d+,\s*\d+\](\s*#.*)?',
-            rf'\1{diet_batch}  # Tối ưu cho {gpu_name} ({gpu_memory_gb:.1f}GB)',
+            r'(batch_size:\s*)\[16,\s*32\]',
+            rf'\1{diet_batch}  # Tối ưu cho GPU nhỏ',
             config_content
         )
         print_success(f"   ✅ PhoBERTFeaturizer batch_size: {phobert_batch}")
         print_success(f"   ✅ DIETClassifier batch_size: {diet_batch}")
         optimized = True
+    else:
+        print_info("   ℹ️ GPU memory nhỏ - Giữ batch size mặc định")
     
+    # Ghi lại config nếu có thay đổi
     if optimized and config_content != original_content:
-        # Backup original config
-        backup_file = config_file.with_suffix('.yml.bak')
-        if not backup_file.exists():
-            shutil.copy(config_file, backup_file)
-            print_info(f"   💾 Backup config gốc: {backup_file.name}")
-        
-        # Write optimized config
         with open(config_file, "w", encoding="utf-8") as f:
             f.write(config_content)
+        print_success("   ✅ Đã tối ưu batch size trong config.yml")
+        print_info("   💡 Batch size lớn hơn sẽ:")
+        print_info("      - Sử dụng GPU hiệu quả hơn")
+        print_info("      - Training nhanh hơn (nhiều samples/batch)")
+        print_info("      - Tận dụng GPU memory tốt hơn")
         
-        print_success("✅ Đã tối ưu hóa config cho GPU")
-        print_info("   💡 Config đã được tối ưu để tận dụng tối đa GPU memory")
-        print_info("   💡 Batch size được set để tránh OOM nhưng vẫn nhanh nhất có thể")
+        # Cũng cập nhật file gốc trong config/rasa/ để đồng bộ
+        rasa_config_path = Path.cwd() / "config" / "rasa" / "config.yml"
+        if rasa_config_path.exists():
+            with open(rasa_config_path, "w", encoding="utf-8") as f:
+                f.write(config_content)
+            print_success("   ✅ Đã cập nhật cả file gốc trong config/rasa/")
         return True
+    else:
+        print_info("   ℹ️ Config đã tối ưu hoặc không cần thay đổi")
     
     return False
+
+def ultra_optimize_for_gpu(config_file: Path = None):
+    """
+    Ultra optimize config for maximum GPU usage
+    - Disable validation during training để tăng tốc
+    - Đảm bảo batch size đã được set cao
+    """
+    print_header("ULTRA OPTIMIZATION FOR GPU")
+    
+    if config_file is None:
+        config_file = Path("config.yml")
+        if not config_file.exists():
+            config_file = Path("config/rasa/config.yml")
+    
+    if not config_file.exists():
+        print_warning("Không tìm thấy config.yml để ultra optimize")
+        return False
+    
+    print_info("🚀 Ultra optimization: Disable validation để tăng tốc training")
+    
+    with open(config_file, 'r', encoding='utf-8') as f:
+        config_content = f.read()
+    
+    original_content = config_content
+    optimized = False
+    
+    # 1. Disable validation during training (chỉ validate cuối cùng)
+    # Tìm DIETClassifier và set evaluate_every_number_of_epochs: -1
+    if re.search(r'evaluate_every_number_of_epochs:\s*\d+', config_content):
+        config_content = re.sub(
+            r'evaluate_every_number_of_epochs:\s*\d+',
+            'evaluate_every_number_of_epochs: -1  # Disable validation during training để tăng tốc',
+            config_content
+        )
+        print_success("   ✅ Disabled validation during training (evaluate_every_number_of_epochs: -1)")
+        optimized = True
+    
+    # 2. Đảm bảo evaluate_on_number_of_examples: 0 (không validate trong training)
+    if re.search(r'evaluate_on_number_of_examples:\s*\d+', config_content):
+        config_content = re.sub(
+            r'evaluate_on_number_of_examples:\s*\d+',
+            'evaluate_on_number_of_examples: 0  # Disable validation để tăng tốc',
+            config_content
+        )
+        print_success("   ✅ Disabled evaluation examples (evaluate_on_number_of_examples: 0)")
+        optimized = True
+    
+    # 3. Ghi lại config nếu có thay đổi
+    if optimized and config_content != original_content:
+        with open(config_file, "w", encoding="utf-8") as f:
+            f.write(config_content)
+        print_success("   ✅ Đã ultra optimize config.yml")
+        print_info("   💡 Validation đã được disable - Training sẽ nhanh hơn 2-3x")
+        
+        # Cũng cập nhật file gốc trong config/rasa/ để đồng bộ
+        rasa_config_path = Path.cwd() / "config" / "rasa" / "config.yml"
+        if rasa_config_path.exists() and rasa_config_path != config_file:
+            with open(rasa_config_path, "w", encoding="utf-8") as f:
+                f.write(config_content)
+            print_success("   ✅ Đã cập nhật cả file gốc trong config/rasa/")
+        return True
+    else:
+        print_info("   ℹ️ Config đã được ultra optimize hoặc không cần thay đổi")
+    
+    return False
+
 
 def verify_config():
     """Verify config.yml is correct"""
@@ -622,13 +1009,37 @@ def train_nlu(epochs: Optional[int] = None):
         os.chdir(project_root)
         print_info(f"Đã chuyển vào project root: {Path.cwd()}")
     
-    # Check GPU
+    # Check GPU (get detailed info from venv)
     gpu_info = get_gpu_info()
     
+    # Try to get more detailed GPU info from venv
+    venv_path = Path("venv_py310")
+    if venv_path.exists():
+        venv_site_packages = venv_path / "lib" / "python3.10" / "site-packages"
+        if venv_site_packages.exists():
+            try:
+                import sys
+                sys.path.insert(0, str(venv_site_packages))
+                import torch
+                if torch.cuda.is_available():
+                    gpu_name = torch.cuda.get_device_name(0)
+                    gpu_memory_bytes = torch.cuda.get_device_properties(0).total_memory
+                    gpu_memory_gb = gpu_memory_bytes / (1024**3)
+                    gpu_info = {
+                        'available': True,
+                        'name': gpu_name,
+                        'memory_gb': gpu_memory_gb
+                    }
+            except Exception:
+                pass  # Use gpu_info from get_gpu_info()
+    
     if gpu_info['available']:
-        gpu_name = gpu_info['name']
-        gpu_memory_gb = gpu_info['memory_gb']
-        print_success(f"GPU đã sẵn sàng: {gpu_name} ({gpu_memory_gb:.1f} GB)")
+        gpu_name = gpu_info.get('name', 'GPU')
+        gpu_memory_gb = gpu_info.get('memory_gb', 0)
+        if gpu_memory_gb > 0:
+            print_success(f"GPU đã sẵn sàng: {gpu_name} ({gpu_memory_gb:.1f} GB)")
+        else:
+            print_success(f"GPU đã sẵn sàng: {gpu_name}")
     else:
         print_warning("Không có GPU - Training sẽ chậm hơn (có thể mất 1-2 giờ)")
     
@@ -650,13 +1061,16 @@ def train_nlu(epochs: Optional[int] = None):
             print_success(f"  ✓ {file_path}")
     
     # Show expected training time based on GPU
+    gpu_memory_gb = gpu_info.get('memory_gb', 0)
     if gpu_info['available']:
-        if gpu_info['memory_gb'] >= 14.5:
+        if gpu_memory_gb >= 14.5:
             print_info("⚡ Training với GPU lớn (T4/V100/A100) - Ước tính: 15-30 phút")
-        elif gpu_info['memory_gb'] >= 8:
+        elif gpu_memory_gb >= 8:
             print_info("⚡ Training với GPU trung bình - Ước tính: 30-60 phút")
-        else:
+        elif gpu_memory_gb > 0:
             print_info("⚡ Training với GPU nhỏ - Ước tính: 45-90 phút")
+        else:
+            print_info("⚡ Training với GPU (memory unknown) - Ước tính: 30-60 phút")
     else:
         print_info("⏳ Training với CPU - Ước tính: 1-2 giờ")
     
@@ -668,9 +1082,54 @@ def train_nlu(epochs: Optional[int] = None):
     total_epochs = None
     progress_data = None
     
+    # Check Rasa đã được cài đặt trước khi train (method from colab_setup_train.py)
+    print_info("Kiểm tra Rasa trước khi train...")
+    check_rasa_script = """
+import sys
+import os
+venv_path = os.path.join(os.getcwd(), 'venv_py310', 'lib', 'python3.10', 'site-packages')
+if os.path.exists(venv_path):
+    sys.path.insert(0, venv_path)
+
+try:
+    import rasa
+    print(f"✅ Rasa version: {rasa.__version__}")
+    sys.exit(0)
+except ImportError as e:
+    print(f"❌ Rasa chưa được cài đặt: {e}")
+    sys.exit(1)
+"""
+    check_file = Path("/tmp/check_rasa.py")
+    with open(check_file, "w") as f:
+        f.write(check_rasa_script)
+    
+    rasa_check = subprocess.run(
+        [sys.executable, str(check_file)],
+        capture_output=True,
+        text=True,
+        cwd=str(Path.cwd())
+    )
+    
+    print(rasa_check.stdout)
+    if rasa_check.stderr:
+        print(rasa_check.stderr)
+    
+    if rasa_check.returncode != 0:
+        print_error("Rasa chưa được cài đặt!")
+        print_warning("⚠️ Vui lòng chạy lại script từ đầu và đợi cài đặt hoàn tất")
+        print_warning("⚠️ KHÔNG interrupt quá trình cài đặt dependencies (có thể mất 10-20 phút)")
+        return False
+    
+    print_success("Rasa đã sẵn sàng - Bắt đầu training...")
+    
     try:
-        # Train NLU with real-time output
-        cmd = [sys.executable, "-m", "rasa", "train", "nlu"]
+        # Train NLU with real-time output (use config.yml from root)
+        # Đảm bảo config.yml tồn tại ở root trước khi train
+        if not (Path.cwd() / "config.yml").exists():
+            print_error("config.yml không tồn tại ở root! Không thể train.")
+            return False
+        
+        cmd = [sys.executable, "-m", "rasa", "train", "nlu", "--config", "config.yml"]
         if epochs:
             print_warning("Epochs được cấu hình trong config.yml")
         
@@ -680,7 +1139,8 @@ def train_nlu(epochs: Optional[int] = None):
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
             universal_newlines=True,
-            bufsize=1
+            bufsize=1,
+            cwd=str(Path.cwd())
         )
         
         print(f"{Colors.OKCYAN}{'='*80}{Colors.ENDC}")
@@ -918,23 +1378,140 @@ def main():
         print_error("Thiết lập custom components thất bại")
         return False
     
+    # Step 5.5: Cập nhật config để dùng model online (method from colab_setup_train.py)
+    print_header("CẬP NHẬT CONFIG")
+    current_dir = Path.cwd()
+    
+    # Tìm file config (có thể ở root hoặc trong config/rasa/)
+    config_paths = [
+        current_dir / "config.yml",
+        current_dir / "config/rasa/config.yml",
+    ]
+    
+    config_file = None
+    config_path_used = None
+    
+    for path in config_paths:
+        if path.exists():
+            config_file = str(path)
+            config_path_used = path
+            print_info(f"Tìm thấy config tại: {path}")
+            break
+    
+    if not config_file:
+        print_error("Không tìm thấy config.yml")
+        return False
+    
+    # Nếu config ở trong config/rasa/, copy vào root để Rasa tìm thấy
+    root_config = current_dir / "config.yml"
+    rasa_config = current_dir / "config/rasa/config.yml"
+    
+    if config_path_used == rasa_config:
+        print_info(f"Copy config từ {rasa_config} -> {root_config}")
+        
+        # Xóa file cũ nếu tồn tại
+        root_config_str = str(root_config)
+        if os.path.lexists(root_config_str):
+            try:
+                if os.path.islink(root_config_str):
+                    os.unlink(root_config_str)
+                else:
+                    os.remove(root_config_str)
+            except Exception:
+                pass
+        
+        # Copy file
+        try:
+            shutil.copyfile(str(rasa_config), root_config_str)
+            if os.path.exists(root_config_str) and os.path.isfile(root_config_str):
+                print_success("Đã copy config.yml vào root")
+                config_file = "config.yml"
+        except Exception as e:
+            print_error(f"Không thể copy file: {e}")
+            return False
+    
+    # Copy các file config khác vào root
+    rasa_config_files = ["domain.yml", "endpoints.yml", "credentials.yml"]
+    for filename in rasa_config_files:
+        rasa_path = current_dir / "config/rasa" / filename
+        root_path = current_dir / filename
+        
+        if rasa_path.exists():
+            root_path_str = str(root_path)
+            if os.path.lexists(root_path_str):
+                try:
+                    if os.path.islink(root_path_str):
+                        os.unlink(root_path_str)
+                    else:
+                        os.remove(root_path_str)
+                except Exception:
+                    pass
+            
+            try:
+                shutil.copyfile(str(rasa_path), root_path_str)
+                if os.path.exists(root_path_str) and os.path.isfile(root_path_str):
+                    print_success(f"Đã copy {filename} vào root")
+            except Exception as e:
+                print_warning(f"Không thể copy {filename}: {e}")
+    
+    # Đọc và cập nhật config (đảm bảo dùng file ở root)
+    config_to_update = current_dir / "config.yml"
+    
+    if not config_to_update.exists():
+        print_error("config.yml không tồn tại ở root!")
+        return False
+    
+    print_info(f"Đang cập nhật: {config_to_update}")
+    
+    # Đọc config
+    with open(config_to_update, "r", encoding="utf-8") as f:
+        config = f.read()
+    
+    # Cập nhật config để dùng model online
+    config = re.sub(r'model_name:\s*"models/phobert-large"', 'model_name: "vinai/phobert-large"', config)
+    config = re.sub(r'cache_dir:\s*null', 'cache_dir: "models_hub/phobert_cache"', config)
+    
+    # Ghi lại config vào root
+    with open(config_to_update, "w", encoding="utf-8") as f:
+        f.write(config)
+    
+    # Cũng cập nhật file gốc trong config/rasa/ để đồng bộ
+    if rasa_config.exists():
+        with open(rasa_config, "w", encoding="utf-8") as f:
+            f.write(config)
+        print_success("Đã cập nhật cả file gốc trong config/rasa/")
+    
+    print_success("Đã cập nhật config để dùng model online")
+    
     # Step 6: Verify config
     if not verify_config():
         print_warning("Config có thể chưa đúng - vui lòng kiểm tra")
     
-    # Step 6.5: Optimize config for GPU (if available)
-    config_file = Path("config.yml")
-    if config_file.exists():
-        gpu_info = get_gpu_info()
-        if gpu_info['available']:
-            optimize_config_for_gpu(config_file, gpu_info)
+    # Step 6.5: Entity alignments đã được fix trước bằng script sync_location_names.py
+    # Script này chỉ phục vụ training, không fix entities
     
-    # Step 7: Train NLU
+    # Step 7: Optimize config for GPU
+    print_header("TỐI ƯU HÓA CONFIG CHO GPU")
+    gpu_info = get_gpu_info()
+    if gpu_info['available']:
+        config_file_path = Path("config.yml")
+        if not config_file_path.exists():
+            config_file_path = Path("config/rasa/config.yml")
+        optimize_config_for_gpu(config_file_path, gpu_info)
+        
+        # Ultra optimization cho GPU lớn (T4/V100/A100)
+        if gpu_info.get('memory_gb', 0) >= 14.5:
+            ultra_optimize_for_gpu(config_file_path)
+    
+    # Step 7.5: Verify config
+    verify_config()
+    
+    # Step 8: Train NLU
     if not train_nlu():
         print_error("Training thất bại")
         return False
     
-    # Step 8: Download model
+    # Step 9: Download model
     download_model_to_local()
     
     print_header("HOÀN TẤT!")
@@ -958,5 +1535,3 @@ if __name__ == "__main__":
         import traceback
         traceback.print_exc()
         sys.exit(1)
-
-
