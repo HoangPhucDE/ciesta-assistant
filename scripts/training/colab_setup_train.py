@@ -9,15 +9,32 @@ from pathlib import Path
 
 # Bước 1: Cleanup và Clone
 print("🧹 Dọn dẹp thư mục cũ...")
-# Xóa cả nested directory nếu có
-if Path("ciesta-assistant").exists():
-    shutil.rmtree("ciesta-assistant", ignore_errors=True)
-    print("   ✅ Đã xóa ciesta-assistant")
+# Xóa tất cả nested directories
+base_path = Path("/content")
+for path in base_path.glob("ciesta-assistant*"):
+    if path.is_dir():
+        shutil.rmtree(path, ignore_errors=True)
+        print(f"   ✅ Đã xóa {path}")
+
+# Đảm bảo đang ở /content
+os.chdir("/content")
+print(f"   Thư mục hiện tại: {os.getcwd()}")
 
 !git clone https://github.com/HoangPhucDE/ciesta-assistant.git
 %cd ciesta-assistant
 current_dir = Path.cwd()
 print(f"✅ Thư mục: {current_dir}")
+
+# Đảm bảo đang ở đúng thư mục root (không phải nested)
+while (current_dir / "ciesta-assistant").exists() and current_dir.name == "ciesta-assistant":
+    parent = current_dir.parent
+    if (parent / "ciesta-assistant").exists() and parent.name != "ciesta-assistant":
+        # Đang ở trong nested directory, cần lên 1 level
+        %cd ..
+        current_dir = Path.cwd()
+        print(f"   ⚠️ Phát hiện nested directory, đã chuyển lên: {current_dir}")
+    else:
+        break
 
 # Bước 2: Cài đặt Python 3.10 (QUAN TRỌNG!)
 print("\n🐍 Cài đặt Python 3.10...")
@@ -70,19 +87,34 @@ if not config_file:
 root_config = current_dir / "config.yml"
 rasa_config = current_dir / "config/rasa/config.yml"
 
-if config_path_used == rasa_config and not root_config.exists():
+if config_path_used == rasa_config:
     print(f"   Tạo symlink/copy từ {rasa_config} -> {root_config}")
+    
+    # Xóa file cũ nếu tồn tại (symlink hoặc file thường)
+    if root_config.exists():
+        try:
+            root_config.unlink()  # Xóa file hoặc symlink
+            print("   ✅ Đã xóa file/symlink cũ")
+        except Exception as e:
+            print(f"   ⚠️ Không thể xóa file cũ: {e}")
+    
+    # Thử tạo symlink trước
     try:
-        # Thử tạo symlink trước
         os.symlink("config/rasa/config.yml", "config.yml")
         config_file = "config.yml"
         print("   ✅ Đã tạo symlink config.yml")
     except (FileExistsError, OSError) as e:
         print(f"   ⚠️ Không thể tạo symlink (có thể do Colab filesystem): {e}")
         # Nếu không tạo được symlink, copy file (đảm bảo hoạt động)
-        shutil.copy(rasa_config, root_config)
-        config_file = "config.yml"
-        print("   ✅ Đã copy config.yml")
+        try:
+            shutil.copy(rasa_config, root_config)
+            config_file = "config.yml"
+            print("   ✅ Đã copy config.yml")
+        except Exception as e2:
+            print(f"   ❌ Không thể copy file: {e2}")
+            # Fallback: dùng file gốc
+            config_file = str(rasa_config)
+            print(f"   ⚠️ Sẽ dùng file gốc: {config_file}")
 
 # Tạo symlink hoặc copy cho các file config khác nếu cần
 rasa_config_files = ["domain.yml", "endpoints.yml", "credentials.yml"]
@@ -90,15 +122,26 @@ for filename in rasa_config_files:
     rasa_path = current_dir / "config/rasa" / filename
     root_path = current_dir / filename
     
-    if rasa_path.exists() and not root_path.exists():
-        print(f"   Tạo symlink từ config/rasa/{filename} -> {filename}")
-        try:
-            os.symlink(f"config/rasa/{filename}", filename)
-            print(f"   ✅ Đã tạo symlink {filename}")
-        except (FileExistsError, OSError) as e:
-            # Nếu không tạo được symlink, copy file (đảm bảo hoạt động)
-            shutil.copy(rasa_path, root_path)
-            print(f"   ✅ Đã copy {filename}")
+    if rasa_path.exists():
+        # Xóa file cũ nếu tồn tại
+        if root_path.exists():
+            try:
+                root_path.unlink()  # Xóa file hoặc symlink
+            except Exception:
+                pass
+        
+        if not root_path.exists():
+            print(f"   Tạo symlink từ config/rasa/{filename} -> {filename}")
+            try:
+                os.symlink(f"config/rasa/{filename}", filename)
+                print(f"   ✅ Đã tạo symlink {filename}")
+            except (FileExistsError, OSError) as e:
+                # Nếu không tạo được symlink, copy file (đảm bảo hoạt động)
+                try:
+                    shutil.copy(rasa_path, root_path)
+                    print(f"   ✅ Đã copy {filename}")
+                except Exception as e2:
+                    print(f"   ⚠️ Không thể tạo {filename}: {e2}")
 
 # Đọc và cập nhật config (đảm bảo dùng file ở root)
 config_to_update = current_dir / "config.yml"
