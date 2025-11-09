@@ -1,6 +1,15 @@
 # ⚡ Copy-Paste Nhanh cho Colab
 
-## 🚀 Setup và Train (Copy toàn bộ vào 1 cell)
+## 🚀 Cách 1: Copy từ file Python (KHUYẾN NGHỊ - TRÁNH LỖI)
+1. Mở file `colab_setup_train.py` trong thư mục này
+2. Copy toàn bộ nội dung (Ctrl+A, Ctrl+C)
+3. Paste vào 1 cell Python trên Colab
+4. Chạy cell
+
+**Ưu điểm**: Không có markdown syntax, không có ký tự đặc biệt, copy trực tiếp không lỗi!
+
+## 🚀 Cách 2: Copy từ block code bên dưới
+**⚠️ QUAN TRỌNG: Chỉ copy code trong block Python bên dưới, KHÔNG copy dấu ``` (backticks) và phần Markdown!**
 
 ```python
 # ============================================
@@ -83,10 +92,31 @@ print("\n🎉 Hoàn tất!")
 
 - **Python 3.10**: Bắt buộc phải dùng Python 3.10
 - **Model online**: Config đã được cập nhật để dùng model từ HuggingFace
-- **GPU**: Bật GPU để train nhanh hơn (Runtime → Change runtime type → GPU)
+- **GPU**: Bật GPU để train nhanh hơn (Runtime -> Change runtime type -> GPU)
 - **Thời gian**: Training mất 30 phút - 2 giờ tùy vào GPU
 
 ## 🔧 Troubleshooting
+
+### Lỗi: SyntaxError: invalid character hoặc invalid syntax
+**Nguyên nhân**: Đã copy cả markdown syntax (```) hoặc ký tự đặc biệt vào cell Python.
+
+**Giải pháp**: 
+- **Sử dụng file `colab_setup_train.py`** (Cách 1) - đảm bảo không có lỗi
+- Hoặc chỉ copy phần code giữa 2 dấu ```, KHÔNG copy dấu ``` vào cell Python
+
+### Lỗi: ERROR: Cannot install regex==2024.5.15 - conflicting dependencies
+**Nguyên nhân**: `regex==2024.5.15` không tương thích với `rasa 3.6.20` (rasa yêu cầu `regex<2022.11`).
+
+**Giải pháp**: 
+- File `requirements.txt` đã được cập nhật với `regex==2022.10.27` (tương thích với rasa 3.6.20)
+- Pull code mới nhất từ repo hoặc cập nhật requirements.txt thủ công
+
+### Lỗi: FileNotFoundError: config.yml
+**Nguyên nhân**: File config không ở root, mà nằm trong `config/rasa/config.yml`.
+
+**Giải pháp**: 
+- Script đã được cập nhật để tự động tìm và tạo symlink từ `config/rasa/config.yml` -> `config.yml`
+- Đảm bảo bạn đang dùng phiên bản mới nhất của script
 
 ### Lỗi: Nested directory
 ```python
