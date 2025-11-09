@@ -512,10 +512,10 @@ nlu:
       - Địa điểm an toàn cho gia đình ở [Đà Lạt](location)
       - Địa điểm ưa thích ở [Quy Nhơn](location)
       - Ciesta recommend chỗ chơi ở Đà Lạt đi
-      - Mình chỉ có 1 ngày ở [Đà Nẵng](location), nên đi đâu
+      - - Mình chỉ có 1 ngày ở [Đà Nẵng,](location), nên đi đâu
       - Điểm check-in chill ở [Hội An](location) là đâu
       - Có tour tham quan nửa ngày ở [Đà Nẵng](location) không?
-      - Muốn đi trekking gần [Sapa](location), gợi ý cho mình
+      - - Muốn đi trekking gần [Sapa,](location), gợi ý cho mình
       - Gợi ý 3 điểm phù hợp chụp hình ở [Đà Lạt](location)
       - Những hang động ở [Quảng Bình](location) đáng tới
       - Các khu du lịch sinh thái gần [Lâm Đồng](location)
@@ -706,12 +706,12 @@ nlu:
       - địa điểm vui chơi giải trí ở [Đà Lạt](location)
       - địa điểm tham quan tự nhiên ở [Sapa](location)
       - địa điểm du lịch sinh thái ở [Phú Quốc](location)
-      - Tôi đang lên kế hoạch du lịch [Hà Nội](location), bạn có thể gợi ý địa điểm không
+      - - Tôi đang lên kế hoạch du lịch [Hà Nội,](location), bạn có thể gợi ý địa điểm không
       - Mình sắp đến [Đà Nẵng](location) tuần sau, nên đi đâu tham quan
       - Cho tôi hỏi, nếu đi [Huế](location) thì nên tham quan những địa điểm nào
       - Tôi và gia đình sẽ đi [Nha Trang](location) vào tháng 7, có địa điểm nào phù hợp cho trẻ em không
-      - Mình đang tìm kiếm địa điểm chụp ảnh đẹp ở [Đà Lạt](location), bạn có gợi ý gì không
-      - Tôi có 2 ngày ở [Hội An](location), bạn có thể gợi ý lịch trình tham quan không
+      - - Mình đang tìm kiếm địa điểm chụp ảnh đẹp ở [Đà Lạt,](location), bạn có gợi ý gì không
+      - - Tôi có 2 ngày ở [Hội An,](location), bạn có thể gợi ý lịch trình tham quan không
 
   - intent: ask_cuisine
     examples: |
@@ -728,6 +728,7 @@ nlu:
       - ẩm thực [TP.HCM](location)
       - ẩm thực [TPHCM](location)
       - ẩm thực [HCM](location)
+      - ẩm thực [TP HCM](location)
       - ẩm thực [Sai Gon](location)
       - ẩm thực [TP Hồ Chí Minh](location)
       - ẩm thực thành phố [Hồ Chí Minh](location)
@@ -798,7 +799,7 @@ nlu:
       - ăn uống ở [Đà Nẵng](location) thế nào
       - Món đặc sản [Hội An](location) nên thử là gì
       - Ở [TP.HCM](location) có quán bún bò nào nổi tiếng?
-      - Tôi muốn món chay ở [Đà Lạt](location), giới thiệu
+      - - Tôi muốn món chay ở [Đà Lạt,](location), giới thiệu
       - Quán hải sản ngon ở [Nha Trang](location) cho gia đình
       - Địa chỉ quán ăn đêm ở [Sài Gòn](location) uy tín
       - Món địa phương [Quảng Nam](location) thường bán ở đâu
@@ -935,8 +936,8 @@ nlu:
       - em muốn hỏi [Hồ Chí Minh](location) có món gì ngon
       - Cho tôi hỏi, nếu đi [Huế](location) thì nên ăn món gì và đi đâu
       - Mình sắp đi [Đà Nẵng](location) vào tháng 6, ẩm thực ở đó có gì đặc biệt không
-      - Tôi đang lên kế hoạch du lịch [Hà Nội](location), bạn có thể gợi ý món ăn địa phương không
-      - Mình muốn thử đặc sản [Sài Gòn](location), bạn có thể giới thiệu một số món ngon không
+      - - Tôi đang lên kế hoạch du lịch [Hà Nội,](location), bạn có thể gợi ý món ăn địa phương không
+      - - Mình muốn thử đặc sản [Sài Gòn,](location), bạn có thể giới thiệu một số món ngon không
       - Tôi và bạn bè sẽ đi [Phú Quốc](location) vào cuối tuần, nên ăn hải sản ở đâu ngon
       - Cho tôi hỏi, ở [Đà Lạt](location) có quán ăn nào ngon và giá cả hợp lý không
 
@@ -1147,7 +1148,7 @@ nlu:
       - Mình sắp đi [Đà Nẵng](location) vào tháng 6, mùa đó có lễ hội gì đặc biệt không
       - Tôi đang lên kế hoạch du lịch [Huế](location) vào mùa thu, có lễ hội nào diễn ra vào thời điểm đó không
       - Cho tôi hỏi, nếu đến [Hà Nội](location) vào tháng 3, có lễ hội truyền thống nào đáng tham gia không
-      - Mình muốn trải nghiệm lễ hội văn hóa ở [Bắc Ninh](location), bạn có thể tư vấn thời gian tốt nhất không
+      - - Mình muốn trải nghiệm lễ hội văn hóa ở [Bắc Ninh,](location), bạn có thể tư vấn thời gian tốt nhất không
       - Tôi và gia đình sẽ đi [Đà Lạt](location) vào tháng 12, có lễ hội hoa nào diễn ra không
 
   - intent: ask_new_province
@@ -1863,10 +1864,10 @@ nlu:
       - tàu hỏa từ [Hà Nội](location) đến [Thanh Hóa](location)
       - xe khách giường nằm đi [Đà Nẵng](location) từ Hà Nội
       - từ [Hồ Chí Minh](location) đến [Cần Thơ](location) có đường thủy không
-      - Tôi đang ở [Hà Nội](location) và muốn đến [Đà Nẵng](location), phương tiện nào thuận tiện nhất
-      - Mình sắp đi [Huế](location) từ [TP.HCM](location), bạn có thể gợi ý cách di chuyển tiết kiệm nhất không
+      - - Tôi đang ở [Hà Nội](location) và muốn đến [Đà Nẵng,](location), phương tiện nào thuận tiện nhất
+      - - Mình sắp đi [Huế](location) từ [TP.HCM,](location), bạn có thể gợi ý cách di chuyển tiết kiệm nhất không
       - Cho tôi hỏi, nếu đi từ [Hà Nội](location) đến [Sapa](location) bằng tàu hỏa, sau đó đi xe lên núi mất bao lâu
-      - Tôi và gia đình sẽ đi [Phú Quốc](location) từ [Hồ Chí Minh](location), nên đi máy bay hay tàu biển
+      - - Tôi và gia đình sẽ đi [Phú Quốc](location) từ [Hồ Chí Minh,](location), nên đi máy bay hay tàu biển
       - Mình muốn đi [Đà Lạt](location) từ [TP.HCM](location) bằng xe khách, có nhà xe nào uy tín không
 
   - intent: inform_location
@@ -1897,16 +1898,16 @@ nlu:
       - [Hạ Long](location)
       - Tôi đang ở [Sài Gòn](location)
       - Tôi có mặt tại [TP.HCM](location) hôm nay
-      - Đã tới [Đà Lạt](location), cần gợi ý chơi
+      - - Đã tới [Đà Lạt,](location), cần gợi ý chơi
       - Ở [Hạ Long](location) trong 3 ngày
       - Mình đang ở [Phú Quốc](location) và muốn khám phá hải sản
       - Ở [TP.HCM](location) bây giờ
       - Đang ở [Đà Lạt](location)
       - [Phú Quốc](location) ngay đây
       - Tôi đang ở [Sài Gòn](location) và muốn tìm hiểu về ẩm thực ở đây
-      - Mình hiện tại đang ở [Đà Lạt](location), bạn có thể gợi ý địa điểm tham quan gần đây không
+      - - Mình hiện tại đang ở [Đà Lạt,](location), bạn có thể gợi ý địa điểm tham quan gần đây không
       - Tôi vừa đến [Hà Nội](location) và muốn hỏi về văn hóa nơi đây
-      - Mình đang có mặt tại [Huế](location), có lễ hội nào đang diễn ra không
+      - - Mình đang có mặt tại [Huế,](location), có lễ hội nào đang diễn ra không
       - Tôi đang ở [Nha Trang](location) và muốn biết cách đi đến [Đà Lạt](location)
 
   - intent: out_of_scope

@@ -1,5 +1,26 @@
 # ⚡ Copy-Paste Nhanh cho Colab
 
+## 🎮 BẬT GPU TRƯỚC KHI CHẠY (QUAN TRỌNG!)
+
+**⚠️ Để training nhanh hơn, bạn CẦN bật GPU trên Colab:**
+
+1. Vào menu: **Runtime → Change runtime type**
+2. Trong phần **Hardware accelerator**, chọn **GPU**
+3. Chọn GPU type: **T4** (miễn phí) hoặc **A100/V100** (trả phí, nhanh hơn)
+4. Click **Save**
+5. Colab sẽ restart runtime
+6. Chạy script từ đầu
+
+**💡 Lưu ý:**
+- Không bật GPU: Training sẽ chạy trên CPU (chậm hơn 10-20 lần)
+- Bật GPU: Training nhanh hơn đáng kể (30 phút - 2 giờ thay vì 5-10 giờ)
+- Colab free tier có giới hạn GPU usage (khoảng 12 giờ/ngày)
+- Script sẽ tự động kiểm tra GPU và cảnh báo nếu không có
+- **Script tự động tối ưu batch size dựa trên GPU memory:**
+  - T4/V100/A100 (15GB+): batch_size = 128-256 (tận dụng tối đa GPU)
+  - GPU trung bình (8-15GB): batch_size = 64-128
+  - GPU nhỏ (4-8GB): batch_size = 32-64
+
 ## 🚀 Cách 1: Copy từ file Python (KHUYẾN NGHỊ - TRÁNH LỖI)
 1. Mở file `colab_setup_train.py` trong thư mục này
 2. Copy toàn bộ nội dung (Ctrl+A, Ctrl+C)
@@ -97,6 +118,37 @@ print("\n🎉 Hoàn tất!")
 
 ## 🔧 Troubleshooting
 
+### ⚠️ Vấn đề: KeyboardInterrupt / Dependencies chưa được cài đặt
+**Nguyên nhân**: Script bị interrupt (nhấn Stop) trong quá trình cài đặt dependencies.
+
+**Triệu chứng**:
+- Lỗi: `KeyboardInterrupt` khi cài đặt packages
+- Lỗi: `No module named rasa` hoặc `No module named torch`
+- Script tiếp tục chạy dù dependencies chưa cài xong
+- GPU check không thể detect GPU memory (vì PyTorch chưa cài)
+
+**Giải pháp**:
+1. **QUAN TRỌNG: KHÔNG interrupt quá trình cài đặt!**
+   - Cài đặt dependencies có thể mất **10-20 phút**
+   - **Để script chạy đến khi hoàn tất** - không nhấn Stop/Cancel
+   - Có thể thấy nhiều warnings nhưng đó là bình thường
+   - Script sẽ hiển thị: `⚠️ QUAN TRỌNG: Quá trình này có thể mất 10-20 phút, KHÔNG interrupt!`
+
+2. **Nếu đã bị interrupt:**
+   - Chạy lại script từ đầu
+   - Đảm bảo đợi đến khi thấy: `✅ Tất cả packages quan trọng đã được cài đặt`
+   - Sau đó script mới tiếp tục với GPU check và training
+
+3. **Kiểm tra dependencies đã cài xong:**
+   ```python
+   !venv_py310/bin/python -c "import rasa; import torch; print('✅ Dependencies OK')"
+   ```
+
+4. **Script tự động kiểm tra:**
+   - Script sẽ kiểm tra `rasa`, `torch`, `transformers` sau khi cài đặt
+   - Nếu thiếu packages, script sẽ dừng lại và yêu cầu chạy lại
+   - Script sẽ không tiếp tục training nếu Rasa chưa được cài đặt
+
 ### Lỗi: SyntaxError: invalid character hoặc invalid syntax
 **Nguyên nhân**: Đã copy cả markdown syntax (```) hoặc ký tự đặc biệt vào cell Python.
 
@@ -120,6 +172,82 @@ print("\n🎉 Hoàn tất!")
 **Giải pháp**: 
 - Script đã được cập nhật để tự động tìm và tạo symlink từ `config/rasa/config.yml` -> `config.yml`
 - Đảm bảo bạn đang dùng phiên bản mới nhất của script
+
+### Vấn đề: Không tìm thấy GPU / Training chạy trên CPU
+**Nguyên nhân**: Chưa bật GPU runtime trên Colab.
+
+**Triệu chứng**: 
+- Thông báo: `[PhoBERTFeaturizer] ⚠️ No GPU detected - Using CPU`
+- Training chạy rất chậm (5-10 giờ thay vì 30 phút - 2 giờ)
+
+**Giải pháp**:
+1. **Bật GPU runtime:**
+   - Vào menu: **Runtime → Change runtime type**
+   - Chọn **Hardware accelerator**: **GPU**
+   - Chọn GPU type: **T4** (miễn phí) hoặc **A100/V100** (trả phí)
+   - Click **Save**
+   - Colab sẽ restart runtime
+
+2. **Chạy lại script từ đầu** (sau khi bật GPU)
+
+3. **Kiểm tra GPU:**
+   - Script sẽ tự động kiểm tra GPU sau khi cài dependencies
+   - Nếu thấy `✅ GPU được phát hiện` và `✅ PyTorch phát hiện GPU` → OK
+   - Nếu thấy `❌ Không tìm thấy GPU` → Cần bật GPU runtime
+
+4. **Lưu ý:**
+   - Colab free tier có thể không có GPU available vào một số thời điểm
+   - Có thể cần đợi vài phút hoặc thử lại sau
+   - Training vẫn chạy được trên CPU, nhưng chậm hơn nhiều
+
+### Vấn đề: GPU không sử dụng hết tài nguyên (GPU RAM thấp)
+**Nguyên nhân**: Batch size quá nhỏ, không tận dụng hết GPU memory.
+
+**Triệu chứng**: 
+- GPU RAM chỉ sử dụng 10-20% (ví dụ: 1-2GB / 15GB)
+- Training chậm hơn so với khả năng GPU (ước tính >20 giờ)
+- GPU utilization thấp
+- Training time ước tính quá lâu (>20 giờ)
+
+**Giải pháp**:
+1. **Script tự động tối ưu (phiên bản mới):**
+   - Script sẽ tự động detect GPU memory và tăng batch size
+   - T4 (14.7-15GB): batch_size tăng lên 256 (PhoBERT), [256, 512] (DIET)
+   - Script sẽ tự động áp dụng khi có GPU >= 14.5GB
+   - **Lưu ý**: Nếu training đang chạy, phải dừng và chạy lại script để áp dụng batch size mới
+
+2. **Kiểm tra batch size trong config.yml:**
+   ```yaml
+   # PhoBERTFeaturizer
+   batch_size: 256  # Nên là 128-256 cho T4 GPU (15GB)
+
+   # DIETClassifier
+   batch_size: [256, 512]  # Nên là [256, 512] cho T4 GPU để training nhanh hơn
+   ```
+
+3. **Nếu training đang chạy với GPU usage thấp (<20%):**
+   - **Option 1 (Khuyến nghị)**: Dừng training và chạy lại script từ đầu
+     - Script mới sẽ tự động detect T4 (14.7GB) và set batch_size = 256, [256, 512]
+     - Training sẽ nhanh hơn đáng kể (từ 27+ giờ xuống ~5-10 giờ)
+   - **Option 2**: Chạy script tối ưu riêng (nếu có):
+     ```python
+     # Chạy script tối ưu để cập nhật batch size
+     # Sau đó dừng training và chạy lại: !rasa train nlu --config config.yml
+     ```
+
+4. **Batch size tối ưu cho T4 GPU (15GB):**
+   - **PhoBERTFeaturizer**: `batch_size: 256` (có thể thử 512 nếu không OOM)
+   - **DIETClassifier**: `batch_size: [256, 512]` (có thể thử [512, 1024] nếu không OOM)
+   - **Lưu ý**: Nếu gặp Out of Memory (OOM), giảm batch size xuống một nửa
+
+5. **Lưu ý quan trọng:**
+   - Batch size lớn hơn = training nhanh hơn, sử dụng GPU tốt hơn (50-80% GPU RAM)
+   - Nhưng quá lớn có thể gây Out of Memory (OOM)
+   - **PHẢI restart training** sau khi thay đổi batch size (không thể thay đổi giữa chừng)
+   - Training time ước tính:
+     - Batch size nhỏ (32, [16,32]): 20-30 giờ
+     - Batch size trung bình (128, [128,256]): 10-15 giờ
+     - Batch size lớn (256, [256,512]): 5-8 giờ
 
 ### Lỗi: Nested directory
 ```python
