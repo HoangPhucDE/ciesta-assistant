@@ -172,17 +172,17 @@ nlu:
       - cho tôi biết về văn hóa [Hà Nội](location)
       - giới thiệu văn hóa [Hà Nội](location)
       - văn hóa ở [Đà Nẵng](location) như thế nào
-      - văn hóa [TP.HCM](location) có gì đặc sắc
-      - hãy kể về văn hóa [Sài Gòn](location)
+      - văn hóa [Hồ Chí Minh](location) có gì đặc sắc
+      - hãy kể về văn hóa [Hồ Chí Minh](location)
       - nét văn hóa của [Huế](location)
       - văn hóa truyền thống [Hà Nội](location)
-      - đặc trưng văn hóa của người [Sài Gòn](location)
+      - đặc trưng văn hóa của người [Hồ Chí Minh](location)
       - nói về văn hóa [Đà Nẵng](location)
       - tìm hiểu văn hóa [Huế](location)
-      - giới thiệu về văn hóa [TP.HCM](location)
+      - giới thiệu về văn hóa [Hồ Chí Minh](location)
       - cho biết nét văn hóa [Hà Nội](location)
       - văn hóa truyền thống của [Huế](location)
-      - mình muốn biết về văn hóa [Sài Gòn](location)
+      - mình muốn biết về văn hóa [Hồ Chí Minh](location)
       - bạn có thể kể về văn hóa [Đà Nẵng](location) không
       - kể cho mình nghe về văn hóa [Hà Nội](location)
       - giới thiệu văn hóa truyền thống [Đà Nẵng](location)
@@ -190,9 +190,9 @@ nlu:
       - di sản văn hóa [Bạc Liêu](location) nổi tiếng những gì
       - tôi muốn tìm hiểu về văn hóa [Hồ Chí Minh](location)
       - [Huế](location) có những nét văn hóa gì đặc trưng
-      - kể cho tôi nghe về văn hóa dân gian [Sapa](location)
+      - kể cho tôi nghe về văn hóa dân gian [Lào Cai](location)
       - thông tin về di sản văn hóa [Phú Quốc](location)
-      - [Đà Lạt](location) có những giá trị văn hóa gì đặc sắc
+      - [Lâm Đồng](location) có những giá trị văn hóa gì đặc sắc
       - tìm hiểu về văn hóa lễ hội [Nghệ An](location)
       - [Cần Thơ](location) có những nét văn hóa như thế nào
       - [Vũng Tàu](location) có điểm gì nổi bật về văn hóa
@@ -209,18 +209,18 @@ nlu:
       - văn hóa dân gian của người dân [Đắk Lắk](location)
       - [Lâm Đồng](location) có những phong tục tập quán gì đặc sắc
       - giới thiệu về di sản văn hóa [Quảng Ngãi](location)
-      - văn hóa cộng đồng ở [Hạ Long](location)
-      - [Nha Trang](location) có những giá trị văn hóa gì đặc biệt
-      - Cho mình tìm hiểu về văn hóa [Sài Gòn](location)
-      - Kể về văn hóa người [Sai Gon](location)
-      - Muốn biết thêm về văn hóa [TP.HCM](location)
-      - Văn hóa truyền thống [HCM](location) có gì đặc sắc
-      - Di sản văn hóa ở [Đà Lạt](location) là gì
+      - văn hóa cộng đồng ở [Quảng Ninh](location)
+      - [Khánh Hòa](location) có những giá trị văn hóa gì đặc biệt
+      - Cho mình tìm hiểu về văn hóa [Hồ Chí Minh](location)
+      - Kể về văn hóa người [Hồ Chí Minh](location)
+      - Muốn biết thêm về văn hóa [Hồ Chí Minh](location)
+      - Văn hóa truyền thống [Hồ Chí Minh](location) có gì đặc sắc
+      - Di sản văn hóa ở [Lâm Đồng](location) là gì
       - Giới thiệu nét văn hóa độc đáo [Quảng Ninh](location)
-      - Tôi muốn tìm hiểu văn hóa cộng đồng [Hạ Long](location)
+      - Tôi muốn tìm hiểu văn hóa cộng đồng [Quảng Ninh](location)
       - Kể về lễ hội truyền thống ở [Thái Nguyên](location)
-      - Ciesta, giới thiệu văn hóa [Sài Gòn](location) cho mình
-      - Mình muốn tìm hiểu bản sắc văn hóa [TP.HCM](location)
+      - Ciesta, giới thiệu văn hóa [Hồ Chí Minh](location) cho mình
+      - Mình muốn tìm hiểu bản sắc văn hóa [Hồ Chí Minh](location)
       - Cho mình biết về di sản văn hóa [Hà Nội](location)
       - Em muốn tìm hiểu phong tục ở [Huế](location)
       - văn hóa [Bắc Ninh](location)
@@ -485,11 +485,11 @@ nlu:
       - đi [Cà Mau](location) nên đi đâu
       - [Bạc Liêu](location) có nơi nào đáng tham quan
       - nơi check in đẹp ở [Hội An](location)
-      - điểm du lịch hot ở [Nha Trang](location)
-      - [Sapa](location) có những điểm đến nào
+      - điểm du lịch hot ở [Khánh Hòa](location)
+      - [Lào Cai](location) có những điểm đến nào
       - gợi ý địa điểm ở [Phú Quốc](location)
-      - nên đi đâu khi đến [Đà Lạt](location)
-      - danh lam thắng cảnh [Hạ Long](location)
+      - nên đi đâu khi đến [Lâm Đồng](location)
+      - danh lam thắng cảnh [Quảng Ninh](location)
       - những nơi không thể bỏ lỡ ở [Huế](location)
       - địa điểm [lịch sử](category) ở [Ninh Bình](location)
       - [Bắc Ninh](location) có điểm [tâm linh](category) nào
@@ -504,32 +504,32 @@ nlu:
       - [Phan Thiết](location) có bãi biển nào đẹp
       - địa điểm sống ảo [Quy Nhơn](location)
       - chỗ nào đẹp ở [Nghệ An](location)
-      - Địa điểm du lịch nổi bật ở [Đà Lạt](location)
+      - Địa điểm du lịch nổi bật ở [Lâm Đồng](location)
       - Top địa điểm ở [Đà Nẵng](location)
       - Điểm du lịch nổi tiếng [Hội An](location)
-      - Gợi ý lịch trình 1 ngày ở [Nha Trang](location)
-      - Những nơi check-in ở [Hạ Long](location)
-      - Địa điểm an toàn cho gia đình ở [Đà Lạt](location)
+      - Gợi ý lịch trình 1 ngày ở [Khánh Hòa](location)
+      - Những nơi check-in ở [Quảng Ninh](location)
+      - Địa điểm an toàn cho gia đình ở [Lâm Đồng](location)
       - Địa điểm ưa thích ở [Quy Nhơn](location)
       - Ciesta recommend chỗ chơi ở Đà Lạt đi
       - Mình chỉ có 1 ngày ở [Đà Nẵng](location), nên đi đâu
       - Điểm check-in chill ở [Hội An](location) là đâu
       - Có tour tham quan nửa ngày ở [Đà Nẵng](location) không?
-      - Muốn đi trekking gần [Sapa](location), gợi ý cho mình
-      - Gợi ý 3 điểm phù hợp chụp hình ở [Đà Lạt](location)
+      - Muốn đi trekking gần [Lào Cai](location), gợi ý cho mình
+      - Gợi ý 3 điểm phù hợp chụp hình ở [Lâm Đồng](location)
       - Những hang động ở [Quảng Bình](location) đáng tới
       - Các khu du lịch sinh thái gần [Lâm Đồng](location)
-      - Nên book vé trước cho thắng cảnh ở [Hạ Long](location) chứ?
+      - Nên book vé trước cho thắng cảnh ở [Quảng Ninh](location) chứ?
       - Điểm tham quan miễn phí ở [Hà Nội](location) có chỗ nào
       - địa điểm tham quan [Hải Phòng](location)
       - địa điểm tham quan [Hà Nội](location)
       - địa điểm tham quan [Đà Nẵng](location)
       - địa điểm tham quan [Huế](location)
       - địa điểm tham quan [Hồ Chí Minh](location)
-      - địa điểm tham quan [Sài Gòn](location)
-      - địa điểm tham quan [TP.HCM](location)
-      - địa điểm tham quan [TPHCM](location)
-      - địa điểm tham quan [HCM](location)
+      - địa điểm tham quan [Hồ Chí Minh](location)
+      - địa điểm tham quan [Hồ Chí Minh](location)
+      - địa điểm tham quan [Hồ Chí Minh](location)
+      - địa điểm tham quan [Hồ Chí Minh](location)
       - địa điểm tham quan [Bắc Ninh](location)
       - địa điểm tham quan [An Giang](location)
       - địa điểm tham quan [Cần Thơ](location)
@@ -703,14 +703,14 @@ nlu:
       - địa điểm du lịch đẹp ở [Đà Nẵng](location)
       - địa điểm check-in hot ở [Huế](location)
       - địa điểm tham quan lịch sử ở [Hồ Chí Minh](location)
-      - địa điểm vui chơi giải trí ở [Đà Lạt](location)
-      - địa điểm tham quan tự nhiên ở [Sapa](location)
+      - địa điểm vui chơi giải trí ở [Lâm Đồng](location)
+      - địa điểm tham quan tự nhiên ở [Lào Cai](location)
       - địa điểm du lịch sinh thái ở [Phú Quốc](location)
       - Tôi đang lên kế hoạch du lịch [Hà Nội](location), bạn có thể gợi ý địa điểm không
       - Mình sắp đến [Đà Nẵng](location) tuần sau, nên đi đâu tham quan
       - Cho tôi hỏi, nếu đi [Huế](location) thì nên tham quan những địa điểm nào
-      - Tôi và gia đình sẽ đi [Nha Trang](location) vào tháng 7, có địa điểm nào phù hợp cho trẻ em không
-      - Mình đang tìm kiếm địa điểm chụp ảnh đẹp ở [Đà Lạt](location), bạn có gợi ý gì không
+      - Tôi và gia đình sẽ đi [Khánh Hòa](location) vào tháng 7, có địa điểm nào phù hợp cho trẻ em không
+      - Mình đang tìm kiếm địa điểm chụp ảnh đẹp ở [Lâm Đồng](location), bạn có gợi ý gì không
       - Tôi có 2 ngày ở [Hội An](location), bạn có thể gợi ý lịch trình tham quan không
 
   - intent: ask_cuisine
@@ -723,32 +723,32 @@ nlu:
       - ẩm thực [Huế](location)
       - ẩm thực [Đà Nẵng](location)
       - ẩm thực [Hà Nội](location)
-      - ẩm thực [Sài Gòn](location)
       - ẩm thực [Hồ Chí Minh](location)
-      - ẩm thực [TP.HCM](location)
-      - ẩm thực [TPHCM](location)
-      - ẩm thực [HCM](location)
-      - ẩm thực [TP HCM](location)
-      - ẩm thực [Sai Gon](location)
-      - ẩm thực [TP Hồ Chí Minh](location)
+      - ẩm thực [Hồ Chí Minh](location)
+      - ẩm thực [Hồ Chí Minh](location)
+      - ẩm thực [Hồ Chí Minh](location)
+      - ẩm thực [Hồ Chí Minh](location)
+      - ẩm thực [Hồ Chí Minh](location)
+      - ẩm thực [Hồ Chí Minh](location)
+      - ẩm thực [Hồ Chí Minh](location)
       - ẩm thực thành phố [Hồ Chí Minh](location)
-      - ẩm thực [Hanoi](location)
-      - ẩm thực [Ha Noi](location)
+      - ẩm thực [Hà Nội](location)
+      - ẩm thực [Hà Nội](location)
       - ẩm thực thành phố [Hà Nội](location)
-      - ẩm thực [Da Nang](location)
-      - ẩm thực [Danang](location)
+      - ẩm thực [Đà Nẵng](location)
+      - ẩm thực [Đà Nẵng](location)
       - ẩm thực thành phố [Đà Nẵng](location)
-      - ẩm thực [Hue](location)
+      - ẩm thực [Huế](location)
       - ẩm thực [Thừa Thiên Huế](location)
-      - ẩm thực [Thua Thien Hue](location)
-      - ẩm thực [Hai Phong](location)
+      - ẩm thực [Thừa Thiên Huế](location)
+      - ẩm thực [Hải Phòng](location)
       - ẩm thực thành phố [Hải Phòng](location)
       - ẩm thực [Cần Thơ](location)
-      - ẩm thực [Can Tho](location)
-      - ẩm thực [Cantho](location)
+      - ẩm thực [Cần Thơ](location)
+      - ẩm thực [Cần Thơ](location)
       - ẩm thực thành phố [Cần Thơ](location)
-      - ẩm thực [Nha Trang](location)
-      - ẩm thực [Đà Lạt](location)
+      - ẩm thực [Khánh Hòa](location)
+      - ẩm thực [Lâm Đồng](location)
       - ẩm thực [Vũng Tàu](location)
       - ẩm thực [Bắc Ninh](location)
       - ẩm thực [An Giang](location)
@@ -772,36 +772,36 @@ nlu:
       - ẩm thực [Vĩnh Long](location)
       - ẩm thực [Đồng Tháp](location)
       - ẩm thực [Cà Mau](location)
-      - món ăn nổi tiếng ở [Nha Trang](location)
+      - món ăn nổi tiếng ở [Khánh Hòa](location)
       - [Phú Quốc](location) có hải sản gì ngon
-      - đặc sản nên mua ở [Đà Lạt](location)
-      - quà vặt [Sapa](location)
+      - đặc sản nên mua ở [Lâm Đồng](location)
+      - quà vặt [Lào Cai](location)
       - thử món gì ở [Nghệ An](location)
-      - Ẩm thực ở [Sài Gòn](location) có gì nổi bật
-      - Ở [TPHCM](location) nên ăn món gì
-      - Món hải sản ngon ở [Nha Trang](location) là gì
+      - Ẩm thực ở [Hồ Chí Minh](location) có gì nổi bật
+      - Ở [Hồ Chí Minh](location) nên ăn món gì
+      - Món hải sản ngon ở [Khánh Hòa](location) là gì
       - Gợi ý quán ăn đường phố tại [Hội An](location)
       - Gợi ý quán ăn ở [Hồ Chí Minh](location)
-      - Mua đặc sản ở [Đà Lạt](location) thì nên mua gì
-      - Ăn vặt ở [Sapa](location) có gì hấp dẫn
+      - Mua đặc sản ở [Lâm Đồng](location) thì nên mua gì
+      - Ăn vặt ở [Lào Cai](location) có gì hấp dẫn
       - Chỗ ăn sáng ở [Hà Nội](location) ngon
       - Quán phở ngon ở gần [Hà Nội](location) gợi ý nhé
       - ẩm thực [Đà Nẵng](location) có gì ngon
-      - món ăn đường phố ở [TP.HCM](location)
-      - đặc sản [Sài Gòn](location) là gì
+      - món ăn đường phố ở [Hồ Chí Minh](location)
+      - đặc sản [Hồ Chí Minh](location) là gì
       - quán ăn ngon ở [Huế](location)
       - món đặc trưng của [Hà Nội](location)
       - khám phá ẩm thực [Đà Nẵng](location)
-      - tôi muốn tìm quán ăn ở [Sài Gòn](location)
-      - giới thiệu đặc sản [TP.HCM](location)
+      - tôi muốn tìm quán ăn ở [Hồ Chí Minh](location)
+      - giới thiệu đặc sản [Hồ Chí Minh](location)
       - nhà hàng ngon ở [Huế](location)
       - món nổi tiếng của [Hà Nội](location)
       - ăn uống ở [Đà Nẵng](location) thế nào
       - Món đặc sản [Hội An](location) nên thử là gì
-      - Ở [TP.HCM](location) có quán bún bò nào nổi tiếng?
-      - Tôi muốn món chay ở [Đà Lạt](location), giới thiệu
-      - Quán hải sản ngon ở [Nha Trang](location) cho gia đình
-      - Địa chỉ quán ăn đêm ở [Sài Gòn](location) uy tín
+      - Ở [Hồ Chí Minh](location) có quán bún bò nào nổi tiếng?
+      - Tôi muốn món chay ở [Lâm Đồng](location), giới thiệu
+      - Quán hải sản ngon ở [Khánh Hòa](location) cho gia đình
+      - Địa chỉ quán ăn đêm ở [Hồ Chí Minh](location) uy tín
       - Món địa phương [Quảng Nam](location) thường bán ở đâu
       - Ciesta, ăn gì ở Sài Gòn hôm nay
       - ở [Hải Phòng](location) ăn gì
@@ -937,9 +937,9 @@ nlu:
       - Cho tôi hỏi, nếu đi [Huế](location) thì nên ăn món gì và đi đâu
       - Mình sắp đi [Đà Nẵng](location) vào tháng 6, ẩm thực ở đó có gì đặc biệt không
       - Tôi đang lên kế hoạch du lịch [Hà Nội](location), bạn có thể gợi ý món ăn địa phương không
-      - Mình muốn thử đặc sản [Sài Gòn](location), bạn có thể giới thiệu một số món ngon không
+      - Mình muốn thử đặc sản [Hồ Chí Minh](location), bạn có thể giới thiệu một số món ngon không
       - Tôi và bạn bè sẽ đi [Phú Quốc](location) vào cuối tuần, nên ăn hải sản ở đâu ngon
-      - Cho tôi hỏi, ở [Đà Lạt](location) có quán ăn nào ngon và giá cả hợp lý không
+      - Cho tôi hỏi, ở [Lâm Đồng](location) có quán ăn nào ngon và giá cả hợp lý không
 
   - intent: ask_festival
     examples: |
@@ -948,7 +948,7 @@ nlu:
       - sự kiện văn hóa [Cà Mau](location)
       - lễ hội truyền thống [Bạc Liêu](location)
       - [Đà Nẵng](location) tổ chức lễ hội nào
-      - festival tại [Đà Lạt](location)
+      - festival tại [Lâm Đồng](location)
       - lễ hội ở [Bắc Ninh](location) tháng Giêng
       - [An Giang](location) có lễ hội gì tháng 4 âm lịch
       - sự kiện văn hóa [Lào Cai](location) mùa xuân
@@ -960,8 +960,8 @@ nlu:
       - Lễ hội âm nhạc ở [Hà Nội](location) khi nào diễn ra
       - [Huế](location) có những lễ hội dân gian nào
       - Festival ẩm thực ở [Đà Nẵng](location) có gì
-      - Lễ hội hoa ở [Đà Lạt](location) tổ chức vào tháng mấy
-      - Lễ hội thuyền rồng ở [Hạ Long](location)
+      - Lễ hội hoa ở [Lâm Đồng](location) tổ chức vào tháng mấy
+      - Lễ hội thuyền rồng ở [Quảng Ninh](location)
       - Ciesta cho mình biết lễ hội ở [Huế](location)
       - Lễ hội trăng rằm ở [Hội An](location) diễn ra lúc nào?
       - Có festival văn hóa nước ngoài ở [Đà Nẵng](location) không?
@@ -1102,7 +1102,7 @@ nlu:
       - [Thái Nguyên](location) tổ chức lễ hội gì
       - lễ hội truyền thống ở [Hà Nội](location) diễn ra vào tháng mấy
       - festival nào nổi tiếng ở [Đà Nẵng](location)
-      - lễ hội hoa ở [Đà Lạt](location) khi nào diễn ra
+      - lễ hội hoa ở [Lâm Đồng](location) khi nào diễn ra
       - [Huế](location) có những lễ hội nào quan trọng
       - lễ hội đền Hùng ở [Phú Thọ](location) tổ chức khi nào
       - lễ hội chùa Hương ở [Hà Nội](location) vào tháng mấy
@@ -1110,7 +1110,7 @@ nlu:
       - lễ hội Ok Om Bok ở [An Giang](location) là gì
       - lễ hội Katê ở [Ninh Thuận](location) diễn ra khi nào
       - [Bắc Ninh](location) có lễ hội quan họ vào tháng mấy
-      - lễ hội đua thuyền rồng ở [Hạ Long](location)
+      - lễ hội đua thuyền rồng ở [Quảng Ninh](location)
       - festival nhạc cụ dân tộc ở [Hà Nội](location)
       - lễ hội cốm làng Vòng ở [Hà Nội](location)
       - lễ hội đền Trần ở [Nam Định](location) khi nào
@@ -1119,21 +1119,21 @@ nlu:
       - lễ hội đua voi ở [Đắk Lắk](location) diễn ra khi nào
       - lễ hội cồng chiêng Tây Nguyên ở [Gia Lai](location)
       - lễ hội hoa ban ở [Điện Biên](location) vào tháng mấy
-      - festival cà phê ở [Buôn Ma Thuột](location)
+      - festival cà phê ở [Đắk Lắk](location)
       - lễ hội đâm trâu ở [Kon Tum](location) khi nào
       - lễ hội đền Gióng ở [Hà Nội](location)
       - lễ hội Yên Tử ở [Quảng Ninh](location) diễn ra tháng mấy
       - festival bánh dân gian ở [Hội An](location)
       - lễ hội đua thuyền ở [Cần Thơ](location) khi nào
-      - lễ hội khinh khí cầu ở [Đà Lạt](location)
+      - lễ hội khinh khí cầu ở [Lâm Đồng](location)
       - festival hoa anh đào ở [Lào Cai](location)
       - lễ hội chọi trâu ở [Hải Phòng](location) diễn ra khi nào
       - lễ hội đền Kiếp Bạc ở [Hải Dương](location)
       - lễ hội Côn Sơn ở [Hải Dương](location) khi nào
-      - festival ẩm thực đường phố ở [TP.HCM](location)
+      - festival ẩm thực đường phố ở [Hồ Chí Minh](location)
       - lễ hội chùa Tam Chúc ở [Hà Nam](location)
       - lễ hội đền Sòng ở [Thanh Hóa](location) diễn ra khi nào
-      - festival biển ở [Nha Trang](location) có gì đặc biệt
+      - festival biển ở [Khánh Hòa](location) có gì đặc biệt
       - lễ hội đua thuyền trên sông Hương ở [Huế](location)
       - lễ hội hoa đăng ở [Hội An](location) vào tháng mấy
       - lễ hội rước kiệu ở [Bắc Ninh](location)
@@ -1149,7 +1149,7 @@ nlu:
       - Tôi đang lên kế hoạch du lịch [Huế](location) vào mùa thu, có lễ hội nào diễn ra vào thời điểm đó không
       - Cho tôi hỏi, nếu đến [Hà Nội](location) vào tháng 3, có lễ hội truyền thống nào đáng tham gia không
       - Mình muốn trải nghiệm lễ hội văn hóa ở [Bắc Ninh](location), bạn có thể tư vấn thời gian tốt nhất không
-      - Tôi và gia đình sẽ đi [Đà Lạt](location) vào tháng 12, có lễ hội hoa nào diễn ra không
+      - Tôi và gia đình sẽ đi [Lâm Đồng](location) vào tháng 12, có lễ hội hoa nào diễn ra không
 
   - intent: ask_new_province
     examples: |
@@ -1404,10 +1404,10 @@ nlu:
       - [Bạc Liêu](location) nên mang theo gì
       - du lịch [Hội An](location) có lưu ý gì
       - tip đi [Huế](location)
-      - [Nha Trang](location) nên tránh gì
+      - [Khánh Hòa](location) nên tránh gì
       - mẹo tiết kiệm khi đến [Phú Quốc](location)
-      - du lịch [Đà Lạt](location) mùa nào đẹp
-      - lưu ý an toàn ở [Sapa](location)
+      - du lịch [Lâm Đồng](location) mùa nào đẹp
+      - lưu ý an toàn ở [Lào Cai](location)
       - [Nghệ An](location) nên mặc gì
       - tip mua sắm ở [Vũng Tàu](location)
       - du lịch [Phan Thiết](location) cần biết gì
@@ -1424,15 +1424,15 @@ nlu:
       - lưu ý sức khỏe [Lâm Đồng](location)
       - tip mua quà [Quảng Ngãi](location)
       - thời điểm tốt nhất đến [Cần Thơ](location)
-      - kinh nghiệm du lịch [Hạ Long](location)
-      - Mẹo du lịch khi đi [Sài Gòn](location)
+      - kinh nghiệm du lịch [Quảng Ninh](location)
+      - Mẹo du lịch khi đi [Hồ Chí Minh](location)
       - Lịch trình 2 ngày ở [Đà Nẵng](location) hợp lý là gì?
       - Có lưu ý y tế khi đến [Phú Quốc](location) không?
-      - Thời điểm ít mưa để đến [Đà Lạt](location) là tháng mấy?
-      - Bảo hiểm du lịch cho chuyến đi [Nha Trang](location) nên mua loại nào?
-      - Gợi ý phương tiện rẻ nhất từ [Hà Nội](location) tới [Hạ Long](location)
+      - Thời điểm ít mưa để đến [Lâm Đồng](location) là tháng mấy?
+      - Bảo hiểm du lịch cho chuyến đi [Khánh Hòa](location) nên mua loại nào?
+      - Gợi ý phương tiện rẻ nhất từ [Hà Nội](location) tới [Quảng Ninh](location)
       - Lưu ý an toàn khi đi [Đà Nẵng](location)
-      - Chuẩn bị gì khi đến [Đà Lạt](location)
+      - Chuẩn bị gì khi đến [Lâm Đồng](location)
       - Tip tiết kiệm cho chuyến đi [Phú Quốc](location)
       - Mẹo săn vé rẻ đến [Hồ Chí Minh](location)
       - mẹo du lịch [Bắc Ninh](location)
@@ -1623,9 +1623,9 @@ nlu:
       - Mình sắp đi [Đà Nẵng](location) vào tháng 6, mùa đó có gì đặc biệt không
       - Tôi đang lên kế hoạch du lịch [Hà Nội](location) vào mùa thu, thời tiết và cảnh sắc như thế nào
       - Cho tôi hỏi, nếu đi [Huế](location) vào tháng 4, có lưu ý gì về thời tiết và cách chuẩn bị không
-      - Mình muốn đi [Sapa](location) vào cuối năm, bạn có thể cho biết cần chuẩn bị gì không
+      - Mình muốn đi [Lào Cai](location) vào cuối năm, bạn có thể cho biết cần chuẩn bị gì không
       - Tôi và bạn bè sẽ đi [Phú Quốc](location) vào tháng 7, có lưu ý gì về an toàn và thời tiết không
-      - Cho tôi hỏi, nếu đi [Đà Lạt](location) vào mùa mưa, có ảnh hưởng gì đến chuyến du lịch không
+      - Cho tôi hỏi, nếu đi [Lâm Đồng](location) vào mùa mưa, có ảnh hưởng gì đến chuyến du lịch không
 
   - intent: ask_transportation
     examples: |
@@ -1634,10 +1634,10 @@ nlu:
       - đi [Cà Mau](location) bằng gì
       - [Bạc Liêu](location) có sân bay không
       - từ [Hội An](location) đến [Huế](location) mất bao lâu
-      - xe buýt đến [Nha Trang](location)
+      - xe buýt đến [Khánh Hòa](location)
       - tàu hỏa đi [Phú Quốc](location)
-      - máy bay đến [Đà Lạt](location) giá bao nhiêu
-      - di chuyển ở [Sapa](location)
+      - máy bay đến [Lâm Đồng](location) giá bao nhiêu
+      - di chuyển ở [Lào Cai](location)
       - từ [Nghệ An](location) đến [Hà Nội](location)
       - đi [Vũng Tàu](location) từ TP.HCM
       - phương tiện đến [Phan Thiết](location)
@@ -1654,7 +1654,7 @@ nlu:
       - tàu đến [Lâm Đồng](location)
       - xe khách [Quảng Ngãi](location)
       - cách đi [Cần Thơ](location)
-      - [Hạ Long](location) có sân bay không
+      - [Quảng Ninh](location) có sân bay không
       - đi [Hải Phòng](location) như thế nào
       - đi [Hà Nội](location) như thế nào
       - đi [Đà Nẵng](location) như thế nào
@@ -1833,31 +1833,31 @@ nlu:
       - phương tiện nào rẻ nhất để đi [Đà Nẵng](location) từ Hà Nội
       - đi [Huế](location) bằng tàu hỏa mất bao nhiêu tiền
       - có chuyến bay thẳng đến [Phú Quốc](location) không
-      - từ [Hà Nội](location) đến [Sapa](location) nên đi bằng gì
-      - xe khách đi [Đà Lạt](location) từ TP.HCM giá bao nhiêu
-      - tàu hỏa từ [Hà Nội](location) đến [Nha Trang](location) mất mấy tiếng
+      - từ [Hà Nội](location) đến [Lào Cai](location) nên đi bằng gì
+      - xe khách đi [Lâm Đồng](location) từ TP.HCM giá bao nhiêu
+      - tàu hỏa từ [Hà Nội](location) đến [Khánh Hòa](location) mất mấy tiếng
       - có thể đi [Hội An](location) bằng xe máy từ Đà Nẵng không
       - phương tiện công cộng ở [Đà Nẵng](location) có tiện không
       - đặt vé máy bay đi [Cần Thơ](location) ở đâu
       - từ [Hồ Chí Minh](location) đến [Mũi Né](location) đi xe mất bao lâu
       - tàu cao tốc đi [Quảng Ninh](location) từ Hà Nội
-      - xe limousine đi [Nha Trang](location) từ Sài Gòn
+      - xe limousine đi [Khánh Hòa](location) từ Sài Gòn
       - có sân bay quốc tế ở [Đà Nẵng](location) không
-      - đi [Đà Lạt](location) bằng xe máy có an toàn không
-      - tàu hỏa từ [Hà Nội](location) đến [Vinh](location) mất bao lâu
+      - đi [Lâm Đồng](location) bằng xe máy có an toàn không
+      - tàu hỏa từ [Hà Nội](location) đến [Nghệ An](location) mất bao lâu
       - xe buýt đêm đi [Hà Nội](location) từ TP.HCM
       - từ [Huế](location) đến [Đà Nẵng](location) nên đi bằng gì
       - phương tiện di chuyển trong thành phố [Hà Nội](location)
-      - thuê xe máy ở [Đà Lạt](location) giá bao nhiêu
+      - thuê xe máy ở [Lâm Đồng](location) giá bao nhiêu
       - có tàu biển đi [Phú Quốc](location) không
-      - từ [Hà Nội](location) đến [Hạ Long](location) đi xe khách mất bao lâu
+      - từ [Hà Nội](location) đến [Quảng Ninh](location) đi xe khách mất bao lâu
       - grab/xe công nghệ có sẵn ở [Đà Nẵng](location) không
-      - đi [Sapa](location) bằng tàu hỏa rồi đi xe lên núi
-      - từ [TP.HCM](location) đến [Cà Mau](location) đi bằng gì nhanh nhất
+      - đi [Lào Cai](location) bằng tàu hỏa rồi đi xe lên núi
+      - từ [Hồ Chí Minh](location) đến [Cà Mau](location) đi bằng gì nhanh nhất
       - tàu hỏa từ [Hà Nội](location) đến [Lào Cai](location) có ghế nằm không
       - phương tiện đi [Mai Châu](location) từ Hà Nội
       - từ [Đà Nẵng](location) đến [Hội An](location) đi taxi mất bao nhiêu
-      - có chuyến bay nội địa đến [Pleiku](location) không
+      - có chuyến bay nội địa đến [Gia Lai](location) không
       - đi [Bắc Ninh](location) từ Hà Nội bằng xe buýt
       - từ [Hồ Chí Minh](location) đến [Vũng Tàu](location) đi xe máy mất bao lâu
       - phương tiện công cộng ở [Hà Nội](location) có những gì
@@ -1865,10 +1865,10 @@ nlu:
       - xe khách giường nằm đi [Đà Nẵng](location) từ Hà Nội
       - từ [Hồ Chí Minh](location) đến [Cần Thơ](location) có đường thủy không
       - Tôi đang ở [Hà Nội](location) và muốn đến [Đà Nẵng](location), phương tiện nào thuận tiện nhất
-      - Mình sắp đi [Huế](location) từ [TP.HCM](location), bạn có thể gợi ý cách di chuyển tiết kiệm nhất không
-      - Cho tôi hỏi, nếu đi từ [Hà Nội](location) đến [Sapa](location) bằng tàu hỏa, sau đó đi xe lên núi mất bao lâu
+      - Mình sắp đi [Huế](location) từ [Hồ Chí Minh](location), bạn có thể gợi ý cách di chuyển tiết kiệm nhất không
+      - Cho tôi hỏi, nếu đi từ [Hà Nội](location) đến [Lào Cai](location) bằng tàu hỏa, sau đó đi xe lên núi mất bao lâu
       - Tôi và gia đình sẽ đi [Phú Quốc](location) từ [Hồ Chí Minh](location), nên đi máy bay hay tàu biển
-      - Mình muốn đi [Đà Lạt](location) từ [TP.HCM](location) bằng xe khách, có nhà xe nào uy tín không
+      - Mình muốn đi [Lâm Đồng](location) từ [Hồ Chí Minh](location) bằng xe khách, có nhà xe nào uy tín không
 
   - intent: inform_location
     examples: |
@@ -1883,8 +1883,8 @@ nlu:
       - tôi đến từ [An Giang](location)
       - hiện tôi ở [Đà Nẵng](location)
       - quê tôi ở [Hà Nội](location)
-      - tôi là người [Sài Gòn](location)
-      - tôi muốn chọn [TP.HCM](location)
+      - tôi là người [Hồ Chí Minh](location)
+      - tôi muốn chọn [Hồ Chí Minh](location)
       - [Lào Cai](location) đi
       - về [Gia Lai](location)
       - [Khánh Hòa](location) nha
@@ -1892,23 +1892,23 @@ nlu:
       - [Lâm Đồng](location) đây
       - tỉnh [Quảng Ngãi](location)
       - [Huế](location)
-      - [Nha Trang](location)
+      - [Khánh Hòa](location)
       - [Vũng Tàu](location)
       - [Cần Thơ](location)
-      - [Hạ Long](location)
-      - Tôi đang ở [Sài Gòn](location)
-      - Tôi có mặt tại [TP.HCM](location) hôm nay
-      - Đã tới [Đà Lạt](location), cần gợi ý chơi
-      - Ở [Hạ Long](location) trong 3 ngày
+      - [Quảng Ninh](location)
+      - Tôi đang ở [Hồ Chí Minh](location)
+      - Tôi có mặt tại [Hồ Chí Minh](location) hôm nay
+      - Đã tới [Lâm Đồng](location), cần gợi ý chơi
+      - Ở [Quảng Ninh](location) trong 3 ngày
       - Mình đang ở [Phú Quốc](location) và muốn khám phá hải sản
-      - Ở [TP.HCM](location) bây giờ
-      - Đang ở [Đà Lạt](location)
+      - Ở [Hồ Chí Minh](location) bây giờ
+      - Đang ở [Lâm Đồng](location)
       - [Phú Quốc](location) ngay đây
-      - Tôi đang ở [Sài Gòn](location) và muốn tìm hiểu về ẩm thực ở đây
-      - Mình hiện tại đang ở [Đà Lạt](location), bạn có thể gợi ý địa điểm tham quan gần đây không
+      - Tôi đang ở [Hồ Chí Minh](location) và muốn tìm hiểu về ẩm thực ở đây
+      - Mình hiện tại đang ở [Lâm Đồng](location), bạn có thể gợi ý địa điểm tham quan gần đây không
       - Tôi vừa đến [Hà Nội](location) và muốn hỏi về văn hóa nơi đây
       - Mình đang có mặt tại [Huế](location), có lễ hội nào đang diễn ra không
-      - Tôi đang ở [Nha Trang](location) và muốn biết cách đi đến [Đà Lạt](location)
+      - Tôi đang ở [Khánh Hòa](location) và muốn biết cách đi đến [Lâm Đồng](location)
 
   - intent: out_of_scope
     examples: |
