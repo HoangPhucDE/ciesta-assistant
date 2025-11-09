@@ -3042,7 +3042,7 @@ nlu:
 
       - từ [Nghệ An](location) đến [Hà Nội](location)
 
-      - đi [Hồ Chí Minh](location) từ TP.HCM
+      - đi [Hồ Chí Minh](location) từ [Hồ Chí Minh](location)
 
       - phương tiện đến [Lâm Đồng](location)
 
@@ -3420,7 +3420,7 @@ nlu:
 
       - từ [Hà Nội](location) đến [Lào Cai](location) nên đi bằng gì
 
-      - xe khách đi [Lâm Đồng](location) từ TP.HCM giá bao nhiêu
+      - xe khách đi [Lâm Đồng](location) từ [Hồ Chí Minh](location) giá bao nhiêu
 
       - tàu hỏa từ [Hà Nội](location) đến [Khánh Hòa](location) mất mấy tiếng
 
@@ -3442,7 +3442,7 @@ nlu:
 
       - tàu hỏa từ [Hà Nội](location) đến [Nghệ An](location) mất bao lâu
 
-      - xe buýt đêm đi [Hà Nội](location) từ TP.HCM
+      - xe buýt đêm đi [Hà Nội](location) từ [Hồ Chí Minh](location)
 
       - từ [Huế](location) đến [Đà Nẵng](location) nên đi bằng gì
 
