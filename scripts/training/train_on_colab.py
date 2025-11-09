@@ -9,16 +9,16 @@ Script tự động train Rasa NLU model trên Google Colab
 
 Workflow (Colab):
 1. Script tự động xóa repo cũ và clone repo mới từ git
-2. (Khuyến nghị) Chạy sync_location_names.py trước để đồng bộ location names
-3. Chạy script này để train model
-4. Model sẽ được lưu trong models/ và có thể download về máy local
+2. Cài đặt dependencies
+3. Download PhoBERT model
+4. Tối ưu config cho GPU
+5. Train NLU model
+6. Download model về máy local
 
 Lưu ý:
 - Trên Colab: Script tự động cleanup và clone repo mới mỗi lần chạy
 - Có thể set CIESTA_GIT_URL và CIESTA_GIT_BRANCH để clone branch khác
-- Script này chỉ phục vụ training, không fix entity alignments
-- Entity alignments nên được fix trước bằng sync_location_names.py
-- Xem docs/README_SYNC_LOCATIONS.md để biết thêm chi tiết
+- File này chỉ phục vụ training, không xử lý entity alignments
 """
 
 import os
@@ -1496,13 +1496,16 @@ def download_model_to_local():
     print_info(f"Model mới nhất: {latest_model.name}")
     print_info(f"Kích thước: {latest_model.stat().st_size / (1024*1024):.2f} MB")
     
-    try:
-        from google.colab import files
-        files.download(str(latest_model))
-        print_success("Đã bắt đầu tải model về máy local")
-    except Exception as e:
-        print_error(f"Lỗi khi tải model: {e}")
-        print_info(f"Bạn có thể tải thủ công từ: {latest_model}")
+    if is_colab():
+        try:
+            from google.colab import files  # type: ignore
+            files.download(str(latest_model))
+            print_success("Đã bắt đầu tải model về máy local")
+        except Exception as e:
+            print_error(f"Lỗi khi tải model: {e}")
+            print_info(f"Bạn có thể tải thủ công từ: {latest_model}")
+    else:
+        print_info(f"Không phải Colab - Model đã được lưu tại: {latest_model}")
 
 def main():
     """Main function"""
@@ -1714,13 +1717,6 @@ def main():
     # Step 6: Verify config
     if not verify_config():
         print_warning("Config có thể chưa đúng - vui lòng kiểm tra")
-    
-    # Step 6.5: Entity alignments
-    # Lưu ý: Entity alignments nên được fix trước bằng script sync_location_names.py
-    # Script này chỉ phục vụ training, không fix entities
-    # Xem docs/README_SYNC_LOCATIONS.md để biết thêm chi tiết
-    print_info("💡 Lưu ý: Nếu có entity alignment warnings, chạy sync_location_names.py trước khi train")
-    print_info("   Xem: scripts/training/sync_location_names.py hoặc docs/README_SYNC_LOCATIONS.md")
     
     # Step 7: Optimize config for GPU
     print_header("TỐI ƯU HÓA CONFIG CHO GPU")
