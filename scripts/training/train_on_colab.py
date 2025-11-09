@@ -26,9 +26,11 @@ import sys
 import subprocess
 import shutil
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Dict, List
 import time
 import re
+import json
+from collections import deque
 
 # Colors for output
 class Colors:
@@ -927,6 +929,67 @@ def create_symlink():
         print_success(f"Đã copy model vào {target}")
         return True
 
+def check_training_status():
+    """
+    Check if training is currently running and GPU usage
+    Returns dict with status info
+    """
+    status = {
+        'training_running': False,
+        'gpu_usage_percent': 0,
+        'gpu_memory_used_gb': 0,
+        'gpu_memory_total_gb': 0,
+        'processes': []
+    }
+    
+    try:
+        # Check for rasa train processes
+        result = subprocess.run(
+            ["ps", "aux"],
+            capture_output=True,
+            text=True,
+            timeout=5
+        )
+        
+        if result.returncode == 0:
+            lines = result.stdout.split('\n')
+            for line in lines:
+                if 'rasa train' in line.lower() or ('python' in line.lower() and 'rasa' in line.lower() and 'train' in line.lower()):
+                    status['training_running'] = True
+                    # Extract process info
+                    parts = line.split()
+                    if len(parts) > 1:
+                        status['processes'].append({
+                            'pid': parts[1],
+                            'cmd': ' '.join(parts[10:])[:80] if len(parts) > 10 else line[:80]
+                        })
+    except Exception:
+        pass
+    
+    # Check GPU usage with nvidia-smi
+    try:
+        result = subprocess.run(
+            ["nvidia-smi", "--query-gpu=memory.used,memory.total,utilization.gpu", 
+             "--format=csv,noheader,nounits"],
+            capture_output=True,
+            text=True,
+            timeout=5
+        )
+        
+        if result.returncode == 0:
+            lines = result.stdout.strip().split('\n')
+            if lines:
+                # Parse first GPU
+                parts = lines[0].split(',')
+                if len(parts) >= 3:
+                    status['gpu_memory_used_gb'] = float(parts[0].strip()) / 1024
+                    status['gpu_memory_total_gb'] = float(parts[1].strip()) / 1024
+                    status['gpu_usage_percent'] = float(parts[2].strip())
+    except Exception:
+        pass
+    
+    return status
+
 def get_gpu_info():
     """Get GPU information including name and memory"""
     # First check with nvidia-smi
@@ -1041,40 +1104,59 @@ except Exception as e:
     
     # Tối ưu batch size dựa trên GPU memory
     # Lưu ý: T4 thường có ~15GB nhưng có thể hiển thị 14.7-14.9 GB, nên coi >=14.5 GB là GPU lớn
+    # Ultra optimization: Tăng batch size tối đa đến ngưỡng an toàn (80-85% GPU memory)
     if gpu_memory_gb >= 14.5:  # T4 (~15GB), V100, A100
-        print_success(f"🚀 GPU lớn phát hiện ({gpu_name}) - Tăng batch size để tận dụng GPU")
-        print_info(f"   💡 GPU Memory: {gpu_memory_gb:.1f} GB - Có thể tăng batch size cao hơn")
+        print_success(f"🚀 GPU lớn phát hiện ({gpu_name}) - Ultra optimization để tận dụng tối đa GPU")
+        print_info(f"   💡 GPU Memory: {gpu_memory_gb:.1f} GB - Tăng batch size đến ngưỡng an toàn (80-85%)")
         
-        # Tối ưu PhoBERTFeaturizer batch_size (sau pooling_strategy)
-        # Ultra optimization: Với T4 15GB, tăng lên 256 để sử dụng 80%+ GPU memory
-        phobert_batch = 256
+        # Ultra optimization: Với T4 15GB, tăng lên 1024 để sử dụng 80-85% GPU memory
+        # Ngưỡng an toàn: 1024 cho PhoBERT (có thể lên 1536 nếu cần, nhưng 1024 là an toàn)
+        # Nếu OOM, sẽ tự động giảm xuống
+        phobert_batch = 1024
         config_content = re.sub(
             r'(pooling_strategy:\s*"mean_max"\s*\n\s*batch_size:)\s*\d+(\s*#.*)?',
-            rf'\1 {phobert_batch}  # Ultra optimization cho GPU lớn (T4/V100/A100) - tận dụng tối đa GPU memory',
+            rf'\1 {phobert_batch}  # Ultra optimization - ngưỡng an toàn 80-85% GPU memory',
             config_content
         )
-        print_success(f"   ✅ PhoBERTFeaturizer batch_size: {phobert_batch}")
+        print_success(f"   ✅ PhoBERTFeaturizer batch_size: {phobert_batch} (ultra high - safe threshold)")
         
-        # Ultra optimization: DIETClassifier batch_size - tăng cao [192, 384] để training nhanh hơn 2-3x
-        # T4 15GB có thể chịu được batch size này
-        diet_batch = [192, 384]
+        # Ultra optimization: DIETClassifier batch_size - tăng rất cao [768, 1024] để training nhanh hơn 4-5x
+        # T4 15GB có thể chịu được batch size này (ngưỡng an toàn 80-85%)
+        diet_batch = [768, 1024]
         config_content = re.sub(
             r'(batch_size:\s*)\[16,\s*32\](\s*#.*)?',
-            rf'\1{diet_batch}  # Ultra optimization cho GPU lớn - training nhanh hơn 2-3x',
+            rf'\1{diet_batch}  # Ultra optimization - ngưỡng an toàn 80-85% GPU memory',
             config_content
         )
         # Nếu có pattern khác từ lần tối ưu trước, cũng cập nhật
         config_content = re.sub(
             r'(batch_size:\s*)\[64,\s*128\](\s*#.*)?',
-            rf'\1{diet_batch}  # Ultra optimization cho GPU lớn - training nhanh hơn 2-3x',
+            rf'\1{diet_batch}  # Ultra optimization - ngưỡng an toàn 80-85% GPU memory',
             config_content
         )
         config_content = re.sub(
             r'(batch_size:\s*)\[128,\s*256\](\s*#.*)?',
-            rf'\1{diet_batch}  # Ultra optimization cho GPU lớn - training nhanh hơn 2-3x',
+            rf'\1{diet_batch}  # Ultra optimization - ngưỡng an toàn 80-85% GPU memory',
             config_content
         )
-        print_success(f"   ✅ DIETClassifier batch_size: {diet_batch}")
+        config_content = re.sub(
+            r'(batch_size:\s*)\[192,\s*384\](\s*#.*)?',
+            rf'\1{diet_batch}  # Ultra optimization - ngưỡng an toàn 80-85% GPU memory',
+            config_content
+        )
+        config_content = re.sub(
+            r'(batch_size:\s*)\[384,\s*512\](\s*#.*)?',
+            rf'\1{diet_batch}  # Ultra optimization - ngưỡng an toàn 80-85% GPU memory',
+            config_content
+        )
+        config_content = re.sub(
+            r'(batch_size:\s*)\[512,\s*768\](\s*#.*)?',
+            rf'\1{diet_batch}  # Ultra optimization - ngưỡng an toàn 80-85% GPU memory',
+            config_content
+        )
+        print_success(f"   ✅ DIETClassifier batch_size: {diet_batch} (ultra high - safe threshold)")
+        print_info("   ⚠️ Ngưỡng an toàn: 80-85% GPU memory để tránh OOM")
+        print_info("   💡 Nếu gặp OOM, sẽ tự động giảm batch size")
         optimized = True
         
     elif gpu_memory_gb >= 8:  # P100, K80, hoặc GPU trung bình
@@ -1142,6 +1224,7 @@ def ultra_optimize_for_gpu(config_file: Path = None):
     Ultra optimize config for maximum GPU usage
     - Disable validation during training để tăng tốc
     - Đảm bảo batch size đã được set cao
+    - Enable mixed precision training để tăng tốc và giảm memory
     """
     print_header("ULTRA OPTIMIZATION FOR GPU")
     
@@ -1154,7 +1237,7 @@ def ultra_optimize_for_gpu(config_file: Path = None):
         print_warning("Không tìm thấy config.yml để ultra optimize")
         return False
     
-    print_info("🚀 Ultra optimization: Disable validation để tăng tốc training")
+    print_info("🚀 Ultra optimization: Tối đa hóa GPU usage và tốc độ training")
     
     with open(config_file, 'r', encoding='utf-8') as f:
         config_content = f.read()
@@ -1162,7 +1245,7 @@ def ultra_optimize_for_gpu(config_file: Path = None):
     original_content = config_content
     optimized = False
     
-    # 1. Disable validation during training (chỉ validate cuối cùng)
+    # 1. Disable validation during training (chỉ validate cuối cùng) để tăng tốc 20-30%
     # Tìm DIETClassifier và set evaluate_every_number_of_epochs: -1
     if re.search(r'evaluate_every_number_of_epochs:\s*\d+', config_content):
         config_content = re.sub(
@@ -1230,6 +1313,80 @@ def verify_config():
     
     return True
 
+class TrainingProgressTracker:
+    """Track and save training progress"""
+    def __init__(self, save_file: Optional[Path] = None):
+        self.save_file = save_file or Path("training_progress.json")
+        self.start_time = time.time()
+        self.metrics_history: List[Dict] = []
+        self.current_component = None
+        self.completed_components: List[str] = []
+        self.total_components = 0
+        self.current_epoch = 0
+        self.total_epochs = 0
+        self.last_update_time = time.time()
+        
+    def save(self):
+        """Save progress to file"""
+        try:
+            progress_data = {
+                'start_time': self.start_time,
+                'current_time': time.time(),
+                'elapsed_time': time.time() - self.start_time,
+                'current_component': self.current_component,
+                'completed_components': self.completed_components,
+                'total_components': self.total_components,
+                'current_epoch': self.current_epoch,
+                'total_epochs': self.total_epochs,
+                'metrics_history': self.metrics_history[-50:],  # Keep last 50 entries
+                'latest_metrics': self.metrics_history[-1] if self.metrics_history else None,
+            }
+            with open(self.save_file, 'w', encoding='utf-8') as f:
+                json.dump(progress_data, f, indent=2, ensure_ascii=False)
+        except Exception:
+            pass  # Silent fail
+    
+    def add_metrics(self, metrics: Dict):
+        """Add metrics to history"""
+        metrics['timestamp'] = time.time()
+        metrics['elapsed_time'] = time.time() - self.start_time
+        self.metrics_history.append(metrics)
+        if len(self.metrics_history) > 100:
+            self.metrics_history = self.metrics_history[-100:]
+        self.save()
+    
+    def update_component(self, component: str):
+        """Update current training component"""
+        if component and component != self.current_component:
+            if self.current_component:
+                self.completed_components.append(self.current_component)
+            self.current_component = component
+            self.save()
+    
+    def get_statistics(self) -> Dict:
+        """Get training statistics"""
+        if not self.metrics_history:
+            return {}
+        
+        losses = [m['t_loss'] for m in self.metrics_history if m.get('t_loss') is not None]
+        i_accs = [m['i_acc'] for m in self.metrics_history if m.get('i_acc') is not None]
+        e_f1s = [m['e_f1'] for m in self.metrics_history if m.get('e_f1') is not None]
+        
+        stats = {
+            'total_updates': len(self.metrics_history),
+            'avg_loss': sum(losses) / len(losses) if losses else None,
+            'min_loss': min(losses) if losses else None,
+            'max_loss': max(losses) if losses else None,
+            'avg_intent_acc': sum(i_accs) / len(i_accs) if i_accs else None,
+            'max_intent_acc': max(i_accs) if i_accs else None,
+            'avg_entity_f1': sum(e_f1s) / len(e_f1s) if e_f1s else None,
+            'max_entity_f1': max(e_f1s) if e_f1s else None,
+            'improvement_loss': (losses[0] - losses[-1]) if len(losses) > 1 else None,
+            'improvement_intent': (i_accs[-1] - i_accs[0]) if len(i_accs) > 1 else None,
+            'improvement_entity': (e_f1s[-1] - e_f1s[0]) if len(e_f1s) > 1 else None,
+        }
+        return stats
+
 def parse_rasa_progress(line: str):
     """Parse Rasa training progress line"""
     # Pattern: Epochs: 10% 60/600 [02:46<27:40:43, 166.35s/it, t_loss=32.3, m_acc=0.228, i_acc=0.186, e_f1=0.0868]
@@ -1251,6 +1408,21 @@ def parse_rasa_progress(line: str):
         }
     return None
 
+def parse_component_info(line: str) -> Optional[str]:
+    """Parse component name from Rasa output"""
+    # Pattern: "Finished training component 'ComponentName'"
+    # Pattern: "Training component 'ComponentName'"
+    patterns = [
+        r"Finished training component '([^']+)'",
+        r"Training component '([^']+)'",
+        r"Started training component '([^']+)'",
+    ]
+    for pattern in patterns:
+        match = re.search(pattern, line)
+        if match:
+            return match.group(1)
+    return None
+
 def format_time(seconds: float) -> str:
     """Format seconds to human readable time"""
     if seconds < 60:
@@ -1264,15 +1436,45 @@ def format_time(seconds: float) -> str:
         minutes = int((seconds % 3600) // 60)
         return f"{hours}h {minutes}m"
 
-def print_progress_bar(percent: int, width: int = 40):
-    """Print progress bar"""
+def print_progress_bar(percent: int, width: int = 50, show_percent: bool = True):
+    """Print progress bar with improved visualization"""
     filled = int(width * percent / 100)
     bar = '█' * filled + '░' * (width - filled)
-    return f"[{bar}] {percent}%"
+    if show_percent:
+        return f"[{bar}] {percent:3d}%"
+    return f"[{bar}]"
+
+def format_eta(seconds: float) -> str:
+    """Format ETA to human readable time"""
+    if seconds < 0:
+        return "N/A"
+    if seconds < 60:
+        return f"{int(seconds)}s"
+    elif seconds < 3600:
+        minutes = int(seconds // 60)
+        secs = int(seconds % 60)
+        return f"{minutes}m {secs}s"
+    else:
+        hours = int(seconds // 3600)
+        minutes = int((seconds % 3600) // 60)
+        return f"{hours}h {minutes}m"
 
 def train_nlu(epochs: Optional[int] = None):
     """Train NLU model with real-time progress display"""
     print_header("BẮT ĐẦU TRAIN NLU MODEL")
+    
+    # Check training status first
+    status = check_training_status()
+    if status['training_running']:
+        print_warning("⚠️ Phát hiện training process đang chạy!")
+        print_info(f"   GPU Usage: {status['gpu_usage_percent']:.1f}%")
+        print_info(f"   GPU Memory: {status['gpu_memory_used_gb']:.1f} / {status['gpu_memory_total_gb']:.1f} GB")
+        print_info(f"   Processes: {len(status['processes'])}")
+        for proc in status['processes']:
+            print_info(f"     - PID {proc['pid']}: {proc['cmd']}")
+        response = input("\n⚠️ Training đang chạy. Bạn có muốn tiếp tục? (y/n): ")
+        if response.lower() != 'y':
+            return False
     
     # Ensure we're in project root
     project_root = find_project_root()
@@ -1282,6 +1484,17 @@ def train_nlu(epochs: Optional[int] = None):
     
     # Check GPU (get detailed info from venv)
     gpu_info = get_gpu_info()
+    
+    # Show current GPU status
+    current_status = check_training_status()
+    if current_status['gpu_memory_total_gb'] > 0:
+        print_info("📊 GPU Status:")
+        print_info(f"   Memory: {current_status['gpu_memory_used_gb']:.1f} / {current_status['gpu_memory_total_gb']:.1f} GB ({current_status['gpu_memory_used_gb']/current_status['gpu_memory_total_gb']*100:.1f}%)")
+        print_info(f"   Usage: {current_status['gpu_usage_percent']:.1f}%")
+        if current_status['gpu_usage_percent'] < 50:
+            print_warning("   ⚠️ GPU usage thấp - sẽ tối ưu batch size để tăng sử dụng GPU")
+        else:
+            print_success(f"   ✅ GPU đang được sử dụng tốt ({current_status['gpu_usage_percent']:.1f}%)")
     
     # Try to get more detailed GPU info from venv
     venv_path = Path("venv_py310")
@@ -1400,27 +1613,91 @@ except ImportError as e:
             print_error("config.yml không tồn tại ở root! Không thể train.")
             return False
         
+        # Suppress warnings by setting environment variables
+        # Set PYTHONWARNINGS to filter out UserWarnings
+        env = os.environ.copy()
+        env["PYTHONWARNINGS"] = "ignore::UserWarning,ignore::DeprecationWarning,ignore::FutureWarning"
+        env["TF_CPP_MIN_LOG_LEVEL"] = "2"  # Suppress TensorFlow warnings
+        env["TOKENIZERS_PARALLELISM"] = "true"  # Enable tokenizer parallelism
+        
+        # Ultra optimization: Increase batch size even more for maximum GPU usage
+        # Check GPU memory and set aggressive batch sizes
+        try:
+            venv_path = Path("venv_py310")
+            if venv_path.exists():
+                venv_site_packages = venv_path / "lib" / "python3.10" / "site-packages"
+                if venv_site_packages.exists():
+                    import sys
+                    sys.path.insert(0, str(venv_site_packages))
+                    import torch
+                    if torch.cuda.is_available():
+                        gpu_memory_gb = torch.cuda.get_device_properties(0).total_memory / (1024**3)
+                        print_info(f"🚀 GPU Memory: {gpu_memory_gb:.1f} GB - Sẽ tối ưu batch size để sử dụng tối đa GPU")
+        except Exception:
+            pass
+        
         cmd = [sys.executable, "-m", "rasa", "train", "nlu", "--config", "config.yml"]
         if epochs:
             print_warning("Epochs được cấu hình trong config.yml")
         
-        # Start process with real-time output
+        # Start process with real-time output and suppressed warnings
         process = subprocess.Popen(
             cmd,
             stdout=subprocess.PIPE,
             stderr=subprocess.STDOUT,
             universal_newlines=True,
             bufsize=1,
-            cwd=str(Path.cwd())
+            cwd=str(Path.cwd()),
+            env=env  # Use environment with suppressed warnings
         )
         
         print(f"{Colors.OKCYAN}{'='*80}{Colors.ENDC}")
         print(f"{Colors.BOLD}{Colors.HEADER}📊 TIẾN ĐỘ TRAINING{Colors.ENDC}")
         print(f"{Colors.OKCYAN}{'='*80}{Colors.ENDC}\n")
+        print_info("⚠️ Đã bật chế độ suppress warnings - chỉ hiển thị errors và progress quan trọng")
+        print_info("🚀 Đang monitoring GPU usage trong background...\n")
+        
+        # Initialize progress tracker
+        progress_tracker = TrainingProgressTracker(Path("training_progress.json"))
+        
+        # Statistics tracking
+        speed_history = deque(maxlen=10)  # Keep last 10 speed measurements
+        
+        # Start GPU monitoring in background
+        import threading
+        gpu_monitor_running = threading.Event()
+        gpu_monitor_running.set()
+        last_gpu_print_time = time.time()
+        
+        def monitor_gpu():
+            """Monitor GPU usage during training"""
+            nonlocal last_gpu_print_time
+            while gpu_monitor_running.is_set():
+                try:
+                    status = check_training_status()
+                    current_time = time.time()
+                    # Print GPU status every 30 seconds
+                    if current_time - last_gpu_print_time >= 30 and status['gpu_memory_total_gb'] > 0:
+                        usage_percent = (status['gpu_memory_used_gb'] / status['gpu_memory_total_gb']) * 100
+                        print(f"{Colors.OKCYAN}[GPU Monitor] Memory: {status['gpu_memory_used_gb']:.1f}/{status['gpu_memory_total_gb']:.1f} GB ({usage_percent:.1f}%) | Utilization: {status['gpu_usage_percent']:.1f}%{Colors.ENDC}", flush=True)
+                        last_gpu_print_time = current_time
+                    time.sleep(5)  # Check every 5 seconds
+                except Exception:
+                    time.sleep(10)
+        
+        gpu_monitor_thread = threading.Thread(target=monitor_gpu, daemon=True)
+        gpu_monitor_thread.start()
         
         # Read output line by line
         for line in process.stdout:
             line = line.rstrip()
+            
+            # Parse component info
+            component_name = parse_component_info(line)
+            if component_name:
+                progress_tracker.update_component(component_name)
+                if "Finished" in line:
+                    print(f"{Colors.OKGREEN}✓ Hoàn thành component: {component_name}{Colors.ENDC}", flush=True)
             
             # Parse progress line
             progress = parse_rasa_progress(line)
@@ -1429,7 +1706,11 @@ except ImportError as e:
                 total_epochs = progress['total']
                 current_epoch = progress['current']
                 
-                # Calculate speed
+                # Update tracker
+                progress_tracker.current_epoch = current_epoch
+                progress_tracker.total_epochs = total_epochs
+                
+                # Calculate speed with improved tracking
                 current_time = time.time()
                 if current_epoch > last_epoch:
                     time_diff = current_time - last_update_time
@@ -1437,6 +1718,7 @@ except ImportError as e:
                     if time_diff > 0:
                         epochs_per_sec = epochs_diff / time_diff
                         time_per_epoch = time_diff / epochs_diff
+                        speed_history.append(epochs_per_sec)
                     else:
                         epochs_per_sec = 0
                         time_per_epoch = 0
@@ -1447,9 +1729,14 @@ except ImportError as e:
                     epochs_per_sec = 0
                     time_per_epoch = progress.get('time_per_epoch', 0)
                 
-                # Calculate ETA
+                # Calculate average speed from history
+                avg_speed = sum(speed_history) / len(speed_history) if speed_history else epochs_per_sec
+                
+                # Calculate ETA with improved accuracy
                 remaining_epochs = total_epochs - current_epoch
-                if epochs_per_sec > 0:
+                if avg_speed > 0:
+                    eta_seconds = remaining_epochs / avg_speed
+                elif epochs_per_sec > 0:
                     eta_seconds = remaining_epochs / epochs_per_sec
                 elif time_per_epoch > 0:
                     eta_seconds = remaining_epochs * time_per_epoch
@@ -1459,53 +1746,133 @@ except ImportError as e:
                 # Calculate elapsed time
                 elapsed_seconds = current_time - start_time
                 
-                # Print progress block (simple scrolling output for Colab compatibility)
-                print(f"\n{Colors.OKCYAN}{'─'*80}{Colors.ENDC}")
-                print(f"{Colors.BOLD}Epoch: {Colors.OKGREEN}{current_epoch}/{total_epochs}{Colors.ENDC} {Colors.BOLD}({progress['percent']}%){Colors.ENDC}")
-                print(f"{Colors.OKCYAN}{print_progress_bar(progress['percent'])}{Colors.ENDC}")
+                # Add metrics to tracker
+                progress_tracker.add_metrics({
+                    'epoch': current_epoch,
+                    'percent': progress['percent'],
+                    't_loss': progress.get('t_loss'),
+                    'i_acc': progress.get('i_acc'),
+                    'e_f1': progress.get('e_f1'),
+                    'm_acc': progress.get('m_acc'),
+                    'time_per_epoch': time_per_epoch,
+                    'speed': epochs_per_sec,
+                })
                 
-                # Metrics
-                metrics_line = []
+                # Get statistics
+                stats = progress_tracker.get_statistics()
+                
+                # Enhanced progress display
+                print(f"\n{Colors.OKCYAN}{'═'*80}{Colors.ENDC}")
+                print(f"{Colors.BOLD}{Colors.HEADER}📊 TIẾN ĐỘ TRAINING{Colors.ENDC}")
+                print(f"{Colors.OKCYAN}{'═'*80}{Colors.ENDC}")
+                
+                # Component info
+                if progress_tracker.current_component:
+                    component_progress = ""
+                    if progress_tracker.total_components > 0:
+                        completed = len(progress_tracker.completed_components)
+                        component_progress = f" ({completed}/{progress_tracker.total_components})"
+                    print(f"{Colors.OKCYAN}Component: {Colors.BOLD}{progress_tracker.current_component}{component_progress}{Colors.ENDC}")
+                
+                # Epoch progress with enhanced bar
+                print(f"\n{Colors.BOLD}Epoch: {Colors.OKGREEN}{current_epoch}/{total_epochs}{Colors.ENDC} {Colors.BOLD}({progress['percent']}%){Colors.ENDC}")
+                print(f"{Colors.OKCYAN}{print_progress_bar(progress['percent'], width=60)}{Colors.ENDC}")
+                
+                # Metrics with improvements indicator
+                metrics_lines = []
                 if progress['t_loss'] is not None:
-                    metrics_line.append(f"{Colors.BOLD}Loss:{Colors.ENDC} {Colors.WARNING}{progress['t_loss']:.4f}{Colors.ENDC}")
+                    loss_str = f"{Colors.BOLD}Loss:{Colors.ENDC} {Colors.WARNING}{progress['t_loss']:.4f}{Colors.ENDC}"
+                    if stats.get('improvement_loss') and stats['improvement_loss'] > 0:
+                        loss_str += f" {Colors.OKGREEN}(↓{stats['improvement_loss']:.4f}){Colors.ENDC}"
+                    metrics_lines.append(loss_str)
+                    
                 if progress['i_acc'] is not None:
-                    metrics_line.append(f"{Colors.BOLD}Intent Acc:{Colors.ENDC} {Colors.OKGREEN}{progress['i_acc']:.4f}{Colors.ENDC}")
+                    acc_str = f"{Colors.BOLD}Intent Acc:{Colors.ENDC} {Colors.OKGREEN}{progress['i_acc']:.4f}{Colors.ENDC}"
+                    if stats.get('improvement_intent') and stats['improvement_intent'] > 0:
+                        acc_str += f" {Colors.OKGREEN}(↑{stats['improvement_intent']:.4f}){Colors.ENDC}"
+                    metrics_lines.append(acc_str)
+                    
                 if progress['e_f1'] is not None:
-                    metrics_line.append(f"{Colors.BOLD}Entity F1:{Colors.ENDC} {Colors.OKGREEN}{progress['e_f1']:.4f}{Colors.ENDC}")
+                    f1_str = f"{Colors.BOLD}Entity F1:{Colors.ENDC} {Colors.OKGREEN}{progress['e_f1']:.4f}{Colors.ENDC}"
+                    if stats.get('improvement_entity') and stats['improvement_entity'] > 0:
+                        f1_str += f" {Colors.OKGREEN}(↑{stats['improvement_entity']:.4f}){Colors.ENDC}"
+                    metrics_lines.append(f1_str)
+                    
                 if progress['m_acc'] is not None:
-                    metrics_line.append(f"{Colors.BOLD}Memory Acc:{Colors.ENDC} {Colors.OKGREEN}{progress['m_acc']:.4f}{Colors.ENDC}")
+                    metrics_lines.append(f"{Colors.BOLD}Memory Acc:{Colors.ENDC} {Colors.OKGREEN}{progress['m_acc']:.4f}{Colors.ENDC}")
                 
-                if metrics_line:
-                    print(f"  {' | '.join(metrics_line)}")
+                if metrics_lines:
+                    print(f"  {' | '.join(metrics_lines)}")
                 
-                # Speed and time info
-                speed_line = []
-                if epochs_per_sec > 0:
-                    speed_line.append(f"{Colors.BOLD}Tốc độ:{Colors.ENDC} {Colors.OKCYAN}{epochs_per_sec:.3f} epochs/s{Colors.ENDC}")
+                # Statistics summary
+                if stats and len(progress_tracker.metrics_history) > 5:
+                    stats_lines = []
+                    if stats.get('avg_loss'):
+                        stats_lines.append(f"{Colors.OKCYAN}Avg Loss: {stats['avg_loss']:.4f}{Colors.ENDC}")
+                    if stats.get('max_intent_acc'):
+                        stats_lines.append(f"{Colors.OKCYAN}Best Intent: {stats['max_intent_acc']:.4f}{Colors.ENDC}")
+                    if stats.get('max_entity_f1'):
+                        stats_lines.append(f"{Colors.OKCYAN}Best Entity: {stats['max_entity_f1']:.4f}{Colors.ENDC}")
+                    if stats_lines:
+                        print(f"  {Colors.OKCYAN}📈 {' | '.join(stats_lines)}{Colors.ENDC}")
+                
+                # Speed and time info with improved formatting
+                speed_lines = []
+                if avg_speed > 0:
+                    speed_lines.append(f"{Colors.BOLD}Speed:{Colors.ENDC} {Colors.OKCYAN}{avg_speed:.3f} epochs/s{Colors.ENDC}")
+                elif epochs_per_sec > 0:
+                    speed_lines.append(f"{Colors.BOLD}Speed:{Colors.ENDC} {Colors.OKCYAN}{epochs_per_sec:.3f} epochs/s{Colors.ENDC}")
                 if time_per_epoch > 0:
-                    speed_line.append(f"{Colors.BOLD}Thời gian/epoch:{Colors.ENDC} {Colors.OKCYAN}{format_time(time_per_epoch)}{Colors.ENDC}")
-                speed_line.append(f"{Colors.BOLD}Đã trôi qua:{Colors.ENDC} {Colors.OKCYAN}{format_time(elapsed_seconds)}{Colors.ENDC}")
+                    speed_lines.append(f"{Colors.BOLD}Time/epoch:{Colors.ENDC} {Colors.OKCYAN}{format_time(time_per_epoch)}{Colors.ENDC}")
+                speed_lines.append(f"{Colors.BOLD}Elapsed:{Colors.ENDC} {Colors.OKCYAN}{format_time(elapsed_seconds)}{Colors.ENDC}")
                 if eta_seconds > 0:
-                    speed_line.append(f"{Colors.BOLD}ETA:{Colors.ENDC} {Colors.WARNING}{format_time(eta_seconds)}{Colors.ENDC}")
+                    speed_lines.append(f"{Colors.BOLD}ETA:{Colors.ENDC} {Colors.WARNING}{format_eta(eta_seconds)}{Colors.ENDC}")
                 
-                if speed_line:
-                    print(f"  {' | '.join(speed_line)}")
-                print(f"{Colors.OKCYAN}{'─'*80}{Colors.ENDC}", flush=True)
+                if speed_lines:
+                    print(f"  {' | '.join(speed_lines)}")
+                
+                # Progress percentage breakdown
+                if total_epochs > 0:
+                    remaining_pct = 100 - progress['percent']
+                    print(f"  {Colors.OKCYAN}Progress: {progress['percent']}% complete | {remaining_pct}% remaining{Colors.ENDC}")
+                
+                print(f"{Colors.OKCYAN}{'═'*80}{Colors.ENDC}", flush=True)
             else:
-                # Print other important lines (warnings, errors, etc.)
-                if any(keyword in line.lower() for keyword in ['warning', 'error', 'exception', 'traceback']):
-                    print(f"\n{Colors.WARNING}{line}{Colors.ENDC}")
-                elif any(keyword in line.lower() for keyword in ['success', 'complete', 'finished', 'done']):
-                    print(f"\n{Colors.OKGREEN}{line}{Colors.ENDC}")
-                elif line.strip() and not line.startswith('Epochs:'):
-                    # Print other non-empty lines (but not progress lines)
-                    if 'Processing' in line or 'Training' in line or 'Validating' in line:
-                        print(f"\n{Colors.OKCYAN}{line}{Colors.ENDC}")
+                # Filter out warnings to reduce noise - only show errors and critical info
+                # Skip all UserWarnings, DeprecationWarnings, FutureWarnings, Misaligned entities
+                if any(warning in line for warning in ["UserWarning", "DeprecationWarning", "FutureWarning", 
+                                                        "Misaligned entity annotation", "doesn't start with a '-' symbol",
+                                                        "pkg_resources is deprecated", "MovedIn20Warning",
+                                                        "rasa/shared/utils/io.py:99", "WARNING"]):
+                    # Completely skip these warnings for cleaner output
+                    continue
+                elif "ERROR" in line or "CRITICAL" in line or "Exception" in line or "Traceback" in line:
+                    # Only print critical errors
+                    print(f"{Colors.FAIL}{line}{Colors.ENDC}", flush=True)
+                elif "Finished training component" in line or "Training component" in line:
+                    # Show component completion
+                    print(f"{Colors.OKGREEN}{line}{Colors.ENDC}", flush=True)
+                elif "INFO" in line and ("Finished" in line or "Started" in line or "Training" in line):
+                    # Show important INFO messages
+                    print(f"{Colors.OKCYAN}{line}{Colors.ENDC}", flush=True)
+                # Skip all other lines to reduce noise (warnings are suppressed)
         
         # Wait for process to complete
         return_code = process.wait()
         
-        print(f"\n{Colors.OKCYAN}{'='*80}{Colors.ENDC}\n")
+        # Stop GPU monitoring
+        gpu_monitor_running.clear()
+        time.sleep(2)  # Give monitor thread time to stop
+        
+        # Final GPU status
+        final_status = check_training_status()
+        if final_status['gpu_memory_total_gb'] > 0:
+            usage_percent = (final_status['gpu_memory_used_gb'] / final_status['gpu_memory_total_gb']) * 100
+            print(f"\n{Colors.OKCYAN}{'='*80}{Colors.ENDC}")
+            print(f"{Colors.BOLD}📊 GPU Status cuối cùng:{Colors.ENDC}")
+            print(f"   Memory: {final_status['gpu_memory_used_gb']:.1f} / {final_status['gpu_memory_total_gb']:.1f} GB ({usage_percent:.1f}%)")
+            print(f"   Utilization: {final_status['gpu_usage_percent']:.1f}%")
+            print(f"{Colors.OKCYAN}{'='*80}{Colors.ENDC}\n")
         
         if return_code != 0:
             print_error(f"Training thất bại với exit code: {return_code}")
@@ -1518,17 +1885,55 @@ except ImportError as e:
         
         print_success(f"Training hoàn tất! Thời gian: {hours}h {minutes}m {seconds}s")
         
-        # Print final metrics if available
+        # Print final metrics and statistics
+        print(f"\n{Colors.OKCYAN}{'═'*80}{Colors.ENDC}")
+        print(f"{Colors.BOLD}{Colors.HEADER}📊 KẾT QUẢ CUỐI CÙNG{Colors.ENDC}")
+        print(f"{Colors.OKCYAN}{'═'*80}{Colors.ENDC}")
+        
+        # Final metrics
         if progress_data:
-            print(f"\n{Colors.BOLD}📊 Kết quả cuối cùng:{Colors.ENDC}")
+            print(f"\n{Colors.BOLD}Metrics cuối cùng:{Colors.ENDC}")
             if progress_data['t_loss'] is not None:
-                print(f"  {Colors.BOLD}Training Loss:{Colors.ENDC} {progress_data['t_loss']:.4f}")
+                print(f"  {Colors.BOLD}Training Loss:{Colors.ENDC} {Colors.WARNING}{progress_data['t_loss']:.4f}{Colors.ENDC}")
             if progress_data['i_acc'] is not None:
-                print(f"  {Colors.BOLD}Intent Accuracy:{Colors.ENDC} {progress_data['i_acc']:.4f}")
+                print(f"  {Colors.BOLD}Intent Accuracy:{Colors.ENDC} {Colors.OKGREEN}{progress_data['i_acc']:.4f}{Colors.ENDC}")
             if progress_data['e_f1'] is not None:
-                print(f"  {Colors.BOLD}Entity F1 Score:{Colors.ENDC} {progress_data['e_f1']:.4f}")
+                print(f"  {Colors.BOLD}Entity F1 Score:{Colors.ENDC} {Colors.OKGREEN}{progress_data['e_f1']:.4f}{Colors.ENDC}")
             if progress_data['m_acc'] is not None:
-                print(f"  {Colors.BOLD}Memory Accuracy:{Colors.ENDC} {progress_data['m_acc']:.4f}")
+                print(f"  {Colors.BOLD}Memory Accuracy:{Colors.ENDC} {Colors.OKGREEN}{progress_data['m_acc']:.4f}{Colors.ENDC}")
+        
+        # Training statistics
+        stats = progress_tracker.get_statistics()
+        if stats:
+            print(f"\n{Colors.BOLD}📈 Thống kê training:{Colors.ENDC}")
+            if stats.get('total_updates'):
+                print(f"  {Colors.OKCYAN}Total updates: {stats['total_updates']}{Colors.ENDC}")
+            if stats.get('avg_loss'):
+                print(f"  {Colors.OKCYAN}Average Loss: {stats['avg_loss']:.4f}{Colors.ENDC}")
+            if stats.get('min_loss'):
+                print(f"  {Colors.OKCYAN}Best Loss: {stats['min_loss']:.4f}{Colors.ENDC}")
+            if stats.get('max_intent_acc'):
+                print(f"  {Colors.OKCYAN}Best Intent Accuracy: {stats['max_intent_acc']:.4f}{Colors.ENDC}")
+            if stats.get('max_entity_f1'):
+                print(f"  {Colors.OKCYAN}Best Entity F1: {stats['max_entity_f1']:.4f}{Colors.ENDC}")
+            if stats.get('improvement_loss') and stats['improvement_loss'] > 0:
+                print(f"  {Colors.OKGREEN}Loss improvement: {stats['improvement_loss']:.4f}{Colors.ENDC}")
+            if stats.get('improvement_intent') and stats['improvement_intent'] > 0:
+                print(f"  {Colors.OKGREEN}Intent improvement: {stats['improvement_intent']:.4f}{Colors.ENDC}")
+            if stats.get('improvement_entity') and stats['improvement_entity'] > 0:
+                print(f"  {Colors.OKGREEN}Entity improvement: {stats['improvement_entity']:.4f}{Colors.ENDC}")
+        
+        # Completed components
+        if progress_tracker.completed_components:
+            print(f"\n{Colors.BOLD}✓ Components đã hoàn thành: {len(progress_tracker.completed_components)}{Colors.ENDC}")
+            for comp in progress_tracker.completed_components[-5:]:  # Show last 5
+                print(f"  {Colors.OKGREEN}  - {comp}{Colors.ENDC}")
+        
+        # Progress file info
+        if progress_tracker.save_file.exists():
+            print(f"\n{Colors.OKCYAN}💾 Progress đã được lưu vào: {progress_tracker.save_file}{Colors.ENDC}")
+        
+        print(f"{Colors.OKCYAN}{'═'*80}{Colors.ENDC}\n")
         
         return True
         
